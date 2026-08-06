@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Kitty to Waad 🎀</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #ffe6f2; font-family: 'Segoe UI', Tahoma, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; text-align: center; }
+        .card { background: white; padding: 35px 25px; border-radius: 25px; box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3); max-width: 400px; width: 100%; border: 3px solid #ff99cc; }
+        .kitty-img { width: 140px; height: auto; margin-bottom: 20px; }
+        h2 { color: #ff3385; font-size: 22px; line-height: 1.6; margin-bottom: 25px; min-height: 70px; display: flex; align-items: center; justify-content: center; }
+        .btn-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        button { background-color: #ff66b2; color: white; border: none; padding: 14px 28px; font-size: 17px; border-radius: 25px; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        button:hover { background-color: #ff3385; transform: scale(1.03); }
+        .no-btn { background-color: #ff85c0; }
+        .reset-btn { background-color: #ff3385; margin-top: 10px; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <img class="kitty-img" src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_art.png" alt="Hello Kitty">
+    <h2 id="question">بتحبي معتز؟ 🎀</h2>
+    <div class="btn-container" id="buttons">
+        <button onclick="nextStep(1)">إي أكيد! 💕</button>
+    </div>
+</div>
+<script>
+    function nextStep(step) {
+        const q = document.getElementById('question');
+        const btns = document.getElementById('buttons');
+        if (step === 1) {
+            q.innerHTML = "دايقك شي مرة؟ 🥺";
+            btns.innerHTML = `<button class="no-btn" onclick="nextStep(2)">إي 💔</button><button onclick="nextStep(3)">لا أبداً ❤️</button>`;
+        } else if (step === 2) {
+            q.innerHTML = "حقك عليي يا عيون معتز، ما في شي بالدنيا يسوى زعلك.. وحبك بقلبي كبير ومستحيل يتغير 💖✨";
+            btns.innerHTML = `<button class="reset-btn" onclick="location.reload()">إعادة 🎀</button>`;
+        } else if (step === 3) {
+            q.innerHTML = "يا أجمل وعد بالدنيا.. عيونك البنية والهازل هدول هنن كل جمال العالم بالنسبة لمعتز، وبوجودك كل شي بالحياة بصير أحلى وأجمل 💕✨";
+            btns.innerHTML = `<button class="reset-btn" onclick="location.reload()">إعادة 🎀</button>`;
+        }
+    }
+</script>
+</body>
+</html>
