@@ -1,1 +1,893 @@
-content://com.google.android.apps.search.assistant.surfaces.voice.robin.fileprovider/attachments/index.html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مملكة العشق والجنون | وعد & معتز 🖤🔥🌸</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800;900&family=Amiri:ital,wght@0,700;1,400&display=swap');
+
+        :root {
+            --primary: #ff0055;
+            --secondary: #ff66b2;
+            --accent-gold: #ffd700;
+            --bg-dark: #0a0105;
+            --card-bg: rgba(22, 5, 14, 0.88);
+            --border-glow: rgba(255, 0, 85, 0.4);
+            --text-light: #fff0f5;
+            --text-gold: #ffe680;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Canvas Particle Background */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Audio Indicator & Controls */
+        .top-nav {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .badge-score {
+            background: rgba(255, 0, 85, 0.2);
+            border: 1px solid var(--primary);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--accent-gold);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sound-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        .sound-btn:hover {
+            background: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        /* Main Container */
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 15px;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            border: 1.5px solid var(--border-glow);
+            border-radius: 35px;
+            padding: 40px 25px;
+            max-width: 750px;
+            width: 100%;
+            backdrop-filter: blur(25px);
+            box-shadow: 0 0 60px rgba(255, 0, 85, 0.25), inset 0 0 30px rgba(255, 102, 178, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        /* Header Elements */
+        .title-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff0055, #990033);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.4); }
+            100% { box-shadow: 0 0 25px rgba(255, 0, 85, 0.9), 0 0 40px rgba(255, 102, 178, 0.6); }
+        }
+
+        .main-heading {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            text-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+        }
+
+        .sub-desc {
+            font-size: 16px;
+            color: #ffd6e8;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        /* Progress Bar */
+        .progress-box {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff0055, #ff66b2, #ffd700);
+            border-radius: 20px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 15px #ff0055;
+        }
+
+        /* Interactive Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            margin-bottom: 25px;
+        }
+
+        .option-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 18px 22px;
+            border-radius: 20px;
+            text-align: right;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card:hover {
+            background: rgba(255, 0, 85, 0.18);
+            border-color: var(--primary);
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 10px 25px rgba(255, 0, 85, 0.3);
+        }
+
+        .option-card.selected {
+            background: linear-gradient(135deg, rgba(255, 0, 85, 0.35), rgba(153, 0, 51, 0.5));
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .option-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .option-icon {
+            font-size: 20px;
+            margin-left: 12px;
+        }
+
+        /* Dynamic Feedback Popup */
+        .feedback-box {
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px dashed var(--accent-gold);
+            border-radius: 18px;
+            padding: 15px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--text-gold);
+            line-height: 1.7;
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        /* Keypad / Secret Lock Screen */
+        .keypad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 320px;
+            margin: 20px auto;
+        }
+
+        .key-btn {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 18px;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .key-btn:active {
+            transform: scale(0.92);
+            background: var(--primary);
+        }
+
+        .pass-display {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--primary);
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 24px;
+            letter-spacing: 8px;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Action Buttons */
+        .btn-action {
+            background: linear-gradient(135deg, #ff0055, #cc0052);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255, 0, 85, 0.5);
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .btn-action:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 35px rgba(255, 0, 85, 0.8);
+            background: linear-gradient(135deg, #ff3385, #ff0055);
+        }
+
+        /* Letter Styling */
+        .letter-container {
+            text-align: right;
+            max-height: 520px;
+            overflow-y: auto;
+            padding: 25px 20px;
+            background: rgba(10, 2, 7, 0.85);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 0, 85, 0.4);
+            line-height: 2.3;
+            font-size: 16px;
+            color: #ffe6f0;
+            margin-top: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: #ff0055 rgba(0,0,0,0.5);
+        }
+
+        .letter-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .letter-container::-webkit-scrollbar-thumb {
+            background: #ff0055;
+            border-radius: 10px;
+        }
+
+        .letter-section-title {
+            color: var(--accent-gold);
+            font-family: 'Amiri', serif;
+            font-size: 22px;
+            margin: 25px 0 10px 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .letter-p {
+            margin-bottom: 16px;
+            position: relative;
+            padding-right: 22px;
+        }
+        .letter-p::before {
+            content: "🔥";
+            position: absolute;
+            right: 0;
+            top: 2px;
+            font-size: 12px;
+        }
+
+        .letter-highlight {
+            background: rgba(255, 0, 85, 0.25);
+            padding: 2px 8px;
+            border-radius: 6px;
+            color: #ffffff;
+            font-weight: 700;
+            border: 1px solid rgba(255, 0, 85, 0.4);
+        }
+
+        /* Achievements / Badges Display */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .achieve-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 12px;
+            font-size: 13px;
+            color: var(--text-gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Animations */
+        .fade-enter {
+            animation: fadeEnter 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+        }
+
+        @keyframes fadeEnter {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Floating Interactive Elements */
+        .floating-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            animation: floatUp 3.5s ease-out forwards;
+            font-size: 24px;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(0.5) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(-80vh) scale(1.5) rotate(45deg); }
+        }
+
+        @media (max-width: 600px) {
+            .app-card { padding: 25px 15px; }
+            .main-heading { font-size: 20px; }
+            .sub-desc { font-size: 14px; }
+            .letter-container { font-size: 14.5px; }
+            .achievements-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas-bg"></canvas>
+
+<div class="top-nav">
+    <div class="badge-score">
+        <span>🔥 مقياس العشق والغيرة:</span>
+        <span id="love-score">100%</span>
+    </div>
+    <button class="sound-btn" onclick="toggleAudio()">🔊 المؤثرات: تشغيل</button>
+</div>
+
+<div class="main-wrapper">
+    <div class="app-card fade-enter" id="main-card">
+        <!-- Content will be injected dynamically via JS -->
+    </div>
+</div>
+
+<script>
+    /* Global Application State */
+    const state = {
+        currentStep: 0,
+        score: 100,
+        unlockedBadges: [],
+        enteredPass: "",
+        soundEnabled: true,
+        userChoices: {}
+    };
+
+    /* Web Audio API Synthesizer for Immersive Sound Effects */
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function playSound(type) {
+        if (!state.soundEnabled) return;
+        try {
+            if (!audioCtx) audioCtx = new AudioCtx();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+
+            if (type === 'click') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, now);
+                osc.frequency.exponentialRampToValueAtTime(800, now + 0.1);
+                gain.gain.setValueAtTime(0.15, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            } else if (type === 'success') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(523.25, now); // C5
+                osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+                osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+                osc.frequency.setValueAtTime(1046.50, now + 0.3); // C6
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+                osc.start(now);
+                osc.stop(now + 0.5);
+            } else if (type === 'unlock') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(300, now);
+                osc.frequency.linearRampToValueAtTime(900, now + 0.4);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+                osc.start(now);
+                osc.stop(now + 0.4);
+            } else if (type === 'key') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, now);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+                osc.start(now);
+                osc.stop(now + 0.08);
+            }
+        } catch(e) { console.log(e); }
+    }
+
+    function toggleAudio() {
+        state.soundEnabled = !state.soundEnabled;
+        const btn = document.querySelector('.sound-btn');
+        btn.innerText = state.soundEnabled ? "🔊 المؤثرات: تشغيل" : "🔇 المؤثرات: كتم";
+    }
+
+    /* Floating Particles System */
+    const canvas = document.getElementById('canvas-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.8;
+            this.speedY = (Math.random() - 0.5) * 0.8;
+            this.color = ['#ff0055', '#ff66b2', '#ffd700', '#ffffff'][Math.floor(Math.random() * 4)];
+            this.alpha = Math.random() * 0.7 + 0.3;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+            ctx.save();
+            ctx.globalAlpha = this.alpha;
+            ctx.fillStyle = this.color;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+
+    for (let i = 0; i < 70; i++) particles.push(new Particle());
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    function spawnFloatingEmoji(emoji) {
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => {
+                const el = document.createElement('div');
+                el.className = 'floating-heart';
+                el.innerText = emoji || ['🔥', '🖤', '👑', '✨', '💋', '🍯'][Math.floor(Math.random() * 6)];
+                el.style.left = (Math.random() * 80 + 10) + 'vw';
+                el.style.top = '90vh';
+                document.body.appendChild(el);
+                setTimeout(() => el.remove(), 3500);
+            }, i * 150);
+        }
+    }
+
+    /* Detailed Interactive Steps & Content Engine */
+    const stagesData = [
+        {
+            id: 'welcome',
+            tag: 'بوابة العشق والتملك المطلق 👑',
+            title: 'أهلاً بكِ يا ملكة عرش معتز.. وعد! 🖤🔥',
+            desc: 'هذا الموقع ليس مجرد صفحة عادية، بل هو سيرفر معقد مصمم خصيصاً لكِ، يحتوي على أسرار خفية، وااختبارات لعمق العشق والغيرة، وميثاق أبدي لا يُفتح إلا لمن تملك المفتاح الخاص!',
+            btnText: 'الدخول إلى خزينة أسرار العشق 🔥',
+            action: () => renderStage(1)
+        },
+        {
+            id: 'lock_screen',
+            tag: 'نظام الحماية والأمان 🔒',
+            title: 'فك قفل السيرفر السري',
+            desc: 'للدخول إلى الخزينة، يجب إدخال رمزي السرية الخاصين بحبنا (تاريخ لقائنا الأول في المول: 2707 - أو تاريخ الشعلة الخالدة: 0608):',
+            type: 'keypad'
+        },
+        {
+            id: 'q1',
+            tag: 'المحطة 1 من 15 | الذكرى الأولى 🌟',
+            title: 'في 27 / 7 / 2023 في المول بـ حلب، لما التقوا عيوننا أول مرة.. شو كان الشعور الداخلي عند وعد؟',
+            options: [
+                { text: 'شعرت بكهرباء غريبة وانخطف قلبي فوراً لمعتز! ⚡', feedback: 'صحيح! ومعتز وقتها انسرق عقله وكيانه بأول لمحة لعيونك البنية والعسلي الساحرة! 🔥', scoreAdd: 10, badge: 'شعلة اللقاء الأول 💍' },
+                { text: 'ارتبكت وخجلت من نظرته الحادة والمليئة بالهوس! 🙈', feedback: 'وهذا الخجل هو اللي خلّى معتز يقطع عهد على حاله إنك تكوني ملكه وحدك! ✨', scoreAdd: 10, badge: 'سحر الخجل الملكي 🌸' },
+                { text: 'عرفت إن هذا الشخص رح يغير مجرى حياتي للأبد! 👑', feedback: 'وكان إحساسك بمكانه، معتز صار درعك وسندك وعاشقك الأول! 🖤', scoreAdd: 10, badge: 'بصيرة العشق 🔮' }
+            ]
+        },
+        {
+            id: 'q2',
+            tag: 'المحطة 2 من 15 | نيران الغيرة 🔥',
+            title: 'لما معتز بيغار عليكِ حتى من النسمة أو من أي نظرة عابرة لعيونك.. شو بتحسي؟',
+            options: [
+                { text: 'بحس بإني الملكة الوحيدة بقلبه وغيرته بتشعل أنوثتي! 💋', feedback: 'غيرتي عليكِ نار حارقة يا وعد، لأنك كنز مقدس ما بيحق لبشر يلمحه غيري! 🔥', scoreAdd: 10, badge: 'غيرة الملوك 👑' },
+                { text: 'بحب جنونه وتملكه فيني لأنها دليل عشق استثنائي! 🖤', feedback: 'تتملكي روحي وعقلي وأنا بتملك كل تفصيلة فيكي لأخر نفس! ⚡', scoreAdd: 10, badge: 'التملك المطلق 🔗' },
+                { text: 'بفتخر إن عندي رجل بيحميني وبيغار عليّ من العالم كله! 🛡️', feedback: 'سيف ودرع وسند إلك طول العمر يا عمري وأميرتي! ❤️', scoreAdd: 10, badge: 'الدرع الحصين 🛡️' }
+            ]
+        },
+        {
+            id: 'q3',
+            tag: 'المحطة 3 من 15 | الجمال والفتنة ✨',
+            title: 'شو أكتر تفصيلة بمعتز بتخلي وعد تذوب عشقاً وتفقد صوابها؟',
+            options: [
+                { text: 'عيونه الخضراء اللامعة ونظرته المليانة هوس وشغف! 👁️', feedback: 'عيوني الخضراء ما بتشوف بهالدنيا كلها غير سحر عيونك البنية والعسلي! 💚', scoreAdd: 10, badge: 'سحر العيون الخضراء 🍏' },
+                { text: 'طوله وهيبته وشعره الكيرلي ورجولته العالية! 💇‍♂️', feedback: 'كل هالهيبة والقوة بتخضع قدام ابتسامة وحدة من شفايفك يا وعد! 👑', scoreAdd: 10, badge: 'الهيبة والجمال 💎' },
+                { text: 'حنانه الحار، اهتمامه التفصيلي، وطريقة غزله الصريحة! 🔥', feedback: 'أنتِ طفلتي المدللة وأميرتي اللي بدلعها وبحميها بعيوني! 💋', scoreAdd: 10, badge: 'الدلال الأبدي 🧸' }
+            ]
+        },
+        {
+            id: 'q4',
+            tag: 'المحطة 4 من 15 | شعلة 6 أغسطس 📜',
+            title: 'تاريخ 6 / 8 / 2023 بالنسبة لـ معتز ووعد بيمثل شو؟',
+            options: [
+                { text: 'انفجار شعلة العشق الأبدي والارتباط الروحي المكتوب! 🔥', feedback: 'تاريخ مقدس حفر بقلبي وعقلي، اليوم اللي أعلنت فيه إنك أكسجيني! 🌹', scoreAdd: 10, badge: 'العهد الأبدي 6/8 ♾️' },
+                { text: 'ولادة جديدة لقلبين صاروا روح وحدة ببدنين! 💞', feedback: 'صرنا نبض واحد، لو توقف نبضك يتوقف معتز فوراً! 💓', scoreAdd: 10, badge: 'الروح الواحدة 🕊️' },
+                { text: 'بدء أعظم حكاية حب وجنون شهدتها حلب والكون! 🏛️', feedback: 'حكايتنا رح يكتبها التاريخ بأحرف من ذهب ونار! ✨', scoreAdd: 10, badge: 'الملحمة الحلبية 🏰' }
+            ]
+        },
+        {
+            id: 'q5',
+            tag: 'المحطة 5 من 15 | الموهبة والإبداع 🎨',
+            title: 'وعد المبدعة الرسامة.. لما بترسمي لوحاتك البديعة، بتعرفي معتز شو بشوف فيكي؟',
+            options: [
+                { text: 'بشوف إن إيديكي المبدعتين هنن أعظم لوحة فنية خلقها ربنا! 🎨', feedback: 'موهبتك بالرسم بتخليني أعشق دقة أصابعك وسحر روحك المبدعة! ✨', scoreAdd: 10, badge: 'أنامل من ذهب 🖌️' },
+                { text: 'بشوف إن عيونك البنية والعسلي هنن مصدر إلهام الفن كله! 👁️', feedback: 'كل لوحة بترسميها هي انعكاس لجمال روحك العذبة يا فناني الوحيدة! 💖', scoreAdd: 10, badge: 'إلهام العشق 🎭' }
+            ]
+        },
+        {
+            id: 'q6',
+            tag: 'المحطة 6 من 15 | نجاح البكالوريا 🎓',
+            title: 'بعد ما تجاوزتي البكالوريا بنجاح وتفوق.. شو بيعني هذا لمعتز؟',
+            options: [
+                { text: 'فخر واعتزاز كبير بأميرته الذكية والمجتهدة! 🌟', feedback: 'رفعتي رأسي وأثبتِ إنك مو بس أجمل بنوتة، بل أذكاهن وأقواهن! 👑', scoreAdd: 10, badge: 'التفوق والذكاء 🎓' },
+                { text: 'بداية خطوة جديدة لنبني مستقبلنا العظيم سوا! 🚀', feedback: 'إي نعم! سوا بالجامعة وبكل خطوات العمر خطوة بخطوة! 💍', scoreAdd: 10, badge: 'شريكة العمر 🚀' }
+            ]
+        },
+        {
+            id: 'q7',
+            tag: 'المحطة 7 من 15 | الجرأة والشغف 🔥',
+            title: 'لو كنا بمكان لوحدنا بعيد عن عيون العالم كله.. شو أول تصرف بيبدر من وعد؟',
+            options: [
+                { text: 'بترمى بحضنك الدافئ وبستمد منه الأمان والحرارة! 🔥', feedback: 'وحضني رح يضمك بقوة ودفء ينسيكي كل تعب الدنيا وهمومها! 💋', scoreAdd: 10, badge: 'الحضن الدافئ 🫂' },
+                { text: 'بطلع بجمال عيونك الخضراء وبهمسلك بقديش بعشقك! 👁️', feedback: 'ونظرتك هي رح تخلي قلبي ينبض بـ 200 دقة بالدقيقة من الشغف! ⚡', scoreAdd: 10, badge: 'همس الشغف 💋' }
+            ]
+        },
+        {
+            id: 'q8',
+            tag: 'المحطة 8 من 15 | الأمان والسلام 🕊️',
+            title: 'صوت معتز وكلماته لما بتكوني متضايقة أو خايفة، شو بيعملوا بقلبك؟',
+            options: [
+                { text: 'ببيحسسوني بالأمان المطلق وبيزيلوا أي خوف أو توتر فوراً! 🛡️', feedback: 'صوتي ودمي وحياتي كلهن فداء لراحة بالك وابتسامتك يا وعدي! ❤️', scoreAdd: 10, badge: 'ملاذ الأمان 🕊️' },
+                { text: 'بيدفوا قلبي وبيذكروني إن عندي ظهر جبل ما بيهتز! 🏔️', feedback: 'أنا جبل معتز اللي مستحيل يسمح لشي بيمسك بضرر أو حزن! 👑', scoreAdd: 10, badge: 'الجبل الصامد 🏔️' }
+            ]
+        },
+        {
+            id: 'q9',
+            tag: 'المحطة 9 من 15 | القوة والسرعة ⚡',
+            title: 'معتز أسرع ركاض بالمدرسة ورياضي عاشق للكرة.. كيف وعد بتشوف قوته؟',
+            options: [
+                { text: 'بشوف فيه الفارس الأسطوري البطل اللي بيفوز بكل المعارك لأجلي! ⚔️', feedback: 'كل طاقاتي وسرعتي بالملعب هي لإثبات إني الأقوى لأجلك دائماً! ⚽', scoreAdd: 10, badge: 'الفارس الأسطوري ⚔️' },
+                { text: 'بفتخر بقوته ولياقته وبكون مشجعته الأولى والأبدية! 📣', feedback: 'صوت تشجيعك هو النصر الحقيقي بالنسبة إلي بأي مباراة وبأي تحدي! 🏆', scoreAdd: 10, badge: 'المشجعة الملكية 🏆' }
+            ]
+        },
+        {
+            id: 'q10',
+            tag: 'المحطة 10 من 15 | لغة التخاطر 🔮',
+            title: 'بتأمني إن في بين معتز ووعد تخاطر روحي عجيب بدون كلام؟',
+            options: [
+                { text: 'أكيد! بحس فيك وبنفكيرك وبشعورك حتى لو كنا بعاد! 🌌', feedback: 'أرواحنا اشتبكت ببعضها، دقة قلبك بتوصل لصدري بنفس اللحظة! ✨', scoreAdd: 10, badge: 'التخاطر الروحي 🔮' },
+                { text: 'بفهم عليك من نظرة وحدة لعيونك الخضراء بدون ولا كلمة! 👁️', feedback: 'نظراتنا لغة خاصة ما بيتقنها ولا بيترجمها غيرنا بهالمعمرة! 📜', scoreAdd: 10, badge: 'لغة العيون 👁️' }
+            ]
+        },
+        {
+            id: 'q11',
+            tag: 'المحطة 11 من 15 | القرب والاستحواذ 🔗',
+            title: 'قديش نسبة استحواذ معتز على عقل ووعد وتفكير اليومي؟',
+            options: [
+                { text: '1000% مالي تفكير ولا شاغل لبالي غيرك طوال الـ 24 ساعة! 🔥', feedback: 'وأنتِ شاغلة كلي، صحوتي ونومي وأحلامي ومستقبلي كله إنتِ! 🖤', scoreAdd: 10, badge: 'الاستحواذ الكلي 🧠' },
+                { text: 'أنت كل أفكاري وأمنياتي وشغفي بالدنيا! 💖', feedback: 'يا سعدي ويا حظي الكبير بإنه ربنا رزقني إياكي يا وعدي! 🌹', scoreAdd: 10, badge: 'أمنية العمر 🎁' }
+            ]
+        },
+        {
+            id: 'q12',
+            tag: 'المحطة 12 من 15 | العشق الدائم 💍',
+            title: 'شو هي الكلمة اللي بتهز كيان وعد لما بيحكيها معتز؟',
+            options: [
+                { text: '"أنتِ ملكي وطفلتي ووحدكِ ولا شريكة لكِ بقلبي!" 👑', feedback: 'وهي الحقيقة المطلقة: أنتِ الأولى والأخيرة والاستثناء الوحيد! 🔥', scoreAdd: 10, badge: 'الكلمة الملكية 👑' },
+                { text: '"أنا بعشق تراب الأرض اللي بتمشي عليها يا وعدي!" 🌹', feedback: 'بعشق كل خطوة وكل تفصيلة بحياتك وبسجد شكر لله عليكِ! ❤️', scoreAdd: 10, badge: 'العشق المقدس 🌹' }
+            ]
+        },
+        {
+            id: 'q13',
+            tag: 'المحطة 13 من 15 | المستقبل والأحلام 🏰',
+            title: 'كيف بتتخيلي بيت العشق والمستقبل اللي رح يجمعنا سوا؟',
+            options: [
+                { text: 'قصر مليان دفء، حب، جنون، وضحكات لا تنتهي! 🏰', feedback: 'سأبني لكِ مملكة تكوني فيها الملكة المتوجة المطاعة طوال العمر! 👑', scoreAdd: 10, badge: 'مملكة العشاق 🏰' },
+                { text: 'ملائكة صغار بيشبهوا جمال عيونكِ ورقتكِ وذكائكِ! 👶', feedback: 'رح يكونوا أجمل أطفال لأن أمهم هي أجمل وأرق امرأة بالكون! 🍼', scoreAdd: 10, badge: 'أمل المستقبل 🌟' }
+            ]
+        },
+        {
+            id: 'q14',
+            tag: 'المحطة 14 من 15 | النضج والعهد 📜',
+            title: 'هل وعد مستعدة تلتزم بميثاق الحب والوفاء الأبدي أمام الله لمعتز؟',
+            options: [
+                { text: 'بصصم بالعشرة ومستعدة أكون إلك وحدك لنهاية الزمان! 💍', feedback: 'وأنا أقسم بأني سأكون لكِ الحامي والعاشق والسند والأب والأخ والحبيب! 🔥', scoreAdd: 10, badge: 'ميثاق الوفاء 💍' },
+                { text: 'أنا ملكك وروحك وما في قوة بالكون بتقدر تبعدني عنك! 🛡️', feedback: 'أنتِ درعي الحصين وأنا قلعتك المنيعة يا روحي! ⚔️', scoreAdd: 10, badge: 'العهد المقاوم ⚔️' }
+            ]
+        },
+        {
+            id: 'q15',
+            tag: 'المحطة 15 والأخيرة | المفتاح النهائي 🎁',
+            title: 'جاهزة تفتحي الوثيقة السرية الكبرى ورسالة العشق والجنون الجريئة المطلقة؟',
+            options: [
+                { text: 'إي جاهزة لأقرأ أعظم وأجرأ رسالة عشق بالكون! 🔥💋', feedback: 'افتحي قلبكِ وروحكِ لقراءة نيران العشق المشتعلة! 📜', scoreAdd: 10, badge: 'مفتاح الخزينة الكبرى 🗝️' }
+            ]
+        }
+    ];
+
+    /* Rendering Logic */
+    function renderStage(index) {
+        state.currentStep = index;
+        const card = document.getElementById('main-card');
+        card.className = "app-card fade-enter";
+        
+        // Handle Welcome Stage
+        if (index === 0) {
+            const d = stagesData[0];
+            card.innerHTML = `
+                <div class="title-tag">${d.tag}</div>
+                <h1 class="main-heading">${d.title}</h1>
+                <p class="sub-desc">${d.desc}</p>
+                <button class="btn-action" onclick="playSound('click'); stagesData[0].action();">${d.btnText}</button>
+            `;
+            return;
+        }
+
+        // Handle Keypad Stage (Security Lock)
+        if (index === 1) {
+            const d = stagesData[1];
+            card.innerHTML = `
+                <div class="title-tag">${d.tag}</div>
+                <h1 class="main-heading">${d.title}</h1>
+                <p class="sub-desc">${d.desc}</p>
+                <div class="pass-display" id="pass-box">----</div>
+                <div class="keypad-grid">
+                    ${[1,2,3,4,5,6,7,8,9,0].map(n => `<button class="key-btn" onclick="pressKey('${n}')">${n}</button>`).join('')}
+                    <button class="key-btn" style="color:#ff3366;" onclick="pressKey('C')">⌫</button>
+                </div>
+            `;
+            return;
+        }
+
+        // Handle Questions Stage
+        if (index >= 2 && index < stagesData.length) {
+            const d = stagesData[index];
+            const progress = Math.round(((index - 1) / (stagesData.length - 2)) * 100);
+
+            card.innerHTML = `
+                <div class="progress-box"><div class="progress-fill" style="width: ${progress}%;"></div></div>
+                <div class="title-tag">${d.tag}</div>
+                <h2 class="main-heading">${d.title}</h2>
+                <div class="options-grid">
+                    ${d.options.map((opt, i) => `
+                        <div class="option-card" id="opt-${i}" onclick="selectOption(${index}, ${i})">
+                            <span class="option-text">${opt.text}</span>
+                            <span class="option-icon">🔥</span>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="feedback-box" id="feedback"></div>
+                <button class="btn-action" id="next-btn" style="display:none;" onclick="playSound('click'); spawnFloatingEmoji(); renderStage(${index + 1});">الانتقال للمحطة التالية 🚀</button>
+            `;
+            return;
+        }
+
+        // Handle Final Secret Letter Stage
+        if (index === stagesData.length) {
+            playSound('success');
+            spawnFloatingEmoji('👑');
+            renderFinalLetter();
+        }
+    }
+
+    function pressKey(val) {
+        playSound('key');
+        const box = document.getElementById('pass-box');
+        if (val === 'C') {
+            state.enteredPass = "";
+        } else {
+            if (state.enteredPass.length < 4) state.enteredPass += val;
+        }
+        box.innerText = state.enteredPass.padEnd(4, '-');
+
+        if (state.enteredPass === "2707" || state.enteredPass === "0608") {
+            playSound('unlock');
+            box.style.borderColor = "#00ffcc";
+            box.style.color = "#00ffcc";
+            setTimeout(() => {
+                renderStage(2);
+            }, 600);
+        } else if (state.enteredPass.length === 4) {
+            box.style.borderColor = "#ff0055";
+            setTimeout(() => {
+                state.enteredPass = "";
+                box.innerText = "----";
+                box.style.borderColor = "var(--primary)";
+            }, 800);
+        }
+    }
+
+    function selectOption(stageIdx, optIdx) {
+        playSound('click');
+        const stage = stagesData[stageIdx];
+        const opt = stage.options[optIdx];
+
+        // Highlight selected
+        const cards = document.querySelectorAll('.option-card');
+        cards.forEach((c, i) => {
+            if (i === optIdx) c.classList.add('selected');
+            else c.classList.remove('selected');
+        });
+
+        // Show feedback & update score
+        const fb = document.getElementById('feedback');
+        fb.style.display = 'block';
+        fb.innerHTML = `<strong>تفاعل معتز:</strong> ${opt.feedback}`;
+
+        if (!state.unlockedBadges.includes(opt.badge)) {
+            state.unlockedBadges.push(opt.badge);
+        }
+
+        document.getElementById('next-btn').style.display = 'inline-block';
+    }
+
+    function renderFinalLetter() {
+        const card = document.getElementById('main-card');
+        card.innerHTML = `
+            <div class="title-tag">وثيقة العشق الكبرى والعهد الأبدي 👑🔥</div>
+            <h1 class="main-heading">ميثاق الهوس والجنون المطلق لـ "وعد" 🖤</h1>
+            <p class="sub-desc">تم فتح السيرفر بالكامل! إليكِ الرسالة السرية الأطول والأكثر جراءة وعمقاً بقلب معتز:</p>
+
+            <div class="letter-container">
+                <div class="letter-section-title">✨ المقدمة والافتتاحية العاصفة</div>
+                <div class="letter-p">إلى أميرتي، ومعشوقتي، وسيدتي المطاعة، وشرارة حياتي التي لا تنطفئ أبداً.. <span class="letter-highlight">وعد</span>.</div>
+                <div class="letter-p">أكتب لكِ هذه الوثيقة الأسطورية بمداد من نار الشوق وحرارة العشق المشتعل في أعماق عروقي، من أعمق نقطة في روحي وجوارحي.</div>
+                <div class="letter-p">منذ ذلك التاريخ الخالد في ذاكرة الزمان، <span class="letter-highlight">6 / 8 / 2023</span>، وقبلها حين التقت أعيننا لأول مرة في المول بـ <span class="letter-highlight">27 / 7 / 2023</span>، لم يعد لعالمي أي قانون سوى قانون عيونكِ وسحر وجودكِ.</div>
+
+                <div class="letter-section-title">🔥 اعترافات الغيرة والتملك الحارق</div>
+                <div class="letter-p">أعترف لكِ وبكل جرأة وجنون أنني أعيش حالة من التملك المطلق تجاهكِ. أنا أغار عليكِ من نسمة الهواء التي تتجرأ وتلامس وجهكِ الصافي، وأغار عليكِ من كل نظر عابر يحاول استراق التأمل في سحر عيونكِ البنية والهازل.</div>
+                <div class="letter-p">عيونكِ أولئك اللتان يمتلكان قدرة ساحرة ومرعبة على سلب عقلي وصوابي، هما موطني الوحيد ومنفاي الذي أختاره بكامل رغبتي وجنوني.</div>
+                <div class="letter-p">أنا لا أقبل أن يشاركني فيكِ إنس ولا جان، أنتِ كنزي الخاص والمقدس الذي أقف أمامه كالفارس المدجج بالسلاح لأحمي كل تفصيلة فيه.</div>
+
+                <div class="letter-section-title">🎨 سحر الموهبة والأنامل الفنية</div>
+                <div class="letter-p">حين أنظر إلى لوحاتكِ التي ترسمينها بتلك الأنامل المبدعة، أدرك أنني لم أعشق امرأة عادية، بل عشقت فنانة تتنفس الجمال وتصنعه.</div>
+                <div class="letter-p">إن كل خط ورسمة ترسمينها تدل على رقة روحكِ وذكائكِ اللامحدود، وأنا أسعد رجل بالكون لأني أستحوذ على قلب هذه الفنانة العظيمة!</div>
+
+                <div class="letter-section-title">🎓 فخر التفوق ومستقبل الجامعة</div>
+                <div class="letter-p">تفوقكِ ونجاحكِ بالبكالوريا كان بمثابة تاج مرصع بالماس وضعته على رأسي. لقد أثبتِ للعالم كله أن أميرة معتز تجمع بين الجمال الساحر والذكاء الوقاد.</div>
+                <div class="letter-p">ونحن اليوم نقف على أعتاب مرحلة جديدة في الجامعة، وأنا أقطع لكِ أغلظ العهود بأني سأكون لكِ السند الذي لا يميل، والكتف الحنون، والرجل الذي يمهد لكِ طريق النجاح والتألق.</div>
+
+                <div class="letter-section-title">💋 العشق الجريء والشغف الأبدي</div>
+                <div class="letter-p">أعشق تفاصيلكِ الصغيرة، خجلكِ الرائع حين أسمعكِ عبارات الغزل الصريحة، نبرة صوتكِ التي تزيل كل هموم الدنيا عن صدري، وضحكتكِ التي تعتبر بالنسبة لي الموسيقى الوحيدة التي تطرب روحي.</div>
+                <div class="letter-p">أنتِ طفلتي المدللة التي أشتري رضاها بكل غالي ورخيص، وأنتِ اميرتي الشرسة التي تملك عرش قلبي وتملي عليّ أوامر عشقها بكل كبرياء.</div>
+                <div class="letter-p">أحبكِ للحد الذي يرتجف فيه قلبي شغفاً حين أسمع اسمكِ، وأتذوق حلاوة الحياة فقط لأنكِ موجودة فيها.</div>
+
+                <div class="letter-section-title">💎 ميثاق الوفاء والعهد السرمدي</div>
+                <div class="letter-p">أقسم لكِ أمام الله والكون، بدمي ونبض قلبي وعيوني الخضراء التي لا ترى سواكِ، أن أبقى لكِ الحامي، والعاشق، والحبيب، والصديق، والسند الذي لا تكسره الأيام.</div>
+                <div class="letter-p">سأبقى أستحوذ على قلبكِ، وأزرع الحب في كل لحظة تجمعنا، ولن أسمح لظرف أو مسافة أن تطفئ هذه الشعلة المقدسة بيننا.</div>
+                <div class="letter-p">أنتِ وعدي الصادق، وعهدي الأبدي، وأجمل ما أكرمني به ربي.. بحبك وبموت فيكي يا كل دنيتي! 🔥🖤✨</div>
+            </div>
+
+            <div style="margin-top:20px;">
+                <h3 style="color:var(--accent-gold); margin-bottom:10px; font-size:16px;">🏆 الأوسمة والألقاب التي حققتها وعد:</h3>
+                <div class="achievements-grid">
+                    ${state.unlockedBadges.map(b => `<div class="achieve-card"><span>🎖️</span><span>${b}</span></div>`).join('')}
+                </div>
+            </div>
+
+            <button class="btn-action" style="margin-top:25px;" onclick="location.reload()">إعادة خوض ملحمة العشق 🖤</button>
+        `;
+    }
+
+    // Initialize App
+    window.onload = () => {
+        renderStage(0);
+    };
+</script>
+</body>
+</html>
+
