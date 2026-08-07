@@ -1,14 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إلى أروع وعد في الكون 🎀</title>
-    
-    <!-- مكتبة Lottie للأيقونات المتحركة ومكتبة Confetti للاحتفال -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    
+    <title>إلى أميرتي وأجمل وعد في الكون 🎀</title>
     <style>
         * {
             box-sizing: border-box;
@@ -18,7 +14,8 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ffe6f0 0%, #ffcce0 50%, #ffb3d1 100%);
+            background: linear-gradient(135deg, #2b0818 0%, #520c2b 50%, #1a030d 100%);
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -27,111 +24,200 @@
             overflow-x: hidden;
         }
 
-        /* كرت زجاجي فخم Glassmorphism */
         .card {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             padding: 40px 25px;
             border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.25);
-            max-width: 440px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 51, 133, 0.2);
+            max-width: 500px;
             width: 100%;
-            border: 2px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 182, 193, 0.2);
             text-align: center;
             position: relative;
             z-index: 10;
-            transition: all 0.5s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .icon-container {
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff3385, #ff66b2);
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(255, 51, 133, 0.4);
+            letter-spacing: 1px;
+        }
+
+        /* أنيميشن ورسومات CSS بدون حقوق طبع ونشر */
+        .graphic-container {
+            height: 120px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 130px;
             margin-bottom: 20px;
+            position: relative;
+        }
+
+        .custom-heart {
+            width: 70px;
+            height: 70px;
+            background-color: #ff3385;
+            display: inline-block;
+            transform: rotate(-45deg);
+            animation: pulse 1.2s infinite ease-in-out;
+            box-shadow: 0 0 25px #ff3385;
+            position: relative;
+        }
+
+        .custom-heart::before,
+        .custom-heart::after {
+            content: "";
+            width: 70px;
+            height: 70px;
+            background-color: #ff3385;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .custom-heart::before {
+            top: -35px;
+            left: 0;
+        }
+
+        .custom-heart::after {
+            left: 35px;
+            top: 0;
+        }
+
+        @keyframes pulse {
+            0% { transform: rotate(-45deg) scale(0.95); box-shadow: 0 0 15px #ff3385; }
+            50% { transform: rotate(-45deg) scale(1.15); box-shadow: 0 0 35px #ff66b2; }
+            100% { transform: rotate(-45deg) scale(0.95); box-shadow: 0 0 15px #ff3385; }
+        }
+
+        .gift-box-css {
+            font-size: 80px;
+            animation: bounce 1.5s infinite;
+            cursor: pointer;
+            text-shadow: 0 0 20px rgba(255, 102, 178, 0.8);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
         h2 {
-            color: #d14980;
+            color: #ffe6f2;
             font-size: 22px;
             font-weight: 700;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 25px;
-            min-height: 80px;
+            min-height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .btn-container {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
+            margin-top: 15px;
         }
 
         button {
-            background: linear-gradient(145deg, #ff66a3, #ff3385);
+            background: linear-gradient(145deg, #ff3385, #cc0052);
             color: white;
             border: none;
-            padding: 14px 28px;
-            font-size: 16px;
+            padding: 15px 32px;
+            font-size: 17px;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 6px 18px rgba(255, 51, 133, 0.35);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 51, 133, 0.4);
             outline: none;
         }
 
         button:hover {
-            transform: translateY(-4px) scale(1.04);
-            box-shadow: 0 10px 25px rgba(255, 51, 133, 0.5);
-            background: linear-gradient(145deg, #ff3385, #ff66a3);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 28px rgba(255, 51, 133, 0.6);
+            background: linear-gradient(145deg, #ff66a3, #ff3385);
         }
 
-        button:active {
-            transform: translateY(1px);
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ddd;
+            box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .btn-sub {
-            background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
-            color: #666;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
 
-        .btn-sub:hover {
-            background: linear-gradient(145deg, #e6e6e6, #cccccc);
-            color: #333;
+        .letter-container {
+            text-align: right;
+            max-height: 450px;
+            overflow-y: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            line-height: 2;
+            font-size: 16px;
+            color: #fff0f5;
+            margin-top: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: #ff3385 rgba(0, 0, 0, 0.2);
         }
 
-        /* أنيميشن ظهور النصوص */
+        .letter-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .letter-container::-webkit-scrollbar-thumb {
+            background-color: #ff3385;
+            border-radius: 10px;
+        }
+
+        .letter-p {
+            margin-bottom: 12px;
+            position: relative;
+            padding-right: 15px;
+        }
+
+        .letter-p::before {
+            content: "🌸";
+            position: absolute;
+            right: -10px;
+            top: 0;
+            font-size: 12px;
+        }
+
         .fade-in {
             animation: fadeIn 0.6s ease forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* تاريخ التعارف المميز */
-        .date-badge {
-            display: inline-block;
-            background: rgba(255, 51, 133, 0.1);
-            color: #ff0066;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 51, 133, 0.2);
-        }
-
-        .heart-particle {
+        .heart-floating {
             position: fixed;
-            color: #ff4d94;
-            font-size: 24px;
+            color: #ff66a3;
+            font-size: 20px;
             pointer-events: none;
             animation: floatUp 4s linear forwards;
             z-index: 1;
@@ -146,98 +232,136 @@
 <body>
 
 <div class="card" id="card">
-    <div class="date-badge">تاريخنا المميّز: 2023 / 8 / 6 💖</div>
+    <div class="date-badge">تاريخ قلبي: 6 / 8 / 2023 💖</div>
     
-    <div class="icon-container" id="icon-container">
-        <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_m4v2gxf0.json" background="transparent" speed="1" style="width: 120px; height: 120px;" loop autoplay></lottie-player>
+    <div class="graphic-container" id="graphic">
+        <div class="custom-heart"></div>
     </div>
     
     <h2 id="question" class="fade-in">بتحبي معتز؟ 🎀</h2>
     
     <div class="btn-container" id="buttons">
-        <button onclick="nextStep(1)">إي أكيد بعشقه! 💕</button>
+        <button onclick="nextStep(1)">إي بعشقه وبموت فيه! 💕</button>
     </div>
 </div>
 
 <script>
-    function triggerEffects() {
-        // تأثير المفرقعات الاحتفالية Confetti
-        confetti({
-            particleCount: 40,
-            spread: 60,
-            origin: { y: 0.7 }
-        });
-
-        // إنشاء قلوب متطايرة
-        for(let i = 0; i < 5; i++) {
+    function createHearts() {
+        for(let i = 0; i < 6; i++) {
             setTimeout(() => {
                 const heart = document.createElement('div');
-                heart.classList.add('heart-particle');
-                heart.innerHTML = ['❤️', '💖', '💕', '✨'][Math.floor(Math.random()*4)];
-                heart.style.left = Math.random() * 100 + 'vw';
+                heart.classList.add('heart-floating');
+                heart.innerHTML = ['❤️', '💖', '💕', '🔥', '✨'][Math.floor(Math.random()*5)];
+                heart.style.left = Math.random() * 90 + 5 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 4000);
-            }, i * 200);
+            }, i * 150);
         }
     }
 
     function nextStep(step) {
-        triggerEffects();
+        createHearts();
         
         const q = document.getElementById('question');
         const btns = document.getElementById('buttons');
-        const icon = document.getElementById('icon-container');
+        const graphic = document.getElementById('graphic');
 
         q.classList.remove('fade-in');
-        void q.offsetWidth; // Restart animation
+        void q.offsetWidth;
         q.classList.add('fade-in');
 
         if (step === 1) {
-            // السؤال الثاني
-            icon.innerHTML = `<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_gh5wkyq8.json" background="transparent" speed="1" style="width: 110px; height: 110px;" loop autoplay></lottie-player>`;
-            q.innerHTML = "تذكرتي شو صار بـ 6 / 8 / 2023؟ 🥹✨";
+            graphic.innerHTML = `<span style="font-size: 70px;">✨</span>`;
+            q.innerHTML = "تذكرتي شو صار بـ 6 / 8 / 2023؟ 🥹💖";
             btns.innerHTML = `
-                <button onclick="nextStep(2)">إي أحلى يوم بحياتي! ❤️</button>
-                <button class="btn-sub" onclick="nextStep(2)">كيف بنساه يعني؟ 🙈</button>
+                <button onclick="nextStep(2)">أحلى يوم بكاتب عمري! ❤️</button>
+                <button class="btn-secondary" onclick="nextStep(2)">كيف بنسى أصل حياتي؟ 🙈</button>
             `;
         } 
         else if (step === 2) {
-            // السؤال الثالث
-            icon.innerHTML = `<lottie-player src="https://assets2.lottiefiles.com/packages/lf20_f7zv9r4l.json" background="transparent" speed="1" style="width: 120px; height: 120px;" loop autoplay></lottie-player>`;
-            q.innerHTML = "دايقك شي مرة معتز أو زعلتي منه؟ 🥺💔";
+            graphic.innerHTML = `<span style="font-size: 70px;">🙈</span>`;
+            q.innerHTML = "بتعرفي قديش عيونك البنية والهازل بياخدوا قلبي وعقلي؟ 🥹✨";
             btns.innerHTML = `
-                <button class="btn-sub" onclick="nextStep(3)">إي شوي 💔</button>
-                <button onclick="nextStep(4)">لا أبداً ولا يمكن! ❤️</button>
+                <button onclick="nextStep(3)">بعرف وبحب حبك إلهن! 💕</button>
+                <button onclick="nextStep(3)">أنت أغلى شي عندي ❤️</button>
+            `;
+        }
+        else if (step === 3) {
+            graphic.innerHTML = `<span style="font-size: 70px;">🥺</span>`;
+            q.innerHTML = "دايقك شي مرة معتز أو زعلتي منه بدون قصد؟ 💔";
+            btns.innerHTML = `
+                <button class="btn-secondary" onclick="nextStep(4)">إي شوي 💔</button>
+                <button onclick="nextStep(5)">لا أبداً أنت كل حناني! ❤️</button>
             `;
         } 
-        else if (step === 3) {
-            // إذا اختارت إي
-            icon.innerHTML = `<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_5j4f5h7b.json" background="transparent" speed="1" style="width: 110px; height: 110px;" loop autoplay></lottie-player>`;
-            q.innerHTML = "حقك عليي يا عيون معتز.. ما في شي بالدنيا يسوى زعلك، وعيونك البنية والهازل هدول أغلى شي عندي 💖✨";
-            btns.innerHTML = `<button onclick="nextStep(5)">المتابعة لرؤية الهدية 🎁</button>`;
-        } 
         else if (step === 4) {
-            // إذا اختارت لا
-            icon.innerHTML = `<lottie-player src="https://assets2.lottiefiles.com/packages/lf20_f7zv9r4l.json" background="transparent" speed="1" style="width: 120px; height: 120px;" loop autoplay></lottie-player>`;
-            q.innerHTML = "يا أطيب وأجمل وعد بكل العالم.. بوجودك كل شي بالحياة بصير إلو طعم ثاني وأحلى بكتير 💕✨";
-            btns.innerHTML = `<button onclick="nextStep(5)">افتحي الهدية الكبيرة 🎁</button>`;
+            graphic.innerHTML = `<div class="custom-heart"></div>`;
+            q.innerHTML = "حقك عليي يا عيون معتز وروحه.. ما في شي بالكون يسوى زعلك، وعيونك أغلى عليي من دنيتي كلها 💖✨";
+            btns.innerHTML = `<button onclick="nextStep(6)">المتابعة لرؤية الهدية 🎁</button>`;
         } 
         else if (step === 5) {
-            // خطوة الهدية المغلقة
-            icon.innerHTML = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_k98vg7ec.json" background="transparent" speed="1" style="width: 130px; height: 130px;" loop autoplay></lottie-player>`;
-            q.innerHTML = "في هدية خاصة جداً عم تستناكي.. جاهزة تفتحيها؟ 🎀✨";
-            btns.innerHTML = `<button onclick="nextStep(6)">افتحي الهدية الآن 🎉</button>`;
+            graphic.innerHTML = `<span style="font-size: 70px;">👑</span>`;
+            q.innerHTML = "يا أميرتي وأجمل وعد بالدنيا.. بوجودك كل شي بالحياة بصير إلو طعم نقي وجميل 💕✨";
+            btns.innerHTML = `<button onclick="nextStep(6)">انتقلي للهدية الكبيرة 🎁</button>`;
         } 
         else if (step === 6) {
-            // الكشف عن الهدية مع انفجار مفرقعات كبير
-            confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+            graphic.innerHTML = `<div class="gift-box-css">🎁</div>`;
+            q.innerHTML = "في هدية ورسالة عشق خاصة جداً عم تستناكي.. جاهزة للسر؟ 🎀✨";
+            btns.innerHTML = `<button onclick="nextStep(7)">افتحي الهدية الآن 🎉</button>`;
+        } 
+        else if (step === 7) {
+            graphic.innerHTML = `<span style="font-size: 70px;">🔥❤️</span>`;
+            q.innerHTML = "🎁 الهدية الكبرى: رسالة عشق وميثاق حب للأبد";
             
-            icon.innerHTML = `<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_p8bfn5to.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>`;
-            
-            q.style.fontSize = "18px";
-            q.innerHTML = "🎁 **الهدية هي قلبي وروحي وكل لحظة بعمري!** <br><br> بعشقك وبحبك للانهائية يا أحلى وعد بالدنيا، ومن تاريخ 6/8/2023 ولآخر العمر أنتِ أميرتي وحبيبتي وكل دنيتي! ❤️✨";
-            
-            btns.innerHTML = `<button class="btn-sub" onclick="location.reload()">إعادة المفاجأة من البداية 🎀</button>`;
+            btns.innerHTML = `
+                <div class="letter-container">
+                    <div class="letter-p">يا أميرتي، يا وعد قلبي، يا أجمل وأغلى إنسانة وطأت قدماها هاد العالم.</div>
+                    <div class="letter-p">من تاريخ 6 / 8 / 2023 وحياتي أنولدت من جديد، وصار إلها معنى وهدف بوجودك.</div>
+                    <div class="letter-p">أنتِ مو بس حبيبتي.. أنتِ روحي، أنتِ أنفاسي اللي بتنفسها، وأنتِ أكسجيني بهاد الكون.</div>
+                    <div class="letter-p">بعشق كل تفصيلة فيكي.. بعشق عيونك البنية والهازل اللي لما بطلع فيهن بضيع بعالمهن الدافي.</div>
+                    <div class="letter-p">بعشق ضحكتك اللي بتنسيني كل تعب ومشاكل الدنيا وتعب الأيام.</div>
+                    <div class="letter-p">أنتِ الملاذ الآمن لمعتز، أنتِ السكن والملجأ والمكان اللي برتاح فيه من كل العالم.</div>
+                    <div class="letter-p">حبك بقلبي عم يكبر مع كل ثانية وكل دقيقة بتعبر من عمرنا.</div>
+                    <div class="letter-p">أنا مو بس بحبك.. أنا متيم فيكي، بعشقك لعند حد الجنون.</div>
+                    <div class="letter-p">بشتاقلك حتى وأنتِ معي، وبحنلك بكل لحظة بتغيب عينك عن عيني.</div>
+                    <div class="letter-p">وجودك بحياتي هو أكبر نعمة ربنا أنعم عليي فيها ومستحيل فرط بفرصة إني أسعدك.</div>
+                    <div class="letter-p">أنتِ طفلتي المدللة، وأميرتي اللي مستعد أعمل المستحيل كرمال أشوف بس رسمة الابتسامة على وجهك.</div>
+                    <div class="letter-p">بتنفس عشقك، وعروقي بتنبض باسمك يا وعد.</div>
+                    <div class="letter-p">كل يوماً بيمرق وأنتِ بجنبي هو عيد حقيقي لقلبي.</div>
+                    <div class="letter-p">معك عرفت معاني الحب الجريء، الصادق، العميق اللي ما بيتأثر بظروف ولا بمسافات.</div>
+                    <div class="letter-p">أنتِ رغبتي الأولى والأخيرة بهي الحياة، وما بدي شي غير إني أكون معك ولألك.</div>
+                    <div class="letter-p">بأكدلك قدام ربي ودنيتي كلها إني رح أضل السند والظهر الحامي إلك مهما صارت الظروف.</div>
+                    <div class="letter-p">عيونك الخلابة هنن النور اللي بيضيء عليا عتمة الأيام.</div>
+                    <div class="letter-p">صوتك هو اللحن الوحيد اللي بيهدي روحي وبيعطيني أمل بالبكرة.</div>
+                    <div class="letter-p">أنا ملكك بالكامل.. قلبي، عقلي، روحي، وكل لحظة بعمري جندتها كرمال تسعدك.</div>
+                    <div class="letter-p">أنتِ الجمال كله، أنتِ الرقة، وأنتِ الجاذبية اللي مستحيل أقاومها.</div>
+                    <div class="letter-p">لما بمسك إيدك بحس إني ملكت العالم كله بين إيديي.</div>
+                    <div class="letter-p">ولما بضمك لصدري، بحس إن كل آلام العالم تلاشت واختفت.</div>
+                    <div class="letter-p">أنتِ مو بس شريكة.. أنتِ الجزء الأكبر والأهم من كياني.</div>
+                    <div class="letter-p">بحب شغفك، بحب رسمك، وبحب كل إبداع بيطلع من إيديكي الحلوين.</div>
+                    <div class="letter-p">بحب نبرة صوتك لما بتحكي معي، وبحب كل تفصيلة صغيرة فيكي.</div>
+                    <div class="letter-p">وعد مني إني أضل أحبك وأعشقك وأحافظ عليكِ كأغلى جوهرة بالكون.</div>
+                    <div class="letter-p">راح نكبر سوا، ونتجاوز كل الصعاب سوا، ونبني أحلامنا خطوة بخطوة.</div>
+                    <div class="letter-p">معتز إلك وبس.. مستحيل يشوف غيرك أو ينبض قلبه لغيرك بهي الدنيا.</div>
+                    <div class="letter-p">أنتِ الأولى والأخيرة، أنتِ البداية والنيّة والختام.</div>
+                    <div class="letter-p">كل قطرة بدمي بتنادي باسمك، وكل دقة بقلبي بتنطق "وعد".</div>
+                    <div class="letter-p">بعشق حنانك، بعشق دفا قلبك، وبعشق طيبتك اللي ما في منها بالدنيا.</div>
+                    <div class="letter-p">يا أجمل صدفة غيرت مجرى حياتي وخليتها جنة.</div>
+                    <div class="letter-p">لو جمعت كل كلام الغزل والشعر بعالمنا، ما بيكفي وصف نقطة من حبك بقلبي.</div>
+                    <div class="letter-p">أنتِ أعمق من كلمة حب، وأكبر من أي شعور ممكن يوصفه الكلام.</div>
+                    <div class="letter-p">أنا بحبك بكل جوارحي، بعشقك بكل طاقتي، وبتنفسك مع كل شهيق.</div>
+                    <div class="letter-p">كل لحظة بعيدة عنك هي وقت ضائع، وكل لحظة معك هي العمر الحقيقي.</div>
+                    <div class="letter-p">يا عيون معتز، يا نبض معتز، ويا كل دنيا معتز.</div>
+                    <div class="letter-p">أعدك أن أكون لكِ الزوج، والحبيب، والصديق، والسند طول ما فيني نفس.</div>
+                    <div class="letter-p">راح نضل سوا إيد بإيد، لآخر العمر وللأبد.</div>
+                    <div class="letter-p">الله يديمك إلي وما يحرم عيوني من شوفة عيونك الحلوين.</div>
+                    <div class="letter-p">يا روح الروح، يا قطعة من قلبي، يا أجمل هدية من ربنا.</div>
+                    <div class="letter-p">بموت فيكي، بعشقك، بتنفسك، وما بقدر يعيش بدونك ولا ثانية واحدة.</div>
+                    <div class="letter-p">بحبك اليوم، وبكرة، وللأبد يا أروع وأجمل وعد بالكون كله! ❤️🔥✨</div>
+                </div>
+                <button style="margin-top:20px;" class="btn-secondary" onclick="location.reload()">إعادة المفاجأة 🎀</button>
+            `;
         }
     }
 </script>
