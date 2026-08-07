@@ -13,7 +13,7 @@
             --pink-bg: #ffe5ec;
             --pink-dark: #b5179e;
             --gold: #ffb703;
-            --white-glass: rgba(255, 255, 255, 0.92);
+            --white-glass: rgba(255, 255, 255, 0.94);
             --card-border: #ffb3c1;
         }
 
@@ -33,7 +33,7 @@
             position: relative;
         }
 
-        /* Canvas Sparkles Background */
+        /* Canvas Particles Background */
         #canvas-bg {
             position: fixed;
             top: 0; left: 0;
@@ -42,7 +42,7 @@
             pointer-events: none;
         }
 
-        /* Header Navigation */
+        /* Top Navigation Bar */
         .top-nav {
             position: fixed;
             top: 15px; left: 20px; right: 20px;
@@ -67,6 +67,25 @@
             gap: 8px;
         }
 
+        .sound-btn {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--pink-main);
+            color: var(--pink-dark);
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 133, 161, 0.3);
+        }
+        .sound-btn:hover {
+            background: var(--pink-main);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Main Container & Cards */
         .main-wrapper {
             position: relative;
             z-index: 10;
@@ -357,7 +376,7 @@
 
 <canvas id="canvas-bg"></canvas>
 
-<!-- أغنية الموسيقى المستهدفة -->
+<!-- أغنية Johnny Orlando - If It Told You -->
 <audio id="love-song" loop preload="auto">
     <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
 </audio>
@@ -367,6 +386,7 @@
         <span>🎀 ملكة عرش معتز:</span>
         <span id="love-score">وعد ✨</span>
     </div>
+    <button class="sound-btn" onclick="toggleAudio()">🔊 المؤثرات: تشغيل</button>
 </div>
 
 <div class="main-wrapper">
@@ -379,8 +399,52 @@
     const state = {
         currentStep: 0,
         unlockedBadges: [],
-        enteredPass: ""
+        enteredPass: "",
+        soundEnabled: true
     };
+
+    /* Web Audio API Synthesizer - 20 Ultra Cute Harmonics */
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    // 20 Delicate Cute Frequencies for 20 Questions
+    const cuteFrequencies = [
+        523.25, 587.33, 659.25, 698.46, 783.99, 880.00, 987.77, 1046.50,
+        1174.66, 1318.51, 1396.91, 1567.98, 1760.00, 1975.53, 2093.00,
+        2349.32, 2637.02, 2793.83, 3135.96, 3520.00
+    ];
+
+    function playCuteSound(stepIndex) {
+        if (!state.soundEnabled) return;
+        try {
+            if (!audioCtx) audioCtx = new AudioCtx();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+            const freq = cuteFrequencies[stepIndex % 20] || 523.25;
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+            osc.frequency.exponentialRampToValueAtTime(freq * 1.33, now + 0.18);
+            
+            gain.gain.setValueAtTime(0.12, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+
+            osc.start(now);
+            osc.stop(now + 0.28);
+        } catch(e) { console.log(e); }
+    }
+
+    function toggleAudio() {
+        state.soundEnabled = !state.soundEnabled;
+        const btn = document.querySelector('.sound-btn');
+        btn.innerText = state.soundEnabled ? "🔊 المؤثرات: تشغيل" : "🔇 المؤثرات: كتم";
+    }
 
     /* Floating Pink Particles */
     const canvas = document.getElementById('canvas-bg');
@@ -450,7 +514,7 @@
             id: 'welcome',
             tag: 'عالم هيلو كيتي الوردي 🎀',
             title: 'أهلاً بكِ يا أميرة عرش معتز.. وعد! 🌸💖',
-            desc: 'صُمم هذا الموقع الكيوت خصيصاً لكِ بروح هيلو كيتي والألوان الوردية، ويحتوي على 20 مرحلة تفاعلية، أوسمة ملكية، وفي النهاية هدية مع أغنية حب خاصة لكِ!',
+            desc: 'صُمم هذا الموقع الكيوت خصيصاً لكِ بروح هيلو كيتي والألوان الوردية، ويحتوي على 20 مرحلة تفاعلية بآلية أصوات ناعمة، أوسمة ملكية، وفي النهاية هدية مع أغنية If It Told You لـ Johnny Orlando!',
             btnText: 'افتحي الخزينة الوردية 🌸',
             action: () => renderStage(1)
         },
@@ -635,7 +699,7 @@
         {
             id: 'q20',
             tag: 'المحطة 20 والأخيرة | المفتاح الوردي 🎁',
-            title: 'جاهزة تفتحي الوثيقة السرية الكبرى والأغنية الخاصة المخبأة لكِ؟',
+            title: 'جاهزة تفتحي الوثيقة السرية والأغنية الخاصة لـ Johnny Orlando؟',
             options: [
                 { text: 'إي جاهزة لأستلم الهدية وسماع الأغنية والرسالة! 🎵💖', feedback: 'استعدي لسماع لحن حبنا وقراءة أعظم كلمات العشق! 📜', badge: 'مفتاح الخزينة الوردية 🗝️' }
             ]
@@ -679,6 +743,9 @@
             const d = stagesData[index];
             const progress = Math.round(((index - 1) / (stagesData.length - 2)) * 100);
 
+            // Play delicate cute sound for each question
+            playCuteSound(index - 2);
+
             card.innerHTML = `
                 <div class="progress-box"><div class="progress-fill" style="width: ${progress}%;"></div></div>
                 <div class="title-tag">${d.tag}</div>
@@ -704,6 +771,7 @@
     }
 
     function pressKey(val) {
+        playCuteSound(state.enteredPass.length);
         const box = document.getElementById('pass-box');
         if (val === 'C') {
             state.enteredPass = "";
@@ -729,6 +797,7 @@
     }
 
     function selectOption(stageIdx, optIdx) {
+        playCuteSound(stageIdx);
         const stage = stagesData[stageIdx];
         const opt = stage.options[optIdx];
 
@@ -762,7 +831,6 @@
     }
 
     function renderFinalLetter() {
-        // تشغيل الموسيقى عند الوصول للهدية فوراً
         const song = document.getElementById('love-song');
         song.play().catch(e => console.log("المتصفح يتطلب تفاعل لتشغيل الموسيقى"));
 
@@ -770,12 +838,12 @@
         card.innerHTML = `
             <div class="kitty-header-icon">👑🎀🎵</div>
             <br><div class="title-tag">هدية العشق والموسيقى الخاصة 🎁✨</div>
-            <h1 class="main-heading">What If I Say I Know You Know 🎶💖</h1>
+            <h1 class="main-heading">Johnny Orlando - If It Told You 🎶💖</h1>
             
             <!-- مشغل الموسيقى الوردي -->
             <div class="music-box">
                 <div class="music-info">
-                    <div class="music-title">What If I Say I Know You Know 🎶</div>
+                    <div class="music-title">Johnny Orlando - If It Told You 🎶</div>
                     <div class="music-artist">أغنيتنا الخاصة - معتز & وعد 💖</div>
                 </div>
                 <button class="btn-action" id="music-toggle-btn" style="margin:0; padding:10px 20px; font-size:13px;" onclick="toggleMusic()">⏸️ إيقاف الموسيقى</button>
