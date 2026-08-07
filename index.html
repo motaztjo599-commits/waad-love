@@ -3,99 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سيرفر أسرار قلبي - وعد 🎀</title>
+    <title>خزينة العهد | معتز & وعد</title>
     <style>
-        :root { --main-bg: #fff5f7; --accent: #ff85a2; --text: #5e4a52; }
-        body, html { margin: 0; padding: 0; height: 100%; background: var(--main-bg); font-family: 'Segoe UI', cursive; color: var(--text); overflow: hidden; }
+        /* --- التصميم والجماليات (نظام ملكي) --- */
+        :root {
+            --dark: #0a0a0a;
+            --gold: #c5a059;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text: #e0e0e0;
+            --accent: #b08d44;
+        }
+        body { margin: 0; background: var(--dark); color: var(--text); font-family: 'Tajawal', sans-serif; overflow: hidden; height: 100vh; }
         
-        /* تأثيرات القلوب */
-        .hearts-bg { position: fixed; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .heart-icon { position: absolute; color: #ffc2d1; font-size: 20px; animation: rise 8s infinite linear; }
-        @keyframes rise { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
+        /* تأثير الجزيئات المتطايرة */
+        #particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.3; }
 
-        .container { position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px; }
-        .card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 40px; border-radius: 50px; box-shadow: 0 15px 50px rgba(0,0,0,0.05); max-width: 500px; width: 100%; text-align: center; border: 1px solid #ffe6eb; }
-        
-        h1 { color: var(--accent); font-size: 28px; margin-bottom: 20px; }
-        p { font-size: 20px; line-height: 1.8; margin-bottom: 30px; font-weight: 500; }
-        
-        button { background: var(--accent); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 133, 162, 0.3); font-size: 16px; }
-        button:hover { transform: translateY(-3px); background: #ff6b91; }
+        .app-container { position: relative; z-index: 1; height: 100vh; display: flex; justify-content: center; align-items: center; }
+        .card { 
+            background: var(--glass); backdrop-filter: blur(25px); border: 1px solid var(--gold);
+            padding: 50px; border-radius: 30px; box-shadow: 0 0 50px rgba(197, 160, 89, 0.2);
+            width: 90%; max-width: 650px; text-align: center; transition: all 0.6s ease-in-out;
+        }
 
-        .letter-box { max-height: 400px; overflow-y: auto; text-align: right; padding: 15px; font-size: 18px; line-height: 2; color: #4a3a41; }
+        .title { color: var(--gold); font-size: 2.5rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 5px; }
+        .content { font-size: 1.3rem; line-height: 2; margin-bottom: 40px; min-height: 150px; }
+        
+        input { background: transparent; border: none; border-bottom: 2px solid var(--gold); color: var(--gold); text-align: center; font-size: 1.5rem; width: 80%; padding: 10px; margin-bottom: 20px; outline: none; }
+        button { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 15px 40px; font-size: 1.1rem; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        button:hover { background: var(--gold); color: var(--dark); }
+
+        .progress { height: 3px; background: #333; margin-bottom: 30px; }
+        .progress-bar { height: 100%; background: var(--gold); width: 0%; transition: 0.5s; }
+
+        .hidden { display: none; }
+        .fade { animation: fadeIn 1s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-<div class="hearts-bg" id="hearts"></div>
+<canvas id="particles"></canvas>
 
-<div class="container">
-    <div class="card" id="card">
-        <h1 id="title">أهلاً يا "وعد".. 🌸</h1>
-        <p id="desc">هذا المكان صُنع خصيصاً لكِ. هل أنتِ مستعدة لـ 15 خطوة في رحلة حبنا؟</p>
-        <button id="action-btn" onclick="nextStep()">أنا مستعدة 💖</button>
+<div class="app-container">
+    <div class="card" id="vault">
+        <!-- مرحلة الدخول -->
+        <div id="login-screen">
+            <h1 class="title">خزينة العهد</h1>
+            <p>أدخلي تاريخ بداية حكايتنا (يوم/شهر/سنة) لفك القفل.</p>
+            <input type="text" id="pass" placeholder="06/08/2023">
+            <br><button onclick="checkPass()">وصول</button>
+        </div>
+
+        <!-- مرحلة الأسئلة -->
+        <div id="quiz-screen" class="hidden">
+            <div class="progress"><div class="progress-bar" id="bar"></div></div>
+            <p class="content" id="q-text"></p>
+            <button onclick="nextQ()">التالي</button>
+        </div>
+
+        <!-- الرسالة النهائية -->
+        <div id="letter-screen" class="hidden">
+            <div class="content" id="final-letter"></div>
+        </div>
     </div>
 </div>
 
 <script>
-    // إضافة القلوب
-    for(let i=0; i<20; i++) {
-        const h = document.createElement('div');
-        h.className = 'heart-icon'; h.innerHTML = '❤️';
-        h.style.left = Math.random() * 100 + '%';
-        h.style.animationDelay = Math.random() * 8 + 's';
-        document.getElementById('hearts').appendChild(h);
-    }
-
-    const steps = [
-        "السؤال 1: متذكرة يوم 6/8/2023؟ كيف شعرتِ في تلك اللحظة التي التقت فيها أعيننا لأول مرة؟",
-        "السؤال 2: ما هو أكثر شيء في شخصيتي جذبك إليّ من أول لقاء؟",
-        "السؤال 3: هل تؤمنين أن الصدفة كانت السبب، أم أنه كان قدراً مكتوباً لنا أن نلتقي؟",
-        "السؤال 4: ما هو أكثر موقف أو كلمة قلتها لكِ وما زالت محفورة في ذاكرتك؟",
-        "السؤال 5: كيف تصفين شعوركِ عندما يطول غيابنا عن بعضنا؟",
-        "السؤال 6: ما هو المكان الذي تحلمين أن نذهب إليه سوياً في المستقبل؟",
-        "السؤال 7: هل تشعرين أنني دائماً أحاول أن أكون لكِ السند والأمان؟",
-        "السؤال 8: ما هي الصفة التي تحبينها فيّ وتتمنين أن لا تتغير أبداً؟",
-        "السؤال 9: هل تدركين حجم الفرحة التي تغمر قلبي بمجرد رؤية رسالة منكِ؟",
-        "السؤال 10: ما الذي يجعلكِ تبتسمين تلقائياً عندما تفكرين بي؟",
-        "السؤال 11: هل تعتقدين أن حبنا أصبح أقوى وأجمل مع مرور الأيام؟",
-        "السؤال 12: ما هو التعهد الذي تريدين مني أن ألتزم به معكِ مدى الحياة؟",
-        "السؤال 13: هل تشعرين أننا نكمل بعضنا البعض في كل التفاصيل؟",
-        "السؤال 14: أخبريني، ما هو أول شيء يخطر ببالكِ عندما تسمعين اسم 'معتز'؟",
-        "السؤال 15: أخيراً.. هل أنتِ مستعدة لاستقبال رسالة قلبي الطويلة والخاصة جداً لكِ؟"
+    // نظام الأسئلة الـ 15
+    const questions = [
+        "1. قبل أن نلتقي في 6 أغسطس، هل كنتِ تشعرين أنكِ تنتظرين شيئاً لا تعرفين ماهيته؟",
+        "2. ما هي اللحظة التي شعرتِ فيها أن 'معتز' ليس مجرد شخص عابر، بل هو الوطن؟",
+        "3. كيف كانت دقات قلبكِ في اللقاء الأول؟ هل كنتِ تسمعينها أم كنتِ في حالة ذهول؟",
+        "4. هل تدركين أنني أرى في عينيكِ مستقبلاً كاملاً، لا مجرد نظرة عابرة؟",
+        "5. ما هو العهد الذي تودين أن نجدده كل عام في هذا التاريخ؟",
+        "6. عندما نختلف، ما هو الشيء الذي يهدئ روحكِ ويجعلكِ تدركين أننا واحد؟",
+        "7. هل ترين أننا تجاوزنا مرحلة 'الحب' إلى مرحلة 'الروح الواحدة'؟",
+        "8. ما هو التحدي الذي واجهناه وكاد يكسرنا، لكنه في الحقيقة جعلنا أقوى؟",
+        "9. أخبريني، هل تشعرين بأمانٍ في وجودي، أمانٍ لم تجديه مع أي شخص آخر؟",
+        "10. كيف تصفين نظرتي إليكِ عندما أكون صامتاً؟ هل تشعرين بالكلام الذي لا أنطقه؟",
+        "11. ما هي الصفة التي أحبها فيكِ وتجعلني أتمسك بكِ أكثر كل يوم؟",
+        "12. هل تؤمنين أن الأقدار سخرت كوني ليكون محيطاً بكونكِ؟",
+        "13. كيف تتخيلين تفاصيل حياتنا بعد أعوام طويلة، حين نكون قد تجاوزنا كل الصعاب؟",
+        "14. ما الذي تودين أن تتذكريه دائماً عندما تكونين بعيدة عني؟",
+        "15. هل أنتِ جاهزة الآن لفتح وثيقة العهد الأبدي؟"
     ];
 
-    let currentStep = 0;
+    let qIndex = 0;
 
-    function nextStep() {
-        if (currentStep < steps.length) {
-            document.getElementById('title').innerText = "خطوة لقلبك.. 🎀";
-            document.getElementById('desc').innerText = steps[currentStep];
-            document.getElementById('action-btn').innerText = "التالي 💖";
-            currentStep++;
+    function checkPass() {
+        const val = document.getElementById('pass').value;
+        if(val === "06/08/2023") {
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            nextQ();
         } else {
-            showLoveLetter();
+            alert("التاريخ غير صحيح يا وعد.. حاولي مجدداً.");
         }
     }
 
-    function showLoveLetter() {
-        document.getElementById('title').innerText = "رسالة العشق الأبدي لـ وعد 💌";
-        document.getElementById('desc').innerHTML = `
-            <div class="letter-box">
-                يا نبض معتز، ويا أمانه في هذه الدنيا.. <br><br>
-                منذ أن عرفتك في ذلك التاريخ الخالد 6/8/2023، لم يعد الوقت يقاس بالثواني، بل باللحظات التي أعيشها معكِ. أنتِ لستِ مجرد "وعد" في حياتي، أنتِ الوعد الوحيد الذي صدق، وأنتِ الهدية التي أهدتني إياها السماء لتنير عتمة أيامي.<br><br>
-                أكتب لكِ اليوم والكلمات تقف عاجزة أمام جمال روحكِ. أريدكِ أن تعرفي أنني في كل صباح أستيقظ فيه، تكونين أنتِ أول ما يخطر ببالي، وفي كل ليلة أنام فيها، تكونين أنتِ آخر ما يغفو عليه قلبي.<br><br>
-                لقد علمتني كيف أحب، كيف أهتم، وكيف أكون شخصاً أفضل. أحب فيكِ كل شيء.. بساطتكِ، ذكاءكِ، ضحكتكِ التي ترد لي روحي، وحتى تلك اللحظات التي تخجلين فيها فتزيدينني عشقاً وهوساً بكِ.<br><br>
-                أريدكِ أن تعهدي عليّ أمام الكون كله، أنني سأكون لكِ الحصن الذي لا يلين، والكتف الذي لا يميل. سأكون رفيق دربكِ، ومستمعكِ الأول، وصديقكِ الصدوق الذي يفهمكِ من نظرة عينيكِ قبل أن تتكلمي.<br><br>
-                لا تظني يوماً أن المسافات أو الظروف ستغير من حبي لكِ ذرة، بل هي وقود يزيدني شوقاً وتعلّقاً بكِ. أنتِ يا وعدي هي أصدق حكاية عشتها، وأجمل خيال تحول إلى واقع ملموس.<br><br>
-                أعدكِ أن أحميكِ بقلبي، وأن أرسم السعادة على وجهكِ ما حييت. أنتِ وطني، وأنتِ سكني، وأنتِ الغاية التي أعيش من أجلها. شكراً لأنكِ اخترتِ أن تشاركي حياتكِ معي.<br><br>
-                أحبكِ بحجم الكون، وأكثر مما قد تتخيله عقول البشر.. يا أجمل ما حدث لي، يا حبيبتي الأبدية.<br><br>
-                - معتز الذي يذوب في تفاصيلك.
+    function nextQ() {
+        if(qIndex < questions.length) {
+            const p = document.getElementById('q-text');
+            p.innerText = questions[qIndex];
+            p.classList.add('fade');
+            document.getElementById('bar').style.width = ((qIndex + 1) / questions.length * 100) + "%";
+            qIndex++;
+        } else {
+            showFinal();
+        }
+    }
+
+    function showFinal() {
+        document.getElementById('quiz-screen').classList.add('hidden');
+        document.getElementById('letter-screen').classList.remove('hidden');
+        document.getElementById('final-letter').innerHTML = `
+            <h2>وثيقة العهد الأبدي</h2>
+            <div style="font-size: 16px; text-align: justify; height: 300px; overflow-y: auto; padding-right: 15px;">
+                يا وعد.. يا امتداد روحي وضوء أيامي.<br><br>
+                أكتبُ لكِ هذا الميثاق بمدادٍ من صدقِ مشاعري، ليكون شاهداً على ما نحن عليه. منذ ذاك التاريخ، السادس من أغسطس، توقفت عقارب ساعتي عن الدوران بالمعنى التقليدي، وأصبحت أعيشُ في زمنٍ خاصٍ جداً، زمنٍ يُقاس بضحكاتكِ، بنظراتكِ، وبكل تفصيلة صغيرة نتقاسمها.<br><br>
+                أنتِ لستِ مجرد حبيبة، أنتِ القوة الخفية التي تدفعني لأكون أعظم. أريدكِ أن تعلمي أنني في كل مرة أرى فيها عينيكِ، أجدُ وطناً لم يسبق لي أن سكنتُ فيه. لقد وهبتكِ قلبي، لا لأنكِ طلبتِ ذلك، بل لأن قلبي لم يجد له مستقراً سواكِ. أنا أعدكِ أمام كل ما نؤمن به، أنني سأكون لكِ السند الذي لا يهتز، والكتف الذي لا يميل.<br><br>
+                أعرفُ أن الحياة ليست دائماً سهلة، وأن العواصف قد تأتي، لكنني أقسم أنني سأكون المظلة التي تحميكِ، والقوة التي ترفعكِ كلما تعثرتِ. سأغارُ عليكِ من نسمة الهواء، ليس خوفاً من شيء، بل حباً في أن تكوني ملكي وحدي، كنزاً لا يراه إلا بصري.<br><br>
+                أعدكِ أن أحترمكِ، أن أقدركِ، أن أسمعكِ بقلبي قبل أذني، وأن أكون دائماً الشخص الذي يذكره اسمكِ فتبتسمين. أنتِ لستِ خياراً في حياتي، أنتِ الحياة ذاتها.<br><br>
+                هذا عهدُ معتز لكِ، عهدٌ لا يقطعه إلا الموت. فكوني كما أنتِ، دائماً قوية، دائماً جميلة، ودائماً لي.<br><br>
+                مع كل نبضة.. معتز.
             </div>
         `;
-        document.getElementById('action-btn').style.display = 'none';
-        document.getElementById('card').innerHTML += `<br><button onclick="location.reload()">أعيدي قراءة الحب 🎀</button>`;
     }
+
+    // كود الجزيئات (Particles) للخلفية
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    let particles = [];
+    class Particle {
+        constructor() { this.x = Math.random()*canvas.width; this.y = Math.random()*canvas.height; this.size = Math.random()*2; this.speed = Math.random()*0.5; }
+        update() { this.y -= this.speed; if(this.y < 0) this.y = canvas.height; }
+        draw() { ctx.fillStyle = '#c5a059'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill(); }
+    }
+    for(let i=0; i<100; i++) particles.push(new Particle());
+    function animate() { ctx.clearRect(0,0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate); }
+    animate();
 </script>
 </body>
 </html>
