@@ -3,352 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سيرفر أسرار قلبي وعشقي لوعد 🖤🔥</title>
+    <title>سيرفر أسرار قلبي - وعد 🎀</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        :root { --main-bg: #fff5f7; --accent: #ff85a2; --text: #5e4a52; }
+        body, html { margin: 0; padding: 0; height: 100%; background: var(--main-bg); font-family: 'Segoe UI', cursive; color: var(--text); overflow: hidden; }
+        
+        /* تأثيرات القلوب */
+        .hearts-bg { position: fixed; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .heart-icon { position: absolute; color: #ffc2d1; font-size: 20px; animation: rise 8s infinite linear; }
+        @keyframes rise { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
 
-        body {
-            background: radial-gradient(circle at center, #3d051c 0%, #1a020c 60%, #0d0106 100%);
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 15px;
-            overflow-x: hidden;
-        }
+        .container { position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 20px; }
+        .card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 40px; border-radius: 50px; box-shadow: 0 15px 50px rgba(0,0,0,0.05); max-width: 500px; width: 100%; text-align: center; border: 1px solid #ffe6eb; }
+        
+        h1 { color: var(--accent); font-size: 28px; margin-bottom: 20px; }
+        p { font-size: 20px; line-height: 1.8; margin-bottom: 30px; font-weight: 500; }
+        
+        button { background: var(--accent); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 133, 162, 0.3); font-size: 16px; }
+        button:hover { transform: translateY(-3px); background: #ff6b91; }
 
-        .card {
-            background: rgba(20, 2, 9, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 35px 20px;
-            border-radius: 35px;
-            box-shadow: 0 0 50px rgba(255, 0, 102, 0.4), inset 0 0 25px rgba(255, 105, 180, 0.2);
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid rgba(255, 77, 148, 0.35);
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .date-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff1a75, #b30047);
-            color: #ffffff;
-            padding: 7px 22px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255, 26, 117, 0.6);
-            letter-spacing: 1.5px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* أنيميشن مغري وساحر CSS */
-        .graphic-container {
-            height: 110px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .glowing-orb {
-            width: 65px;
-            height: 65px;
-            background: radial-gradient(circle, #ff3385 0%, #800033 70%, transparent 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 35px #ff3385, 0 0 70px #ff1a75;
-            animation: orbPulse 2s infinite alternate ease-in-out;
-        }
-
-        @keyframes orbPulse {
-            0% { transform: scale(0.85); box-shadow: 0 0 20px #ff3385; }
-            100% { transform: scale(1.2); box-shadow: 0 0 50px #ff1a75, 0 0 90px #ff66b2; }
-        }
-
-        .mystery-box {
-            font-size: 75px;
-            animation: floatMystery 1.8s infinite ease-in-out;
-            cursor: pointer;
-            filter: drop-shadow(0 0 15px rgba(255, 51, 133, 0.7));
-        }
-
-        @keyframes floatMystery {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(5deg); }
-        }
-
-        h2 {
-            color: #ffb3d9;
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 1.6;
-            margin-bottom: 22px;
-            min-height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            padding: 0 10px;
-        }
-
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        button {
-            background: linear-gradient(135deg, #ff1a75, #99003d);
-            color: white;
-            border: none;
-            padding: 13px 26px;
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 6px 20px rgba(255, 26, 117, 0.4);
-            outline: none;
-            border: 1px solid rgba(255, 153, 204, 0.3);
-        }
-
-        button:hover {
-            transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 10px 30px rgba(255, 26, 117, 0.7);
-            background: linear-gradient(135deg, #ff3385, #cc0052);
-        }
-
-        .btn-alt {
-            background: rgba(255, 255, 255, 0.08);
-            color: #d9b3c6;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-alt:hover {
-            background: rgba(255, 255, 255, 0.18);
-            color: #fff;
-            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
-        }
-
-        .letter-container {
-            text-align: right;
-            max-height: 480px;
-            overflow-y: auto;
-            padding: 20px;
-            background: rgba(10, 1, 5, 0.75);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 51, 133, 0.4);
-            line-height: 2.1;
-            font-size: 15px;
-            color: #ffe6f2;
-            margin-top: 10px;
-            scrollbar-width: thin;
-            scrollbar-color: #ff1a75 rgba(0, 0, 0, 0.3);
-        }
-
-        .letter-container::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .letter-container::-webkit-scrollbar-thumb {
-            background-color: #ff1a75;
-            border-radius: 10px;
-        }
-
-        .letter-p {
-            margin-bottom: 14px;
-            position: relative;
-            padding-right: 18px;
-        }
-
-        .letter-p::before {
-            content: "🔥";
-            position: absolute;
-            right: -8px;
-            top: 2px;
-            font-size: 11px;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.96) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .sparkle {
-            position: fixed;
-            color: #ff66b2;
-            font-size: 18px;
-            pointer-events: none;
-            animation: floatSparkle 3.5s linear forwards;
-            z-index: 1;
-        }
-
-        @keyframes floatSparkle {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-        }
+        .letter-box { max-height: 400px; overflow-y: auto; text-align: right; padding: 15px; font-size: 18px; line-height: 2; color: #4a3a41; }
     </style>
 </head>
 <body>
 
-<div class="card" id="card">
-    <div class="date-badge">تاريخ ميلاد عشقنا: 6 / 8 / 2023 🖤</div>
-    
-    <div class="graphic-container" id="graphic">
-        <div class="glowing-orb"></div>
-    </div>
-    
-    <h2 id="question" class="fade-in">مستعدة تدخلي لعالم أسرار وخبايا قلب معتز؟ 🖤🔥</h2>
-    
-    <div class="btn-container" id="buttons">
-        <button onclick="nextStep(1)">إي وبكل جراة مستعدة! ✨</button>
+<div class="hearts-bg" id="hearts"></div>
+
+<div class="container">
+    <div class="card" id="card">
+        <h1 id="title">أهلاً يا "وعد".. 🌸</h1>
+        <p id="desc">هذا المكان صُنع خصيصاً لكِ. هل أنتِ مستعدة لـ 15 خطوة في رحلة حبنا؟</p>
+        <button id="action-btn" onclick="nextStep()">أنا مستعدة 💖</button>
     </div>
 </div>
 
 <script>
-    function sparkEffect() {
-        for(let i = 0; i < 6; i++) {
-            setTimeout(() => {
-                const s = document.createElement('div');
-                s.classList.add('sparkle');
-                s.innerHTML = ['🔥', '🖤', '✨', '💋', '❤️', '👑'][Math.floor(Math.random()*6)];
-                s.style.left = Math.random() * 90 + 5 + 'vw';
-                s.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
-                document.body.appendChild(s);
-                setTimeout(() => s.remove(), 3500);
-            }, i * 100);
+    // إضافة القلوب
+    for(let i=0; i<20; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart-icon'; h.innerHTML = '❤️';
+        h.style.left = Math.random() * 100 + '%';
+        h.style.animationDelay = Math.random() * 8 + 's';
+        document.getElementById('hearts').appendChild(h);
+    }
+
+    const steps = [
+        "السؤال 1: متذكرة يوم 6/8/2023؟ كيف شعرتِ في تلك اللحظة التي التقت فيها أعيننا لأول مرة؟",
+        "السؤال 2: ما هو أكثر شيء في شخصيتي جذبك إليّ من أول لقاء؟",
+        "السؤال 3: هل تؤمنين أن الصدفة كانت السبب، أم أنه كان قدراً مكتوباً لنا أن نلتقي؟",
+        "السؤال 4: ما هو أكثر موقف أو كلمة قلتها لكِ وما زالت محفورة في ذاكرتك؟",
+        "السؤال 5: كيف تصفين شعوركِ عندما يطول غيابنا عن بعضنا؟",
+        "السؤال 6: ما هو المكان الذي تحلمين أن نذهب إليه سوياً في المستقبل؟",
+        "السؤال 7: هل تشعرين أنني دائماً أحاول أن أكون لكِ السند والأمان؟",
+        "السؤال 8: ما هي الصفة التي تحبينها فيّ وتتمنين أن لا تتغير أبداً؟",
+        "السؤال 9: هل تدركين حجم الفرحة التي تغمر قلبي بمجرد رؤية رسالة منكِ؟",
+        "السؤال 10: ما الذي يجعلكِ تبتسمين تلقائياً عندما تفكرين بي؟",
+        "السؤال 11: هل تعتقدين أن حبنا أصبح أقوى وأجمل مع مرور الأيام؟",
+        "السؤال 12: ما هو التعهد الذي تريدين مني أن ألتزم به معكِ مدى الحياة؟",
+        "السؤال 13: هل تشعرين أننا نكمل بعضنا البعض في كل التفاصيل؟",
+        "السؤال 14: أخبريني، ما هو أول شيء يخطر ببالكِ عندما تسمعين اسم 'معتز'؟",
+        "السؤال 15: أخيراً.. هل أنتِ مستعدة لاستقبال رسالة قلبي الطويلة والخاصة جداً لكِ؟"
+    ];
+
+    let currentStep = 0;
+
+    function nextStep() {
+        if (currentStep < steps.length) {
+            document.getElementById('title').innerText = "خطوة لقلبك.. 🎀";
+            document.getElementById('desc').innerText = steps[currentStep];
+            document.getElementById('action-btn').innerText = "التالي 💖";
+            currentStep++;
+        } else {
+            showLoveLetter();
         }
     }
 
-    function nextStep(step) {
-        sparkEffect();
-        
-        const q = document.getElementById('question');
-        const btns = document.getElementById('buttons');
-        const graphic = document.getElementById('graphic');
-
-        q.classList.remove('fade-in');
-        void q.offsetWidth;
-        q.classList.add('fade-in');
-
-        if (step === 1) {
-            graphic.innerHTML = `<span style="font-size: 60px;">💫</span>`;
-            q.innerHTML = "السؤال 1: بتعرفي إني بموت قهر وغيرة لو عيون غيري تجرأت ونظرت لعيونك البنية والهازل؟ 🖤";
-            btns.innerHTML = `
-                <button onclick="nextStep(2)">بعرف وغيرتك هي جنوني! 🔥</button>
-                <button class="btn-alt" onclick="nextStep(2)">بحب غيرتك القوية عليّ 💋</button>
-            `;
-        }
-        else if (step === 2) {
-            graphic.innerHTML = `<span style="font-size: 60px;">🤫</span>`;
-            q.innerHTML = "السؤال 2: متذكرة اللحظة الدقيقة بـ 6 / 8 / 2023 لما التقيتك أول مرة وكيف قلبي انخطف فجأة؟ 🥹";
-            btns.innerHTML = `
-                <button onclick="nextStep(3)">أحلى لحظة بتاريخ الكون! ❤️</button>
-                <button class="btn-alt" onclick="nextStep(3)">كيف بنسى نظرتك وقتها؟ ✨</button>
-            `;
-        }
-        else if (step === 3) {
-            graphic.innerHTML = `<span style="font-size: 60px;">⚡</span>`;
-            q.innerHTML = "السؤال 3: لو خيروني بين ملك الدنيا كلها وبين إني أضمك لصدري ثانية وحدة، شو برأيك بختار؟ 🔥";
-            btns.innerHTML = `
-                <button onclick="nextStep(4)">بتختار حضني وبس! 🖤</button>
-                <button class="btn-alt" onclick="nextStep(4)">بستغني عن العالم كله مشانك 💋</button>
-            `;
-        }
-        else if (step === 4) {
-            graphic.innerHTML = `<span style="font-size: 60px;">🔥</span>`;
-            q.innerHTML = "السؤال 4: بتعرفي إني بنجن وبفقد صوابي لما بتسمعي كلام الغزل وبتخجلي مني؟ 🙈";
-            btns.innerHTML = `
-                <button onclick="nextStep(5)">يا عمري أنت والمجنون فيني! 💕</button>
-                <button class="btn-alt" onclick="nextStep(5)">بحب جنونك وعشقك إلي ✨</button>
-            `;
-        }
-        else if (step === 5) {
-            graphic.innerHTML = `<span style="font-size: 60px;">🌙</span>`;
-            q.innerHTML = "السؤال 5: هل تجرؤي تقوليلي قديش بتعشقي عيوني لما بكون عم طلع فيكي بنظرة كلها هوس؟ 🖤";
-            btns.innerHTML = `
-                <button onclick="nextStep(6)">بعشق عيونك وهوسك فيني للحد الأقصى! 🔥</button>
-                <button class="btn-alt" onclick="nextStep(6)">بموت بهوسك وجمالك يا معتز 💋</button>
-            `;
-        }
-        else if (step === 6) {
-            graphic.innerHTML = `<span style="font-size: 60px;">🥀</span>`;
-            q.innerHTML = "السؤال 6: لو صار وعملت حركة بدون قصد وضايقتك، قديش بتسامحي قلبي المتيم فيكي؟ 🥺";
-            btns.innerHTML = `
-                <button onclick="nextStep(7)">بسامحك فوراً لأنك روحي وعمري! ❤️</button>
-                <button class="btn-alt" onclick="nextStep(7)">ما بقدر أزعل من حياتي أنت ✨</button>
-            `;
-        }
-        else if (step === 7) {
-            graphic.innerHTML = `<span style="font-size: 60px;">💋</span>`;
-            q.innerHTML = "السؤال 7: بتعترفي إنك صرتِ ملكة روحي وعقلي وما في مخلوق إلو مكان بقلبي غيرك؟ 👑";
-            btns.innerHTML = `
-                <button onclick="nextStep(8)">إي وبكل جراة أنا ملكتك للأبد! 🖤</button>
-                <button class="btn-alt" onclick="nextStep(8)">أنا أميرتك ووحيدتك وبس 🔥</button>
-            `;
-        }
-        else if (step === 8) {
-            graphic.innerHTML = `<span style="font-size: 60px;">💫</span>`;
-            q.innerHTML = "السؤال 8: هل تؤمني إن حبنا استثنائي ومستحيل الزمن يكرر هيك عشق مجنون وساخن؟ 🔥";
-            btns.innerHTML = `
-                <button onclick="nextStep(9)">بؤمن وبصصم بالعشرة إنه حب أسطوري! 💕</button>
-                <button class="btn-alt" onclick="nextStep(9)">أنت عشقي الأبدي والوحيد ✨</button>
-            `;
-        }
-        else if (step === 9) {
-            graphic.innerHTML = `<div class="mystery-box">🎁</div>`;
-            q.innerHTML = "السؤال 9 والأخير: جاهزة تفتحي الصندوق السري وتشوفي رسالة العشق والجنون الخاصة فيكي؟ 🖤🔥";
-            btns.innerHTML = `<button onclick="nextStep(10)">إي جاهزة لأعظم مفاجأة بحياتي! 🎉</button>`;
-        }
-        else if (step === 10) {
-            graphic.innerHTML = `<span style="font-size: 65px;">🖤🔥💋</span>`;
-            q.innerHTML = "📜 وثيقة العشق الكبرى والرسالة السرية المطلقة";
-            
-            btns.innerHTML = `
-                <div class="letter-container">
-                    <div class="letter-p">إلى أميرتي، ومعشوقتي، وشرارة حياتي التي لا تنطفئ.. وعد العشق والهوس.</div>
-                    <div class="letter-p">منذ ذلك التاريخ الخالد في ذاكرة روحي، يوم 6 / 8 / 2023، لم يعد لعالمي أي قانون سوى قانون عيونك.</div>
-                    <div class="letter-p">أكتب لك هذه الكلمات من أعمق نقطة في روحي، بمداد من نار الشوق وحرارة العشق الذي ينهش في كياني كل ثانية.</div>
-                    <div class="letter-p">أنتِ لستِ مجرد حبيبة بالنسبة لي؛ أنتِ الهواء الذي أتلذذ باختراقه لصدري، وأنتِ الخمر الذي يسكر عقلي بلا رجعة.</div>
-                    <div class="letter-p">أعترف لكِ وبكل جراة أنني أغار عليكِ من نسمة الهواء التي تلامس وجهك، ومن نظرة أي عابر يجرؤ على إطالة التأمل في سحر عيونك البنية والهازل.</div>
-                    <div class="letter-p">عيونكِ أولئك اللتان تملكان قدرة مرعبة على سلب عقلي وجنوني، هما وطني الوحيد ومنفاي الذي أختاره بكامل إرادتي.</div>
-                    <div class="letter-p">أنا بحبك للحد الذي يمرجحني بين الجنون واليقين، وبمتع نفسي بتفاصيلك التي لا تشبه أحداً في هذا العالم الباهت.</div>
-                    <div class="letter-p">أنتِ طفلتي المدللة، وامرأتي الشرسة، وملكة عرش قلبي الذي لا يقبل شريكة سواكِ مهما كان الأمر.</div>
-                    <div class="letter-p">كل دقيقة تغيبين فيها عني هي اقتطاع من عمري، وكل لحظة تجمعني بكِ هي ولادة جديدة لقلب متيم يعشق أنفاسك.</div>
-                    <div class="letter-p">أقسم بكل نبضة تتحرك في عروقي أنني لن أسمح لظرف أو مسافة أن تطفئ هذه النار المشتعلة في صدري تجاهك.</div>
-                    <div class="letter-p">أنتِ جرايتي التي لا أود الشفاء منها، وأنتِ الخطيئة الجميلة التي أرتكبها كل يوم بلا رغبة في التوبة.</div>
-                    <div class="letter-p">أحبكِ بحجم السماء، وبدقة كل دقات قلبي التي لا تنادي سوى باسمك المستبد بكل جوارحي.</div>
-                    <div class="letter-p">أعدكِ أن أكون درعك الحصين، وظلك الملازم، والرجل الذي يهون في سبيل ابتسامتك وعزتك كل صعاب الدنيا.</div>
-                    <div class="letter-p">يا نبض معتز، ويا أكسجينه الذي لا حياة له دونه.. أبقى لي للأبد، فانا بكِ أكتفي وعن العالمين أستغني.</div>
-                    <div class="letter-p">أعشق تفاصيل جسدك، ورقة صوتك، ونبرة الدفء في همساتك التي تزيل هموم الدنيا عن صدري.</div>
-                    <div class="letter-p">أنتِ الملاذ والملجأ والمكان الذي يضم شتات قلبي كلما ضاقت بيا الأيام.</div>
-                    <div class="letter-p">غيرتي عليكِ يا وعد نار تتأجج بصدري، لأني أراكِ كنزاً خالصاً ومقدساً لا يحق لبشرٍ أن يلمسه أو يلمحه.</div>
-                    <div class="letter-p">أستلذ بحبك الجريء، وأموت شغفاً برؤية ابتسامتك المخلوطة بخجلك الرائع كلما همست لكِ بعبارة عشق صريحة.</div>
-                    <div class="letter-p">سأبقى أستحوذ على قلبك، وأسكن بين ضلوعك، وأزرع الحب في كل ثانية نعيشها معاً.</div>
-                    <div class="letter-p">أعدكِ أمام الله والكون أن تبقي الوحيدة والأبدية، ولا أرى سواكِ امرأة على وجه هذه الأرض.</div>
-                    <div class="letter-p">أعشقك، أهواك، أتنفسك، وأتذوب في حبك، اليوم، غداً، ولنهاية الأبد يا أجمل وعد في هذا الكون المظلم والمضيء بك وحدك! 🔥🖤✨</div>
-                </div>
-                <button style="margin-top:15px;" class="btn-alt" onclick="location.reload()">إعادة خوض رحلة العشق 🖤</button>
-            `;
-        }
+    function showLoveLetter() {
+        document.getElementById('title').innerText = "رسالة العشق الأبدي لـ وعد 💌";
+        document.getElementById('desc').innerHTML = `
+            <div class="letter-box">
+                يا نبض معتز، ويا أمانه في هذه الدنيا.. <br><br>
+                منذ أن عرفتك في ذلك التاريخ الخالد 6/8/2023، لم يعد الوقت يقاس بالثواني، بل باللحظات التي أعيشها معكِ. أنتِ لستِ مجرد "وعد" في حياتي، أنتِ الوعد الوحيد الذي صدق، وأنتِ الهدية التي أهدتني إياها السماء لتنير عتمة أيامي.<br><br>
+                أكتب لكِ اليوم والكلمات تقف عاجزة أمام جمال روحكِ. أريدكِ أن تعرفي أنني في كل صباح أستيقظ فيه، تكونين أنتِ أول ما يخطر ببالي، وفي كل ليلة أنام فيها، تكونين أنتِ آخر ما يغفو عليه قلبي.<br><br>
+                لقد علمتني كيف أحب، كيف أهتم، وكيف أكون شخصاً أفضل. أحب فيكِ كل شيء.. بساطتكِ، ذكاءكِ، ضحكتكِ التي ترد لي روحي، وحتى تلك اللحظات التي تخجلين فيها فتزيدينني عشقاً وهوساً بكِ.<br><br>
+                أريدكِ أن تعهدي عليّ أمام الكون كله، أنني سأكون لكِ الحصن الذي لا يلين، والكتف الذي لا يميل. سأكون رفيق دربكِ، ومستمعكِ الأول، وصديقكِ الصدوق الذي يفهمكِ من نظرة عينيكِ قبل أن تتكلمي.<br><br>
+                لا تظني يوماً أن المسافات أو الظروف ستغير من حبي لكِ ذرة، بل هي وقود يزيدني شوقاً وتعلّقاً بكِ. أنتِ يا وعدي هي أصدق حكاية عشتها، وأجمل خيال تحول إلى واقع ملموس.<br><br>
+                أعدكِ أن أحميكِ بقلبي، وأن أرسم السعادة على وجهكِ ما حييت. أنتِ وطني، وأنتِ سكني، وأنتِ الغاية التي أعيش من أجلها. شكراً لأنكِ اخترتِ أن تشاركي حياتكِ معي.<br><br>
+                أحبكِ بحجم الكون، وأكثر مما قد تتخيله عقول البشر.. يا أجمل ما حدث لي، يا حبيبتي الأبدية.<br><br>
+                - معتز الذي يذوب في تفاصيلك.
+            </div>
+        `;
+        document.getElementById('action-btn').style.display = 'none';
+        document.getElementById('card').innerHTML += `<br><button onclick="location.reload()">أعيدي قراءة الحب 🎀</button>`;
     }
 </script>
-
 </body>
 </html>
