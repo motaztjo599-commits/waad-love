@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وعدي كل دنيتي ومرتي وكلشي بحياتي | الإمبراطورية الملكية الأسطورية 🎀🌸💖👑</title>
+    <title>وعدي كل دنيتي ومرتي وكلشي بحياتي | النظام الكوني المطلق 🌌✨</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,700;1,400&family=Reem+Kufi:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,700;1,400&family=Orbitron:wght@500;700;900&display=swap');
 
         :root {
-            --primary: #ff2a6d;
-            --secondary: #05d9e8;
-            --accent: #ff007f;
-            --card-glass: rgba(20, 10, 30, 0.85);
-            --text-main: #ffffff;
+            --primary: #ff007f;
+            --secondary: #7928ca;
+            --accent: #00f0ff;
+            --bg-deep: #030006;
+            --text-color: #ffffff;
         }
 
         * {
@@ -23,16 +23,16 @@
         }
 
         body {
-            background: radial-gradient(circle at center, #1b003a 0%, #0d001a 100%);
-            color: var(--text-main);
+            background: var(--bg-deep);
+            color: var(--text-color);
             font-family: 'Cairo', sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            transition: background 1.5s ease;
+            transition: background 1.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        #universe-canvas {
+        #cosmic-canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
@@ -40,49 +40,51 @@
             pointer-events: none;
         }
 
-        .empire-nav {
+        .hud-top-bar {
             position: fixed;
             top: 15px; left: 20px; right: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: rgba(15, 5, 25, 0.75);
-            backdrop-filter: blur(20px);
+            background: rgba(10, 5, 20, 0.8);
+            backdrop-filter: blur(25px);
             border: 2px solid var(--primary);
             padding: 12px 25px;
             border-radius: 40px;
-            box-shadow: 0 0 30px rgba(255, 42, 109, 0.4);
-            transition: border-color 1s;
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.4);
+            transition: border-color 1.2s;
         }
 
-        .empire-title {
-            font-size: 15px;
+        .hud-title-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14.5px;
             font-weight: 900;
-            color: var(--secondary);
+            color: var(--accent);
             display: flex;
             align-items: center;
             gap: 10px;
-            text-shadow: 0 0 10px var(--secondary);
+            text-shadow: 0 0 12px var(--accent);
         }
 
-        .audio-control-btn {
+        .audio-stream-btn {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border: none;
             color: white;
-            padding: 8px 20px;
-            border-radius: 25px;
+            padding: 9px 22px;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 13.5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
             font-weight: 900;
-            box-shadow: 0 0 20px rgba(5, 217, 232, 0.5);
+            box-shadow: 0 0 25px var(--primary);
             transition: transform 0.3s;
         }
-        .audio-control-btn:hover {
+        .audio-stream-btn:hover {
             transform: scale(1.08);
         }
 
-        .main-container {
+        .wrapper-main {
             position: relative;
             z-index: 10;
             min-height: 100vh;
@@ -92,62 +94,63 @@
             padding: 40px 15px;
         }
 
-        .empire-card {
-            background: var(--card-glass);
+        .quantum-card-box {
+            background: rgba(15, 8, 25, 0.9);
             border: 3px solid var(--primary);
             border-radius: 45px;
             padding: 45px 35px;
-            max-width: 900px;
+            max-width: 950px;
             width: 100%;
             backdrop-filter: blur(40px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.8), inset 0 0 40px rgba(255,255,255,0.05);
+            box-shadow: 0 35px 90px rgba(0,0,0,0.9), inset 0 0 50px rgba(255,255,255,0.05);
             text-align: center;
             position: relative;
             overflow: hidden;
-            animation: cardAnim 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            transition: border-color 1s, box-shadow 1s;
+            animation: cardEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transition: border-color 1.2s, box-shadow 1.2s;
         }
 
-        @keyframes cardAnim {
+        @keyframes cardEntrance {
             from { opacity: 0; transform: scale(0.9) translateY(30px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .icon-header {
+        .quantum-icon {
             font-size: 70px;
             margin-bottom: 15px;
             display: inline-block;
-            animation: floatIcon 3s infinite alternate ease-in-out;
+            animation: quantumFloat 3s infinite alternate ease-in-out;
         }
 
-        @keyframes floatIcon {
-            0% { transform: translateY(0) rotate(0deg) scale(1); filter: drop-shadow(0 0 10px var(--primary)); }
-            100% { transform: translateY(-15px) rotate(10deg) scale(1.15); filter: drop-shadow(0 0 25px var(--secondary)); }
+        @keyframes quantumFloat {
+            0% { transform: translateY(0) rotate(0deg) scale(1); filter: drop-shadow(0 0 15px var(--primary)); }
+            100% { transform: translateY(-15px) rotate(10deg) scale(1.15); filter: drop-shadow(0 0 30px var(--accent)); }
         }
 
-        .tag-pill {
+        .badge-pill-tag {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             padding: 9px 30px;
             border-radius: 30px;
-            font-size: 15px;
-            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13.5px;
+            letter-spacing: 2px;
             margin-bottom: 22px;
-            box-shadow: 0 5px 20px rgba(255, 42, 109, 0.5);
-            transition: background 1s;
+            box-shadow: 0 5px 25px var(--primary);
+            transition: background 1.2s;
         }
 
-        .heading-main {
+        .main-heading-title {
             font-size: 28px;
             font-weight: 900;
             color: #ffffff;
             margin-bottom: 18px;
             line-height: 1.5;
-            text-shadow: 0 0 15px rgba(255,255,255,0.3);
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
         }
 
-        .desc-sub {
+        .sub-desc-text {
             font-size: 17px;
             color: #e2d9f3;
             line-height: 1.9;
@@ -155,8 +158,8 @@
             font-weight: 600;
         }
 
-        .progress-bar-container {
-            width: 100%; height: 12px;
+        .progress-hud-bar {
+            width: 100%; height: 10px;
             background: rgba(255,255,255,0.1);
             border-radius: 20px;
             margin-bottom: 35px;
@@ -164,23 +167,23 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
 
-        .progress-bar-fill {
+        .progress-hud-fill {
             height: 100%; width: 0%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), #ffd700);
+            background: linear-gradient(90deg, var(--primary), var(--accent), #ffd700);
             border-radius: 20px;
             transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 15px var(--secondary);
+            box-shadow: 0 0 20px var(--accent);
         }
 
-        .options-list {
+        .options-grid-box {
             display: grid;
             grid-template-columns: 1fr;
             gap: 16px;
             margin-bottom: 25px;
         }
 
-        .option-item {
-            background: rgba(255, 255, 255, 0.05);
+        .option-node-btn {
+            background: rgba(255, 255, 255, 0.04);
             border: 2px solid rgba(255, 255, 255, 0.15);
             padding: 20px 25px;
             border-radius: 25px;
@@ -196,24 +199,24 @@
             backdrop-filter: blur(10px);
         }
 
-        .option-item:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: var(--secondary);
+        .option-node-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
             transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(5, 217, 232, 0.3);
+            box-shadow: 0 10px 30px var(--accent);
         }
 
-        .option-item.selected-option {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+        .option-node-btn.selected-node {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border-color: #ffffff;
-            box-shadow: 0 0 35px var(--primary);
+            box-shadow: 0 0 40px var(--primary);
             transform: scale(1.02);
         }
 
-        .feedback-terminal {
-            background: rgba(0, 0, 0, 0.6);
-            border: 2px dashed var(--secondary);
+        .feedback-terminal-box {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px dashed var(--accent);
             border-radius: 22px;
             padding: 20px;
             margin-top: 20px;
@@ -222,10 +225,10 @@
             line-height: 1.8;
             display: none;
             font-weight: 700;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.8);
         }
 
-        .keypad-grid {
+        .keypad-matrix-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 14px;
@@ -233,10 +236,11 @@
             margin: 25px auto;
         }
 
-        .key-pad-btn {
-            background: rgba(255,255,255,0.07);
+        .quantum-key-btn {
+            background: rgba(255,255,255,0.06);
             border: 2px solid rgba(255,255,255,0.2);
-            color: var(--secondary);
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
             font-size: 26px;
             font-weight: 900;
             padding: 18px;
@@ -246,32 +250,33 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
-        .key-pad-btn:active {
+        .quantum-key-btn:active {
             transform: scale(0.9);
-            background: var(--secondary);
+            background: var(--accent);
             color: #000;
-            box-shadow: 0 0 25px var(--secondary);
+            box-shadow: 0 0 30px var(--accent);
         }
 
-        .pass-screen {
-            background: rgba(0,0,0,0.7);
-            border: 2px solid var(--secondary);
+        .pass-screen-display {
+            background: rgba(0,0,0,0.8);
+            border: 2px solid var(--accent);
             border-radius: 20px;
             padding: 18px;
+            font-family: 'Orbitron', sans-serif;
             font-size: 30px;
             letter-spacing: 15px;
-            color: var(--secondary);
+            color: var(--accent);
             margin-bottom: 25px;
             min-height: 75px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            box-shadow: inset 0 0 25px rgba(5,217,232,0.3);
+            box-shadow: inset 0 0 30px rgba(0,240,255,0.3);
         }
 
-        .action-button {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        .action-button-main {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             border: none;
             padding: 18px 50px;
@@ -280,32 +285,32 @@
             font-weight: 900;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 10px 35px rgba(255, 42, 109, 0.5);
+            box-shadow: 0 10px 40px var(--primary);
             margin-top: 22px;
             display: inline-block;
         }
 
-        .action-button:hover {
+        .action-button-main:hover {
             transform: scale(1.06);
-            box-shadow: 0 15px 45px rgba(5, 217, 232, 0.8);
+            box-shadow: 0 15px 50px var(--accent);
         }
 
-        .music-box {
-            background: rgba(10, 5, 20, 0.9);
-            border: 2.5px solid var(--secondary);
+        .music-player-hud {
+            background: rgba(10, 5, 20, 0.95);
+            border: 2.5px solid var(--accent);
             border-radius: 30px;
             padding: 22px;
             margin-bottom: 25px;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            box-shadow: 0 0 35px rgba(5, 217, 232, 0.3);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
         }
 
-        .music-title { font-size: 18px; font-weight: 950; color: var(--secondary); }
-        .music-sub { font-size: 14px; color: #e2d9f3; font-weight: 700; }
+        .music-title-text { font-family: 'Orbitron', sans-serif; font-size: 18px; font-weight: 900; color: var(--accent); }
+        .music-sub-text { font-size: 14px; color: #e2d9f3; font-weight: 700; }
 
-        .letter-scroll-box {
+        .letter-scroll-container {
             text-align: right;
             max-height: 600px;
             overflow-y: auto;
@@ -319,45 +324,45 @@
             margin-top: 25px;
             scrollbar-width: thin;
             scrollbar-color: var(--primary) rgba(0,0,0,0.5);
-            box-shadow: inset 0 0 30px rgba(255,42,109,0.2);
+            box-shadow: inset 0 0 35px rgba(255, 0, 127, 0.25);
         }
 
-        .letter-scroll-box::-webkit-scrollbar { width: 8px; }
-        .letter-scroll-box::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        .letter-scroll-container::-webkit-scrollbar { width: 8px; }
+        .letter-scroll-container::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-        .chapter-title-text {
-            color: var(--secondary);
+        .chapter-heading-title {
+            color: var(--accent);
             font-family: 'Amiri', serif;
-            font-size: 27px;
-            margin: 40px 0 18px 0;
-            border-bottom: 2px solid rgba(5, 217, 232, 0.4);
-            padding-bottom: 8px;
+            font-size: 28px;
+            margin: 45px 0 20px 0;
+            border-bottom: 2px solid rgba(0, 240, 255, 0.4);
+            padding-bottom: 10px;
             font-weight: 700;
         }
 
-        .chapter-paragraph {
-            margin-bottom: 22px;
+        .chapter-text-p {
+            margin-bottom: 25px;
             position: relative;
             padding-right: 32px;
             font-weight: 600;
         }
-        .chapter-paragraph::before {
-            content: "💖";
+        .chapter-text-p::before {
+            content: "💎";
             position: absolute;
             right: 0; top: 3px;
-            font-size: 14px;
+            font-size: 15px;
         }
 
-        .badges-container {
+        .badges-grid-system {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
+            gap: 15px;
             margin-top: 25px;
         }
 
-        .badge-item {
+        .badge-node-item {
             background: rgba(255,255,255,0.05);
-            border: 2px solid var(--secondary);
+            border: 2px solid var(--accent);
             border-radius: 20px;
             padding: 15px;
             font-size: 14px;
@@ -366,102 +371,124 @@
             align-items: center;
             gap: 12px;
             font-weight: 900;
-            box-shadow: 0 0 15px rgba(5, 217, 232, 0.2);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
         }
 
-        .floating-particle-item {
+        .floating-particle-effect {
             position: fixed;
             pointer-events: none;
             z-index: 999;
-            animation: floatUpParticle 3.5s ease-out forwards;
+            animation: floatParticleUp 3.5s ease-out forwards;
             font-size: 30px;
         }
 
-        @keyframes floatUpParticle {
+        @keyframes floatParticleUp {
             0% { opacity: 1; transform: translateY(0) scale(0.5) rotate(0deg); }
             100% { opacity: 0; transform: translateY(-100vh) scale(1.8) rotate(360deg); }
         }
 
         @media (max-width: 600px) {
-            .empire-card { padding: 30px 20px; }
-            .heading-main { font-size: 23px; }
-            .badges-container { grid-template-columns: 1fr; }
+            .quantum-card-box { padding: 30px 20px; }
+            .main-heading-title { font-size: 23px; }
+            .badges-grid-system { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<canvas id="universe-canvas"></canvas>
+<canvas id="cosmic-canvas"></canvas>
 
-<!-- Background Audio: New Romantic & Magical Sound Track -->
-<audio id="master-romantic-audio" loop preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=romantic-guitars-10515.mp3" type="audio/mpeg">
+<!-- Background Audio: Ultra Relaxing, Romantic & High Quality Sound Track -->
+<audio id="supreme-romantic-audio" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
 </audio>
 
-<div class="empire-nav">
-    <div class="empire-title">
+<div class="hud-top-bar">
+    <div class="hud-title-text">
         <span>✨ وعدي كل دنيتي ومرتي وكلشي بحياتي</span>
     </div>
-    <button class="audio-control-btn" onclick="toggleAudioPlayback()">🎵 تشغيل الموسيقى الساحرة</button>
+    <button class="audio-stream-btn" onclick="toggleAudioSystem()">🎵 تشغيل الموسيقى الرومانسية</button>
 </div>
 
-<div class="main-container">
-    <div class="empire-card" id="empire-card"></div>
+<div class="wrapper-main">
+    <div class="quantum-card-box" id="quantum-card-box"></div>
 </div>
 
 <script>
-    /* Unique Futuristic & Gorgeous Color Palettes for Every Single Station */
-    const dynamicThemes = [
-        { primary: "#ff2a6d", secondary: "#05d9e8", bg1: "#1b003a", bg2: "#0d001a" },
-        { primary: "#7209b7", secondary: "#4cc9f0", bg1: "#110022", bg2: "#050011" },
-        { primary: "#f72585", secondary: "#4361ee", bg1: "#220011", bg2: "#110008" },
-        { primary: "#06d6a0", secondary: "#118ab2", bg1: "#001a14", bg2: "#000d0a" },
-        { primary: "#ff9f1c", secondary: "#2ec4b6", bg1: "#261400", bg2: "#130a00" },
-        { primary: "#e71d36", secondary: "#ff9f1c", bg1: "#260005", bg2: "#130002" },
-        { primary: "#3a0ca3", secondary: "#4895ef", bg1: "#0a0026", bg2: "#050013" },
-        { primary: "#b5179e", secondary: "#f72585", bg1: "#1f001a", bg2: "#0f000d" },
-        { primary: "#4cc9f0", secondary: "#7209b7", bg1: "#001522", bg2: "#000a11" },
-        { primary: "#ff007f", secondary: "#00f0ff", bg1: "#1a0013", bg2: "#0d0009" }
+    /* 30 Completely Unique Futuristic Color Palettes Changing on Every Single Question */
+    const supremePalettes = [
+        { primary: "#ff007f", secondary: "#7928ca", accent: "#00f0ff", bg1: "#030006", bg2: "#120024" },
+        { primary: "#00f0ff", secondary: "#0066ff", accent: "#ff007f", bg1: "#00050f", bg2: "#001226" },
+        { primary: "#10b981", secondary: "#047857", accent: "#38bdf8", bg1: "#020a05", bg2: "#002012" },
+        { primary: "#f59e0b", secondary: "#d97706", accent: "#ec4899", bg1: "#0a0700", bg2: "#261500" },
+        { primary: "#8b5cf6", secondary: "#6d28d9", accent: "#34d399", bg1: "#07020f", bg2: "#190533" },
+        { primary: "#ec4899", secondary: "#be185d", accent: "#a855f7", bg1: "#0a0105", bg2: "#2b0014" },
+        { primary: "#06b6d4", secondary: "#0e7490", accent: "#f43f5e", bg1: "#02080a", bg2: "#001d24" },
+        { primary: "#eab308", secondary: "#ca8a04", accent: "#3b82f6", bg1: "#0a0900", bg2: "#262000" },
+        { primary: "#6366f1", secondary: "#4338ca", accent: "#f43f5e", bg1: "#04040f", bg2: "#101036" },
+        { primary: "#f43f5e", secondary: "#9f1239", accent: "#10b981", bg1: "#0a0103", bg2: "#29000b" },
+        { primary: "#3b82f6", secondary: "#1d4ed8", accent: "#ec4899", bg1: "#020617", bg2: "#081b47" },
+        { primary: "#14b8a6", secondary: "#0f766e", accent: "#8b5cf6", bg1: "#022c22", bg2: "#042f2e" },
+        { primary: "#d946ef", secondary: "#a21caf", accent: "#06b6d4", bg1: "#1e0b24", bg2: "#3b074a" },
+        { primary: "#f97316", secondary: "#c2410c", accent: "#10b981", bg1: "#1f0900", bg2: "#451400" },
+        { primary: "#84cc16", secondary: "#4d7c0f", accent: "#06b6d4", bg1: "#0c1a00", bg2: "#1d3800" },
+        { primary: "#a855f7", secondary: "#7e22ce", accent: "#ec4899", bg1: "#120224", bg2: "#2d054d" },
+        { primary: "#065f46", secondary: "#047857", accent: "#f59e0b", bg1: "#011c14", bg2: "#023b2a" },
+        { primary: "#9333ea", secondary: "#6b21a8", accent: "#38bdf8", bg1: "#140226", bg2: "#2a044f" },
+        { primary: "#db2777", secondary: "#9d174d", accent: "#34d399", bg1: "#1c0314", bg2: "#3d062b" },
+        { primary: "#2563eb", secondary: "#1e40af", accent: "#f43f5e", bg1: "#030c24", bg2: "#071d54" },
+        { primary: "#0d9488", secondary: "#115e59", accent: "#a855f7", bg1: "#011c19", bg2: "#023832" },
+        { primary: "#ca8a04", secondary: "#854d0e", accent: "#00f0ff", bg1: "#1c1801", bg2: "#3d3402" },
+        { primary: "#e11d48", secondary: "#9f1239", accent: "#10b981", bg1: "#1f020a", bg2: "#420415" },
+        { primary: "#7c3aed", secondary: "#5b21b6", accent: "#38bdf8", bg1: "#100624", bg2: "#230d4a" },
+        { primary: "#0284c7", secondary: "#0369a1", accent: "#ec4899", bg1: "#021524", bg2: "#042c4d" },
+        { primary: "#16a34a", secondary: "#15803d", accent: "#06b6d4", bg1: "#031c0c", bg2: "#073b1a" },
+        { primary: "#9333ea", secondary: "#581c87", accent: "#f59e0b", bg1: "#140326", bg2: "#2d0752" },
+        { primary: "#c026d3", secondary: "#86198f", accent: "#38bdf8", bg1: "#1c0321", bg2: "#3a0642" },
+        { primary: "#ea580c", secondary: "#c2410c", accent: "#00f0ff", bg1: "#1f0c03", bg2: "#451b07" },
+        { primary: "#ff007f", secondary: "#00f0ff", accent: "#ffd700", bg1: "#0a000f", bg2: "#1f002e" },
+        { primary: "#ff2a6d", secondary: "#05d9e8", accent: "#ff007f", bg1: "#1b003a", bg2: "#0d001a" }
     ];
 
-    function applyDynamicTheme(idx) {
-        const t = dynamicThemes[idx % dynamicThemes.length];
-        document.documentElement.style.setProperty('--primary', t.primary);
-        document.documentElement.style.setProperty('--secondary', t.secondary);
-        document.body.style.background = `radial-gradient(circle at center, ${t.bg1} 0%, ${t.bg2} 100%)`;
-        const nav = document.querySelector('.empire-nav');
-        if(nav) nav.style.borderColor = t.primary;
+    function applySupremePalette(idx) {
+        const p = supremePalettes[idx % supremePalettes.length];
+        document.documentElement.style.setProperty('--primary', p.primary);
+        document.documentElement.style.setProperty('--secondary', p.secondary);
+        document.documentElement.style.setProperty('--accent', p.accent);
+        document.body.style.background = `radial-gradient(circle at center, ${p.bg1} 0%, ${p.bg2} 100%)`;
+        const bar = document.querySelector('.hud-top-bar');
+        if(bar) bar.style.borderColor = p.primary;
     }
 
     const state = {
         currentStep: 0,
         unlockedBadges: [],
         enteredPass: "",
-        audioStarted: false
+        audioActive: false
     };
 
-    function toggleAudioPlayback() {
-        const audio = document.getElementById('master-romantic-audio');
-        const btn = document.querySelector('.audio-control-btn');
-        state.audioStarted = !state.audioStarted;
-        if(state.audioStarted) {
+    function toggleAudioSystem() {
+        const audio = document.getElementById('supreme-romantic-audio');
+        const btn = document.querySelector('.audio-stream-btn');
+        state.audioActive = !state.audioActive;
+        if(state.audioActive) {
             audio.play().then(() => {
-                btn.innerText = "🎵 الموسيقى الساحرة: نشطة";
+                btn.innerText = "🎵 الموسيقى: نشطة وساحرة";
             }).catch(e => {
-                alert("اضغط في أي مكان بالشاشة لتفعيل الصوت الكوني!");
+                alert("اضغط في أي مكان بالشاشة لتفعيل الصوت!");
             });
         } else {
             audio.pause();
-            btn.innerText = "🎵 تشغيل الموسيقى الساحرة";
+            btn.innerText = "🎵 تشغيل الموسيقى الرومانسية";
         }
     }
 
-    /* Web Audio API for Pro Chimes */
+    /* Web Audio API - Sound Effects */
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
-    const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
+    const notesArr = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
 
-    function playNoteChime(idx) {
+    function playSupremeChime(idx) {
         try {
             if(!audioCtx) audioCtx = new AudioCtx();
             if(audioCtx.state === 'suspended') audioCtx.resume();
@@ -471,33 +498,33 @@
             gain.connect(audioCtx.destination);
             const now = audioCtx.currentTime;
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(notes[idx % notes.length], now);
-            gain.gain.setValueAtTime(0.07, now);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.6);
+            osc.frequency.setValueAtTime(notesArr[idx % notesArr.length], now);
+            gain.gain.setValueAtTime(0.08, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
             osc.start(now);
-            osc.stop(now + 0.6);
+            osc.stop(now + 0.7);
         } catch(e) {}
     }
 
-    /* Universe Particle Canvas */
-    const canvas = document.getElementById('universe-canvas');
+    /* Cosmic Canvas */
+    const canvas = document.getElementById('cosmic-canvas');
     const ctx = canvas.getContext('2d');
-    let starList = [];
+    let starField = [];
 
-    function resizeUniverse() {
+    function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
-    window.addEventListener('resize', resizeUniverse);
-    resizeUniverse();
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-    class Star {
+    class CosmicStar {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
             this.size = Math.random() * 3.5 + 1;
-            this.speedX = (Math.random() - 0.5) * 0.5;
-            this.speedY = (Math.random() - 0.5) * 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.6;
+            this.speedY = (Math.random() - 0.5) * 0.6;
             this.alpha = Math.random() * 0.8 + 0.2;
         }
         update() {
@@ -509,8 +536,8 @@
         draw() {
             ctx.save();
             ctx.globalAlpha = this.alpha;
-            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--secondary').trim() || '#05d9e8';
-            ctx.shadowBlur = 12;
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#00f0ff';
+            ctx.shadowBlur = 15;
             ctx.shadowColor = ctx.fillStyle;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -519,20 +546,20 @@
         }
     }
 
-    for(let i=0; i<120; i++) starList.push(new Star());
+    for(let i=0; i<120; i++) starField.push(new CosmicStar());
 
-    function animateUniverse() {
+    function animateCosmos() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        starList.forEach(s => { s.update(); s.draw(); });
-        requestAnimationFrame(animateUniverse);
+        starField.forEach(s => { s.update(); s.draw(); });
+        requestAnimationFrame(animateCosmos);
     }
-    animateUniverse();
+    animateCosmos();
 
-    function spawnParticles(emoji) {
-        for(let i=0; i<8; i++) {
+    function spawnSupremeParticles(emoji) {
+        for(let i=0; i<9; i++) {
             setTimeout(() => {
                 const el = document.createElement('div');
-                el.className = 'floating-particle-item';
+                el.className = 'floating-particle-effect';
                 el.innerText = emoji || ['💖', '✨', '👑', '🌟', '💎', '🌹', '🦋', '💫'][Math.floor(Math.random()*8)];
                 el.style.left = (Math.random() * 80 + 10) + 'vw';
                 el.style.top = '90vh';
@@ -542,20 +569,20 @@
         }
     }
 
-    /* 30 Massive Detailed Stations with Funny & Extremely Romantic Questions */
-    const stationsList = [
+    /* 30 Supreme Stations with Deep, Funny, and Romantic Questions */
+    const supremeStations = [
         {
             id: 'welcome',
-            tag: 'الإمبراطورية الكونية الكبرى 🌌👑',
-            title: 'أهلاً بكِ في أعظم منظومة تفاعلية أُنشئت في التاريخ لأجل توأم الروح.. وعد! 🌸💖',
-            desc: 'وعدي كل دنيتي ومرتي وكلشي بحياتي.. هذا الصرح الأضخم يضم 30 محطة عميقة تتغير ألوانها وخلفياتها الساحرة مع كل سؤال، مع ألحان ومفاجأة الهدية الأسطورية في النهاية!',
-            btnText: 'دخول الإمبراطورية الملكية ✨',
+            tag: 'النظام الكوني الفائق 🌌👑',
+            title: 'أهلاً بكِ في أعظم منظومة ذكاء اصطناعي تفاعلية في تاريخ الكون مخصصة فقط لـ.. وعد! 🌸💖',
+            desc: 'وعدي كل دنيتي ومرتي وكلشي بحياتي.. هذا المشروع الخارق يضم 30 محطة عميقة تتغير خلفيتها وألوانها الكونية بالكامل مع كل خطوة، مع مفاجأة الهدية الأسطورية في النهاية!',
+            btnText: 'دخول النظام الكوني المطلق ✨',
             action: () => renderStation(1)
         },
         {
             id: 'lock_screen',
-            tag: 'بوابة الأمان والرموز السرية 🔒',
-            title: 'فك قفل بوابة القصر الملكي',
+            tag: 'بوابة التحقق السيبراني 🔒',
+            title: 'فك قفل الإمبراطورية الملكية',
             desc: 'أدخلي تاريخ لقائنا الأبدي بالمول في حلب (2707) أو تاريخ الشعلة (0608):',
             type: 'keypad'
         },
@@ -816,78 +843,78 @@
             tag: 'المحطة 30 والأخيرة | مفتاح الهدية الكبرى 🗝️',
             title: 'جاهزة الآن لفتح الهدية الأسطورية وسماع أجمل ألحان العشق ورسالة معتز الكبرى؟',
             options: [
-                { text: 'إي جاهزة لأعيش أعظم لحظة بحياتي! 🎵💖💋', feedback: 'افتحي قلبكِ لاستلام أطول وأعظم رسالة عشق في تاريخ البشرية مع الموسيقى الساحرة! 📜', badge: 'وسام مفتاح الإمبراطورية 🗝️' }
+                { text: 'إي جاهزة لأعيش أعظم لحظة بحياتي! 🎵💖💋', feedback: 'افتحي قلبكِ لاستلام أطول وأعظم رسالة عشق في تاريخ البشرية مع الألحان الكونية الساحرة! 📜', badge: 'وسام مفتاح الإمبراطورية 🗝️' }
             ]
         }
     ];
 
     function renderStation(index) {
         state.currentStep = index;
-        applyDynamicTheme(index);
-        const card = document.getElementById('empire-card');
+        applySupremePalette(index);
+        const card = document.getElementById('quantum-card-box');
         card.style.animation = 'none';
         card.offsetHeight; /* trigger reflow */
-        card.style.animation = 'cardAnim 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+        card.style.animation = 'cardEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
 
         if (index === 0) {
-            const st = stationsList[0];
+            const st = supremeStations[0];
             card.innerHTML = `
-                <div class="icon-header">🌌💎👑</div>
-                <br><div class="tag-pill">${st.tag}</div>
-                <h1 class="heading-main">${st.title}</h1>
-                <p class="desc-sub">${st.desc}</p>
-                <button class="action-button" onclick="stationsList[0].action();">${st.btnText}</button>
+                <div class="quantum-icon">🌌💎👑</div>
+                <br><div class="badge-pill-tag">${st.tag}</div>
+                <h1 class="main-heading-title">${st.title}</h1>
+                <p class="sub-desc-text">${st.desc}</p>
+                <button class="action-button-main" onclick="supremeStations[0].action();">${st.btnText}</button>
             `;
             return;
         }
 
         if (index === 1) {
-            const st = stationsList[1];
+            const st = supremeStations[1];
             card.innerHTML = `
-                <div class="icon-header">🔒🛡️⚡</div>
-                <br><div class="tag-pill">${st.tag}</div>
-                <h1 class="heading-main">${st.title}</h1>
-                <p class="desc-sub">${st.desc}</p>
-                <div class="pass-screen" id="pass-box">----</div>
-                <div class="keypad-grid">
-                    ${[1,2,3,4,5,6,7,8,9,0].map(n => `<button class="key-pad-btn" onclick="pressKeypad('${n}')">${n}</button>`).join('')}
-                    <button class="key-pad-btn" style="color:var(--primary);" onclick="pressKeypad('C')">⌫</button>
+                <div class="quantum-icon">🔒🛡️⚡</div>
+                <br><div class="badge-pill-tag">${st.tag}</div>
+                <h1 class="main-heading-title">${st.title}</h1>
+                <p class="sub-desc-text">${st.desc}</p>
+                <div class="pass-screen-display" id="pass-box">----</div>
+                <div class="keypad-matrix-grid">
+                    ${[1,2,3,4,5,6,7,8,9,0].map(n => `<button class="quantum-key-btn" onclick="pressKeypad('${n}')">${n}</button>`).join('')}
+                    <button class="quantum-key-btn" style="color:var(--primary);" onclick="pressKeypad('C')">⌫</button>
                 </div>
             `;
             return;
         }
 
-        if (index >= 2 && index < stationsList.length) {
-            const st = stationsList[index];
-            const progress = Math.round(((index - 1) / (stationsList.length - 2)) * 100);
-            playNoteChime(index - 2);
+        if (index >= 2 && index < supremeStations.length) {
+            const st = supremeStations[index];
+            const progress = Math.round(((index - 1) / (supremeStations.length - 2)) * 100);
+            playSupremeChime(index - 2);
 
             card.innerHTML = `
-                <div class="progress-bar-container"><div class="progress-bar-fill" style="width: ${progress}%;"></div></div>
-                <div class="tag-pill">${st.tag}</div>
-                <h2 class="heading-main">${st.title}</h2>
-                <div class="options-list">
+                <div class="progress-hud-bar"><div class="progress-hud-fill" style="width: ${progress}%;"></div></div>
+                <div class="badge-pill-tag">${st.tag}</div>
+                <h2 class="main-heading-title">${st.title}</h2>
+                <div class="options-grid-box">
                     ${st.options.map((opt, i) => `
-                        <div class="option-item" id="opt-${i}" onclick="selectOption(${index}, ${i})">
+                        <div class="option-node-btn" id="opt-${i}" onclick="selectOption(${index}, ${i})">
                             <span>${opt.text}</span>
                             <span>✨</span>
                         </div>
                     `).join('')}
                 </div>
-                <div class="feedback-terminal" id="feedback-term"></div>
-                <button class="action-button" id="next-btn" style="display:none;" onclick="spawnParticles(); renderStation(${index + 1});">المحطة التالية 🚀</button>
+                <div class="feedback-terminal-box" id="feedback-term"></div>
+                <button class="action-button-main" id="next-btn" style="display:none;" onclick="spawnSupremeParticles(); renderStation(${index + 1});">المحطة التالية 🚀</button>
             `;
             return;
         }
 
-        if (index === stationsList.length) {
-            spawnParticles('👑');
+        if (index === supremeStations.length) {
+            spawnSupremeParticles('👑');
             renderGiftBoxScreen();
         }
     }
 
     function pressKeypad(val) {
-        playNoteChime(state.enteredPass.length);
+        playSupremeChime(state.enteredPass.length);
         const box = document.getElementById('pass-box');
         if (val === 'C') {
             state.enteredPass = "";
@@ -897,33 +924,33 @@
         box.innerText = state.enteredPass.padEnd(4, '-');
 
         if (state.enteredPass === "2707" || state.enteredPass === "0608") {
-            box.style.borderColor = "#06d6a0";
-            box.style.color = "#06d6a0";
+            box.style.borderColor = "#10b981";
+            box.style.color = "#10b981";
             setTimeout(() => { renderStation(2); }, 500);
         } else if (state.enteredPass.length === 4) {
-            box.style.borderColor = "#e71d36";
+            box.style.borderColor = "#ef4444";
             setTimeout(() => {
                 state.enteredPass = "";
                 box.innerText = "----";
-                box.style.borderColor = "var(--secondary)";
+                box.style.borderColor = "var(--accent)";
             }, 700);
         }
     }
 
     function selectOption(sIdx, oIdx) {
-        playNoteChime(sIdx);
-        spawnParticles('💎');
-        const st = stationsList[sIdx];
+        playSupremeChime(sIdx);
+        spawnSupremeParticles('💎');
+        const st = supremeStations[sIdx];
         const opt = st.options[oIdx];
 
-        document.querySelectorAll('.option-item').forEach((node, i) => {
-            if (i === oIdx) node.classList.add('selected-option');
-            else node.classList.remove('selected-option');
+        document.querySelectorAll('.option-node-btn').forEach((node, i) => {
+            if (i === oIdx) node.classList.add('selected-node');
+            else node.classList.remove('selected-node');
         });
 
         const fb = document.getElementById('feedback-term');
         fb.style.display = 'block';
-        fb.innerHTML = `<strong>[استجابة النظام المركزي]:</strong> ${opt.feedback}`;
+        fb.innerHTML = `<strong>[استجابة النظام الذكي]:</strong> ${opt.feedback}`;
 
         if (!state.unlockedBadges.includes(opt.badge)) {
             state.unlockedBadges.push(opt.badge);
@@ -933,20 +960,20 @@
     }
 
     function renderGiftBoxScreen() {
-        applyDynamicTheme(0);
-        const card = document.getElementById('empire-card');
+        applySupremePalette(0);
+        const card = document.getElementById('quantum-card-box');
         card.innerHTML = `
-            <div class="icon-header" id="gift-icon" style="cursor:pointer; font-size:95px;" onclick="handleGiftClick()">🎁</div>
-            <br><div class="tag-pill">اضغطي على الهدية الملكية الكبرى! ✨</div>
-            <h1 class="heading-main" id="gift-heading">أنتِ على موعد مع المفاجأة الكبرى يا وعد!</h1>
-            <p class="desc-sub" id="gift-desc">اضغطي على الهدية بالأعلى واكتشفي ماذا تخبئ لكِ روح معتز...</p>
+            <div class="quantum-icon" id="gift-icon" style="cursor:pointer; font-size:100px;" onclick="handleGiftClick()">🎁</div>
+            <br><div class="badge-pill-tag">اضغطي على الهدية الملكية الكبرى! ✨</div>
+            <h1 class="main-heading-title" id="gift-heading">أنتِ على موعد مع المفاجأة الكبرى يا وعد!</h1>
+            <p class="sub-desc-text" id="gift-desc">اضغطي على الهدية بالأعلى واكتشفي ماذا تخبئ لكِ روح معتز...</p>
         `;
     }
 
     let giftStage = 0;
     function handleGiftClick() {
-        playNoteChime(4);
-        spawnParticles('💖');
+        playSupremeChime(5);
+        spawnSupremeParticles('💖');
         const icon = document.getElementById('gift-icon');
         const heading = document.getElementById('gift-heading');
         const desc = document.getElementById('gift-desc');
@@ -965,86 +992,86 @@
             }, 600);
             giftStage = 1;
         } else if (giftStage === 1) {
-            // كبس عااهدية وتفتح الرسالة والأغنية الساحرة
-            if(!state.audioStarted) toggleAudioPlayback();
+            // كبس عااهدية وتفتح الرسالة والموسيقى الساحرة
+            if(!state.audioActive) toggleAudioSystem();
             renderFinalGiftScreen();
         }
     }
 
     function renderFinalGiftScreen() {
-        applyDynamicTheme(0);
-        const card = document.getElementById('empire-card');
+        applySupremePalette(0);
+        const card = document.getElementById('quantum-card-box');
         card.innerHTML = `
-            <div class="icon-header">👑🎵🌌💖</div>
-            <br><div class="tag-pill">الهدية الملكية الكبرى والأغنية السحرية الخاصة 🎁✨</div>
-            <h1 class="heading-main">أغنية العشق الأبدي والموسيقى الساحرة 🎶💖</h1>
+            <div class="quantum-icon">👑🎵🌌💖</div>
+            <br><div class="badge-pill-tag">الهدية الملكية الكبرى والموسيقى السحرية 🎁✨</div>
+            <h1 class="main-heading-title">أغنية العشق الأبدي والألحان الكونية 🎶💖</h1>
             
-            <div class="music-box">
-                <div class="music-title">المشغل الموسيقي الكوني - معتز & وعد 🎶</div>
-                <div class="music-sub">ألحان هادئة وساحرة تلامس القلوب 💖</div>
-                <audio controls autoplay loop style="width:100%; border-radius:15px; filter: drop-shadow(0 0 10px var(--secondary));">
-                    <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=romantic-guitars-10515.mp3" type="audio/mpeg">
+            <div class="music-player-hud">
+                <div class="music-title-text">المشغل الموسيقي الكوني - معتز & وعد 🎶</div>
+                <div class="music-sub-text">ألحان هادئة وساحرة تلامس الأعماق 💖</div>
+                <audio controls autoplay loop style="width:100%; border-radius:15px; filter: drop-shadow(0 0 10px var(--accent));">
+                    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
                 </audio>
             </div>
 
-            <p class="desc-sub">إليكِ أطول وأعظم رسالة عشق وهوس مكونة من 10 فصول ضخمة مكتوبة خصيصاً لعينيكِ:</p>
+            <p class="sub-desc-text">إليكِ أطول وأعظم رسالة عشق وهوس مكونة من 10 فصول ضخمة مكتوبة خصيصاً لعينيكِ:</p>
 
-            <div class="letter-scroll-box">
-                <div class="chapter-title-text">✨ الفصل الأول: الإمبراطورية والبداية المقدسة</div>
-                <div class="chapter-paragraph">إلى أميرتي الأبدية، ومعشوقتي، وسيدتي المطاعة، ونبض قلبي الذي لا ينبض إلا بها.. <strong>وعد</strong>. وعدي كل دنيتي ومرتي وكلشي بحياتي.</div>
-                <div class="chapter-paragraph">أكتب لكِ هذه الوثيقة التاريخية الأطول والأكثر هوساً وعمقاً في تاريخ الكون، بمداد من نار الشوق وحرارة العشق المشتعل في أعماق عروقي وجوارحي.</div>
-                <div class="chapter-paragraph">منذ ذلك التاريخ الخالد في ذاكرة الزمان، <strong>6 / 8 / 2023</strong>، وقبلها حين التقت أعيننا لأول مرة في المول بـ <strong>27 / 7 / 2023</strong>، لم يعد لعالمي أي قانون سوى قانون عيونكِ وسحر وجودكِ الذي غزا كل زوايا كياني.</div>
-                <div class="chapter-paragraph">أنتِ لستِ مجرد حبيبة في حياتي، أنتِ الحياة بذاتها، أنتِ الهواء الذي أتنفسه، وأنتِ اليقين الوحيد في هذا العالم المليء بالزيف. لقد وهبتكِ روحي وعقلي وقلبي بكامل إرادتي وجنوني، ولن أندم أبداً لأنني وجدتُ فيكِ وطني الأبدي ومستقري النهائي.</div>
+            <div class="letter-scroll-container">
+                <div class="chapter-heading-title">✨ الفصل الأول: الإمبراطورية والبداية المقدسة</div>
+                <div class="chapter-text-p">إلى أميرتي الأبدية، ومعشوقتي، وسيدتي المطاعة، ونبض قلبي الذي لا ينبض إلا بها.. <strong>وعد</strong>. وعدي كل دنيتي ومرتي وكلشي بحياتي.</div>
+                <div class="chapter-text-p">أكتب لكِ هذه الوثيقة التاريخية الأطول والأكثر هوساً وعمقاً في تاريخ الكون، بمداد من نار الشوق وحرارة العشق المشتعل في أعماق عروقي وجوارحي.</div>
+                <div class="chapter-text-p">منذ ذلك التاريخ الخالد في ذاكرة الزمان، <strong>6 / 8 / 2023</strong>، وقبلها حين التقت أعيننا لأول مرة في المول بـ <strong>27 / 7 / 2023</strong>، لم يعد لعالمي أي قانون سوى قانون عيونكِ وسحر وجودكِ الذي غزا كل زوايا كياني.</div>
+                <div class="chapter-text-p">أنتِ لستِ مجرد حبيبة في حياتي، أنتِ الحياة بذاتها، أنتِ الهواء الذي أتنفسه، وأنتِ اليقين الوحيد في هذا العالم المليء بالزيف. لقد وهبتكِ روحي وعقلي وقلبي بكامل إرادتي وجنوني، ولن أندم أبداً لأنني وجدتُ فيكِ وطني الأبدي ومستقري النهائي.</div>
 
-                <div class="chapter-title-text">🔥 الفصل الثاني: اعترافات الغيرة الحارقة والتملك المطلق</div>
-                <div class="chapter-paragraph">أعترف لكِ وبكل جرأة، هوس، وجنون أنني أعيش حالة من التملك المطلق تجاهكِ. أنا أغار عليكِ من نسمة الهواء التي تتجرأ وتلامس وجهكِ الصافي، وأغار عليكِ من كل نظرة عابرة محيطة بكِ.</div>
-                <div class="chapter-paragraph">عيونكِ البنية والعسلي الساحرتان تملكان قدرة مرعبة ومقدسة على سلب عقلي وصوابي بنظرة وحدة. هما موطني الوحيد ومنفاي الذي أختاره بكامل رغبتي.</div>
-                <div class="chapter-paragraph">أنا لا أقبل أن يشاركني فيكِ إنس ولا جان، أنتِ كنزي الخاص والمقدس الذي أقف أمامه كالفارس المدجج بالسلاح لأحمي كل تفصيلة فيه من أعيان البشر.</div>
-                <div class="chapter-paragraph">غيرتي عليكِ ليست شكاً، بل هي أقصى درجات العشق وأطهر أنواع التملك، لأن العظماء لا يشاركون كنوزهم مع أحد.</div>
+                <div class="chapter-heading-title">🔥 الفصل الثاني: اعترافات الغيرة الحارقة والتملك المطلق</div>
+                <div class="chapter-text-p">أعترف لكِ وبكل جرأة، هوس، وجنون أنني أعيش حالة من التملك المطلق تجاهكِ. أنا أغار عليكِ من نسمة الهواء التي تتجرأ وتلامس وجهكِ الصافي، وأغار عليكِ من كل نظرة عابرة محيطة بكِ.</div>
+                <div class="chapter-text-p">عيونكِ البنية والعسلي الساحرتان تملكان قدرة مرعبة ومقدسة على سلب عقلي وصوابي بنظرة وحدة. هما موطني الوحيد ومنفاي الذي أختاره بكامل رغبتي.</div>
+                <div class="chapter-text-p">أنا لا أقبل أن يشاركني فيكِ إنس ولا جان، أنتِ كنزي الخاص والمقدس الذي أقف أمامه كالفارس المدجج بالسلاح لأحمي كل تفصيلة فيه من أعيان البشر.</div>
+                <div class="chapter-text-p">غيرتي عليكِ ليست شكاً، بل هي أقصى درجات العشق وأطهر أنواع التملك، لأن العظماء لا يشاركون كنوزهم مع أحد.</div>
 
-                <div class="chapter-title-text">🎨 الفصل الثالث: سحر الأنامل وموهبة الرسم الخارقة</div>
-                <div class="chapter-paragraph">حين أنظر إلى لوحاتكِ التي ترسمينها بتلك الأنامل المبدعة والساحرة، أدرك تماماً أنني لم أعشق امرأة عادية، بل عشقت فنانة ملكية تتنفس الجمال وتصنعه من عدم.</div>
-                <div class="chapter-paragraph">إن كل خط ورسمة ولون تضعينه بيدك يدل على رقة روحك، ذكائك الخارق، وعذوبة قلبك. وأنا أسعد رجل في الوجود لأنه يُسمح لي أن أكون السند والمشجع الأول لهذه الفنانة العظيمة!</div>
+                <div class="chapter-heading-title">🎨 الفصل الثالث: سحر الأنامل وموهبة الرسم الخارقة</div>
+                <div class="chapter-text-p">حين أنظر إلى لوحاتكِ التي ترسمينها بتلك الأنامل المبدعة والساحرة، أدرك تماماً أنني لم أعشق امرأة عادية، بل عشقت فنانة ملكية تتنفس الجمال وتصنعه من عدم.</div>
+                <div class="chapter-text-p">إن كل خط ورسمة ولون تضعينه بيدك يدل على رقة روحك، ذكائك الخارق، وعذوبة قلبك. وأنا أسعد رجل في الوجود لأنه يُسمح لي أن أكون السند والمشجع الأول لهذه الفنانة العظيمة!</div>
 
-                <div class="chapter-title-text">🎓 الفصل الرابع: فجوة التفوق ومستقبل الجامعة والمجد</div>
-                <div class="chapter-paragraph">تفوقكِ الباهر ونجاحكِ الساحق في البكالوريا لم يكن إلا تتويجاً لذكائكِ الفذ وعقلكِ النير. لقد وضعته كتاج من الماس على رأسي وأمام العالم أجمع.</div>
-                <div class="chapter-paragraph">واليوم ونحن نقف على أعتاب الجامعة ومستقبلنا الهندسي والمعرفي، أقسم لكِ أنني سأكون ظهركِ، سندكِ، والكتف الذي لا يميل، لأمهد لكِ طريق المجد والنجاح والتألق المطلق.</div>
+                <div class="chapter-heading-title">🎓 الفصل الرابع: فجوة التفوق ومستقبل الجامعة والمجد</div>
+                <div class="chapter-text-p">تفوقكِ الباهر ونجاحكِ الساحق في البكالوريا لم يكن إلا تتويجاً لذكائكِ الفذ وعقلكِ النير. لقد وضعته كتاج من الماس على رأسي وأمام العالم أجمع.</div>
+                <div class="chapter-text-p">واليوم ونحن نقف على أعتاب الجامعة ومستقبلنا الهندسي والمعرفي، أقسم لكِ أنني سأكون ظهركِ، سندكِ، والكتف الذي لا يميل، لأمهد لكِ طريق المجد والنجاح والتألق المطلق.</div>
 
-                <div class="chapter-title-text">💋 الفصل الخامس: شغف الجرأة والدلال والطفولة المدللة</div>
-                <div class="chapter-paragraph">أعشق تفاصيلكِ الصغيرة، خجلكِ الرائع حين أسمعكِ عبارات الغزل الصريحة، نبرة صوتكِ التي تزيح كل هموم الأرض عن صدري، وضحكتكِ التي تطرب روحي.</div>
-                <div class="chapter-paragraph">أنتِ طفلتي المدللة التي أشتري رضاها بكل غالي ورخيص، وأنتِ أميرتي الشرسة التي تملك عرش قلبي وتملي عليّ أوامر عشقها بكبرياء.</div>
-                <div class="chapter-paragraph">أحبكِ للحد الذي يرتجف فيه قلبي شغفاً حين أسمع اسمكِ، وأتذوق حلاوة الحياة فقط لأنكِ موجودة معي فيها.</div>
+                <div class="chapter-heading-title">💋 الفصل الخامس: شغف الجرأة والدلال والطفولة المدللة</div>
+                <div class="chapter-text-p">أعشق تفاصيلكِ الصغيرة، خجلكِ الرائع حين أسمعكِ عبارات الغزل الصريحة، نبرة صوتكِ التي تزيح كل هموم الأرض عن صدري، وضحكتكِ التي تطرب روحي.</div>
+                <div class="chapter-text-p">أنتِ طفلتي المدللة التي أشتري رضاها بكل غالي ورخيص، وأنتِ أميرتي الشرسة التي تملك عرش قلبي وتملي عليّ أوامر عشقها بكبرياء.</div>
+                <div class="chapter-text-p">أحبكِ للحد الذي يرتجف فيه قلبي شغفاً حين أسمع اسمكِ، وأتذوق حلاوة الحياة فقط لأنكِ موجودة معي فيها.</div>
 
-                <div class="chapter-title-text">🌟 الفصل السادس: التخاطر الروحي واشتباك الأرواح</div>
-                <div class="chapter-paragraph">أتعلمين يا وعد أن هناك رابطاً خفياً يربط بين نبضات قلبي ونبضات قلبك؟ حين أكون غارقاً في التفكير بكِ، أجدكِ تتصلين بي كأنكِ شعرتِ بنداء روحي.</div>
-                <div class="chapter-paragraph">هذا التخاطر العجيب هو الدليل القاطع على أننا لستِ شخصين منفصلين، بل روح واحدة توفقت في جسدين.</div>
+                <div class="chapter-heading-title">🌟 الفصل السادس: التخاطر الروحي واشتباك الأرواح</div>
+                <div class="chapter-text-p">أتعلمين يا وعد أن هناك رابطاً خفياً يربط بين نبضات قلبي ونبضات قلبك؟ حين أكون غارقاً في التفكير بكِ، أجدكِ تتصلين بي كأنكِ شعرتِ بنداء روحي.</div>
+                <div class="chapter-text-p">هذا التخاطر العجيب هو الدليل القاطع على أننا لستِ شخصين منفصلين، بل روح واحدة توفقت في جسدين.</div>
 
-                <div class="chapter-title-text">🛡️ الفصل السابع: الحصن المنيع ومواجهة الأقدار</div>
-                <div class="chapter-paragraph">لو اجتمعت قوى الأرض لتفرق بيننا، لبقيت واقفاً كالجبل الأبدي، أحارب دونكِ بسيفي وروحي ودمي. لن أسمح لأي عاصفة أن تنال من وركتكِ أو تحزن عينيكِ.</div>
-                <div class="chapter-paragraph">أنتِ في حمايتي وتحت جناح عيني إلى أبد الآبدين، ولن يجرؤ القدر على النيل من سعادتنا.</div>
+                <div class="chapter-heading-title">🛡️ الفصل السابع: الحصن المنيع ومواجهة الأقدار</div>
+                <div class="chapter-text-p">لو اجتمعت قوى الأرض لتفرق بيننا، لبقيت واقفاً كالجبل الأبدي، أحارب دونكِ بسيفي وروحي ودمي. لن أسمح لأي عاصفة أن تنال من وركتكِ أو تحزن عينيكِ.</div>
+                <div class="chapter-text-p">أنتِ في حمايتي وتحت جناح عيني إلى أبد الآبدين، ولن يجرؤ القدر على النيل من سعادتنا.</div>
 
-                <div class="chapter-title-text">🏰 الفصل الثامن: مملكة المستقبل وأطفالنا الملائكة</div>
-                <div class="chapter-paragraph">أرى في عينيكِ ملامح بيتنا القادم، قصرنا الوردي الذي سيضج بضحكاتنا وأطفالنا الذين سيشبهون جمال عيونكِ وسحر حضوركِ.</div>
-                <div class="chapter-paragraph">سأبني لكِ جنة على الأرض تكونين فيها الملكة المتوجة التي لا تُرفض لها طلب.</div>
+                <div class="chapter-heading-title">🏰 الفصل الثامن: مملكة المستقبل وأطفالنا الملائكة</div>
+                <div class="chapter-text-p">أرى في عينيكِ ملامح بيتنا القادم، قصرنا الوردي الذي سيضج بضحكاتنا وأطفالنا الذين سيشبهون جمال عيونكِ وسحر حضوركِ.</div>
+                <div class="chapter-text-p">سأبني لكِ جنة على الأرض تكونين فيها الملكة المتوجة التي لا تُرفض لها طلب.</div>
 
-                <div class="chapter-title-text">💓 الفصل التاسع: لوعة الشوق العارم</div>
-                <div class="chapter-paragraph">حين تغيبين عني لأبسط ساعات اليوم، أشعر كأن أكسجين الكون قد نفد من صدري. حضوركِ هو الحياة، وغيابكِ هو الموت البطيء.</div>
-                <div class="chapter-paragraph">لا أطيق صبراً حتى ألقاكِ وأضمكِ إلى صدري لأروي ظمأ روحي المتيمة بحبكِ.</div>
+                <div class="chapter-heading-title">💓 الفصل التاسع: لوعة الشوق العارم</div>
+                <div class="chapter-text-p">حين تغيبين عني لأبسط ساعات اليوم، أشعر كأن أكسجين الكون قد نفد من صدري. حضوركِ هو الحياة، وغيابكِ هو الموت البطيء.</div>
+                <div class="chapter-text-p">لا أطيق صبراً حتى ألقاكِ وأضمكِ إلى صدري لأروي ظمأ روحي المتيمة بحبكِ.</div>
 
-                <div class="chapter-title-text">💎 الفصل العاشر والأخير: ميثاق الوفاء الأبدي والخلود</div>
-                <div class="chapter-paragraph">أقسم لكِ أمام الله والكون، بدمي ونبض قلبي وعيوني الخضراء التي لا ترى سواكِ، أن أبقى لكِ الحامي، والعاشق، والحبيب، والصديق، والأب، والأخ، والسند الذي لا تكسره رياح الدنيا.</div>
-                <div class="chapter-paragraph">سأبقى أستحوذ على قلبكِ، وأزرع الحب والورد في كل دقيقة تجمعنا، ولن أسمح لظرف أو مسافة أن تطفئ هذه الشعلة المقدسة بيننا.</div>
-                <div class="chapter-paragraph">أنتِ وعدي الصادق، عهدي الأبدي، وأجمل هدايا ربي لي.. أحبكِ وسأظل أموت فيكي يا كل دنيتي وإمبراطوريتي حتى يفنى الزمان! 🔥🖤✨🎶</div>
+                <div class="chapter-heading-title">💎 الفصل العاشر والأخير: ميثاق الوفاء الأبدي والخلود</div>
+                <div class="chapter-text-p">أقسم لكِ أمام الله والكون، بدمي ونبض قلبي وعيوني الخضراء التي لا ترى سواكِ، أن أبقى لكِ الحامي، والعاشق، والحبيب، والصديق، والأب، والأخ، والسند الذي لا تكسره رياح الدنيا.</div>
+                <div class="chapter-text-p">سأبقى أستحوذ على قلبكِ، وأزرع الحب والورد في كل دقيقة تجمعنا، ولن أسمح لظرف أو مسافة أن تطفئ هذه الشعلة المقدسة بيننا.</div>
+                <div class="chapter-text-p">أنتِ وعدي الصادق، عهدي الأبدي، وأجمل هدايا ربي لي.. أحبكِ وسأظل أموت فيكي يا كل دنيتي وإمبراطوريتي حتى يفنى الزمان! 🔥🖤✨🎶</div>
             </div>
 
             <div style="margin-top:30px;">
-                <h3 style="color:var(--secondary); margin-bottom:15px; font-size:16px;">🏆 شارات الإمبراطورية الكلية الـ 30 التي افتتحتها وعد:</h3>
-                <div class="badges-container">
-                    ${state.unlockedBadges.map(b => `<div class="badge-item"><span>💎</span><span>${b}</span></div>`).join('')}
+                <h3 style="color:var(--accent); margin-bottom:15px; font-size:16px;">🏆 شارات الإمبراطورية الكلية الـ 30 التي افتتحتها وعد:</h3>
+                <div class="badges-grid-system">
+                    ${state.unlockedBadges.map(b => `<div class="badge-node-item"><span>💎</span><span>${b}</span></div>`).join('')}
                 </div>
             </div>
 
-            <button class="action-button" style="margin-top:35px;" onclick="location.reload()">إعادة خوض أعظم ملحمة عشق بالكون 🌌</button>
+            <button class="action-button-main" style="margin-top:35px;" onclick="location.reload()">إعادة خوض أعظم ملحمة عشق بالكون 🌌</button>
         `;
     }
 
