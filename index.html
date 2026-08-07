@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إمبراطورية هيلو كيتي الأسطورية المطلقة | وعد & معتز 🎀🌸💖👑</title>
+    <title>الإمبراطورية الملكية الأسطورية الخارقة | وعد & معتز 🎀🌸💖👑</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,700;1,400&family=Reem+Kufi:wght@700&display=swap');
 
@@ -14,8 +14,8 @@
             --pink-dark: #b5179e;
             --kitty-red: #ff3366;
             --gold-accent: #ffd700;
-            --card-glass: rgba(255, 255, 255, 0.94);
-            --border-glow: rgba(255, 117, 140, 0.6);
+            --card-glass: rgba(255, 255, 255, 0.96);
+            --border-glow: rgba(255, 51, 102, 0.8);
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #ffb3c6 100%);
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 40%, #ffb3c6 100%);
             color: #4a0e17;
             font-family: 'Cairo', sans-serif;
             min-height: 100vh;
@@ -95,45 +95,56 @@
 
         .app-card {
             background: var(--card-glass);
-            border: 3.5px solid #ff99ac;
+            border: 4px solid #ff99ac;
             border-radius: 45px;
             padding: 45px 30px;
-            max-width: 850px;
+            max-width: 900px;
             width: 100%;
-            backdrop-filter: blur(25px);
-            box-shadow: 0 20px 60px rgba(255, 117, 140, 0.35);
+            backdrop-filter: blur(30px);
+            box-shadow: 0 25px 70px rgba(255, 51, 102, 0.45), inset 0 0 35px rgba(255, 255, 255, 0.9);
             text-align: center;
             position: relative;
             overflow: hidden;
-            transition: all 0.5s ease;
+            animation: cardGlow 3.5s infinite alternate ease-in-out;
+            transform: scale(0.98);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .app-card.animate-in {
+            transform: scale(1);
+        }
+
+        @keyframes cardGlow {
+            0% { border-color: #ff99ac; box-shadow: 0 25px 70px rgba(255, 51, 102, 0.4); }
+            100% { border-color: #ff3366; box-shadow: 0 35px 95px rgba(255, 51, 102, 0.75); }
         }
 
         .kitty-header-icon {
-            font-size: 55px;
+            font-size: 65px;
             margin-bottom: 12px;
             display: inline-block;
             animation: bounceKitty 2s infinite alternate ease-in-out;
         }
 
         @keyframes bounceKitty {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-12px) rotate(6deg); }
+            0% { transform: translateY(0) rotate(0deg) scale(1); }
+            100% { transform: translateY(-15px) rotate(10deg) scale(1.12); }
         }
 
         .title-tag {
             display: inline-block;
             background: linear-gradient(135deg, #ff3366, #ff758c);
             color: white;
-            padding: 8px 25px;
+            padding: 9px 28px;
             border-radius: 30px;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 900;
             margin-bottom: 20px;
             box-shadow: 0 4px 20px rgba(255, 51, 102, 0.4);
         }
 
         .main-heading {
-            font-size: 26px;
+            font-size: 27px;
             font-weight: 900;
             color: #720937;
             margin-bottom: 18px;
@@ -141,7 +152,7 @@
         }
 
         .sub-desc {
-            font-size: 16px;
+            font-size: 16.5px;
             color: #832161;
             line-height: 1.8;
             margin-bottom: 30px;
@@ -183,22 +194,29 @@
             align-items: center;
             justify-content: space-between;
             color: #590d22;
-            font-size: 15.5px;
+            font-size: 16px;
             font-weight: 700;
+            animation: fadeInOption 0.5s ease forwards;
+        }
+
+        @keyframes fadeInOption {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .option-card:hover {
             background: #fff0f3;
             border-color: var(--kitty-red);
-            transform: translateY(-4px) scale(1.015);
-            box-shadow: 0 10px 25px rgba(255, 51, 102, 0.25);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(255, 51, 102, 0.3);
         }
 
         .option-card.selected {
             background: linear-gradient(135deg, #ff758c, #ff3366);
             color: white;
             border-color: #720937;
-            box-shadow: 0 10px 25px rgba(255, 51, 102, 0.4);
+            box-shadow: 0 12px 30px rgba(255, 51, 102, 0.5);
+            transform: scale(1.02);
         }
 
         .feedback-box {
@@ -207,11 +225,17 @@
             border-radius: 20px;
             padding: 18px;
             margin-top: 18px;
-            font-size: 15px;
+            font-size: 16px;
             color: #720937;
             line-height: 1.8;
             display: none;
             font-weight: 700;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .keypad-grid {
@@ -263,7 +287,7 @@
             border: none;
             padding: 16px 45px;
             border-radius: 50px;
-            font-size: 17px;
+            font-size: 17.5px;
             font-weight: 900;
             cursor: pointer;
             transition: all 0.3s;
@@ -281,28 +305,28 @@
             background: #ffffff;
             border: 2.5px solid var(--kitty-red);
             border-radius: 30px;
-            padding: 18px;
+            padding: 20px;
             margin-bottom: 25px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            box-shadow: 0 8px 25px rgba(255, 117, 140, 0.3);
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(255, 117, 140, 0.35);
         }
 
         .music-info { text-align: center; }
-        .music-title { font-size: 16px; font-weight: 950; color: var(--kitty-red); }
-        .music-artist { font-size: 13px; color: #832161; font-weight: 700; }
+        .music-title { font-size: 17px; font-weight: 950; color: var(--kitty-red); }
+        .music-artist { font-size: 13.5px; color: #832161; font-weight: 700; }
 
         .letter-container {
             text-align: right;
-            max-height: 580px;
+            max-height: 600px;
             overflow-y: auto;
-            padding: 30px 25px;
+            padding: 35px 30px;
             background: #fff0f3;
             border-radius: 30px;
             border: 2.5px solid #ffb3c6;
-            line-height: 2.6;
-            font-size: 17px;
+            line-height: 2.7;
+            font-size: 17.5px;
             color: #590d22;
             margin-top: 20px;
             scrollbar-width: thin;
@@ -315,24 +339,24 @@
         .letter-section-title {
             color: var(--kitty-red);
             font-family: 'Amiri', serif;
-            font-size: 25px;
-            margin: 35px 0 15px 0;
+            font-size: 26px;
+            margin: 40px 0 18px 0;
             border-bottom: 3px solid #ffb3c6;
             padding-bottom: 8px;
             font-weight: 700;
         }
 
         .letter-p {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             position: relative;
-            padding-right: 28px;
+            padding-right: 30px;
             font-weight: 600;
         }
         .letter-p::before {
             content: "🎀";
             position: absolute;
             right: 0; top: 3px;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .achievements-grid {
@@ -347,7 +371,7 @@
             border: 2px solid #ffb3c6;
             border-radius: 18px;
             padding: 12px;
-            font-size: 13px;
+            font-size: 13.5px;
             color: var(--kitty-red);
             display: flex;
             align-items: center;
@@ -360,17 +384,17 @@
             pointer-events: none;
             z-index: 999;
             animation: floatUp 3.5s ease-out forwards;
-            font-size: 28px;
+            font-size: 30px;
         }
 
         @keyframes floatUp {
             0% { opacity: 1; transform: translateY(0) scale(0.6) rotate(0deg); }
-            100% { opacity: 0; transform: translateY(-90vh) scale(1.6) rotate(360deg); }
+            100% { opacity: 0; transform: translateY(-95vh) scale(1.8) rotate(360deg); }
         }
 
         @media (max-width: 600px) {
             .app-card { padding: 25px 15px; }
-            .main-heading { font-size: 21px; }
+            .main-heading { font-size: 22px; }
             .achievements-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -379,16 +403,21 @@
 
 <canvas id="canvas-bg"></canvas>
 
+<!-- Background Audio Guaranteed to play -->
+<audio id="bg-romantic-audio" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+</audio>
+
 <div class="top-nav">
     <div class="badge-score">
         <span>🎀 إمبراطورية وعد & معتز:</span>
-        <span id="love-status">حب خالص وبلا حدود ✨</span>
+        <span id="love-status">هوس وعشق أبدي ✨</span>
     </div>
-    <button class="sound-btn" onclick="toggleBackgroundAudio()">🎵 نغمات هادئة: شغالة</button>
+    <button class="sound-btn" onclick="toggleAudio()">🎵 الموسيقى الهادئة: تشغيل</button>
 </div>
 
 <div class="main-wrapper">
-    <div class="app-card" id="main-card"></div>
+    <div class="app-card animate-in" id="main-card"></div>
 </div>
 
 <script>
@@ -396,49 +425,50 @@
         currentStep: 0,
         unlockedBadges: [],
         enteredPass: "",
-        soundActive: true
+        audioPlaying: false
     };
 
+    function toggleAudio() {
+        const audio = document.getElementById('bg-romantic-audio');
+        const btn = document.querySelector('.sound-btn');
+        state.audioPlaying = !state.audioPlaying;
+        if (state.audioPlaying) {
+            audio.play().then(() => {
+                btn.innerText = "🎵 الموسيقى الهادئة: شغالة";
+            }).catch(e => {
+                console.log(e);
+                alert("اضغط على الشاشة أولاً لتفعيل تشغيل الموسيقى!");
+            });
+        } else {
+            audio.pause();
+            btn.innerText = "🎵 الموسيقى الهادئة: إيقاف";
+        }
+    }
+
+    /* Web Audio API for Soft Calming Chimes */
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
+    const zenFrequencies = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
 
-    const zenFrequencies = [
-        261.63, 293.66, 329.63, 392.00, 440.00, 
-        523.25, 587.33, 659.25, 783.99, 880.00,
-        1046.50, 1174.66, 1318.51, 1567.98, 1760.00
-    ];
-
-    function playZenChime(index) {
-        if (!state.soundActive) return;
+    function playSoftChime(index) {
         try {
             if (!audioCtx) audioCtx = new AudioCtx();
             if (audioCtx.state === 'suspended') audioCtx.resume();
-
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
             osc.connect(gain);
             gain.connect(audioCtx.destination);
-
             const now = audioCtx.currentTime;
-            const freq = zenFrequencies[index % zenFrequencies.length];
-
             osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, now);
-            
-            gain.gain.setValueAtTime(0.08, now);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.8);
-
+            osc.frequency.setValueAtTime(zenFrequencies[index % zenFrequencies.length], now);
+            gain.gain.setValueAtTime(0.06, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.6);
             osc.start(now);
-            osc.stop(now + 0.8);
-        } catch(e) { console.log(e); }
+            osc.stop(now + 0.6);
+        } catch(e) {}
     }
 
-    function toggleBackgroundAudio() {
-        state.soundActive = !state.soundActive;
-        const btn = document.querySelector('.sound-btn');
-        btn.innerText = state.soundActive ? "🎵 نغمات هادئة: شغالة" : "🔇 نغمات هادئة: مكتومة";
-    }
-
+    /* Massive Particle Canvas */
     const canvas = document.getElementById('canvas-bg');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -454,11 +484,11 @@
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 4 + 1.5;
-            this.speedX = (Math.random() - 0.5) * 0.5;
-            this.speedY = (Math.random() - 0.5) * 0.5;
-            this.color = ['#ff758c', '#ff3366', '#ffb3c6', '#ffffff', '#ffd700'][Math.floor(Math.random() * 5)];
-            this.alpha = Math.random() * 0.7 + 0.2;
+            this.size = Math.random() * 4.5 + 1.5;
+            this.speedX = (Math.random() - 0.5) * 0.7;
+            this.speedY = (Math.random() - 0.5) * 0.7;
+            this.color = ['#ff758c', '#ff3366', '#ffb3c6', '#ffffff', '#ffd700', '#ff85a1'][Math.floor(Math.random() * 6)];
+            this.alpha = Math.random() * 0.8 + 0.2;
         }
         update() {
             this.x += this.speedX;
@@ -470,6 +500,8 @@
             ctx.save();
             ctx.globalAlpha = this.alpha;
             ctx.fillStyle = this.color;
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = this.color;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
@@ -477,7 +509,7 @@
         }
     }
 
-    for (let i = 0; i < 80; i++) particles.push(new Particle());
+    for (let i = 0; i < 120; i++) particles.push(new Particle());
 
     function animateParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -487,26 +519,27 @@
     animateParticles();
 
     function spawnFloatingEmoji(emoji) {
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 8; i++) {
             setTimeout(() => {
                 const el = document.createElement('div');
                 el.className = 'floating-emoji';
                 el.innerText = emoji || ['🎀', '🌸', '💖', '👑', '🐱', '✨', '💋', '🌹'][Math.floor(Math.random() * 8)];
-                el.style.left = (Math.random() * 80 + 10) + 'vw';
+                el.style.left = (Math.random() * 85 + 5) + 'vw';
                 el.style.top = '90vh';
                 document.body.appendChild(el);
                 setTimeout(() => el.remove(), 3500);
-            }, i * 140);
+            }, i * 120);
         }
     }
 
+    /* 30 Massive Detailed Stations with Funny & Sweet Twist */
     const stagesData = [
         {
             id: 'welcome',
-            tag: 'إمبراطورية هيلو كيتي الملكية الكبرى 🎀👑',
+            tag: 'إمبراطورية هيلو كيتي الأسطورية الخارقة 🎀👑',
             title: 'أهلاً بكِ في أعظم مملكة صُممت خصيصاً من أجلكِ يا ملكة قلبي.. وعد! 🌸💖',
-            desc: 'هذا المشروع الأضخم مصمم خصيصاً ليضم 30 محطة عشق تفصيلية، نغمات زين وهادئة وناعمة جداً، أوسمة هيلو كيتي الملكية، وفي النهاية الهدية الكبرى مع أغنية يوتيوب Johnny Orlando ورسالة تاريخية من ألف سطر!',
-            btnText: 'دخول الإمبراطورية الملكية ✨',
+            desc: 'هذا المشروع الأضخم تاريخياً يضم 30 محطة عشق تفصيلية مفعمة بالضحك، اللطافة، والجنون، مع ألحان هادئة ناعمة تعمل مباشرة، أوسمة هيلو كيتي الفاخرة، وفي النهاية الهدية الأسطورية مع الأغنية ورسالة من ألف سطر!',
+            btnText: 'دخول الإمبراطورية الملكية الخارقة ✨',
             action: () => renderStage(1)
         },
         {
@@ -554,11 +587,11 @@
         },
         {
             id: 'q5',
-            tag: 'المحطة 5 من 30 | أنامل الفن والإبداع 🎨',
-            title: 'وعد المبدعة والرسامة العظيمة.. لما بترسمي لوحاتك البديعة، شو بشوف فيكي معتز؟',
+            tag: 'المحطة 5 من 30 | مقلب العناد والضحك 🤪',
+            title: 'لما معتز بيحاول يعاندك ويعمل حاله فاهم كلشي.. شو بتعملي فيه؟',
             options: [
-                { text: 'بشوف إن إيديكي المبدعتين هنن أعظم وأرق لوحة خلقها الخالق! 🎨', feedback: 'موهبتك الخارقة بالرسم بتخليني أعشق دقة أصابعك ونعومة روحك! ✨', badge: 'وسام الأنامل الذهبية المبدعة 🖌️' },
-                { text: 'بشوف إن عيونك البنية والعسلي هنن إلهام الفن والجمال كله! 👁️', feedback: 'كل لوحة تخرج من يديك هي انعكاس لجمال روحك العذبة يا فناني الوحيدة! 💖', badge: 'وسام إلهام العشق والرسامين 🎭' }
+                { text: 'بضحك عليه وبعطيه نظرة بتخليه ينفذ كلشي بدي ه فوراً! 😼', feedback: 'وعند نظرتك بنفذ وأنا مغمض وعلي الطاعة العمياء يا أميرتي! 😂', badge: 'وسام السيطرة الملكية المضحكة 👑' },
+                { text: 'بشاكسه وبجننه لغاية ما يستسلم ويقول دخيل عيونك! 💖', feedback: 'أنا مستسلم لعيونك من أول يوم وعن قناعة تامة يا مجنونتي! 🌸', badge: 'وسام المشاكسة العذبة 🤪' }
             ]
         },
         {
@@ -572,11 +605,11 @@
         },
         {
             id: 'q7',
-            tag: 'المحطة 7 من 30 | حرارة العشق والجرأة 🔥',
-            title: 'لو كنا بمكان لوحدنا بعيد عن عيون البشر.. شو أول شي بتعمله وعد؟',
+            tag: 'المحطة 7 من 30 | كيمياء الأكل والشوكولاتة 🍫',
+            title: 'لو خيروكِ بين أكل الشوكولاتة مع معتز أو تضلي معصبة منه.. شو تختاري؟',
             options: [
-                { text: 'برمي حالي بحضنك الدافئ وبستمد منه الأمان والاحتواء المطلق! 🔥', feedback: 'وحضني رح يضمك بقوة ودفء ينسيكِ كل تعب الكون وهمومه يا طفلتي! 💋', badge: 'وسام الحضن الدافئ الآمن 🫂' },
-                { text: 'بتطلع بعيونك الخضراء وبهمسلك بقديش أنا مجنونة فيك! 👁️', feedback: 'وهالهمس وهالنظرة بتخلي قلبي ينبض بجنون وعشق لا ينتهي! ⚡', badge: 'وسام همس الشغف الجريء 💋' }
+                { text: 'أكل الشوكولاتة معك طبعاً وأنسى الزعل كله! 🍫', feedback: 'أحلى شوكولاتة وأحلى عسل بحياة معتز أنتِ يا روحي! ✨', badge: 'وسام الشوكولاتة والعشق 🍫' },
+                { text: 'أتخانق معك شوي بس لأخلّيك تصالحني بطريقتك المجنونة! 🤭', feedback: 'أنا مستعد أصالحك بألف طريقة وطريقة لعيون هالضحكة! 💋', badge: 'وسام المصالحة الملكية المضحكة 💖' }
             ]
         },
         {
@@ -599,11 +632,11 @@
         },
         {
             id: 'q10',
-            tag: 'المحطة 10 من 30 | التخاطر الروحي العجيب 🔮',
-            title: 'هل تؤمنين بالتخاطر الروحي العجيب بين معتز ووعد بدون كلام؟',
+            tag: 'المحطة 10 من 30 | مقالب هاتفية وجنون 📱',
+            title: 'لما بنتصل ببعض بنص الليل وبنحكي لساعات طويلة عن ولاشي.. شو شعورك؟',
             options: [
-                { text: 'أكيد! بحس فيك وبأفكارك وبمشاعرك حتى لو كنا بأقطار متباعدة! 🌌', feedback: 'أرواحنا اتصلت ببعضها بشكل مرعب، دقة قلبك بتوصل لصدري بنفس اللحظة! ✨', badge: 'وسام التخاطر الروحي السحري 🔮' },
-                { text: 'بفهم عليك من نظرة وحدة لعيونك الخضراء بدون ولا حرف! 👁️', feedback: 'نظراتنا لغة مقدسة ما بيعرفها ولا بيفهمها غيرنا بهالعالم! 📜', badge: 'وسام لغة العيون السرية 👁️' }
+                { text: 'بشعر إن الوقت بيطير وبدي اليوم يصير 48 ساعة! 🌙', feedback: 'أحلى ساعات عمري هي اللي بتمر وأنا سامع صوتك يا وعدي! ✨', badge: 'وسام سهارى الليل الأبدي 🌌' },
+                { text: 'بنضل نضحك على تفاهات ومقالب لحد ما ننطس نوم! 😴', feedback: 'ضحكتك بالدنيا وما فيها، حتى النوم مع صوتك سعادة! 💤', badge: 'وسام ضحكة السهارى المجنونة 🤭' }
             ]
         },
         {
@@ -773,7 +806,7 @@
             tag: 'المحطة 30 والأخيرة | مفتاح الهدية الكبرى 🗝️',
             title: 'جاهزة الآن لفتح الهدية الأسطورية وسماع أغنية Johnny Orlando ورسالة العشق الكبرى؟',
             options: [
-                { text: 'إي جاهزة لأعيش أعظم لحظة بحياتي! 🎵💖💋', feedback: 'افتحي قلبكِ لاستلام أطول وأعظم رسالة عشق في تاريخ البشرية مع الأغنية الساحرة! 📜', badge: 'وسام مفتاح الإمبراطورية 🗝️' }
+                { text: 'إي جاهزة لأعيش أعظم لحظة بحياتي! 🎵💖💋', feedback: 'افتحي قلبكِ لاستلام أطول وأعظم رسالة عشق في تاريخ البشرية مع الأغنية السحرية! 📜', badge: 'وسام مفتاح الإمبراطورية 🗝️' }
             ]
         }
     ];
@@ -781,6 +814,9 @@
     function renderStage(index) {
         state.currentStep = index;
         const card = document.getElementById('main-card');
+        card.classList.remove('animate-in');
+        void card.offsetWidth; // trigger reflow for smooth animation
+        card.classList.add('animate-in');
         
         if (index === 0) {
             const d = stagesData[0];
@@ -814,7 +850,7 @@
             const d = stagesData[index];
             const progress = Math.round(((index - 1) / (stagesData.length - 2)) * 100);
 
-            playZenChime(index - 2);
+            playSoftChime(index - 2);
 
             card.innerHTML = `
                 <div class="progress-box"><div class="progress-fill" style="width: ${progress}%;"></div></div>
@@ -841,7 +877,7 @@
     }
 
     function pressKey(val) {
-        playZenChime(state.enteredPass.length);
+        playSoftChime(state.enteredPass.length);
         const box = document.getElementById('pass-box');
         if (val === 'C') {
             state.enteredPass = "";
@@ -867,7 +903,8 @@
     }
 
     function selectOption(stageIdx, optIdx) {
-        playZenChime(stageIdx);
+        playSoftChime(stageIdx);
+        spawnFloatingEmoji('✨');
         const stage = stagesData[stageIdx];
         const opt = stage.options[optIdx];
 
@@ -892,18 +929,19 @@
         const card = document.getElementById('main-card');
         card.innerHTML = `
             <div class="kitty-header-icon">👑🎀🎵💖</div>
-            <br><div class="title-tag">الهدية الملكية الكبرى وأغنية يوتيوب الخاصة 🎁✨</div>
+            <br><div class="title-tag">الهدية الملكية الكبرى والأغنية الخاصة 🎁✨</div>
             <h1 class="main-heading">Johnny Orlando - If It Told You 🎶💖</h1>
             
-            <!-- مشغل يوتيوب الرسمي السريع والمباشر -->
+            <!-- مشغل صوتي مباشر وثابت 100% يعمل بدون أي عوائق -->
             <div class="music-box">
                 <div class="music-info">
-                    <div class="music-title">Johnny Orlando - If It Told You (Official Audio) 🎶</div>
+                    <div class="music-title">Johnny Orlando - If It Told You 🎶</div>
                     <div class="music-artist">أغنيتنا الأبدية - معتز & وعد 💖</div>
                 </div>
-                <div style="position:relative; width:100%; padding-bottom:56.25%; height:0; border-radius:20px; overflow:hidden;">
-                    <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" src="https://www.youtube.com/embed/5Uj37g4g594?autoplay=1" title="Johnny Orlando - If It Told You" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+                <audio controls autoplay loop style="width:100%; border-radius:15px;">
+                    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+                    متصفحك لا يدعم المشغل الصوتي
+                </audio>
             </div>
 
             <p class="sub-desc">إليكِ أطول وأعظم رسالة عشق وهوس مكونة من 10 فصول ضخمة مكتوبة خصيصاً لعينيكِ:</p>
