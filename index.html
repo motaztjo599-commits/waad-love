@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وعدي كل دنيتي ومرتي وكلشي بحياتي | النظام الكوني المطلق 🌌✨</title>
+    <title>وعدي كل دنيتي ومرتي وكلشي بحياتي | النظام الكوني الأسطوري المطلق 🌌💎👑</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,700;1,400&family=Orbitron:wght@500;700;900&display=swap');
 
@@ -47,7 +47,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            background: rgba(10, 5, 20, 0.8);
+            background: rgba(10, 5, 20, 0.85);
             backdrop-filter: blur(25px);
             border: 2px solid var(--primary);
             padding: 12px 25px;
@@ -58,30 +58,13 @@
 
         .hud-title-text {
             font-family: 'Orbitron', sans-serif;
-            font-size: 14.5px;
+            font-size: 14px;
             font-weight: 900;
             color: var(--accent);
             display: flex;
             align-items: center;
             gap: 10px;
             text-shadow: 0 0 12px var(--accent);
-        }
-
-        .audio-stream-btn {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border: none;
-            color: white;
-            padding: 9px 22px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 12px;
-            font-weight: 900;
-            box-shadow: 0 0 25px var(--primary);
-            transition: transform 0.3s;
-        }
-        .audio-stream-btn:hover {
-            transform: scale(1.08);
         }
 
         .wrapper-main {
@@ -91,11 +74,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 15px;
+            padding: 90px 15px 40px 15px;
         }
 
         .quantum-card-box {
-            background: rgba(15, 8, 25, 0.9);
+            background: rgba(15, 8, 25, 0.92);
             border: 3px solid var(--primary);
             border-radius: 45px;
             padding: 45px 35px;
@@ -295,7 +278,8 @@
             box-shadow: 0 15px 50px var(--accent);
         }
 
-        .music-player-hud {
+        /* Ultimate Pro Music Player System with 10+ Tracks */
+        .ultimate-music-station {
             background: rgba(10, 5, 20, 0.95);
             border: 2.5px solid var(--accent);
             border-radius: 30px;
@@ -307,8 +291,23 @@
             box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
         }
 
-        .music-title-text { font-family: 'Orbitron', sans-serif; font-size: 18px; font-weight: 900; color: var(--accent); }
-        .music-sub-text { font-size: 14px; color: #e2d9f3; font-weight: 700; }
+        .playlist-selector {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            outline: none;
+            cursor: pointer;
+        }
+        .playlist-selector option {
+            background: #120024;
+            color: white;
+        }
 
         .letter-scroll-container {
             text-align: right;
@@ -398,16 +397,13 @@
 
 <canvas id="cosmic-canvas"></canvas>
 
-<!-- Background Audio: Ultra Relaxing, Romantic & High Quality Sound Track -->
-<audio id="supreme-romantic-audio" loop preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
-</audio>
+<!-- Ultimate 10+ Playlist Audio System -->
+<audio id="ultimate-audio-player" loop preload="auto"></audio>
 
 <div class="hud-top-bar">
     <div class="hud-title-text">
         <span>✨ وعدي كل دنيتي ومرتي وكلشي بحياتي</span>
     </div>
-    <button class="audio-stream-btn" onclick="toggleAudioSystem()">🎵 تشغيل الموسيقى الرومانسية</button>
 </div>
 
 <div class="wrapper-main">
@@ -415,7 +411,30 @@
 </div>
 
 <script>
-    /* 30 Completely Unique Futuristic Color Palettes Changing on Every Single Question */
+    /* 10+ Supreme Romantic & Relaxing Tracks in the Ultimate Playlist */
+    const ultimatePlaylist = [
+        { name: "🎶 1. مقطوعة لوفي هادئة وساحرة (الافتراضية)", src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" },
+        { name: "🎸 2. قيثارة رومانسية هادئة الأعماق", src: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=romantic-guitars-10515.mp3" },
+        { name: "🎹 3. بيانو العشق والسكينة المطلقة", src: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=relaxing-chillout-music-11158.mp3" },
+        { name: "✨ 4. ألحان كونية الأحلام الوردية", src: "https://cdn.pixabay.com/download/audio/2022/04/27/audio_1d4a7f9202.mp3?filename=dreamy-ambient-110294.mp3" },
+        { name: "🌹 5. جيتار الحب والهيام الأبدي", src: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db8a32a68c.mp3?filename=romantic-acoustic-guitar-112028.mp3" },
+        { name: "🌌 6. تأملات الفضاء ونبض القلوب", src: "https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f722cb.mp3?filename=ambient-piano-123380.mp3" },
+        { name: "💫 7. سيمفونية الشوق والمحبة الصافية", src: "https://cdn.pixabay.com/download/audio/2022/11/03/audio_730623a633.mp3?filename=soft-ambient-126284.mp3" },
+        { name: "💖 8. أنغام الهدوء والراحة النفسية", src: "https://cdn.pixabay.com/download/audio/2021/11/25/audio_903126788f.mp3?filename=peaceful-guitar-10336.mp3" },
+        { name: "👑 9. ترانيم القصور الملكية الهادئة", src: "https://cdn.pixabay.com/download/audio/2022/02/23/audio_b287959b8d.mp3?filename=cinematic-ambient-111176.mp3" },
+        { name: "🌸 10. أغنية العشق الخالد والأبدي", src: "https://cdn.pixabay.com/download/audio/2022/08/03/audio_2c3a167098.mp3?filename=emotional-piano-115842.mp3" }
+    ];
+
+    let currentTrackIndex = 0;
+
+    function playTrack(index) {
+        currentTrackIndex = index;
+        const player = document.getElementById('ultimate-audio-player');
+        player.src = ultimatePlaylist[index].src;
+        player.play().catch(e => console.log("Audio waiting for interaction"));
+    }
+
+    /* 30 Supreme Color Palettes Changing on Every Station */
     const supremePalettes = [
         { primary: "#ff007f", secondary: "#7928ca", accent: "#00f0ff", bg1: "#030006", bg2: "#120024" },
         { primary: "#00f0ff", secondary: "#0066ff", accent: "#ff007f", bg1: "#00050f", bg2: "#001226" },
@@ -463,27 +482,10 @@
     const state = {
         currentStep: 0,
         unlockedBadges: [],
-        enteredPass: "",
-        audioActive: false
+        enteredPass: ""
     };
 
-    function toggleAudioSystem() {
-        const audio = document.getElementById('supreme-romantic-audio');
-        const btn = document.querySelector('.audio-stream-btn');
-        state.audioActive = !state.audioActive;
-        if(state.audioActive) {
-            audio.play().then(() => {
-                btn.innerText = "🎵 الموسيقى: نشطة وساحرة";
-            }).catch(e => {
-                alert("اضغط في أي مكان بالشاشة لتفعيل الصوت!");
-            });
-        } else {
-            audio.pause();
-            btn.innerText = "🎵 تشغيل الموسيقى الرومانسية";
-        }
-    }
-
-    /* Web Audio API - Sound Effects */
+    /* Web Audio API Sound Effects */
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
     const notesArr = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
@@ -569,7 +571,7 @@
         }
     }
 
-    /* 30 Supreme Stations with Deep, Funny, and Romantic Questions */
+    /* 30 Supreme Stations */
     const supremeStations = [
         {
             id: 'welcome',
@@ -577,7 +579,7 @@
             title: 'أهلاً بكِ في أعظم منظومة ذكاء اصطناعي تفاعلية في تاريخ الكون مخصصة فقط لـ.. وعد! 🌸💖',
             desc: 'وعدي كل دنيتي ومرتي وكلشي بحياتي.. هذا المشروع الخارق يضم 30 محطة عميقة تتغير خلفيتها وألوانها الكونية بالكامل مع كل خطوة، مع مفاجأة الهدية الأسطورية في النهاية!',
             btnText: 'دخول النظام الكوني المطلق ✨',
-            action: () => renderStation(1)
+            action: () => { playTrack(0); renderStation(1); }
         },
         {
             id: 'lock_screen',
@@ -979,7 +981,7 @@
         const desc = document.getElementById('gift-desc');
 
         if (giftStage === 0) {
-            // تختفي أول شي
+            // تختفي أول شي للمقلب والضحك
             icon.style.transition = "all 0.5s ease";
             icon.style.transform = "scale(0)";
             icon.style.opacity = "0";
@@ -992,8 +994,7 @@
             }, 600);
             giftStage = 1;
         } else if (giftStage === 1) {
-            // كبس عااهدية وتفتح الرسالة والموسيقى الساحرة
-            if(!state.audioActive) toggleAudioSystem();
+            // تفتح الهدية الكبرى مع المشغل الذي يضم أكثر من 10 موسيقات!
             renderFinalGiftScreen();
         }
     }
@@ -1003,14 +1004,16 @@
         const card = document.getElementById('quantum-card-box');
         card.innerHTML = `
             <div class="quantum-icon">👑🎵🌌💖</div>
-            <br><div class="badge-pill-tag">الهدية الملكية الكبرى والموسيقى السحرية 🎁✨</div>
-            <h1 class="main-heading-title">أغنية العشق الأبدي والألحان الكونية 🎶💖</h1>
+            <br><div class="badge-pill-tag">الهدية الملكية الكبرى ومشغل الـ 10+ مقطوعات 🎁✨</div>
+            <h1 class="main-heading-title">اختر الموسيقى الرومانسية على ذوقك! 🎶💖</h1>
             
-            <div class="music-player-hud">
-                <div class="music-title-text">المشغل الموسيقي الكوني - معتز & وعد 🎶</div>
-                <div class="music-sub-text">ألحان هادئة وساحرة تلامس الأعماق 💖</div>
-                <audio controls autoplay loop style="width:100%; border-radius:15px; filter: drop-shadow(0 0 10px var(--accent));">
-                    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+            <div class="ultimate-music-station">
+                <div style="font-family:'Orbitron', sans-serif; font-size:15px; font-weight:900; color:var(--accent);">اختر من بين 10+ مقطوعات وأغانٍ رومانسية هادئة:</div>
+                <select class="playlist-selector" id="track-select" onchange="playTrack(this.value)">
+                    ${ultimatePlaylist.map((track, i) => `<option value="${i}" ${i === currentTrackIndex ? 'selected' : ''}>${track.name}</option>`).join('')}
+                </select>
+                <audio controls autoplay loop style="width:100%; border-radius:15px; filter: drop-shadow(0 0 10px var(--accent)); margin-top:5px;" id="ultimate-audio-player">
+                    <source src="${ultimatePlaylist[currentTrackIndex].src}" type="audio/mpeg">
                 </audio>
             </div>
 
@@ -1073,6 +1076,7 @@
 
             <button class="action-button-main" style="margin-top:35px;" onclick="location.reload()">إعادة خوض أعظم ملحمة عشق بالكون 🌌</button>
         `;
+        playTrack(currentTrackIndex);
     }
 
     window.onload = () => {
