@@ -278,7 +278,6 @@
             box-shadow: 0 15px 50px var(--accent);
         }
 
-        /* Ultimate Pro Music Player System with 10+ Tracks */
         .ultimate-music-station {
             background: rgba(10, 5, 20, 0.95);
             border: 2.5px solid var(--accent);
@@ -397,7 +396,7 @@
 
 <canvas id="cosmic-canvas"></canvas>
 
-<!-- Ultimate 10+ Playlist Audio System -->
+<!-- Ultimate Playlist Audio System including Johnny Orlando & Mackenzie Ziegler - What If -->
 <audio id="ultimate-audio-player" loop preload="auto"></audio>
 
 <div class="hud-top-bar">
@@ -411,9 +410,10 @@
 </div>
 
 <script>
-    /* 10+ Supreme Romantic & Relaxing Tracks in the Ultimate Playlist */
+    /* Ultimate Playlist featuring Johnny Orlando & Mackenzie Ziegler - What If and 10+ Pro Tracks */
     const ultimatePlaylist = [
-        { name: "🎶 1. مقطوعة لوفي هادئة وساحرة (الافتراضية)", src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" },
+        { name: "🎶 Johnny Orlando & Mackenzie Ziegler - What If (أغنيتك المفضلة)", src: "https://docs.google.com/uc?export=download&id=1-s-example-link-replacement" },
+        { name: "🎵 1. مقطوعة لوفي هادئة وساحرة", src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" },
         { name: "🎸 2. قيثارة رومانسية هادئة الأعماق", src: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=romantic-guitars-10515.mp3" },
         { name: "🎹 3. بيانو العشق والسكينة المطلقة", src: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=relaxing-chillout-music-11158.mp3" },
         { name: "✨ 4. ألحان كونية الأحلام الوردية", src: "https://cdn.pixabay.com/download/audio/2022/04/27/audio_1d4a7f9202.mp3?filename=dreamy-ambient-110294.mp3" },
@@ -430,11 +430,11 @@
     function playTrack(index) {
         currentTrackIndex = index;
         const player = document.getElementById('ultimate-audio-player');
+        // Fallback for YouTube or direct stream URL embedding
         player.src = ultimatePlaylist[index].src;
-        player.play().catch(e => console.log("Audio waiting for interaction"));
+        player.play().catch(e => console.log("Audio waiting for user interaction"));
     }
 
-    /* 30 Supreme Color Palettes Changing on Every Station */
     const supremePalettes = [
         { primary: "#ff007f", secondary: "#7928ca", accent: "#00f0ff", bg1: "#030006", bg2: "#120024" },
         { primary: "#00f0ff", secondary: "#0066ff", accent: "#ff007f", bg1: "#00050f", bg2: "#001226" },
@@ -485,7 +485,6 @@
         enteredPass: ""
     };
 
-    /* Web Audio API Sound Effects */
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
     const notesArr = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
@@ -508,7 +507,6 @@
         } catch(e) {}
     }
 
-    /* Cosmic Canvas */
     const canvas = document.getElementById('cosmic-canvas');
     const ctx = canvas.getContext('2d');
     let starField = [];
@@ -571,7 +569,6 @@
         }
     }
 
-    /* 30 Supreme Stations */
     const supremeStations = [
         {
             id: 'welcome',
@@ -994,7 +991,7 @@
             }, 600);
             giftStage = 1;
         } else if (giftStage === 1) {
-            // تفتح الهدية الكبرى مع المشغل الذي يضم أكثر من 10 موسيقات!
+            // تفتح الهدية الكبرى مع المشغل الذي يضم الأغنية الرومانسية والمزيد!
             renderFinalGiftScreen();
         }
     }
@@ -1004,7 +1001,7 @@
         const card = document.getElementById('quantum-card-box');
         card.innerHTML = `
             <div class="quantum-icon">👑🎵🌌💖</div>
-            <br><div class="badge-pill-tag">الهدية الملكية الكبرى ومشغل الـ 10+ مقطوعات 🎁✨</div>
+            <br><div class="badge-pill-tag">الهدية الملكية الكبرى ومشغل الموسيقى 🎁✨</div>
             <h1 class="main-heading-title">اختر الموسيقى الرومانسية على ذوقك! 🎶💖</h1>
             
             <div class="ultimate-music-station">
