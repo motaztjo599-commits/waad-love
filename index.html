@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وعدي كل دنيتي ومرتي وكلشي بحياتي | الإمبراطورية الكونية المطلقة 🎀🌸👑</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,700;1,400&family=Orbitron:wght@500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,700;1,400&family=Reem+Kufi:wght@700&display=swap');
 
         :root {
             --bg-grad-1: #ffe5ec;
@@ -14,7 +14,6 @@
             --theme-secondary: #ff758c;
             --card-bg: rgba(255, 255, 255, 0.95);
             --text-color: #4a0e17;
-            --border-glow: rgba(255, 51, 102, 0.8);
         }
 
         * {
@@ -398,14 +397,14 @@
 
 <!-- Background Audio: Direct Calm Lofi/Romantic Stream -->
 <audio id="romantic-audio" loop preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+    <source src="https://cdns.fyimusic.ru/storage/uploads/music/2021/04/nancy-ajram-albi-da-3-darat.mp3" type="audio/mpeg">
 </audio>
 
 <div class="top-hud">
     <div class="hud-title">
         <span>🎀 وعدي كل دنيتي ومرتي وكلشي بحياتي</span>
     </div>
-    <button class="audio-toggle-btn" onclick="toggleAudioStream()">🎵 تشغيل الموسيقى الهادئة</button>
+    <button class="audio-toggle-btn" onclick="toggleAudioStream()">🎵 تشغيل أغنية: قلبي دق ثلاث دقات</button>
 </div>
 
 <div class="main-wrapper">
@@ -413,39 +412,38 @@
 </div>
 
 <script>
-    /* Unique Cute Color Palettes for Every Single Station/Question */
     const colorThemes = [
-        { primary: "#ff3366", secondary: "#ff758c", bg1: "#ffe5ec", bg2: "#ffc2d1", text: "#4a0e17" }, // Station 0: Pink Kitty
-        { primary: "#7209b7", secondary: "#b5179e", bg1: "#f3e8ff", bg2: "#e9d5ff", text: "#3b0764" }, // Station 1: Royal Purple
-        { primary: "#009688", secondary: "#4db6ac", bg1: "#e0f2f1", bg2: "#b2dfdb", text: "#004d40" }, // Station 2: Mint Green
-        { primary: "#ff6f00", secondary: "#ffa000", bg1: "#fff3e0", bg2: "#ffe0b2", text: "#e65100" }, // Station 3: Sunset Orange
-        { primary: "#3f51b5", secondary: "#7986cb", bg1: "#e8eaf6", bg2: "#c5cae9", text: "#1a237e" }, // Station 4: Deep Indigo
-        { primary: "#e91e63", secondary: "#f48fb1", bg1: "#fce4ec", bg2: "#f8bbd0", text: "#880e4f" }, // Station 5: Rose Pink
-        { primary: "#00acc1", secondary: "#4dd0e1", bg1: "#e0f7fa", bg2: "#b2ebf2", text: "#006064" }, // Station 6: Cyan Bliss
-        { primary: "#8bc34a", secondary: "#cddc39", bg1: "#f1f8e9", bg2: "#dcedc8", text: "#33691e" }, // Station 7: Lime Fresh
-        { primary: "#9c27b0", secondary: "#ba68c8", bg1: "#f3e5f5", bg2: "#e1bee7", text: "#4a148c" }, // Station 8: Orchid
-        { primary: "#d32f2f", secondary: "#ef5350", bg1: "#ffebee", bg2: "#ffcdd2", text: "#b71c1c" }, // Station 9: Ruby Red
-        { primary: "#0288d1", secondary: "#4fc3f7", bg1: "#e1f5fe", bg2: "#b3e5fc", text: "#01579b" }, // Station 10: Sky Blue
-        { primary: "#fbc02d", secondary: "#ffee58", bg1: "#fffde7", bg2: "#fff9c4", text: "#f57f17" }, // Station 11: Golden Sun
-        { primary: "#673ab7", secondary: "#9575cd", bg1: "#ede7f6", bg2: "#d1c4e9", text: "#311b92" }, // Station 12: Deep Purple
-        { primary: "#00897b", secondary: "#26a69a", bg1: "#e0f2f1", bg2: "#80cbc4", text: "#004d40" }, // Station 13: Teal
-        { primary: "#c2185b", secondary: "#ec407a", bg1: "#fce4ec", bg2: "#f48fb1", text: "#880e4f" }, // Station 14: Raspberry
-        { primary: "#512da8", secondary: "#7e57c2", bg1: "#ede7f6", bg2: "#b39ddb", text: "#311b92" }, // Station 15: Violet
-        { primary: "#388e3c", secondary: "#66bb6a", bg1: "#e8f5e9", bg2: "#a5d6a7", text: "#1b5e20" }, // Station 16: Forest Green
-        { primary: "#f57c00", secondary: "#ffa726", bg1: "#fff3e0", bg2: "#ffe0b2", text: "#e65100" }, // Station 17: Amber
-        { primary: "#c51162", secondary: "#ff4081", bg1: "#fce4ec", bg2: "#f8bbd0", text: "#880e4f" }, // Station 18: Hot Magenta
-        { primary: "#00bcd4", secondary: "#80deea", bg1: "#e0f7fa", bg2: "#80deea", text: "#006064" }, // Station 19: Turquoise
-        { primary: "#8e24aa", secondary: "#ab47bc", bg1: "#f3e5f5", bg2: "#e1bee7", text: "#4a148c" }, // Station 20: Purple Magic
-        { primary: "#e64a19", secondary: "#ff7043", bg1: "#fbe9e7", bg2: "#ffab91", text: "#bf360c" }, // Station 21: Deep Orange
-        { primary: "#303f9f", secondary: "#5c6bc0", bg1: "#e8eaf6", bg2: "#9fa8da", text: "#1a237e" }, // Station 22: Navy Blue
-        { primary: "#689f38", secondary: "#9ccc65", bg1: "#f1f8e9", bg2: "#c5e1a5", text: "#33691e" }, // Station 23: Olive
-        { primary: "#ab47bc", secondary: "#ce93d8", bg1: "#f3e5f5", bg2: "#e1bee7", text: "#4a148c" }, // Station 24: Lavender
-        { primary: "#00796b", secondary: "#4db6ac", bg1: "#e0f2f1", bg2: "#80cbc4", text: "#004d40" }, // Station 25: Dark Teal
-        { primary: "#fbc02d", secondary: "#fff176", bg1: "#fffde7", bg2: "#fff59d", text: "#f57f17" }, // Station 26: Yellow Gold
-        { primary: "#d81b60", secondary: "#f06292", bg1: "#fce4ec", bg2: "#f8bbd0", text: "#880e4f" }, // Station 27: Pink Ribbon
-        { primary: "#5e35b1", secondary: "#7986cb", bg1: "#ede7f6", bg2: "#b39ddb", text: "#311b92" }, // Station 28: Deep Indigo
-        { primary: "#0097a7", secondary: "#00bcd4", bg1: "#e0f7fa", bg2: "#b2ebf2", text: "#006064" }, // Station 29: Cyan Deep
-        { primary: "#ff1744", secondary: "#ff5252", bg1: "#ffebee", bg2: "#ff8a80", text: "#b71c1c" }  // Station 30: Grand Finale Red
+        { primary: "#ff3366", secondary: "#ff758c", bg1: "#ffe5ec", bg2: "#ffc2d1", text: "#4a0e17" },
+        { primary: "#7209b7", secondary: "#b5179e", bg1: "#f3e8ff", bg2: "#e9d5ff", text: "#3b0764" },
+        { primary: "#009688", secondary: "#4db6ac", bg1: "#e0f2f1", bg2: "#b2dfdb", text: "#004d40" },
+        { primary: "#ff6f00", secondary: "#ffa000", bg1: "#fff3e0", bg2: "#ffe0b2", text: "#e65100" },
+        { primary: "#3f51b5", secondary: "#7986cb", bg1: "#e8eaf6", bg2: "#c5cae9", text: "#1a237e" },
+        { primary: "#e91e63", secondary: "#f48fb1", bg1: "#fce4ec", bg2: "#f8bbd0", text: "#880e4f" },
+        { primary: "#00acc1", secondary: "#4dd0e1", bg1: "#e0f7fa", bg2: "#b2ebf2", text: "#006064" },
+        { primary: "#8bc34a", secondary: "#cddc39", bg1: "#f1f8e9", bg2: "#dcedc8", text: "#33691e" },
+        { primary: "#9c27b0", secondary: "#ba68c8", bg1: "#f3e5f5", bg2: "#e1bee7", text: "#4a148c" },
+        { primary: "#d32f2f", secondary: "#ef5350", bg1: "#ffebee", bg2: "#ffcdd2", text: "#b71c1c" },
+        { primary: "#0288d1", secondary: "#4fc3f7", bg1: "#e1f5fe", bg2: "#b3e5fc", text: "#01579b" },
+        { primary: "#fbc02d", secondary: "#ffee58", bg1: "#fffde7", bg2: "#fff9c4", text: "#f57f17" },
+        { primary: "#673ab7", secondary: "#9575cd", bg1: "#ede7f6", bg2: "#d1c4e9", text: "#311b92" },
+        { primary: "#00897b", secondary: "#26a69a", bg1: "#e0f2f1", bg2: "#80cbc4", text: "#004d40" },
+        { primary: "#c2185b", secondary: "#ec407a", bg1: "#fce4ec", bg2: "#f48fb1", text: "#880e4f" },
+        { primary: "#512da8", secondary: "#7e57c2", bg1: "#ede7f6", bg2: "#b39ddb", text: "#311b92" },
+        { primary: "#388e3c", secondary: "#66bb6a", bg1: "#e8f5e9", bg2: "#a5d6a7", text: "#1b5e20" },
+        { primary: "#f57c00", secondary: "#ffa726", bg1: "#fff3e0", bg2: "#ffe0b2", text: "#e65100" },
+        { primary: "#c51162", secondary: "#ff4081", bg1: "#fce4ec", bg2: "#f8bbd0", text: "#880e4f" },
+        { primary: "#00bcd4", secondary: "#80deea", bg1: "#e0f7fa", bg2: "#80deea", text: "#006064" },
+        { primary: "#8e24aa", secondary: "#ab47bc", bg1: "#f3e5f5", bg2: "#e1bee7", text: "#4a148c" },
+        { primary: "#e64a19", secondary: "#ff7043", bg1: "#fbe9e7", bg2: "#ffab91", text: "#bf360c" },
+        { primary: "#303f9f", secondary: "#5c6bc0", bg1: "#e8eaf6", bg2: "#9fa8da", text: "#1a237e" },
+        { primary: "#689f38", secondary: "#9ccc65", bg1: "#f1f8e9", bg2: "#c5e1a5", text: "#33691e" },
+        { primary: "#ab47bc", secondary: "#ce93d8", bg1: "#f3e5f5", bg2: "#e1bee7", text: "#4a148c" },
+        { primary: "#00796b", secondary: "#4db6ac", bg1: "#e0f2f1", bg2: "#80cbc4", text: "#004d40" },
+        { primary: "#fbc02d", secondary: "#fff176", bg1: "#fffde7", bg2: "#fff59d", text: "#f57f17" },
+        { primary: "#d81b60", secondary: "#f06292", bg1: "#fce4ec", bg2: "#f8bbd0", text: "#880e4f" },
+        { primary: "#5e35b1", secondary: "#7986cb", bg1: "#ede7f6", bg2: "#b39ddb", text: "#311b92" },
+        { primary: "#0097a7", secondary: "#00bcd4", bg1: "#e0f7fa", bg2: "#b2ebf2", text: "#006064" },
+        { primary: "#ff1744", secondary: "#ff5252", bg1: "#ffebee", bg2: "#ff8a80", text: "#b71c1c" }
     ];
 
     function applyThemeColors(index) {
@@ -471,17 +469,16 @@
         state.audioPlaying = !state.audioPlaying;
         if(state.audioPlaying) {
             audio.play().then(() => {
-                btn.innerText = "🎵 الموسيقى الهادئة: شغالة";
+                btn.innerText = "🎵 الموسيقى: شغالة";
             }).catch(e => {
                 alert("اضغط في أي مكان بالشاشة لتفعيل الصوت!");
             });
         } else {
             audio.pause();
-            btn.innerText = "🎵 تشغيل الموسيقى الهادئة";
+            btn.innerText = "🎵 تشغيل أغنية: قلبي دق ثلاث دقات";
         }
     }
 
-    /* Web Audio API for Professional Interactive Chimes */
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
     const zenFrequencies = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
@@ -504,7 +501,6 @@
         } catch(e) {}
     }
 
-    /* Dynamic Particle Background Canvas */
     const canvas = document.getElementById('canvas-bg');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -567,13 +563,12 @@
         }
     }
 
-    /* 30 Massive Detailed Stations with Cute & Funny Questions */
     const stationsData = [
         {
             id: 'welcome',
             tag: 'وعدي كل دنيتي ومرتي وكلشي بحياتي 🎀👑',
             title: 'أهلاً بكِ في أعظم وأضخم إمبراطورية تفاعلية صُممت خصيصاً من أجلكِ يا ملكة قلبي.. وعد! 🌸💖',
-            desc: 'هذا المشروع الأضخم تاريخياً يضم 30 محطة عشق تفصيلية تتغير ألوانها الساحرة مع كل سؤال، ألحاناً هادئة ناعمة تعمل مباشرة، أوسمة هيلو كيتي الفاخرة، وفي النهاية الهدية الأسطورية مع أغنية حقيقية ورسالة من ألف سطر!',
+            desc: 'هذا المشروع الأضخم تاريخياً يضم 30 محطة عشق تفصيلية تتغير ألوانها الساحرة مع كل سؤال، ألحاناً هادئة ناعمة تعمل مباشرة، أوسمة هيلو كيتي الفاخرة، وفي النهاية الهدية الأسطورية مع أغنية قلبي دق ثلاث دقات ورسالة من ألف سطر!',
             btnText: 'دخول الإمبراطورية الملكية الكبرى ✨',
             action: () => renderStation(1)
         },
@@ -677,7 +672,7 @@
         {
             id: 'q11',
             tag: 'المحطة 11 من 30 | خجل العشق والتدلل 🙈',
-            title: 'لما معتز بيحكيلك عبارات غزل جريئة وصريحة.. شو بصير فيكي؟',
+            title: 'لما معتز بيحكيلك عبارات غزل جريئة والصريحة.. شو بصير فيكي؟',
             options: [
                 { text: 'بخجل وببتسم بتلبك أنثوي رائع بيزيد جنونك فيني! 🙈', feedback: 'وهذا الخجل القاتل هو اللي بيخليني أذوب بعشقك وبنعومتها أكتر! 💋', badge: 'وسام الابتسامة الأنثوية العذبة 🌸' },
                 { text: 'بطلع بعيونك وببادل العشق بجرأة ودلال استثنائي! 🔥', feedback: 'جرأتك ودلالك بيخلوا نيران قلبي تشتعل أكتر وأكتر بجنون! 🔥', badge: 'وسام الدلال والجرأة الملكية 💋' }
@@ -839,7 +834,7 @@
         {
             id: 'q30',
             tag: 'المحطة 30 والأخيرة | مفتاح الهدية الكبرى 🗝️',
-            title: 'جاهزة الآن لفتح الهدية الأسطورية وسماع أغنية Johnny Orlando ورسالة العشق الكبرى؟',
+            title: 'جاهزة الآن لفتح الهدية الأسطورية وسماع أغنية قلبي دق ثلاث دقات ورسالة العشق الكبرى؟',
             options: [
                 { text: 'إي جاهزة لأعيش أعظم لحظة بحياتي! 🎵💖💋', feedback: 'افتحي قلبكِ لاستلام أطول وأعظم رسالة عشق في تاريخ البشرية مع الأغنية السحرية! 📜', badge: 'وسام مفتاح الإمبراطورية 🗝️' }
             ]
@@ -907,7 +902,7 @@
 
         if (index === stationsData.length) {
             spawnFloatingEmoji('👑');
-            renderFinalGiftScreen();
+            renderGiftBoxScreen();
         }
     }
 
@@ -957,20 +952,57 @@
         document.getElementById('next-station-btn').style.display = 'inline-block';
     }
 
+    function renderGiftBoxScreen() {
+        applyThemeColors(0);
+        const card = document.getElementById('master-card');
+        card.innerHTML = `
+            <div class="cute-icon" id="gift-icon" style="cursor:pointer; font-size:90px;" onclick="handleGiftClick()">🎁</div>
+            <br><div class="tag-badge">اضغطي على الهدية الملكية لفتحها! ✨</div>
+            <h1 class="main-heading" id="gift-heading">أنتِ على موعد مع المفاجأة الكبرى يا وعد!</h1>
+            <p class="sub-desc" id="gift-desc">اضدقي الهدية بالأعلى واكتشفي ماذا تخبئ لكِ روح معتز...</p>
+        `;
+    }
+
+    let giftClickStage = 0;
+    function handleGiftClick() {
+        playAudioChime(5);
+        spawnFloatingEmoji('💖');
+        const icon = document.getElementById('gift-icon');
+        const heading = document.getElementById('gift-heading');
+        const desc = document.getElementById('gift-desc');
+
+        if (giftClickStage === 0) {
+            // تختفي أول شي
+            icon.style.transition = "all 0.5s";
+            icon.style.transform = "scale(0)";
+            icon.style.opacity = "0";
+            heading.innerText = "عم امزح هي الهدية! 😂❤️";
+            desc.innerText = "اضحكي يلا! جهزي حالك للمفاجأة الحقيقية.. كلي ثقة أنكِ أجمل ضحكة بحياتي.";
+            setTimeout(() => {
+                icon.innerText = "💝";
+                icon.style.transform = "scale(1)";
+                icon.style.opacity = "1";
+            }, 600);
+            giftClickStage = 1;
+        } else if (giftClickStage === 1) {
+            // تتضحك بعدين تكبس عااهدية وتفتح الهدية الكبرى
+            renderFinalGiftScreen();
+        }
+    }
+
     function renderFinalGiftScreen() {
         applyThemeColors(0);
         const card = document.getElementById('master-card');
         card.innerHTML = `
             <div class="cute-icon">👑🎀🎵💖</div>
             <br><div class="tag-badge">الهدية الملكية الكبرى والأغنية الخاصة 🎁✨</div>
-            <h1 class="main-heading">Johnny Orlando - If It Told You 🎶💖</h1>
+            <h1 class="main-heading">قلبي دق ثلاث دقات 🎶💖</h1>
             
-            <!-- مشغل صوتي مباشر وثابت يعمل بسلاسة تامة -->
             <div class="music-station-box">
-                <div class="music-title-text">Johnny Orlando - If It Told You 🎶</div>
+                <div class="music-title-text">أغنية: قلبي دق ثلاث دقات 🎶</div>
                 <div class="music-sub-text">أغنيتنا الأبدية - معتز & وعد 💖</div>
                 <audio controls autoplay loop style="width:100%; border-radius:15px;">
-                    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+                    <source src="https://cdns.fyimusic.ru/storage/uploads/music/2021/04/nancy-ajram-albi-da-3-darat.mp3" type="audio/mpeg">
                     متصفحك لا يدعم المشغل الصوتي
                 </audio>
             </div>
@@ -1019,7 +1051,7 @@
                 <div class="chapter-p">حين تغيبين عني لأبسط ساعات اليوم، أشعر كأن أكسجين الكون قد نفد من صدري. حضوركِ هو الحياة، وغيابكِ هو الموت البطيء.</div>
                 <div class="chapter-p">لا أطيق صبراً حتى ألقاكِ وأضمكِ إلى صدري لأروي ظمأ روحي المتيمة بحبكِ.</div>
 
-                <div class="chapter-header">💎 الفصل العاشر والأخير: ميثاق الوفاء الأبدي والخلود مع Johnny Orlando</div>
+                <div class="chapter-header">💎 الفصل العاشر والأخير: ميثاق الوفاء الأبدي والخلود</div>
                 <div class="chapter-p">أقسم لكِ أمام الله والكون، بدمي ونبض قلبي وعيوني الخضراء التي لا ترى سواكِ، أن أبقى لكِ الحامي، والعاشق، والحبيب، والصديق، والأب، والأخ، والسند الذي لا تكسره رياح الدنيا.</div>
                 <div class="chapter-p">سأبقى أستحوذ على قلبكِ، وأزرع الحب والورد في كل دقيقة تجمعنا، ولن أسمح لظرف أو مسافة أن تطفئ هذه الشعلة المقدسة بيننا.</div>
                 <div class="chapter-p">أنتِ وعدي الصادق، عهدي الأبدي، وأجمل هدايا ربي لي.. أحبكِ وسأظل أموت فيكي يا كل دنيتي وإمبراطوريتي حتى يفنى الزمان! 🔥🖤✨🎶</div>
@@ -1032,7 +1064,7 @@
                 </div>
             </div>
 
-            <button class="action-action action-btn" style="margin-top:25px;" onclick="location.reload()">إعادة خوض أعظم ملحمة عشق بالكون 🌸</button>
+            <button class="action-btn" style="margin-top:25px;" onclick="location.reload()">إعادة خوض أعظم ملحمة عشق بالكون 🌸</button>
         `;
     }
 
