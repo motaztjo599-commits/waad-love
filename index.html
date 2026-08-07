@@ -3,43 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Kitty to Waad 🎀</title>
+    <title>شكر خاص لوعد 🎀</title>
+    
+    <!-- تحميل مكتبة Lottie للأيقونات المتحركة الاحترافية -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #ffe6f2; font-family: 'Segoe UI', Tahoma, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; text-align: center; }
-        .card { background: white; padding: 35px 25px; border-radius: 25px; box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3); max-width: 400px; width: 100%; border: 3px solid #ff99cc; }
-        .kitty-img { width: 140px; height: auto; margin-bottom: 20px; }
-        h2 { color: #ff3385; font-size: 22px; line-height: 1.6; margin-bottom: 25px; min-height: 70px; display: flex; align-items: center; justify-content: center; }
-        .btn-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        button { background-color: #ff66b2; color: white; border: none; padding: 14px 28px; font-size: 17px; border-radius: 25px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-        button:hover { background-color: #ff3385; transform: scale(1.03); }
-        .no-btn { background-color: #ff85c0; }
-        .reset-btn { background-color: #ff3385; margin-top: 10px; }
+        /* الأساسيات - تصميم عصري واحترافي */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* خطوط عصرية */
+        }
+
+        body {
+            /* خلفية متدرجة فخمة بهدوء الوردي والذهبي */
+            background: linear-gradient(135deg, #fff1f6 0%, #ffe0eb 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden; /* لمنع ظهور شريط التمرير أثناء الأنيميشن */
+        }
+
+        /* تصميم الكرت الاحترافي (Glassmorphism) */
+        .card {
+            background: rgba(255, 255, 255, 0.85); /* شفافية بسيطة */
+            backdrop-filter: blur(10px); /* تأثير ضبابي فخم للملف خلفه */
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.3); /* ظل ناعم وردي */
+            max-width: 420px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.5); /* حد زجاجي رفيع */
+            position: relative;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* حركة بسيطة عند التمرير */
+        }
+
+        /* حاوية الأيقونات المتحركة */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            height: 120px; /* طول ثابت للأيقونة */
+            align-items: center;
+        }
+
+        /* تنسيق النصوص - احترافي وواضح */
+        h2 {
+            color: #d17a9c; /* لون ذهبي وردي غامق فخم */
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            min-height: 80px; /* طول ثابت للنص لتجنب القفز */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+            animation: fadeIn 0.5s ease forwards; /* ظهور تدريجي للنص */
+        }
+
+        /* ظهور تدريجي */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* حاوية الأزرار - تصميم مرتب */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* تصميم الأزرار الاحترافي جداً */
+        button {
+            background: linear-gradient(145deg, #ff99cc, #ff85b0); /* تدرج وردي ناعم */
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 50px; /* زوايا دائرية بالكامل */
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة أنيميشن ناعمة */
+            box-shadow: 0 5px 15px rgba(255, 133, 176, 0.3); /* ظل زر ناعم */
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* تأثير اللمعان عند التمرير فوق الزر */
+        button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.13) 77%, rgba(255,255,255,0.5) 100%);
+            transform: rotate(-45deg);
+            transition: all 0.3s forwards;
+            opacity: 0;
+        }
+
+        button:hover {
+            background: linear-gradient(145deg, #ff85b0, #ff99cc); /* عكس التدرج */
+            transform: translateY(-3px) scale(1.03); /* تكبير وبسيط للأعلى */
+            box-shadow: 0 8px 20px rgba(255, 133, 176, 0.4);
+        }
+
+        button:hover::after {
+            opacity: 1;
+            left: 30px;
+            top: 30px;
+        }
+
+        button:active {
+            transform: translateY(1px); /* حركة ضغط */
+            box-shadow: 0 3px 10px rgba(255, 133, 176, 0.2);
+        }
+
+        /* تنسيق خاص لزر "لا" في السؤال الثاني */
+        .btn-secondary {
+            background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+            color: #707070;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(145deg, #e0e0e0, #f0f0f0);
+            color: #505050;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* زر إعادة التشغيل */
+        .reset-btn {
+            background: linear-gradient(145deg, #d17a9c, #b06583); /* لون أغمق فخم */
+            margin-top: 25px;
+        }
+
+        .reset-btn:hover {
+            background: linear-gradient(145deg, #b06583, #d17a9c);
+        }
+
+        /* أنيميشن القلوب التي تتساقط في الخلفية في النهاية */
+        .heart-particle {
+            position: absolute;
+            color: rgba(255, 102, 178, 0.4);
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
     </style>
 </head>
 <body>
-<div class="card">
-    <img class="kitty-img" src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_art.png" alt="Hello Kitty">
+
+<div class="card" id="card">
+    <!-- حاوية الأيقونات المتحركة (من LottieFiles) -->
+    <div class="icon-container" id="icon-container">
+        <!-- أيقونة "قلب نابض" احترافية للسؤال الأول -->
+        <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_m4v2gxf0.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>
+    </div>
+    
+    <!-- النص / السؤال الرئيسي -->
     <h2 id="question">بتحبي معتز؟ 🎀</h2>
+    
+    <!-- الأزرار -->
     <div class="btn-container" id="buttons">
         <button onclick="nextStep(1)">إي أكيد! 💕</button>
     </div>
 </div>
+
 <script>
+    // الدالة المسؤولة عن تغيير المحتوى بناءً على الخطوة
     function nextStep(step) {
         const q = document.getElementById('question');
         const btns = document.getElementById('buttons');
+        const iconContainer = document.getElementById('icon-container');
+
+        // إعادة تشغيل أنيميشن الظهور للنص
+        q.style.animation = 'none';
+        q.offsetHeight; /* إعادة تعيين */
+        q.style.animation = 'fadeIn 0.5s ease forwards';
+
         if (step === 1) {
+            // الخطوة 2: السؤال الثاني
+            // تغيير الأيقونة إلى "تفكير/سؤال" ناعمة
+            iconContainer.innerHTML = `<lottie-player src="https://assets9.lottiefiles.com/packages/lf20_gh5wkyq8.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>`;
+            
             q.innerHTML = "دايقك شي مرة؟ 🥺";
-            btns.innerHTML = `<button class="no-btn" onclick="nextStep(2)">إي 💔</button><button onclick="nextStep(3)">لا أبداً ❤️</button>`;
+            btns.innerHTML = `
+                <button class="btn-secondary" onclick="nextStep(2)">إي 💔</button>
+                <button onclick="nextStep(3)">لا أبداً ❤️</button>
+            `;
         } else if (step === 2) {
+            // الخطوة 3 (إذا اختارت إي): رسالة اعتذار
+            // تغيير الأيقونة إلى "قلب مكسور يُعاد ترميمه" أو "اعتذار"
+            iconContainer.innerHTML = `<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_5j4f5h7b.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay></lottie-player>`;
+            
             q.innerHTML = "حقك عليي يا عيون معتز، ما في شي بالدنيا يسوى زعلك.. وحبك بقلبي كبير ومستحيل يتغير 💖✨";
-            btns.innerHTML = `<button class="reset-btn" onclick="location.reload()">إعادة 🎀</button>`;
+            // الزر للمتابعة لرؤية الهدية
+            btns.innerHTML = `<button class="reset-btn" onclick="nextStep(4)">المتابعة لرؤية الهدية 🎁</button>`;
         } else if (step === 3) {
+            // الخطوة 3 (إذا اختارت لا): رسالة حب
+            // تغيير الأيقونة إلى "احتفال قلوب" احترافية
+            iconContainer.innerHTML = `<lottie-player src="https://assets2.lottiefiles.com/packages/lf20_f7zv9r4l.json" background="transparent" speed="1" style="width: 120px; height: 120px;" loop autoplay></lottie-player>`;
+            
             q.innerHTML = "يا أجمل وعد بالدنيا.. عيونك البنية والهازل هدول هنن كل جمال العالم بالنسبة لمعتز، وبوجودك كل شي بالحياة بصير أحلى وأجمل 💕✨";
-            btns.innerHTML = `<button class="reset-btn" onclick="location.reload()">إعادة 🎀</button>`;
+            // الزر لفتح الهدية
+            btns.innerHTML = `<button class="reset-btn" onclick="nextStep(4)">افتحي الهدية 🎁</button>`;
+        } else if (step === 4) {
+            // الخطوة 4: خطوة الهدية المغلقة
+            // أيقونة "صندوق هدايا ينبض" احترافية
+            iconContainer.innerHTML = `<lottie-player src="https://assets5.lottiefiles.com/packages/lf20_k98vg7ec.json" background="transparent" speed="1" style="width: 120px; height: 120px;" loop autoplay></lottie-player>`;
+            
+            q.innerHTML = "في هدية صغيرة عم تستناكي.. اضغطي على الزر لتفتحيها! 🎀✨";
+            // زر لفتح الهدية نهائياً
+            btns.innerHTML = `<button onclick="nextStep(5)">افتحي الهدية الآن 🎉</button>`;
+        } else if (step === 5) {
+            // الخطوة 5 (النهائية): كشف الهدية
+            // أيقونة "صندوق هدايا مفتوح وتخرج منه قلوب"
+            iconContainer.innerHTML = `<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_p8bfn5to.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>`;
+            
+            q.innerHTML = "🎁 الهدية هي قلبي وروحي وكل أوقاتي، مع وعد مني أضل معك وبجنبك ونسعد بعض دايماً يا أحلى وعد بالدنيا! ❤️✨";
+            // زر لإعادة التجربة
+            btns.innerHTML = `<button class="reset-btn" onclick="location.reload()">إعادة من البداية 🎀</button>`;
+            
+            // بدء تساقط القلوب في الخلفية للتشويق الاحترافي
+            startHeartParticles();
+        }
+    }
+
+    // دالة إنشاء القلوب المتساقطة في الخلفية
+    function startHeartParticles() {
+        for (let i = 0; i < 25; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-particle');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's'; // بين 3 و 5 ثواني
+                document.body.appendChild(heart);
+                
+                // إزالة القلب بعد انتهاء الأنيميشن
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }, i * 150); // تأخير بسيط بين كل قلب
         }
     }
 </script>
+
 </body>
 </html>
