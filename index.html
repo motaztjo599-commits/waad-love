@@ -13,7 +13,7 @@
             --pink-bg: #ffe5ec;
             --pink-dark: #b5179e;
             --gold: #ffb703;
-            --white-glass: rgba(255, 255, 255, 0.88);
+            --white-glass: rgba(255, 255, 255, 0.92);
             --card-border: #ffb3c1;
         }
 
@@ -33,7 +33,7 @@
             position: relative;
         }
 
-        /* Canvas Particle & Sparkle Background */
+        /* Canvas Sparkles Background */
         #canvas-bg {
             position: fixed;
             top: 0; left: 0;
@@ -53,7 +53,7 @@
         }
 
         .badge-score {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border: 2px solid var(--pink-main);
             padding: 8px 18px;
             border-radius: 50px;
@@ -67,25 +67,6 @@
             gap: 8px;
         }
 
-        .sound-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid var(--pink-main);
-            color: var(--pink-dark);
-            padding: 8px 16px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 133, 161, 0.3);
-        }
-        .sound-btn:hover {
-            background: var(--pink-main);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        /* Container & Cards */
         .main-wrapper {
             position: relative;
             z-index: 10;
@@ -280,10 +261,38 @@
             box-shadow: 0 12px 30px rgba(247, 37, 133, 0.6);
         }
 
+        /* Music Player Box */
+        .music-box {
+            background: #ffffff;
+            border: 2px solid var(--pink-main);
+            border-radius: 25px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 5px 20px rgba(255, 133, 161, 0.3);
+        }
+
+        .music-info {
+            text-align: right;
+        }
+
+        .music-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--pink-dark);
+        }
+
+        .music-artist {
+            font-size: 12px;
+            color: #800f2f;
+        }
+
         /* Secret Letter */
         .letter-container {
             text-align: right;
-            max-height: 500px;
+            max-height: 480px;
             overflow-y: auto;
             padding: 25px 20px;
             background: #fff0f3;
@@ -348,12 +357,16 @@
 
 <canvas id="canvas-bg"></canvas>
 
+<!-- أغنية الموسيقى المستهدفة -->
+<audio id="love-song" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+</audio>
+
 <div class="top-nav">
     <div class="badge-score">
-        <span>🎀 مقياس الدلال والغيرة:</span>
-        <span id="love-score">100%</span>
+        <span>🎀 ملكة عرش معتز:</span>
+        <span id="love-score">وعد ✨</span>
     </div>
-    <button class="sound-btn" onclick="toggleAudio()">🔊 الصوت: تشغيل</button>
 </div>
 
 <div class="main-wrapper">
@@ -366,66 +379,8 @@
     const state = {
         currentStep: 0,
         unlockedBadges: [],
-        enteredPass: "",
-        soundEnabled: true
+        enteredPass: ""
     };
-
-    /* Web Audio API Synthesizer - Pink Soft Notes */
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    let audioCtx = null;
-
-    const frequencies = [
-        329.63, 349.23, 392.00, 440.00, 493.88, 523.25, 587.33, 659.25,
-        698.46, 783.99, 880.00, 987.77, 1046.50, 1174.66, 1318.51,
-        1396.91, 1567.98, 1760.00, 1975.53, 2093.00
-    ];
-
-    function playSound(type, stepIndex) {
-        if (!state.soundEnabled) return;
-        try {
-            if (!audioCtx) audioCtx = new AudioCtx();
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-
-            const now = audioCtx.currentTime;
-
-            if (type === 'pink_tune') {
-                const freq = frequencies[stepIndex % 20] || 523.25;
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(freq, now);
-                osc.frequency.exponentialRampToValueAtTime(freq * 1.25, now + 0.2);
-                gain.gain.setValueAtTime(0.15, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
-                osc.start(now);
-                osc.stop(now + 0.3);
-            } else if (type === 'click') {
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(500, now);
-                gain.gain.setValueAtTime(0.1, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
-                osc.start(now);
-                osc.stop(now + 0.08);
-            } else if (type === 'unlock') {
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(400, now);
-                osc.frequency.linearRampToValueAtTime(900, now + 0.35);
-                gain.gain.setValueAtTime(0.2, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
-                osc.start(now);
-                osc.stop(now + 0.35);
-            }
-        } catch(e) { console.log(e); }
-    }
-
-    function toggleAudio() {
-        state.soundEnabled = !state.soundEnabled;
-        const btn = document.querySelector('.sound-btn');
-        btn.innerText = state.soundEnabled ? "🔊 الصوت: تشغيل" : "🔇 الصوت: كتم";
-    }
 
     /* Floating Pink Particles */
     const canvas = document.getElementById('canvas-bg');
@@ -493,9 +448,9 @@
     const stagesData = [
         {
             id: 'welcome',
-            tag: 'عالم هيلو كيتي الملكي 🎀',
+            tag: 'عالم هيلو كيتي الوردي 🎀',
             title: 'أهلاً بكِ يا أميرة عرش معتز.. وعد! 🌸💖',
-            desc: 'صُمم هذا الموقع الكيوت خصيصاً لكِ بروح هيلو كيتي والألوان الوردية، ويحتوي على 20 مرحلة تفاعلية، مؤثرات نغمية ناعمة، وأوسمة ملكية، ورسالة سرية مخبأة!',
+            desc: 'صُمم هذا الموقع الكيوت خصيصاً لكِ بروح هيلو كيتي والألوان الوردية، ويحتوي على 20 مرحلة تفاعلية، أوسمة ملكية، وفي النهاية هدية مع أغنية حب خاصة لكِ!',
             btnText: 'افتحي الخزينة الوردية 🌸',
             action: () => renderStage(1)
         },
@@ -680,9 +635,9 @@
         {
             id: 'q20',
             tag: 'المحطة 20 والأخيرة | المفتاح الوردي 🎁',
-            title: 'جاهزة تفتحي الوثيقة السرية الكبرى ورسالة العشق والجنون الجريئة المطلقة؟',
+            title: 'جاهزة تفتحي الوثيقة السرية الكبرى والأغنية الخاصة المخبأة لكِ؟',
             options: [
-                { text: 'إي جاهزة لأقرأ أعظم وأجرأ رسالة عشق بالكون! 🔥💋', feedback: 'افتحي قلبكِ وروحكِ لقراءة نيران العشق المشتعلة! 📜', badge: 'مفتاح الخزينة الوردية 🗝️' }
+                { text: 'إي جاهزة لأستلم الهدية وسماع الأغنية والرسالة! 🎵💖', feedback: 'استعدي لسماع لحن حبنا وقراءة أعظم كلمات العشق! 📜', badge: 'مفتاح الخزينة الوردية 🗝️' }
             ]
         }
     ];
@@ -699,7 +654,7 @@
                 <br><div class="title-tag">${d.tag}</div>
                 <h1 class="main-heading">${d.title}</h1>
                 <p class="sub-desc">${d.desc}</p>
-                <button class="btn-action" onclick="playSound('click'); stagesData[0].action();">${d.btnText}</button>
+                <button class="btn-action" onclick="stagesData[0].action();">${d.btnText}</button>
             `;
             return;
         }
@@ -724,8 +679,6 @@
             const d = stagesData[index];
             const progress = Math.round(((index - 1) / (stagesData.length - 2)) * 100);
 
-            playSound('pink_tune', index - 2);
-
             card.innerHTML = `
                 <div class="progress-box"><div class="progress-fill" style="width: ${progress}%;"></div></div>
                 <div class="title-tag">${d.tag}</div>
@@ -739,20 +692,18 @@
                     `).join('')}
                 </div>
                 <div class="feedback-box" id="feedback"></div>
-                <button class="btn-action" id="next-btn" style="display:none;" onclick="playSound('click'); spawnFloatingEmoji(); renderStage(${index + 1});">المحطة التالية 🌸🚀</button>
+                <button class="btn-action" id="next-btn" style="display:none;" onclick="spawnFloatingEmoji(); renderStage(${index + 1});">المحطة التالية 🌸🚀</button>
             `;
             return;
         }
 
         if (index === stagesData.length) {
-            playSound('unlock');
             spawnFloatingEmoji('👑');
             renderFinalLetter();
         }
     }
 
     function pressKey(val) {
-        playSound('click');
         const box = document.getElementById('pass-box');
         if (val === 'C') {
             state.enteredPass = "";
@@ -762,7 +713,6 @@
         box.innerText = state.enteredPass.padEnd(4, '-');
 
         if (state.enteredPass === "2707" || state.enteredPass === "0608") {
-            playSound('unlock');
             box.style.borderColor = "#2a9d8f";
             box.style.color = "#2a9d8f";
             setTimeout(() => {
@@ -779,7 +729,6 @@
     }
 
     function selectOption(stageIdx, optIdx) {
-        playSound('click');
         const stage = stagesData[stageIdx];
         const opt = stage.options[optIdx];
 
@@ -800,13 +749,39 @@
         document.getElementById('next-btn').style.display = 'inline-block';
     }
 
+    function toggleMusic() {
+        const song = document.getElementById('love-song');
+        const btn = document.getElementById('music-toggle-btn');
+        if (song.paused) {
+            song.play();
+            btn.innerText = "⏸️ إيقاف الموسيقى";
+        } else {
+            song.pause();
+            btn.innerText = "▶️ تشغيل الموسيقى";
+        }
+    }
+
     function renderFinalLetter() {
+        // تشغيل الموسيقى عند الوصول للهدية فوراً
+        const song = document.getElementById('love-song');
+        song.play().catch(e => console.log("المتصفح يتطلب تفاعل لتشغيل الموسيقى"));
+
         const card = document.getElementById('main-card');
         card.innerHTML = `
-            <div class="kitty-header-icon">👑🎀💋</div>
-            <br><div class="title-tag">وثيقة العشق الكبرى والعهد الأبدي 👑🔥</div>
-            <h1 class="main-heading">ميثاق الهوس والجنون المطلق لـ "وعد" 🖤</h1>
-            <p class="sub-desc">تم فتح السيرفر الوردي بالكامل! إليكِ الرسالة السرية الأطول والأكثر جراءة وعمقاً بقلب معتز:</p>
+            <div class="kitty-header-icon">👑🎀🎵</div>
+            <br><div class="title-tag">هدية العشق والموسيقى الخاصة 🎁✨</div>
+            <h1 class="main-heading">What If I Say I Know You Know 🎶💖</h1>
+            
+            <!-- مشغل الموسيقى الوردي -->
+            <div class="music-box">
+                <div class="music-info">
+                    <div class="music-title">What If I Say I Know You Know 🎶</div>
+                    <div class="music-artist">أغنيتنا الخاصة - معتز & وعد 💖</div>
+                </div>
+                <button class="btn-action" id="music-toggle-btn" style="margin:0; padding:10px 20px; font-size:13px;" onclick="toggleMusic()">⏸️ إيقاف الموسيقى</button>
+            </div>
+
+            <p class="sub-desc">إليكِ الرسالة السرية الكبرى والأكثر عمقاً بقلب معتز:</p>
 
             <div class="letter-container">
                 <div class="letter-section-title">✨ المقدمة والافتتاحية العاصفة</div>
