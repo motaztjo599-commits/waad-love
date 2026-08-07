@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مملكة العشق والجنون | وعد & معتز 🖤🔥🌸</title>
+    <title>مملكة العشق والعهد الأسطوري | وعد & معتز 🖤🔥🌸</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800;900&family=Amiri:ital,wght@0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800;900&family=Amiri:ital,wght@0,700;1,400&family=Reem+Kufi:wght@700&display=swap');
 
         :root {
             --primary: #ff0055;
             --secondary: #ff66b2;
             --accent-gold: #ffd700;
-            --bg-dark: #0a0105;
-            --card-bg: rgba(22, 5, 14, 0.88);
-            --border-glow: rgba(255, 0, 85, 0.4);
+            --bg-dark: #070104;
+            --card-bg: rgba(20, 4, 13, 0.88);
+            --border-glow: rgba(255, 0, 85, 0.5);
             --text-light: #fff0f5;
             --text-gold: #ffe680;
         }
@@ -35,7 +35,7 @@
             position: relative;
         }
 
-        /* Canvas Particle Background */
+        /* Dynamic Canvas Particle & Sparkle Background */
         #canvas-bg {
             position: fixed;
             top: 0;
@@ -46,7 +46,7 @@
             pointer-events: none;
         }
 
-        /* Audio Indicator & Controls */
+        /* Top Bar Indicator */
         .top-nav {
             position: fixed;
             top: 15px;
@@ -59,15 +59,15 @@
         }
 
         .badge-score {
-            background: rgba(255, 0, 85, 0.2);
+            background: rgba(255, 0, 85, 0.25);
             border: 1px solid var(--primary);
             padding: 8px 18px;
             border-radius: 50px;
             font-size: 14px;
             font-weight: bold;
             color: var(--accent-gold);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -75,18 +75,20 @@
 
         .sound-btn {
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: white;
-            padding: 8px 15px;
+            padding: 8px 16px;
             border-radius: 30px;
             cursor: pointer;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             font-size: 13px;
+            font-weight: bold;
             transition: all 0.3s;
         }
         .sound-btn:hover {
             background: var(--primary);
-            box-shadow: 0 0 15px var(--primary);
+            box-shadow: 0 0 20px var(--primary);
+            transform: scale(1.05);
         }
 
         /* Main Container */
@@ -97,42 +99,42 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px 15px;
+            padding: 25px 15px;
         }
 
         .app-card {
             background: var(--card-bg);
             border: 1.5px solid var(--border-glow);
-            border-radius: 35px;
-            padding: 40px 25px;
-            max-width: 750px;
+            border-radius: 40px;
+            padding: 45px 28px;
+            max-width: 780px;
             width: 100%;
-            backdrop-filter: blur(25px);
-            box-shadow: 0 0 60px rgba(255, 0, 85, 0.25), inset 0 0 30px rgba(255, 102, 178, 0.1);
+            backdrop-filter: blur(30px);
+            box-shadow: 0 0 70px rgba(255, 0, 85, 0.3), inset 0 0 35px rgba(255, 102, 178, 0.15);
             text-align: center;
             position: relative;
             overflow: hidden;
             transition: all 0.5s ease;
         }
 
-        /* Header Elements */
+        /* Animations & Header */
         .title-tag {
             display: inline-block;
             background: linear-gradient(135deg, #ff0055, #990033);
             color: white;
-            padding: 6px 20px;
+            padding: 7px 22px;
             border-radius: 30px;
             font-size: 13px;
             font-weight: 800;
             letter-spacing: 1px;
             margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
-            animation: glowPulse 2s infinite alternate;
+            box-shadow: 0 0 25px rgba(255, 0, 85, 0.6);
+            animation: pulseGlow 2s infinite alternate;
         }
 
-        @keyframes glowPulse {
-            0% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.4); }
-            100% { box-shadow: 0 0 25px rgba(255, 0, 85, 0.9), 0 0 40px rgba(255, 102, 178, 0.6); }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.5); transform: scale(0.98); }
+            100% { box-shadow: 0 0 30px rgba(255, 0, 85, 0.9), 0 0 50px rgba(255, 102, 178, 0.7); transform: scale(1.02); }
         }
 
         .main-heading {
@@ -141,7 +143,7 @@
             color: #ffffff;
             margin-bottom: 15px;
             line-height: 1.5;
-            text-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+            text-shadow: 0 0 20px rgba(255, 0, 85, 0.7);
         }
 
         .sub-desc {
@@ -155,12 +157,12 @@
         /* Progress Bar */
         .progress-box {
             width: 100%;
-            height: 10px;
+            height: 12px;
             background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             margin-bottom: 30px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .progress-fill {
@@ -169,7 +171,7 @@
             background: linear-gradient(90deg, #ff0055, #ff66b2, #ffd700);
             border-radius: 20px;
             transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 15px #ff0055;
+            box-shadow: 0 0 20px #ff0055;
         }
 
         /* Interactive Options Grid */
@@ -182,9 +184,9 @@
 
         .option-card {
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.14);
             padding: 18px 22px;
-            border-radius: 20px;
+            border-radius: 22px;
             text-align: right;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -196,16 +198,16 @@
         }
 
         .option-card:hover {
-            background: rgba(255, 0, 85, 0.18);
+            background: rgba(255, 0, 85, 0.22);
             border-color: var(--primary);
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 10px 25px rgba(255, 0, 85, 0.3);
+            transform: translateY(-3px) scale(1.015);
+            box-shadow: 0 10px 30px rgba(255, 0, 85, 0.35);
         }
 
         .option-card.selected {
-            background: linear-gradient(135deg, rgba(255, 0, 85, 0.35), rgba(153, 0, 51, 0.5));
+            background: linear-gradient(135deg, rgba(255, 0, 85, 0.4), rgba(153, 0, 51, 0.6));
             border-color: var(--accent-gold);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
         }
 
         .option-text {
@@ -216,20 +218,20 @@
         }
 
         .option-icon {
-            font-size: 20px;
+            font-size: 22px;
             margin-left: 12px;
         }
 
         /* Dynamic Feedback Popup */
         .feedback-box {
-            background: rgba(255, 215, 0, 0.08);
+            background: rgba(255, 215, 0, 0.09);
             border: 1px dashed var(--accent-gold);
-            border-radius: 18px;
-            padding: 15px;
+            border-radius: 20px;
+            padding: 16px;
             margin-top: 15px;
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--text-gold);
-            line-height: 1.7;
+            line-height: 1.8;
             display: none;
             animation: fadeIn 0.4s ease;
         }
@@ -244,35 +246,36 @@
         }
 
         .key-btn {
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             color: white;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             padding: 18px;
-            border-radius: 18px;
+            border-radius: 20px;
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .key-btn:active {
-            transform: scale(0.92);
+            transform: scale(0.9);
             background: var(--primary);
         }
 
         .pass-display {
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--primary);
-            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.65);
+            border: 1.5px solid var(--primary);
+            border-radius: 18px;
             padding: 15px;
-            font-size: 24px;
-            letter-spacing: 8px;
+            font-size: 26px;
+            letter-spacing: 10px;
             color: var(--accent-gold);
             margin-bottom: 20px;
             min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
         }
 
         /* Action Buttons */
@@ -280,20 +283,20 @@
             background: linear-gradient(135deg, #ff0055, #cc0052);
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 16px 45px;
             border-radius: 50px;
-            font-size: 16px;
+            font-size: 16.5px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(255, 0, 85, 0.5);
-            margin-top: 15px;
+            box-shadow: 0 8px 30px rgba(255, 0, 85, 0.55);
+            margin-top: 18px;
             display: inline-block;
         }
 
         .btn-action:hover {
-            transform: scale(1.06);
-            box-shadow: 0 12px 35px rgba(255, 0, 85, 0.8);
+            transform: scale(1.07);
+            box-shadow: 0 12px 40px rgba(255, 0, 85, 0.85);
             background: linear-gradient(135deg, #ff3385, #ff0055);
         }
 
@@ -303,9 +306,9 @@
             max-height: 520px;
             overflow-y: auto;
             padding: 25px 20px;
-            background: rgba(10, 2, 7, 0.85);
+            background: rgba(10, 2, 7, 0.88);
             border-radius: 25px;
-            border: 1px solid rgba(255, 0, 85, 0.4);
+            border: 1px solid rgba(255, 0, 85, 0.45);
             line-height: 2.3;
             font-size: 16px;
             color: #ffe6f0;
@@ -348,7 +351,7 @@
         }
 
         .letter-highlight {
-            background: rgba(255, 0, 85, 0.25);
+            background: rgba(255, 0, 85, 0.28);
             padding: 2px 8px;
             border-radius: 6px;
             color: #ffffff;
@@ -392,16 +395,16 @@
             pointer-events: none;
             z-index: 999;
             animation: floatUp 3.5s ease-out forwards;
-            font-size: 24px;
+            font-size: 26px;
         }
 
         @keyframes floatUp {
             0% { opacity: 1; transform: translateY(0) scale(0.5) rotate(0deg); }
-            100% { opacity: 0; transform: translateY(-80vh) scale(1.5) rotate(45deg); }
+            100% { opacity: 0; transform: translateY(-85vh) scale(1.6) rotate(45deg); }
         }
 
         @media (max-width: 600px) {
-            .app-card { padding: 25px 15px; }
+            .app-card { padding: 28px 16px; }
             .main-heading { font-size: 20px; }
             .sub-desc { font-size: 14px; }
             .letter-container { font-size: 14.5px; }
@@ -423,26 +426,31 @@
 
 <div class="main-wrapper">
     <div class="app-card fade-enter" id="main-card">
-        <!-- Content will be injected dynamically via JS -->
+        <!-- Content injects dynamically -->
     </div>
 </div>
 
 <script>
-    /* Global Application State */
+    /* Global State */
     const state = {
         currentStep: 0,
-        score: 100,
         unlockedBadges: [],
         enteredPass: "",
-        soundEnabled: true,
-        userChoices: {}
+        soundEnabled: true
     };
 
-    /* Web Audio API Synthesizer for Immersive Sound Effects */
+    /* Web Audio API Synthesizer - 20 Unique Harmonics */
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
 
-    function playSound(type) {
+    // 20 Unique Frequencies for 20 Questions
+    const questionFrequencies = [
+        261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25,
+        587.33, 659.25, 698.46, 783.99, 880.00, 987.77, 1046.50,
+        1174.66, 1318.51, 1396.91, 1567.98, 1760.00
+    ];
+
+    function playSound(type, stepIndex) {
         if (!state.soundEnabled) return;
         try {
             if (!audioCtx) audioCtx = new AudioCtx();
@@ -455,35 +463,43 @@
 
             const now = audioCtx.currentTime;
 
-            if (type === 'click') {
+            if (type === 'question_tune') {
+                const freq = questionFrequencies[stepIndex % 20] || 440;
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(400, now);
-                osc.frequency.exponentialRampToValueAtTime(800, now + 0.1);
+                osc.frequency.setValueAtTime(freq, now);
+                osc.frequency.exponentialRampToValueAtTime(freq * 1.5, now + 0.25);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+                osc.start(now);
+                osc.stop(now + 0.35);
+            } else if (type === 'click') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(450, now);
                 gain.gain.setValueAtTime(0.15, now);
                 gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
                 osc.start(now);
                 osc.stop(now + 0.1);
             } else if (type === 'success') {
                 osc.type = 'triangle';
-                osc.frequency.setValueAtTime(523.25, now); // C5
-                osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
-                osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
-                osc.frequency.setValueAtTime(1046.50, now + 0.3); // C6
-                gain.gain.setValueAtTime(0.2, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+                osc.frequency.setValueAtTime(523.25, now);
+                osc.frequency.setValueAtTime(659.25, now + 0.12);
+                osc.frequency.setValueAtTime(783.99, now + 0.24);
+                osc.frequency.setValueAtTime(1046.50, now + 0.36);
+                gain.gain.setValueAtTime(0.25, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
                 osc.start(now);
-                osc.stop(now + 0.5);
+                osc.stop(now + 0.6);
             } else if (type === 'unlock') {
                 osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(300, now);
-                osc.frequency.linearRampToValueAtTime(900, now + 0.4);
+                osc.frequency.setValueAtTime(320, now);
+                osc.frequency.linearRampToValueAtTime(880, now + 0.4);
                 gain.gain.setValueAtTime(0.2, now);
                 gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
                 osc.start(now);
                 osc.stop(now + 0.4);
             } else if (type === 'key') {
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(600, now);
+                osc.frequency.setValueAtTime(550, now);
                 gain.gain.setValueAtTime(0.1, now);
                 gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
                 osc.start(now);
@@ -498,7 +514,7 @@
         btn.innerText = state.soundEnabled ? "🔊 المؤثرات: تشغيل" : "🔇 المؤثرات: كتم";
     }
 
-    /* Floating Particles System */
+    /* Floating Canvas Sparkles & Particle System */
     const canvas = document.getElementById('canvas-bg');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -514,11 +530,11 @@
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speedX = (Math.random() - 0.5) * 0.8;
-            this.speedY = (Math.random() - 0.5) * 0.8;
-            this.color = ['#ff0055', '#ff66b2', '#ffd700', '#ffffff'][Math.floor(Math.random() * 4)];
-            this.alpha = Math.random() * 0.7 + 0.3;
+            this.size = Math.random() * 3.5 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.9;
+            this.speedY = (Math.random() - 0.5) * 0.9;
+            this.color = ['#ff0055', '#ff66b2', '#ffd700', '#ffffff', '#ff99c8'][Math.floor(Math.random() * 5)];
+            this.alpha = Math.random() * 0.8 + 0.2;
         }
         update() {
             this.x += this.speedX;
@@ -530,7 +546,7 @@
             ctx.save();
             ctx.globalAlpha = this.alpha;
             ctx.fillStyle = this.color;
-            ctx.shadowBlur = 10;
+            ctx.shadowBlur = 12;
             ctx.shadowColor = this.color;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -539,7 +555,7 @@
         }
     }
 
-    for (let i = 0; i < 70; i++) particles.push(new Particle());
+    for (let i = 0; i < 85; i++) particles.push(new Particle());
 
     function animateParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -549,26 +565,26 @@
     animateParticles();
 
     function spawnFloatingEmoji(emoji) {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 6; i++) {
             setTimeout(() => {
                 const el = document.createElement('div');
                 el.className = 'floating-heart';
-                el.innerText = emoji || ['🔥', '🖤', '👑', '✨', '💋', '🍯'][Math.floor(Math.random() * 6)];
+                el.innerText = emoji || ['🔥', '🖤', '👑', '✨', '💋', '🍯', '🌸'][Math.floor(Math.random() * 7)];
                 el.style.left = (Math.random() * 80 + 10) + 'vw';
                 el.style.top = '90vh';
                 document.body.appendChild(el);
                 setTimeout(() => el.remove(), 3500);
-            }, i * 150);
+            }, i * 140);
         }
     }
 
-    /* Detailed Interactive Steps & Content Engine */
+    /* 20 Detailed Questions Data Engine */
     const stagesData = [
         {
             id: 'welcome',
             tag: 'بوابة العشق والتملك المطلق 👑',
             title: 'أهلاً بكِ يا ملكة عرش معتز.. وعد! 🖤🔥',
-            desc: 'هذا الموقع ليس مجرد صفحة عادية، بل هو سيرفر معقد مصمم خصيصاً لكِ، يحتوي على أسرار خفية، وااختبارات لعمق العشق والغيرة، وميثاق أبدي لا يُفتح إلا لمن تملك المفتاح الخاص!',
+            desc: 'هذا الموقع هو سيرفر تفاعلي أسطوري ضخم يحتوي على 20 مرحلة من الأسئلة، المؤثرات الصوتية النغمية الخاصة، الأوسمة الملكية، والوثيقة السرية المخبأة خلف قفل الأمان!',
             btnText: 'الدخول إلى خزينة أسرار العشق 🔥',
             action: () => renderStage(1)
         },
@@ -576,156 +592,197 @@
             id: 'lock_screen',
             tag: 'نظام الحماية والأمان 🔒',
             title: 'فك قفل السيرفر السري',
-            desc: 'للدخول إلى الخزينة، يجب إدخال رمزي السرية الخاصين بحبنا (تاريخ لقائنا الأول في المول: 2707 - أو تاريخ الشعلة الخالدة: 0608):',
+            desc: 'للدخول إلى الخزينة، ادخلي رمز تاريخ لقائنا الأول بالمول (2707) أو تاريخ الشعلة (0608):',
             type: 'keypad'
         },
         {
             id: 'q1',
-            tag: 'المحطة 1 من 15 | الذكرى الأولى 🌟',
-            title: 'في 27 / 7 / 2023 في المول بـ حلب، لما التقوا عيوننا أول مرة.. شو كان الشعور الداخلي عند وعد؟',
+            tag: 'المحطة 1 من 20 | اللقاء الأول 🌟',
+            title: 'في 27 / 7 / 2023 بالمول بـ حلب، لما التقت أعيننا لأول مرة.. شو انكتب بقلب وعد؟',
             options: [
-                { text: 'شعرت بكهرباء غريبة وانخطف قلبي فوراً لمعتز! ⚡', feedback: 'صحيح! ومعتز وقتها انسرق عقله وكيانه بأول لمحة لعيونك البنية والعسلي الساحرة! 🔥', scoreAdd: 10, badge: 'شعلة اللقاء الأول 💍' },
-                { text: 'ارتبكت وخجلت من نظرته الحادة والمليئة بالهوس! 🙈', feedback: 'وهذا الخجل هو اللي خلّى معتز يقطع عهد على حاله إنك تكوني ملكه وحدك! ✨', scoreAdd: 10, badge: 'سحر الخجل الملكي 🌸' },
-                { text: 'عرفت إن هذا الشخص رح يغير مجرى حياتي للأبد! 👑', feedback: 'وكان إحساسك بمكانه، معتز صار درعك وسندك وعاشقك الأول! 🖤', scoreAdd: 10, badge: 'بصيرة العشق 🔮' }
+                { text: 'شعرت بكهرباء غريبة وانخطف قلبي فوراً لمعتز! ⚡', feedback: 'ومعتز من وقتها انسرق عقله بأول لمحة لعيونك البنية والعسلي الساحرة! 🔥', badge: 'شعلة اللقاء الأول 💍' },
+                { text: 'ارتبكت وخجلت من نظرة معتز المليانة هوس! 🙈', feedback: 'وهذا الخجل الملكي خلى معتز يقطع عهد إنك تكوني ملكه وحدك! ✨', badge: 'سحر الخجل الملكي 🌸' }
             ]
         },
         {
             id: 'q2',
-            tag: 'المحطة 2 من 15 | نيران الغيرة 🔥',
-            title: 'لما معتز بيغار عليكِ حتى من النسمة أو من أي نظرة عابرة لعيونك.. شو بتحسي؟',
+            tag: 'المحطة 2 من 20 | نيران الغيرة 🔥',
+            title: 'لما معتز بيغار عليكِ من كل النسمات ومن أي نظر عابر.. شو بتحسي؟',
             options: [
-                { text: 'بحس بإني الملكة الوحيدة بقلبه وغيرته بتشعل أنوثتي! 💋', feedback: 'غيرتي عليكِ نار حارقة يا وعد، لأنك كنز مقدس ما بيحق لبشر يلمحه غيري! 🔥', scoreAdd: 10, badge: 'غيرة الملوك 👑' },
-                { text: 'بحب جنونه وتملكه فيني لأنها دليل عشق استثنائي! 🖤', feedback: 'تتملكي روحي وعقلي وأنا بتملك كل تفصيلة فيكي لأخر نفس! ⚡', scoreAdd: 10, badge: 'التملك المطلق 🔗' },
-                { text: 'بفتخر إن عندي رجل بيحميني وبيغار عليّ من العالم كله! 🛡️', feedback: 'سيف ودرع وسند إلك طول العمر يا عمري وأميرتي! ❤️', scoreAdd: 10, badge: 'الدرع الحصين 🛡️' }
+                { text: 'بحس بإني الملكة الوحيدة بقلبه وغيرته بتشعل أنوثتي! 💋', feedback: 'غيرتي عليكِ نار حارقة يا وعد، لأنك كنز مقدس ما بيحق لبشر يلمحه غيري! 🔥', badge: 'غيرة الملوك 👑' },
+                { text: 'بحب جنونه وتملكه فيني لأنها دليل عشق استثنائي! 🖤', feedback: 'تتملكي روحي وعقلي وأنا بتملك كل تفصيلة فيكي لأخر نفس! ⚡', badge: 'التملك المطلق 🔗' }
             ]
         },
         {
             id: 'q3',
-            tag: 'المحطة 3 من 15 | الجمال والفتنة ✨',
+            tag: 'المحطة 3 من 20 | الجمال الملكي ✨',
             title: 'شو أكتر تفصيلة بمعتز بتخلي وعد تذوب عشقاً وتفقد صوابها؟',
             options: [
-                { text: 'عيونه الخضراء اللامعة ونظرته المليانة هوس وشغف! 👁️', feedback: 'عيوني الخضراء ما بتشوف بهالدنيا كلها غير سحر عيونك البنية والعسلي! 💚', scoreAdd: 10, badge: 'سحر العيون الخضراء 🍏' },
-                { text: 'طوله وهيبته وشعره الكيرلي ورجولته العالية! 💇‍♂️', feedback: 'كل هالهيبة والقوة بتخضع قدام ابتسامة وحدة من شفايفك يا وعد! 👑', scoreAdd: 10, badge: 'الهيبة والجمال 💎' },
-                { text: 'حنانه الحار، اهتمامه التفصيلي، وطريقة غزله الصريحة! 🔥', feedback: 'أنتِ طفلتي المدللة وأميرتي اللي بدلعها وبحميها بعيوني! 💋', scoreAdd: 10, badge: 'الدلال الأبدي 🧸' }
+                { text: 'عيونه الخضراء اللامعة ونظرته المليانة هوس وشغف! 👁️', feedback: 'عيوني الخضراء ما بتشوف بهالدنيا كلها غير سحر عيونك البنية والعسلي! 💚', badge: 'سحر العيون الخضراء 🍏' },
+                { text: 'طوله وهيبته وشعره الكيرلي ورجولته العالية! 💇‍♂️', feedback: 'كل هالهيبة والقوة بتخضع قدام ابتسامة وحدة من شفايفك يا وعد! 👑', badge: 'الهيبة والجمال 💎' }
             ]
         },
         {
             id: 'q4',
-            tag: 'المحطة 4 من 15 | شعلة 6 أغسطس 📜',
+            tag: 'المحطة 4 من 20 | تاريخ الشعلة 📜',
             title: 'تاريخ 6 / 8 / 2023 بالنسبة لـ معتز ووعد بيمثل شو؟',
             options: [
-                { text: 'انفجار شعلة العشق الأبدي والارتباط الروحي المكتوب! 🔥', feedback: 'تاريخ مقدس حفر بقلبي وعقلي، اليوم اللي أعلنت فيه إنك أكسجيني! 🌹', scoreAdd: 10, badge: 'العهد الأبدي 6/8 ♾️' },
-                { text: 'ولادة جديدة لقلبين صاروا روح وحدة ببدنين! 💞', feedback: 'صرنا نبض واحد، لو توقف نبضك يتوقف معتز فوراً! 💓', scoreAdd: 10, badge: 'الروح الواحدة 🕊️' },
-                { text: 'بدء أعظم حكاية حب وجنون شهدتها حلب والكون! 🏛️', feedback: 'حكايتنا رح يكتبها التاريخ بأحرف من ذهب ونار! ✨', scoreAdd: 10, badge: 'الملحمة الحلبية 🏰' }
+                { text: 'انفجار شعلة العشق الأبدي والارتباط الروحي المكتوب! 🔥', feedback: 'تاريخ مقدس حفر بقلبي وعقلي، اليوم اللي أعلنت فيه إنك أكسجيني! 🌹', badge: 'العهد الأبدي 6/8 ♾️' },
+                { text: 'بدء أعظم حكاية حب وجنون شهدتها حلب والكون! 🏛️', feedback: 'حكايتنا رح يكتبها التاريخ بأحرف من ذهب ونار! ✨', badge: 'الملحمة الحلبية 🏰' }
             ]
         },
         {
             id: 'q5',
-            tag: 'المحطة 5 من 15 | الموهبة والإبداع 🎨',
-            title: 'وعد المبدعة الرسامة.. لما بترسمي لوحاتك البديعة، بتعرفي معتز شو بشوف فيكي؟',
+            tag: 'المحطة 5 من 20 | أنامل الرسامة 🎨',
+            title: 'وعد المبدعة الرسامة.. لما بترسمي لوحاتك البديعة، شو بيخطر ببال معتز؟',
             options: [
-                { text: 'بشوف إن إيديكي المبدعتين هنن أعظم لوحة فنية خلقها ربنا! 🎨', feedback: 'موهبتك بالرسم بتخليني أعشق دقة أصابعك وسحر روحك المبدعة! ✨', scoreAdd: 10, badge: 'أنامل من ذهب 🖌️' },
-                { text: 'بشوف إن عيونك البنية والعسلي هنن مصدر إلهام الفن كله! 👁️', feedback: 'كل لوحة بترسميها هي انعكاس لجمال روحك العذبة يا فناني الوحيدة! 💖', scoreAdd: 10, badge: 'إلهام العشق 🎭' }
+                { text: 'بشوف إن إيديكي المبدعتين هنن أعظم لوحة فنية بالكون! 🎨', feedback: 'موهبتك بالرسم بتخليني أعشق دقة أصابعك وسحر روحك المبدعة! ✨', badge: 'أنامل من ذهب 🖌️' },
+                { text: 'بشوف إن عيونك البنية والعسلي هنن مصدر إلهام الفن كله! 👁️', feedback: 'كل لوحة بترسميها هي انعكاس لجمال روحك العذبة يا فناني الوحيدة! 💖', badge: 'إلهام العشق 🎭' }
             ]
         },
         {
             id: 'q6',
-            tag: 'المحطة 6 من 15 | نجاح البكالوريا 🎓',
-            title: 'بعد ما تجاوزتي البكالوريا بنجاح وتفوق.. شو بيعني هذا لمعتز؟',
+            tag: 'المحطة 6 من 20 | ذكاء البكالوريا 🎓',
+            title: 'تفوقك ونجاحك العظيم بالبكالوريا.. شو ترك بقلب معتز؟',
             options: [
-                { text: 'فخر واعتزاز كبير بأميرته الذكية والمجتهدة! 🌟', feedback: 'رفعتي رأسي وأثبتِ إنك مو بس أجمل بنوتة، بل أذكاهن وأقواهن! 👑', scoreAdd: 10, badge: 'التفوق والذكاء 🎓' },
-                { text: 'بداية خطوة جديدة لنبني مستقبلنا العظيم سوا! 🚀', feedback: 'إي نعم! سوا بالجامعة وبكل خطوات العمر خطوة بخطوة! 💍', scoreAdd: 10, badge: 'شريكة العمر 🚀' }
+                { text: 'فخر واعتزاز كبير بأميرته الذكية والمجتهدة! 🌟', feedback: 'رفعتي رأسي وأثبتِ إنك مو بس أجمل بنوتة، بل أذكاهن وأقواهن! 👑', badge: 'التفوق والذكاء 🎓' },
+                { text: 'خطوة نحو المستقبل والجامعة لنبني حلمنا سوية! 🚀', feedback: 'سوا بالجامعة وبكل خطوات العمر خطوة بخطوة يا روح معتز! 💍', badge: 'شريكة العمر 🚀' }
             ]
         },
         {
             id: 'q7',
-            tag: 'المحطة 7 من 15 | الجرأة والشغف 🔥',
-            title: 'لو كنا بمكان لوحدنا بعيد عن عيون العالم كله.. شو أول تصرف بيبدر من وعد؟',
+            tag: 'المحطة 7 من 20 | الجرأة والشغف 🔥',
+            title: 'لو كنا بمكان لوحدنا بعيد عن عيون العالم.. شو بتعمل وعد؟',
             options: [
-                { text: 'بترمى بحضنك الدافئ وبستمد منه الأمان والحرارة! 🔥', feedback: 'وحضني رح يضمك بقوة ودفء ينسيكي كل تعب الدنيا وهمومها! 💋', scoreAdd: 10, badge: 'الحضن الدافئ 🫂' },
-                { text: 'بطلع بجمال عيونك الخضراء وبهمسلك بقديش بعشقك! 👁️', feedback: 'ونظرتك هي رح تخلي قلبي ينبض بـ 200 دقة بالدقيقة من الشغف! ⚡', scoreAdd: 10, badge: 'همس الشغف 💋' }
+                { text: 'بترمى بحضنك الدافئ وبستمد منه الأمان والحرارة! 🔥', feedback: 'وحضني رح يضمك بقوة ودفء ينسيكي كل تعب الدنيا وهمومها! 💋', badge: 'الحضن الدافئ 🫂' },
+                { text: 'بطلع بجمال عيونك الخضراء وبهمسلك بقديش بعشقك! 👁️', feedback: 'ونظرتك هي رح تخلي قلبي ينبض بـ 200 دقة بالدقيقة من الشغف! ⚡', badge: 'همس الشغف 💋' }
             ]
         },
         {
             id: 'q8',
-            tag: 'المحطة 8 من 15 | الأمان والسلام 🕊️',
-            title: 'صوت معتز وكلماته لما بتكوني متضايقة أو خايفة، شو بيعملوا بقلبك؟',
+            tag: 'المحطة 8 من 20 | صوت الأمان 🕊️',
+            title: 'صوت معتز وهدوء كلماته لما بتكوني متضايقة، شو بيعمل فيكي؟',
             options: [
-                { text: 'ببيحسسوني بالأمان المطلق وبيزيلوا أي خوف أو توتر فوراً! 🛡️', feedback: 'صوتي ودمي وحياتي كلهن فداء لراحة بالك وابتسامتك يا وعدي! ❤️', scoreAdd: 10, badge: 'ملاذ الأمان 🕊️' },
-                { text: 'بيدفوا قلبي وبيذكروني إن عندي ظهر جبل ما بيهتز! 🏔️', feedback: 'أنا جبل معتز اللي مستحيل يسمح لشي بيمسك بضرر أو حزن! 👑', scoreAdd: 10, badge: 'الجبل الصامد 🏔️' }
+                { text: 'بيحسسني بالأمان المطلق وبيزيل أي خوف فوراً! 🛡️', feedback: 'صوتي ودمي وحياتي كلهن فداء لراحة بالك وابتسامتك يا وعدي! ❤️', badge: 'ملاذ الأمان 🕊️' },
+                { text: 'بيدفي قلبي وبيذكرني إن عندي جبل ما بيهتز! 🏔️', feedback: 'أنا جبل معتز اللي مستحيل يسمح لشي بيمسك بضرر أو حزن! 👑', badge: 'الجبل الصامد 🏔️' }
             ]
         },
         {
             id: 'q9',
-            tag: 'المحطة 9 من 15 | القوة والسرعة ⚡',
-            title: 'معتز أسرع ركاض بالمدرسة ورياضي عاشق للكرة.. كيف وعد بتشوف قوته؟',
+            tag: 'المحطة 9 من 20 | القوة والرياضة ⚡',
+            title: 'معتز أسرع ركاض بالمدرسة ورياضي عاشق للكرة.. كيف بتشوفيه؟',
             options: [
-                { text: 'بشوف فيه الفارس الأسطوري البطل اللي بيفوز بكل المعارك لأجلي! ⚔️', feedback: 'كل طاقاتي وسرعتي بالملعب هي لإثبات إني الأقوى لأجلك دائماً! ⚽', scoreAdd: 10, badge: 'الفارس الأسطوري ⚔️' },
-                { text: 'بفتخر بقوته ولياقته وبكون مشجعته الأولى والأبدية! 📣', feedback: 'صوت تشجيعك هو النصر الحقيقي بالنسبة إلي بأي مباراة وبأي تحدي! 🏆', scoreAdd: 10, badge: 'المشجعة الملكية 🏆' }
+                { text: 'بشوف فيه الفارس الأسطوري البطل اللي بيحميني دائماً! ⚔️', feedback: 'كل طاقاتي وسرعتي بالملعب هي لإثبات إني الأقوى لأجلك دائماً! ⚽', badge: 'الفارس الأسطوري ⚔️' },
+                { text: 'بفتخر بقوته ولياقته وبكون مشجعته الأولى والأبدية! 📣', feedback: 'صوت تشجيعك هو النصر الحقيقي بالنسبة إلي بأي مباراة وبأي تحدي! 🏆', badge: 'المشجعة الملكية 🏆' }
             ]
         },
         {
             id: 'q10',
-            tag: 'المحطة 10 من 15 | لغة التخاطر 🔮',
+            tag: 'المحطة 10 من 20 | التخاطر الروحي 🔮',
             title: 'بتأمني إن في بين معتز ووعد تخاطر روحي عجيب بدون كلام؟',
             options: [
-                { text: 'أكيد! بحس فيك وبنفكيرك وبشعورك حتى لو كنا بعاد! 🌌', feedback: 'أرواحنا اشتبكت ببعضها، دقة قلبك بتوصل لصدري بنفس اللحظة! ✨', scoreAdd: 10, badge: 'التخاطر الروحي 🔮' },
-                { text: 'بفهم عليك من نظرة وحدة لعيونك الخضراء بدون ولا كلمة! 👁️', feedback: 'نظراتنا لغة خاصة ما بيتقنها ولا بيترجمها غيرنا بهالمعمرة! 📜', scoreAdd: 10, badge: 'لغة العيون 👁️' }
+                { text: 'أكيد! بحس فيك وبنفكيرك وبشعورك حتى لو كنا بعاد! 🌌', feedback: 'أرواحنا اشتبكت ببعضها، دقة قلبك بتوصل لصدري بنفس اللحظة! ✨', badge: 'التخاطر الروحي 🔮' },
+                { text: 'بفهم عليك من نظرة وحدة لعيونك الخضراء بدون كلام! 👁️', feedback: 'نظراتنا لغة خاصة ما بيتقنها ولا بيترجمها غيرنا بهالمعمرة! 📜', badge: 'لغة العيون 👁️' }
             ]
         },
         {
             id: 'q11',
-            tag: 'المحطة 11 من 15 | القرب والاستحواذ 🔗',
-            title: 'قديش نسبة استحواذ معتز على عقل ووعد وتفكير اليومي؟',
+            tag: 'المحطة 11 من 20 | خجل العشق 🙈',
+            title: 'لما معتز بيسمعك كلام غزل صريح وجريء.. شو رَدة فعلك؟',
             options: [
-                { text: '1000% مالي تفكير ولا شاغل لبالي غيرك طوال الـ 24 ساعة! 🔥', feedback: 'وأنتِ شاغلة كلي، صحوتي ونومي وأحلامي ومستقبلي كله إنتِ! 🖤', scoreAdd: 10, badge: 'الاستحواذ الكلي 🧠' },
-                { text: 'أنت كل أفكاري وأمنياتي وشغفي بالدنيا! 💖', feedback: 'يا سعدي ويا حظي الكبير بإنه ربنا رزقني إياكي يا وعدي! 🌹', scoreAdd: 10, badge: 'أمنية العمر 🎁' }
+                { text: 'بخجل وببتسم بتلبك رائع بيزيد شغفك فيني! 🙈', feedback: 'وهذا الخجل الرائع هو اللي بيخليني أذوب بعشقك أكتر وأكتر! 💋', badge: 'الابتسامة العذبة 🌸' },
+                { text: 'بطلع بعيونك وببادل العشق بجرأة ودلال أكبر! 🔥', feedback: 'جرأتك ودلالك بيخلوا قلبي يشتعل نيران من الحب والشغف! 🔥', badge: 'الدلال الجريء 💋' }
             ]
         },
         {
             id: 'q12',
-            tag: 'المحطة 12 من 15 | العشق الدائم 💍',
-            title: 'شو هي الكلمة اللي بتهز كيان وعد لما بيحكيها معتز؟',
+            tag: 'المحطة 12 من 20 | الطفلة والأميرة 🧸',
+            title: 'معتز بيشوفك طفلته المدللة وأميرته المطاعة.. شو رأيك بهالوصف؟',
             options: [
-                { text: '"أنتِ ملكي وطفلتي ووحدكِ ولا شريكة لكِ بقلبي!" 👑', feedback: 'وهي الحقيقة المطلقة: أنتِ الأولى والأخيرة والاستثناء الوحيد! 🔥', scoreAdd: 10, badge: 'الكلمة الملكية 👑' },
-                { text: '"أنا بعشق تراب الأرض اللي بتمشي عليها يا وعدي!" 🌹', feedback: 'بعشق كل خطوة وكل تفصيلة بحياتك وبسجد شكر لله عليكِ! ❤️', scoreAdd: 10, badge: 'العشق المقدس 🌹' }
+                { text: 'بحب أكون طفلتك المدللة اللي بتهتم بملامحها ودلالها! 🧸', feedback: 'ودلالك واهتمامك عندي بالأولويات، أنتِ طفلتي وأميرتي للأبد! ❤️', badge: 'الطفلة المدللة 🧸' },
+                { text: 'بفتخر أكون الملكة اللي بتملك عرش قلب معتز! 👑', feedback: 'عرش قلبي وعقلي ملك خالص إلك ولا شريكة لكِ بقلبي! 👑', badge: 'عرش الملكة 👑' }
             ]
         },
         {
             id: 'q13',
-            tag: 'المحطة 13 من 15 | المستقبل والأحلام 🏰',
-            title: 'كيف بتتخيلي بيت العشق والمستقبل اللي رح يجمعنا سوا؟',
+            tag: 'المحطة 13 من 20 | الاستحواذ الكلي 🧠',
+            title: 'قديش نسبة تفكير وعد بـ معتز خلال اليوم؟',
             options: [
-                { text: 'قصر مليان دفء، حب، جنون، وضحكات لا تنتهي! 🏰', feedback: 'سأبني لكِ مملكة تكوني فيها الملكة المتوجة المطاعة طوال العمر! 👑', scoreAdd: 10, badge: 'مملكة العشاق 🏰' },
-                { text: 'ملائكة صغار بيشبهوا جمال عيونكِ ورقتكِ وذكائكِ! 👶', feedback: 'رح يكونوا أجمل أطفال لأن أمهم هي أجمل وأرق امرأة بالكون! 🍼', scoreAdd: 10, badge: 'أمل المستقبل 🌟' }
+                { text: '1000% أنت شاغل صحوتي ونومي وأفكاري! 🔥', feedback: 'وأنتِ شاغلة كلي، ما في ثانية بتمر بدون ما ينبض اسمك بصدري! 🖤', badge: 'الاستحواذ الكلي 🧠' },
+                { text: 'أنت أمنيتي وأجمل تفصيلة بليلي ونهاري! 💖', feedback: 'يا سعدي ويا حظي الكبير بإنه ربنا رزقني إياكي يا وعدي! 🌹', badge: 'أمنية العمر 🎁' }
             ]
         },
         {
             id: 'q14',
-            tag: 'المحطة 14 من 15 | النضج والعهد 📜',
-            title: 'هل وعد مستعدة تلتزم بميثاق الحب والوفاء الأبدي أمام الله لمعتز؟',
+            tag: 'المحطة 14 من 20 | الوفاء والعهد 💍',
+            title: 'شو هي الكلمة اللي بتهز كيان وعد لما يحكيها معتز؟',
             options: [
-                { text: 'بصصم بالعشرة ومستعدة أكون إلك وحدك لنهاية الزمان! 💍', feedback: 'وأنا أقسم بأني سأكون لكِ الحامي والعاشق والسند والأب والأخ والحبيب! 🔥', scoreAdd: 10, badge: 'ميثاق الوفاء 💍' },
-                { text: 'أنا ملكك وروحك وما في قوة بالكون بتقدر تبعدني عنك! 🛡️', feedback: 'أنتِ درعي الحصين وأنا قلعتك المنيعة يا روحي! ⚔️', scoreAdd: 10, badge: 'العهد المقاوم ⚔️' }
+                { text: '"أنتِ ملكي وطفلتي ووحدكِ ولا شريكة لكِ بقلبي!" 👑', feedback: 'وهي الحقيقة المطلقة: أنتِ الأولى والأخيرة والاستثناء الوحيد! 🔥', badge: 'الكلمة الملكية 👑' },
+                { text: '"أنا بعشق تراب الأرض اللي بتمشي عليها يا وعدي!" 🌹', feedback: 'بعشق كل خطوة وكل تفصيلة بحياتك وبسجد شكر لله عليكِ! ❤️', badge: 'العشق المقدس 🌹' }
             ]
         },
         {
             id: 'q15',
-            tag: 'المحطة 15 والأخيرة | المفتاح النهائي 🎁',
+            tag: 'المحطة 15 من 20 | التحديات والصمود 🛡️',
+            title: 'لو واجهتنا أي صعاب بمسيرة حبنا.. شو خيار وعد؟',
+            options: [
+                { text: 'بنواجه العالم سوا، وإيدك بكتفي وقوتنا ما بتنكسر! ⚔️', feedback: 'أنا إلك الدرع والسيف والجبل، ومستحيل سمح لشي يفرقنا! 🛡️', badge: 'الصمود الملكي ⚔️' },
+                { text: 'حبنا أقوى من كل الظروف والأقدار مكتوبة لنا! 🌟', feedback: 'أقدارنا اشتبكت للأبد يا روح معتز ونبض قلبه! 💍', badge: 'القدر المحتوم 🔮' }
+            ]
+        },
+        {
+            id: 'q16',
+            tag: 'المحطة 16 من 20 | بيت العشق 🏰',
+            title: 'كيف بتتخيلي بيت المستقبل اللي رح يجمع معتز ووعد؟',
+            options: [
+                { text: 'قصر مليان دفء، حب، جنون، وضحكات لا تنتهي! 🏰', feedback: 'سأبني لكِ مملكة تكوني فيها الملكة المتوجة المطاعة طوال العمر! 👑', badge: 'مملكة العشاق 🏰' },
+                { text: 'ملائكة صغار بيشبهوا جمال عيونكِ ورقتكِ وذكائكِ! 👶', feedback: 'رح يكونوا أجمل أطفال لأن أمهم هي أجمل وأرق امرأة بالكون! 🍼', badge: 'أمل المستقبل 🌟' }
+            ]
+        },
+        {
+            id: 'q17',
+            tag: 'المحطة 17 من 20 | الجامعة والخطوات 🎓',
+            title: 'طريق الجامعة والخطوات الجاية.. شو بتمثل لوعد؟',
+            options: [
+                { text: 'رحلة نجاح جديدة ونحن إيد بإيد مع بعض! 🤝', feedback: 'خطوة بخطوة وبكل لحظة رح أكون جنبك وداعمك الأول! 💖', badge: 'النجاح المشترك 🤝' },
+                { text: 'تأكيد على أن حبنا بيكبر وينضج كل يوم! 🌹', feedback: 'حبنا عم يزداد قوة وشغف وعمق مع كل شروق شمس! 🔥', badge: 'النضج والأمل 🌹' }
+            ]
+        },
+        {
+            id: 'q18',
+            tag: 'المحطة 18 من 20 | القسم الملكي 📜',
+            title: 'هل وعد مستعدة تلتزم بقسم الوفاء والعشق الأبدي أمام الله؟',
+            options: [
+                { text: 'بصصم بالعشرة ومستعدة أكون إلك وحدك لنهاية الزمان! 💍', feedback: 'وأنا أقسم بأني سأكون لكِ الحامي والعاشق والسند والأب والأخ والحبيب! 🔥', badge: 'ميثاق الوفاء 💍' },
+                { text: 'أنا ملكك وروحك وما في قوة بالكون بتقدر تبعدني عنك! 🛡️', feedback: 'أنتِ درعي الحصين وأنا قلعتك المنيعة يا روحي! ⚔️', badge: 'العهد المقاوم ⚔️' }
+            ]
+        },
+        {
+            id: 'q19',
+            tag: 'المحطة 19 من 20 | الشوق المستمر 💓',
+            title: 'كل دقيقة بتغيبي فيها عن معتز.. بتعرفي شو بيصير بقلبه؟',
+            options: [
+                { text: 'بيشتاق وبيحتك الشوق بضلوعه لحين ما يسمع صوتي! 💓', feedback: 'غيابك اقتطاع من عمري، ورجوعك ولادة جديدة لروحي! 🌹', badge: 'الشوق المشتعل 💓' },
+                { text: 'بيدرك إن الحياة مألها طعم بدون وجودي جنبه! ✨', feedback: 'أنتِ طعم الحياة والأكسجين اللي بتنفسه يا كل دنيتي! 👑', badge: 'أكسجين الحياة ✨' }
+            ]
+        },
+        {
+            id: 'q20',
+            tag: 'المحطة 20 والأخيرة | المفتاح النهائي 🎁',
             title: 'جاهزة تفتحي الوثيقة السرية الكبرى ورسالة العشق والجنون الجريئة المطلقة؟',
             options: [
-                { text: 'إي جاهزة لأقرأ أعظم وأجرأ رسالة عشق بالكون! 🔥💋', feedback: 'افتحي قلبكِ وروحكِ لقراءة نيران العشق المشتعلة! 📜', scoreAdd: 10, badge: 'مفتاح الخزينة الكبرى 🗝️' }
+                { text: 'إي جاهزة لأقرأ أعظم وأجرأ رسالة عشق بالكون! 🔥💋', feedback: 'افتحي قلبكِ وروحكِ لقراءة نيران العشق المشتعلة! 📜', badge: 'مفتاح الخزينة الكبرى 🗝️' }
             ]
         }
     ];
 
-    /* Rendering Logic */
+    /* Rendering Engine */
     function renderStage(index) {
         state.currentStep = index;
         const card = document.getElementById('main-card');
         card.className = "app-card fade-enter";
         
-        // Handle Welcome Stage
+        // Welcome
         if (index === 0) {
             const d = stagesData[0];
             card.innerHTML = `
@@ -737,7 +794,7 @@
             return;
         }
 
-        // Handle Keypad Stage (Security Lock)
+        // Keypad Lock
         if (index === 1) {
             const d = stagesData[1];
             card.innerHTML = `
@@ -753,10 +810,13 @@
             return;
         }
 
-        // Handle Questions Stage
+        // 20 Questions Engine
         if (index >= 2 && index < stagesData.length) {
             const d = stagesData[index];
             const progress = Math.round(((index - 1) / (stagesData.length - 2)) * 100);
+
+            // Play unique audio frequency tune for each question
+            playSound('question_tune', index - 2);
 
             card.innerHTML = `
                 <div class="progress-box"><div class="progress-fill" style="width: ${progress}%;"></div></div>
@@ -776,7 +836,7 @@
             return;
         }
 
-        // Handle Final Secret Letter Stage
+        // Final Secret Letter
         if (index === stagesData.length) {
             playSound('success');
             spawnFloatingEmoji('👑');
@@ -816,14 +876,12 @@
         const stage = stagesData[stageIdx];
         const opt = stage.options[optIdx];
 
-        // Highlight selected
         const cards = document.querySelectorAll('.option-card');
         cards.forEach((c, i) => {
             if (i === optIdx) c.classList.add('selected');
             else c.classList.remove('selected');
         });
 
-        // Show feedback & update score
         const fb = document.getElementById('feedback');
         fb.style.display = 'block';
         fb.innerHTML = `<strong>تفاعل معتز:</strong> ${opt.feedback}`;
@@ -873,7 +931,7 @@
             </div>
 
             <div style="margin-top:20px;">
-                <h3 style="color:var(--accent-gold); margin-bottom:10px; font-size:16px;">🏆 الأوسمة والألقاب التي حققتها وعد:</h3>
+                <h3 style="color:var(--accent-gold); margin-bottom:10px; font-size:16px;">🏆 الأوسمة الملكية الـ 20 التي حققتها وعد:</h3>
                 <div class="achievements-grid">
                     ${state.unlockedBadges.map(b => `<div class="achieve-card"><span>🎖️</span><span>${b}</span></div>`).join('')}
                 </div>
