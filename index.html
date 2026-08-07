@@ -30,7 +30,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            transition: background 1s cubic-bezier(0.4, 0, 0.2, 1), color 1s;
+            transition: background 1.2s cubic-bezier(0.4, 0, 0.2, 1), color 1s;
         }
 
         #canvas-bg {
@@ -67,22 +67,6 @@
             transition: color 1s;
         }
 
-        .audio-toggle-btn {
-            background: var(--theme-color);
-            border: none;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 800;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: all 0.3s;
-        }
-        .audio-toggle-btn:hover {
-            transform: scale(1.05);
-        }
-
         .main-wrapper {
             position: relative;
             z-index: 10;
@@ -106,7 +90,7 @@
             position: relative;
             overflow: hidden;
             animation: cardEntrance 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            transition: border-color 1s, box-shadow 1s;
+            transition: border-color 1s, box-shadow 1s, background 1s;
         }
 
         @keyframes cardEntrance {
@@ -155,6 +139,7 @@
             line-height: 1.8;
             margin-bottom: 30px;
             font-weight: 600;
+            transition: color 1s;
         }
 
         .progress-box {
@@ -395,16 +380,16 @@
 
 <canvas id="canvas-bg"></canvas>
 
-<!-- Background Audio: Direct Calm Lofi/Romantic Stream -->
+<!-- Background Audio with Multiple Robust Sources for Instant Playback -->
 <audio id="romantic-audio" loop preload="auto">
-    <source src="https://cdns.fyimusic.ru/storage/uploads/music/2021/04/nancy-ajram-albi-da-3-darat.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+    <source src="https://www.freemusicarchive.org/music/download/3b123616a2472e3995874c76a91f5a5e3c8375a3" type="audio/mpeg">
 </audio>
 
 <div class="top-hud">
     <div class="hud-title">
         <span>🎀 وعدي كل دنيتي ومرتي وكلشي بحياتي</span>
     </div>
-    <button class="audio-toggle-btn" onclick="toggleAudioStream()">🎵 تشغيل أغنية: قلبي دق ثلاث دقات</button>
 </div>
 
 <div class="main-wrapper">
@@ -412,6 +397,7 @@
 </div>
 
 <script>
+    /* Completely Unique Color Themes with Gorgeous Gradients for Every Single Question & Station */
     const colorThemes = [
         { primary: "#ff3366", secondary: "#ff758c", bg1: "#ffe5ec", bg2: "#ffc2d1", text: "#4a0e17" },
         { primary: "#7209b7", secondary: "#b5179e", bg1: "#f3e8ff", bg2: "#e9d5ff", text: "#3b0764" },
@@ -460,30 +446,27 @@
         currentStep: 0,
         unlockedBadges: [],
         enteredPass: "",
-        audioPlaying: false
+        audioStarted: false
     };
 
-    function toggleAudioStream() {
+    function triggerAudioPlayback() {
         const audio = document.getElementById('romantic-audio');
-        const btn = document.querySelector('.audio-toggle-btn');
-        state.audioPlaying = !state.audioPlaying;
-        if(state.audioPlaying) {
+        if (!state.audioStarted) {
             audio.play().then(() => {
-                btn.innerText = "🎵 الموسيقى: شغالة";
+                state.audioStarted = true;
             }).catch(e => {
-                alert("اضغط في أي مكان بالشاشة لتفعيل الصوت!");
+                console.log("Audio waiting for interaction");
             });
-        } else {
-            audio.pause();
-            btn.innerText = "🎵 تشغيل أغنية: قلبي دق ثلاث دقات";
         }
     }
 
+    /* Web Audio API for Professional Interactive Chimes & Sound Effects */
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
     const zenFrequencies = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
 
     function playAudioChime(index) {
+        triggerAudioPlayback();
         try {
             if(!audioCtx) audioCtx = new AudioCtx();
             if(audioCtx.state === 'suspended') audioCtx.resume();
@@ -494,10 +477,10 @@
             const now = audioCtx.currentTime;
             osc.type = 'sine';
             osc.frequency.setValueAtTime(zenFrequencies[index % zenFrequencies.length], now);
-            gain.gain.setValueAtTime(0.06, now);
-            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.6);
+            gain.gain.setValueAtTime(0.08, now);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
             osc.start(now);
-            osc.stop(now + 0.6);
+            osc.stop(now + 0.7);
         } catch(e) {}
     }
 
@@ -516,9 +499,9 @@
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 4 + 1.5;
-            this.speedX = (Math.random() - 0.5) * 0.6;
-            this.speedY = (Math.random() - 0.5) * 0.6;
+            this.size = Math.random() * 4.5 + 1.5;
+            this.speedX = (Math.random() - 0.5) * 0.7;
+            this.speedY = (Math.random() - 0.5) * 0.7;
             this.alpha = Math.random() * 0.8 + 0.2;
         }
         update() {
@@ -531,7 +514,7 @@
             ctx.save();
             ctx.globalAlpha = this.alpha;
             ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--theme-color').trim() || '#ff3366';
-            ctx.shadowBlur = 12;
+            ctx.shadowBlur = 15;
             ctx.shadowColor = ctx.fillStyle;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -540,7 +523,7 @@
         }
     }
 
-    for(let i=0; i<110; i++) particles.push(new Particle());
+    for(let i=0; i<120; i++) particles.push(new Particle());
 
     function animateParticles() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -568,7 +551,7 @@
             id: 'welcome',
             tag: 'وعدي كل دنيتي ومرتي وكلشي بحياتي 🎀👑',
             title: 'أهلاً بكِ في أعظم وأضخم إمبراطورية تفاعلية صُممت خصيصاً من أجلكِ يا ملكة قلبي.. وعد! 🌸💖',
-            desc: 'هذا المشروع الأضخم تاريخياً يضم 30 محطة عشق تفصيلية تتغير ألوانها الساحرة مع كل سؤال، ألحاناً هادئة ناعمة تعمل مباشرة، أوسمة هيلو كيتي الفاخرة، وفي النهاية الهدية الأسطورية مع أغنية قلبي دق ثلاث دقات ورسالة من ألف سطر!',
+            desc: 'هذا المشروع الأضخم تاريخياً يضم 30 محطة عشق تفصيلية تتغير خلفيتها بالكامل مع كل سؤال وجواب، ألحاناً هادئة تعمل فوراً، وفي النهاية مفاجأة الهدية الأسطورية مع أغنية قلبي دق ثلاث دقات!',
             btnText: 'دخول الإمبراطورية الملكية الكبرى ✨',
             action: () => renderStation(1)
         },
@@ -672,7 +655,7 @@
         {
             id: 'q11',
             tag: 'المحطة 11 من 30 | خجل العشق والتدلل 🙈',
-            title: 'لما معتز بيحكيلك عبارات غزل جريئة والصريحة.. شو بصير فيكي؟',
+            title: 'لما معتز بيحكيلك عبارات غزل جريئة وصريحة.. شو بصير فيكي؟',
             options: [
                 { text: 'بخجل وببتسم بتلبك أنثوي رائع بيزيد جنونك فيني! 🙈', feedback: 'وهذا الخجل القاتل هو اللي بيخليني أذوب بعشقك وبنعومتها أكتر! 💋', badge: 'وسام الابتسامة الأنثوية العذبة 🌸' },
                 { text: 'بطلع بعيونك وببادل العشق بجرأة ودلال استثنائي! 🔥', feedback: 'جرأتك ودلالك بيخلوا نيران قلبي تشتعل أكتر وأكتر بجنون! 🔥', badge: 'وسام الدلال والجرأة الملكية 💋' }
@@ -959,7 +942,7 @@
             <div class="cute-icon" id="gift-icon" style="cursor:pointer; font-size:90px;" onclick="handleGiftClick()">🎁</div>
             <br><div class="tag-badge">اضغطي على الهدية الملكية لفتحها! ✨</div>
             <h1 class="main-heading" id="gift-heading">أنتِ على موعد مع المفاجأة الكبرى يا وعد!</h1>
-            <p class="sub-desc" id="gift-desc">اضدقي الهدية بالأعلى واكتشفي ماذا تخبئ لكِ روح معتز...</p>
+            <p class="sub-desc" id="gift-desc">اضغطي على الهدية بالأعلى واكتشفي ماذا تخبئ لكِ روح معتز...</p>
         `;
     }
 
@@ -985,13 +968,15 @@
             }, 600);
             giftClickStage = 1;
         } else if (giftClickStage === 1) {
-            // تتضحك بعدين تكبس عااهدية وتفتح الهدية الكبرى
+            // كبس عااهدية تفتح الهدية الكبرى وتشغل أغنية قلبي دق ثلاث دقات
+            triggerAudioPlayback();
             renderFinalGiftScreen();
         }
     }
 
     function renderFinalGiftScreen() {
         applyThemeColors(0);
+        triggerAudioPlayback();
         const card = document.getElementById('master-card');
         card.innerHTML = `
             <div class="cute-icon">👑🎀🎵💖</div>
@@ -1002,8 +987,7 @@
                 <div class="music-title-text">أغنية: قلبي دق ثلاث دقات 🎶</div>
                 <div class="music-sub-text">أغنيتنا الأبدية - معتز & وعد 💖</div>
                 <audio controls autoplay loop style="width:100%; border-radius:15px;">
-                    <source src="https://cdns.fyimusic.ru/storage/uploads/music/2021/04/nancy-ajram-albi-da-3-darat.mp3" type="audio/mpeg">
-                    متصفحك لا يدعم المشغل الصوتي
+                    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
                 </audio>
             </div>
 
