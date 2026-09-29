@@ -1,222 +1,123 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>رؤى أحلى بوو بالمجرة</title>
+<title>رؤى أحلى بوو بالمجرة 🌌💕</title>
 
 <style>
-
-/* =========================
-   RESET
-========================= */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html,
-body{
-    width:100%;
-    min-height:100%;
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-
+    min-height:100vh;
     overflow-x:hidden;
-
-    font-family:
-    Tahoma,
-    Arial,
-    sans-serif;
-
+    font-family:Tahoma,Arial,sans-serif;
     color:white;
-
     background:
-    radial-gradient(
-        circle at 50% 10%,
-        #3d174b 0%,
-        #1b0b27 25%,
-        #08050d 65%,
-        #000 100%
-    );
+        radial-gradient(circle at 50% 10%,#5b174d 0%,#25102f 28%,#0b0714 65%,#000 100%);
 }
 
+/* ===== النجوم ===== */
 
-/* =========================
-   GALAXY
-========================= */
-
-.galaxy{
-
+#stars{
     position:fixed;
-
     inset:0;
-
-    overflow:hidden;
-
+    z-index:0;
     pointer-events:none;
 }
 
-
 .star{
-
     position:absolute;
-
     width:3px;
     height:3px;
-
     border-radius:50%;
-
     background:white;
-
-    box-shadow:
-        0 0 7px white;
-
-    animation:
-        twinkle
-        2s
-        infinite
-        ease-in-out;
+    box-shadow:0 0 8px white;
+    animation:twinkle 2s infinite ease-in-out;
 }
 
 @keyframes twinkle{
-
     0%,100%{
         opacity:.2;
-        transform:scale(.6);
+        transform:scale(.5);
     }
-
     50%{
         opacity:1;
         transform:scale(1.5);
     }
 }
 
-
-/* =========================
-   CONTAINER
-========================= */
+/* ===== المحتوى ===== */
 
 .container{
-
     position:relative;
-
-    width:100%;
-
-    max-width:950px;
-
-    margin:auto;
-
-    padding:
-        35px 18px 70px;
-
-    text-align:center;
-
     z-index:2;
+    width:100%;
+    max-width:1000px;
+    margin:auto;
+    padding:35px 18px 80px;
+    text-align:center;
 }
 
+/* ===== العنوان ===== */
 
-/* =========================
-   TITLE
-========================= */
-
-.small-title{
-
-    color:#ffb8d4;
-
-    font-size:
-        clamp(17px,4vw,25px);
-
-    margin-bottom:5px;
-
-    letter-spacing:1px;
+.top-text{
+    font-size:20px;
+    color:#ffc1db;
+    margin-bottom:8px;
 }
 
-
-.title{
-
-    font-size:
-        clamp(36px,9vw,70px);
-
+h1{
+    font-size:clamp(45px,11vw,85px);
     font-weight:900;
-
-    line-height:1.15;
-
+    line-height:1.1;
     color:white;
-
     text-shadow:
-
-        0 0 8px #ffbad7,
-        0 0 20px #ff6da7,
-        0 0 45px #ff287c;
-
-    animation:
-        titlePulse
-        2.5s
-        ease-in-out
-        infinite;
+        0 0 10px #ffb5d3,
+        0 0 25px #ff4d91,
+        0 0 55px #ff176c;
+    animation:titlePulse 2.5s infinite ease-in-out;
 }
 
 @keyframes titlePulse{
-
     0%,100%{
         transform:scale(1);
     }
-
     50%{
-        transform:scale(1.035);
+        transform:scale(1.04);
     }
 }
 
-
-.description{
-
-    margin-top:10px;
-
-    color:#ffd4e4;
-
-    font-size:
-        clamp(17px,4vw,25px);
+.subtitle{
+    margin-top:12px;
+    font-size:clamp(20px,5vw,30px);
+    color:#ffd9e8;
+    text-shadow:0 0 15px #ff4d91;
 }
 
-
-/* =========================
-   PHOTOS AREA
-========================= */
+/* ===== البطاقات ===== */
 
 .cards{
-
     display:flex;
-
     justify-content:center;
-
-    align-items:center;
-
-    gap:22px;
-
-    margin-top:32px;
-
+    align-items:stretch;
+    gap:25px;
     flex-wrap:wrap;
+    margin-top:38px;
 }
 
-
 .card{
-
-    position:relative;
-
-    width:
-        min(410px,92vw);
-
+    width:min(420px,94vw);
     padding:10px;
-
     border-radius:30px;
 
     background:
@@ -226,233 +127,184 @@ body{
             rgba(255,255,255,.035)
         );
 
-    border:
-        1px solid
-        rgba(255,173,207,.45);
+    border:1px solid rgba(255,180,215,.45);
 
     box-shadow:
+        0 0 30px rgba(255,40,130,.2),
+        inset 0 0 25px rgba(255,255,255,.04);
 
-        0 0 25px
-        rgba(255,60,140,.2),
+    backdrop-filter:blur(12px);
 
-        inset 0 0 25px
-        rgba(255,255,255,.035);
-
-    backdrop-filter:
-        blur(12px);
-
-    animation:
-        floating 4s
-        ease-in-out
-        infinite;
+    animation:cardFloat 4s ease-in-out infinite;
 }
 
 .card:nth-child(2){
     animation-delay:-2s;
 }
 
-@keyframes floating{
-
+@keyframes cardFloat{
     0%,100%{
         transform:translateY(0);
     }
-
     50%{
-        transform:translateY(-8px);
+        transform:translateY(-9px);
     }
 }
 
-
-/* =========================
-   ROUA IMAGE
-========================= */
+/* ===== صورة رؤى ===== */
 
 .roua-image{
-
     width:100%;
-
-    height:390px;
-
+    height:400px;
     object-fit:cover;
-
+    display:block;
     border-radius:23px;
 
-    display:block;
-
     box-shadow:
-        0 0 25px
-        rgba(255,90,155,.3);
+        0 0 25px rgba(255,75,145,.4);
 }
 
-
-.card-name{
-
-    padding:
-        14px 5px 8px;
-
-    font-size:25px;
-
+.card-title{
+    padding:15px 5px 10px;
+    font-size:27px;
     font-weight:900;
-
     color:#ffd5e5;
 
     text-shadow:
-        0 0 12px #ff5d9d;
+        0 0 10px #ff5b9d;
 }
 
+/* ===== بوو ===== */
 
-/* =========================
-   POU CARD
-========================= */
-
-.pou-area{
-
-    height:390px;
-
+.pou-box{
+    height:400px;
     border-radius:23px;
 
     display:flex;
-
-    justify-content:center;
-
     align-items:center;
+    justify-content:center;
 
     overflow:hidden;
 
     background:
-
         radial-gradient(
-            circle at 50% 45%,
-            #ffbd9b 0%,
+            circle at 50% 40%,
+            #ffc6a5 0%,
             #b96865 38%,
-            #50283d 70%,
-            #160c1d 100%
+            #54283e 70%,
+            #160b1d 100%
         );
 }
 
-
-/* =========================
-   POU
-========================= */
+/* جسم بوو */
 
 .pou{
-
     position:relative;
+    width:220px;
+    height:260px;
 
-    width:210px;
-
-    height:240px;
-
-    animation:
-        pouBounce
-        1.8s
-        ease-in-out
-        infinite;
+    animation:pouMove 1.8s ease-in-out infinite;
 }
 
-
-@keyframes pouBounce{
-
+@keyframes pouMove{
     0%,100%{
-        transform:translateY(0)
-        rotate(0deg);
+        transform:translateY(0) rotate(0);
     }
 
     50%{
-        transform:translateY(-12px)
-        rotate(2deg);
+        transform:translateY(-12px) rotate(2deg);
     }
 }
 
-
-/* جسم بو */
-
 .pou-body{
-
     position:absolute;
-
-    left:20px;
-
+    left:25px;
     bottom:0;
 
     width:170px;
-
-    height:190px;
-
-    background:
-
-        radial-gradient(
-            circle at 40% 30%,
-            #e0a37f,
-            #a95d57 65%,
-            #6d3b43 100%
-        );
+    height:205px;
 
     border-radius:
-        48%
-        48%
-        43%
-        43%;
+        48% 48% 43% 43%;
+
+    background:
+        radial-gradient(
+            circle at 38% 28%,
+            #e5aa86,
+            #a95d57 62%,
+            #6c3a43 100%
+        );
 
     box-shadow:
-
-        inset
-        -15px
-        -20px
-        30px
-        rgba(60,20,30,.35),
-
-        0 15px 30px
-        rgba(0,0,0,.45);
+        inset -15px -20px 30px rgba(50,15,25,.35),
+        0 15px 30px rgba(0,0,0,.5);
 }
 
-
-/* العين */
+/* العيون */
 
 .eye{
-
     position:absolute;
 
-    top:66px;
+    top:70px;
 
-    width:23px;
-    height:29px;
+    width:24px;
+    height:31px;
 
-    background:#18131b;
+    background:#17121a;
 
     border-radius:50%;
 
-    box-shadow:
-        inset 5px 5px 0
-        rgba(255,255,255,.75);
-
     z-index:3;
+
+    box-shadow:
+        inset 5px 5px 0 rgba(255,255,255,.8);
 }
 
 .eye.left{
-    left:63px;
+    left:61px;
 }
 
 .eye.right{
-    right:63px;
+    right:61px;
 }
 
+/* الحواجب */
+
+.brow{
+    position:absolute;
+
+    top:57px;
+
+    width:39px;
+    height:6px;
+
+    border-radius:10px;
+
+    background:#63333a;
+}
+
+.brow.left{
+    left:48px;
+    transform:rotate(-10deg);
+}
+
+.brow.right{
+    right:48px;
+    transform:rotate(10deg);
+}
 
 /* الفم */
 
 .mouth{
-
     position:absolute;
 
     left:50%;
+    top:120px;
 
-    top:111px;
+    transform:translateX(-50%);
 
-    transform:
-        translateX(-50%);
-
-    width:48px;
-    height:24px;
+    width:50px;
+    height:25px;
 
     border-bottom:
         5px solid #3b1c2a;
@@ -461,141 +313,66 @@ body{
         0 0 50px 50px;
 }
 
-
-/* الحاجبين */
-
-.brow{
-
-    position:absolute;
-
-    top:55px;
-
-    width:38px;
-
-    height:6px;
-
-    border-radius:10px;
-
-    background:#63333a;
-
-}
-
-.brow.left{
-
-    left:51px;
-
-    transform:
-        rotate(-10deg);
-}
-
-.brow.right{
-
-    right:51px;
-
-    transform:
-        rotate(10deg);
-}
-
-
-/* القبعة الصغيرة */
+/* القلب */
 
 .pou-heart{
-
     position:absolute;
 
-    top:22px;
-
+    top:20px;
     left:50%;
 
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
-    font-size:38px;
+    font-size:42px;
 
     z-index:5;
 
     filter:
-        drop-shadow(
-            0 0 10px
-            #ff6c9e
-        );
+        drop-shadow(0 0 10px #ff6c9e);
 }
 
-
-/* =========================
-   MAIN MESSAGE
-========================= */
+/* ===== الرسالة ===== */
 
 .message{
-
-    position:relative;
-
-    margin-top:35px;
-
-    padding:
-        28px 15px 32px;
+    margin-top:38px;
+    padding:32px 18px 38px;
 
     border-radius:32px;
 
     background:
-
         linear-gradient(
             135deg,
-            rgba(255,76,145,.16),
-            rgba(130,70,255,.12)
+            rgba(255,50,140,.17),
+            rgba(100,50,255,.13)
         );
 
     border:
-        1px solid
-        rgba(255,170,205,.35);
+        1px solid rgba(255,170,205,.35);
 
     box-shadow:
-
-        0 0 35px
-        rgba(255,50,130,.18),
-
-        inset 0 0 30px
-        rgba(255,255,255,.025);
+        0 0 40px rgba(255,40,130,.18),
+        inset 0 0 30px rgba(255,255,255,.025);
 }
 
-
 .main-message{
-
-    font-size:
-        clamp(27px,7vw,52px);
-
+    font-size:clamp(28px,7vw,55px);
     font-weight:900;
-
-    line-height:1.35;
-
-    color:white;
+    line-height:1.4;
 
     text-shadow:
-
         0 0 8px white,
         0 0 20px #ff7eaf,
         0 0 45px #ff2478;
 }
 
-
 .main-message span{
-
     color:#ff9fc3;
-
 }
 
-
-/* =========================
-   SIMILARITY
-========================= */
-
 .similarity{
+    margin-top:22px;
 
-    margin-top:20px;
-
-    font-size:
-        clamp(21px,5vw,34px);
-
+    font-size:clamp(21px,5vw,34px);
     font-weight:900;
 
     color:#ffe0eb;
@@ -604,100 +381,53 @@ body{
         0 0 10px #ff70a5;
 }
 
-
-.laugh{
-
-    display:inline-block;
-
-    animation:
-        laugh
-        1s
-        infinite
-        alternate;
-}
-
-@keyframes laugh{
-
-    from{
-        transform:rotate(-6deg);
-    }
-
-    to{
-        transform:rotate(6deg);
-    }
-}
-
-
-/* =========================
-   FINAL TEXT
-========================= */
-
 .final{
+    margin-top:22px;
 
-    margin-top:20px;
-
-    font-size:
-        clamp(31px,8vw,58px);
-
+    font-size:clamp(32px,8vw,60px);
     font-weight:900;
 
     color:#ff9fc3;
 
     text-shadow:
-
-        0 0 8px #ffb5d0,
+        0 0 10px #ffb5d0,
         0 0 25px #ff4f91,
         0 0 55px #ff176c;
 
-    animation:
-        finalPulse
-        1.7s
-        infinite
-        ease-in-out;
+    animation:finalPulse 1.7s infinite ease-in-out;
 }
 
 @keyframes finalPulse{
-
     0%,100%{
         transform:scale(1);
     }
 
     50%{
-        transform:scale(1.08);
+        transform:scale(1.07);
     }
 }
 
+/* ===== القلوب الطائرة ===== */
 
-/* =========================
-   FLOATING HEARTS
-========================= */
-
-.floating-heart{
-
+.floating{
     position:fixed;
-
-    bottom:-50px;
-
-    font-size:
-        20px;
+    bottom:-60px;
 
     z-index:1;
 
     pointer-events:none;
 
+    font-size:22px;
+
     animation:
-        rise
-        6s
-        linear
-        forwards;
+        rise 6s linear forwards;
 }
 
 @keyframes rise{
-
     0%{
         transform:
             translateY(0)
-            rotate(0deg)
+            rotate(0)
             scale(.6);
 
         opacity:0;
@@ -711,21 +441,56 @@ body{
         transform:
             translateY(-110vh)
             rotate(360deg)
-            scale(1.4);
+            scale(1.5);
 
         opacity:0;
     }
 }
 
+/* ===== زر البداية ===== */
 
-/* =========================
-   MOBILE
-========================= */
+.start-button{
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:14px 28px;
+
+    border-radius:50px;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:20px;
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff3f8e,
+            #a43cff
+        );
+
+    box-shadow:
+        0 0 20px rgba(255,60,140,.4);
+
+    transition:.3s;
+}
+
+.start-button:hover{
+    transform:scale(1.06);
+}
+
+/* ===== الهاتف ===== */
 
 @media(max-width:600px){
 
     .container{
-        padding-top:28px;
+        padding:
+            28px
+            14px
+            70px;
     }
 
     .cards{
@@ -733,73 +498,69 @@ body{
     }
 
     .roua-image,
-    .pou-area{
-        height:330px;
+    .pou-box{
+        height:340px;
     }
 
     .pou{
         transform:scale(.85);
     }
 
+    .message{
+        padding:
+            27px
+            14px
+            32px;
+    }
 }
-
 </style>
-
 </head>
 
 
 <body>
 
-
 <!-- النجوم -->
-
-<div class="galaxy" id="galaxy"></div>
+<div id="stars"></div>
 
 
 <div class="container">
 
-
-    <div class="small-title">
+    <div class="top-text">
         ✨ قصة ما إلها مثيل ✨
     </div>
 
-
-    <h1 class="title">
+    <h1>
         رؤى 💕
     </h1>
 
-
-    <div class="description">
+    <div class="subtitle">
         أحلى بوو بالمجرة 🌌😂
     </div>
 
 
     <!-- الصور -->
-
     <div class="cards">
 
-
-        <!-- رؤى -->
-
+        <!-- صورة رؤى -->
         <div class="card">
 
             <img
                 src="roua.jpg"
                 class="roua-image"
-                alt="رؤى">
+                alt="رؤى"
+            >
 
-            <div class="card-name">
+            <div class="card-title">
                 رؤى 🩷✨
             </div>
 
         </div>
 
 
-        <!-- بو -->
-
+        <!-- بوو -->
         <div class="card">
 
-            <div class="pou-area">
+            <div class="pou-box">
 
                 <div class="pou">
 
@@ -823,94 +584,75 @@ body{
 
             </div>
 
-            <div class="card-name">
+            <div class="card-title">
                 بوو 😂
             </div>
 
         </div>
 
-
     </div>
 
 
     <!-- الكلام -->
-
     <div class="message">
 
-
         <div class="main-message">
-
             رؤى
-            <span>
-                أحلى بوو بالمجرة
-            </span>
+            <span>أحلى بوو بالمجرة</span>
             🌌😂💕
-
-
         </div>
-
 
         <div class="similarity">
-
-            يخلق من الشبه أربعين
-
-            <span class="laugh">
-                😂😂😂
-            </span>
-
+            يخلق من الشبه أربعين 😂😂😂
         </div>
-
 
         <div class="final">
-
             أحلى بووووووو 😂💕✨
-
         </div>
 
+        <a href="#" class="start-button">
+            اضغطي هون يا بوو 😂💕
+        </a>
 
     </div>
-
 
 </div>
 
 
 <script>
 
-
 /* =========================
-   STAR GENERATOR
+   إنشاء النجوم
 ========================= */
 
-const galaxy =
-    document.getElementById("galaxy");
+const stars =
+    document.getElementById("stars");
 
-
-for(let i = 0; i < 90; i++){
+for(let i = 0; i < 110; i++){
 
     const star =
         document.createElement("div");
 
-    star.className =
-        "star";
+    star.className = "star";
 
     star.style.left =
-        Math.random()*100 + "%";
+        Math.random() * 100 + "%";
 
     star.style.top =
-        Math.random()*100 + "%";
+        Math.random() * 100 + "%";
 
     star.style.animationDelay =
-        Math.random()*3 + "s";
+        Math.random() * 3 + "s";
 
     star.style.animationDuration =
-        (1.5 + Math.random()*3) + "s";
+        (1.5 + Math.random() * 3) + "s";
 
-    galaxy.appendChild(star);
+    stars.appendChild(star);
 }
 
 
 /* =========================
-   FLOATING HEARTS
+   القلوب والرموز الطائرة
 ========================= */
 
 const emojis = [
@@ -919,53 +661,43 @@ const emojis = [
     "💖",
     "🩷",
     "✨",
-    "😂"
+    "😂",
+    "🌌"
 ];
 
+function createFloating(){
 
-function createHeart(){
-
-    const heart =
+    const item =
         document.createElement("div");
 
-    heart.className =
-        "floating-heart";
+    item.className = "floating";
 
-    heart.textContent =
+    item.textContent =
         emojis[
             Math.floor(
-                Math.random()*emojis.length
+                Math.random() * emojis.length
             )
         ];
 
-    heart.style.left =
-        Math.random()*100 + "%";
+    item.style.left =
+        Math.random() * 100 + "%";
 
-    heart.style.animationDuration =
-        (4 + Math.random()*4) + "s";
+    item.style.animationDuration =
+        (4 + Math.random() * 4) + "s";
 
-    document.body.appendChild(
-        heart
-    );
+    document.body.appendChild(item);
 
-
-    setTimeout(
-        () => heart.remove(),
-        9000
-    );
-
+    setTimeout(() => {
+        item.remove();
+    }, 9000);
 }
 
-
 setInterval(
-    createHeart,
+    createFloating,
     650
 );
 
-
 </script>
 
-
 </body>
-
 </html>
