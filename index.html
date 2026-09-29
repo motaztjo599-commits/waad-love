@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="ar" dir="rtl">
 
-<title>Love Heart ROUA</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>رؤى أحلى بوو بالمجرة</title>
 
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 *{
     margin:0;
@@ -14,269 +22,950 @@
     box-sizing:border-box;
 }
 
+html,
 body{
-    background:#000;
+    width:100%;
+    min-height:100%;
+}
+
+body{
+
+    overflow-x:hidden;
+
+    font-family:
+    Tahoma,
+    Arial,
+    sans-serif;
+
     color:white;
-    font-family:Arial,sans-serif;
-    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at 50% 10%,
+        #3d174b 0%,
+        #1b0b27 25%,
+        #08050d 65%,
+        #000 100%
+    );
+}
+
+
+/* =========================
+   GALAXY
+========================= */
+
+.galaxy{
+
+    position:fixed;
+
+    inset:0;
+
     overflow:hidden;
+
+    pointer-events:none;
 }
 
-.title{
-    text-align:center;
-    margin-top:45px;
-    margin-bottom:35px;
-    font-size:42px;
-    font-weight:400;
-    color:#eee;
-    text-shadow:0 0 10px rgba(234,128,176,.5);
-}
 
-.title span{
-    color:#eaa0c4;
-}
+.star{
 
-.heart-box{
-    width:92%;
-    max-width:680px;
-    height:480px;
-    margin:auto;
-    border:5px solid #e8b3ce;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 0 15px rgba(234,128,176,.2);
-}
-
-.heart{
-    position:relative;
-    width:460px;
-    height:400px;
-}
-
-.love{
     position:absolute;
-    color:#ea80b0;
-    font-size:17px;
-    font-weight:500;
-    white-space:nowrap;
 
-    text-shadow:
-        0 0 5px #ea80b0,
-        0 0 10px #ea80b0,
-        0 0 18px rgba(255,120,180,.8);
+    width:3px;
+    height:3px;
 
-    animation:glow 2s infinite alternate;
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 7px white;
+
+    animation:
+        twinkle
+        2s
+        infinite
+        ease-in-out;
 }
 
-@keyframes glow{
-    from{
-        opacity:.45;
-        text-shadow:0 0 4px #ea80b0;
-    }
-
-    to{
-        opacity:1;
-        text-shadow:
-            0 0 7px #ea80b0,
-            0 0 15px #ea80b0,
-            0 0 25px #ff9aca;
-    }
-}
-
-
-/* اسم ROUA والعبارة */
-
-.roua{
-    position:absolute;
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    text-align:center;
-
-    color:white;
-    font-size:55px;
-    font-weight:800;
-    letter-spacing:7px;
-
-    text-shadow:
-        0 0 5px #fff,
-        0 0 15px #ea80b0,
-        0 0 30px #ea80b0,
-        0 0 60px #ea80b0;
-
-    animation:pulse 2s infinite ease-in-out;
-
-    z-index:20;
-
-    white-space:nowrap;
-}
-
-.roua span{
-
-    display:block;
-
-    margin-top:8px;
-
-    font-size:16px;
-
-    font-weight:500;
-
-    letter-spacing:1px;
-
-    color:#f5b6d2;
-
-    text-shadow:
-        0 0 6px #ea80b0,
-        0 0 12px #ea80b0;
-}
-
-@keyframes pulse{
+@keyframes twinkle{
 
     0%,100%{
-        transform:
-            translate(-50%,-50%)
-            scale(1);
+        opacity:.2;
+        transform:scale(.6);
     }
 
     50%{
-        transform:
-            translate(-50%,-50%)
-            scale(1.08);
+        opacity:1;
+        transform:scale(1.5);
     }
 }
 
-.subtitle{
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:950px;
+
+    margin:auto;
+
+    padding:
+        35px 18px 70px;
+
     text-align:center;
-    margin-top:28px;
-    font-size:28px;
-    color:white;
+
+    z-index:2;
 }
 
-.subtitle span{
-    color:#eaa0c4;
-    text-shadow:0 0 10px #ea80b0;
+
+/* =========================
+   TITLE
+========================= */
+
+.small-title{
+
+    color:#ffb8d4;
+
+    font-size:
+        clamp(17px,4vw,25px);
+
+    margin-bottom:5px;
+
+    letter-spacing:1px;
 }
+
+
+.title{
+
+    font-size:
+        clamp(36px,9vw,70px);
+
+    font-weight:900;
+
+    line-height:1.15;
+
+    color:white;
+
+    text-shadow:
+
+        0 0 8px #ffbad7,
+        0 0 20px #ff6da7,
+        0 0 45px #ff287c;
+
+    animation:
+        titlePulse
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes titlePulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.035);
+    }
+}
+
+
+.description{
+
+    margin-top:10px;
+
+    color:#ffd4e4;
+
+    font-size:
+        clamp(17px,4vw,25px);
+}
+
+
+/* =========================
+   PHOTOS AREA
+========================= */
+
+.cards{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:22px;
+
+    margin-top:32px;
+
+    flex-wrap:wrap;
+}
+
+
+.card{
+
+    position:relative;
+
+    width:
+        min(410px,92vw);
+
+    padding:10px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.14),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid
+        rgba(255,173,207,.45);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(255,60,140,.2),
+
+        inset 0 0 25px
+        rgba(255,255,255,.035);
+
+    backdrop-filter:
+        blur(12px);
+
+    animation:
+        floating 4s
+        ease-in-out
+        infinite;
+}
+
+.card:nth-child(2){
+    animation-delay:-2s;
+}
+
+@keyframes floating{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+
+/* =========================
+   ROUA IMAGE
+========================= */
+
+.roua-image{
+
+    width:100%;
+
+    height:390px;
+
+    object-fit:cover;
+
+    border-radius:23px;
+
+    display:block;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,90,155,.3);
+}
+
+
+.card-name{
+
+    padding:
+        14px 5px 8px;
+
+    font-size:25px;
+
+    font-weight:900;
+
+    color:#ffd5e5;
+
+    text-shadow:
+        0 0 12px #ff5d9d;
+}
+
+
+/* =========================
+   POU CARD
+========================= */
+
+.pou-area{
+
+    height:390px;
+
+    border-radius:23px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            #ffbd9b 0%,
+            #b96865 38%,
+            #50283d 70%,
+            #160c1d 100%
+        );
+}
+
+
+/* =========================
+   POU
+========================= */
+
+.pou{
+
+    position:relative;
+
+    width:210px;
+
+    height:240px;
+
+    animation:
+        pouBounce
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes pouBounce{
+
+    0%,100%{
+        transform:translateY(0)
+        rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-12px)
+        rotate(2deg);
+    }
+}
+
+
+/* جسم بو */
+
+.pou-body{
+
+    position:absolute;
+
+    left:20px;
+
+    bottom:0;
+
+    width:170px;
+
+    height:190px;
+
+    background:
+
+        radial-gradient(
+            circle at 40% 30%,
+            #e0a37f,
+            #a95d57 65%,
+            #6d3b43 100%
+        );
+
+    border-radius:
+        48%
+        48%
+        43%
+        43%;
+
+    box-shadow:
+
+        inset
+        -15px
+        -20px
+        30px
+        rgba(60,20,30,.35),
+
+        0 15px 30px
+        rgba(0,0,0,.45);
+}
+
+
+/* العين */
+
+.eye{
+
+    position:absolute;
+
+    top:66px;
+
+    width:23px;
+    height:29px;
+
+    background:#18131b;
+
+    border-radius:50%;
+
+    box-shadow:
+        inset 5px 5px 0
+        rgba(255,255,255,.75);
+
+    z-index:3;
+}
+
+.eye.left{
+    left:63px;
+}
+
+.eye.right{
+    right:63px;
+}
+
+
+/* الفم */
+
+.mouth{
+
+    position:absolute;
+
+    left:50%;
+
+    top:111px;
+
+    transform:
+        translateX(-50%);
+
+    width:48px;
+    height:24px;
+
+    border-bottom:
+        5px solid #3b1c2a;
+
+    border-radius:
+        0 0 50px 50px;
+}
+
+
+/* الحاجبين */
+
+.brow{
+
+    position:absolute;
+
+    top:55px;
+
+    width:38px;
+
+    height:6px;
+
+    border-radius:10px;
+
+    background:#63333a;
+
+}
+
+.brow.left{
+
+    left:51px;
+
+    transform:
+        rotate(-10deg);
+}
+
+.brow.right{
+
+    right:51px;
+
+    transform:
+        rotate(10deg);
+}
+
+
+/* القبعة الصغيرة */
+
+.pou-heart{
+
+    position:absolute;
+
+    top:22px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size:38px;
+
+    z-index:5;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            #ff6c9e
+        );
+}
+
+
+/* =========================
+   MAIN MESSAGE
+========================= */
+
+.message{
+
+    position:relative;
+
+    margin-top:35px;
+
+    padding:
+        28px 15px 32px;
+
+    border-radius:32px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,76,145,.16),
+            rgba(130,70,255,.12)
+        );
+
+    border:
+        1px solid
+        rgba(255,170,205,.35);
+
+    box-shadow:
+
+        0 0 35px
+        rgba(255,50,130,.18),
+
+        inset 0 0 30px
+        rgba(255,255,255,.025);
+}
+
+
+.main-message{
+
+    font-size:
+        clamp(27px,7vw,52px);
+
+    font-weight:900;
+
+    line-height:1.35;
+
+    color:white;
+
+    text-shadow:
+
+        0 0 8px white,
+        0 0 20px #ff7eaf,
+        0 0 45px #ff2478;
+}
+
+
+.main-message span{
+
+    color:#ff9fc3;
+
+}
+
+
+/* =========================
+   SIMILARITY
+========================= */
+
+.similarity{
+
+    margin-top:20px;
+
+    font-size:
+        clamp(21px,5vw,34px);
+
+    font-weight:900;
+
+    color:#ffe0eb;
+
+    text-shadow:
+        0 0 10px #ff70a5;
+}
+
+
+.laugh{
+
+    display:inline-block;
+
+    animation:
+        laugh
+        1s
+        infinite
+        alternate;
+}
+
+@keyframes laugh{
+
+    from{
+        transform:rotate(-6deg);
+    }
+
+    to{
+        transform:rotate(6deg);
+    }
+}
+
+
+/* =========================
+   FINAL TEXT
+========================= */
+
+.final{
+
+    margin-top:20px;
+
+    font-size:
+        clamp(31px,8vw,58px);
+
+    font-weight:900;
+
+    color:#ff9fc3;
+
+    text-shadow:
+
+        0 0 8px #ffb5d0,
+        0 0 25px #ff4f91,
+        0 0 55px #ff176c;
+
+    animation:
+        finalPulse
+        1.7s
+        infinite
+        ease-in-out;
+}
+
+@keyframes finalPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.floating-heart{
+
+    position:fixed;
+
+    bottom:-50px;
+
+    font-size:
+        20px;
+
+    z-index:1;
+
+    pointer-events:none;
+
+    animation:
+        rise
+        6s
+        linear
+        forwards;
+}
+
+@keyframes rise{
+
+    0%{
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(.6);
+
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translateY(-110vh)
+            rotate(360deg)
+            scale(1.4);
+
+        opacity:0;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
-    .title{
-        font-size:34px;
-        margin-top:40px;
+    .container{
+        padding-top:28px;
     }
 
-    .heart-box{
-        width:94%;
-        height:430px;
+    .cards{
+        gap:18px;
     }
 
-    .heart{
-        width:350px;
-        height:350px;
-        transform:scale(.82);
+    .roua-image,
+    .pou-area{
+        height:330px;
     }
 
-    .love{
-        font-size:15px;
+    .pou{
+        transform:scale(.85);
     }
 
-    .roua{
-        font-size:43px;
-        letter-spacing:5px;
-    }
-
-    .roua span{
-        font-size:13px;
-        margin-top:6px;
-    }
-
-    .subtitle{
-        font-size:22px;
-    }
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<h1 class="title">
-    Love Heart <span>ROUA</span>
-</h1>
 
-<div class="heart-box">
+<!-- النجوم -->
 
-    <div class="heart" id="heart">
+<div class="galaxy" id="galaxy"></div>
 
-        <div class="roua">
-            ROUA
-            <span>أحلى بوو بتشبهي بوو 😂💕</span>
+
+<div class="container">
+
+
+    <div class="small-title">
+        ✨ قصة ما إلها مثيل ✨
+    </div>
+
+
+    <h1 class="title">
+        رؤى 💕
+    </h1>
+
+
+    <div class="description">
+        أحلى بوو بالمجرة 🌌😂
+    </div>
+
+
+    <!-- الصور -->
+
+    <div class="cards">
+
+
+        <!-- رؤى -->
+
+        <div class="card">
+
+            <img
+                src="roua.jpg"
+                class="roua-image"
+                alt="رؤى">
+
+            <div class="card-name">
+                رؤى 🩷✨
+            </div>
+
         </div>
+
+
+        <!-- بو -->
+
+        <div class="card">
+
+            <div class="pou-area">
+
+                <div class="pou">
+
+                    <div class="pou-heart">
+                        💕
+                    </div>
+
+                    <div class="pou-body">
+
+                        <div class="brow left"></div>
+                        <div class="brow right"></div>
+
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+
+                        <div class="mouth"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-name">
+                بوو 😂
+            </div>
+
+        </div>
+
 
     </div>
 
+
+    <!-- الكلام -->
+
+    <div class="message">
+
+
+        <div class="main-message">
+
+            رؤى
+            <span>
+                أحلى بوو بالمجرة
+            </span>
+            🌌😂💕
+
+
+        </div>
+
+
+        <div class="similarity">
+
+            يخلق من الشبه أربعين
+
+            <span class="laugh">
+                😂😂😂
+            </span>
+
+        </div>
+
+
+        <div class="final">
+
+            أحلى بووووووو 😂💕✨
+
+        </div>
+
+
+    </div>
+
+
 </div>
 
-<div class="subtitle">
-    I LOVE YOU <span>ROUA</span> ❤️
-</div>
 
 <script>
 
-const heart =
-    document.getElementById("heart");
 
-const total = 115;
+/* =========================
+   STAR GENERATOR
+========================= */
 
-for(let i = 0; i < total; i++){
+const galaxy =
+    document.getElementById("galaxy");
 
-    const t =
-        (Math.PI * 2 * i) / total;
 
-    const x =
-        16 * Math.pow(Math.sin(t),3);
+for(let i = 0; i < 90; i++){
 
-    const y =
-        13 * Math.cos(t)
-        - 5 * Math.cos(2*t)
-        - 2 * Math.cos(3*t)
-        - Math.cos(4*t);
-
-    const word =
+    const star =
         document.createElement("div");
 
-    word.className = "love";
+    star.className =
+        "star";
 
-    word.textContent = "I LOVE YOU";
+    star.style.left =
+        Math.random()*100 + "%";
 
-    const scaleX = 13;
-    const scaleY = 12;
+    star.style.top =
+        Math.random()*100 + "%";
 
-    word.style.left =
-        `calc(50% + ${x * scaleX}px)`;
+    star.style.animationDelay =
+        Math.random()*3 + "s";
 
-    word.style.top =
-        `calc(50% - ${y * scaleY}px)`;
+    star.style.animationDuration =
+        (1.5 + Math.random()*3) + "s";
 
-    const angle =
-        Math.atan2(
-            -Math.sin(t),
-            Math.cos(t)
-        ) * 180 / Math.PI;
-
-    word.style.transform =
-        `translate(-50%,-50%) rotate(${angle}deg)`;
-
-    word.style.animationDelay =
-        Math.random() * 2 + "s";
-
-    heart.appendChild(word);
+    galaxy.appendChild(star);
 }
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+const emojis = [
+    "💕",
+    "💗",
+    "💖",
+    "🩷",
+    "✨",
+    "😂"
+];
+
+
+function createHeart(){
+
+    const heart =
+        document.createElement("div");
+
+    heart.className =
+        "floating-heart";
+
+    heart.textContent =
+        emojis[
+            Math.floor(
+                Math.random()*emojis.length
+            )
+        ];
+
+    heart.style.left =
+        Math.random()*100 + "%";
+
+    heart.style.animationDuration =
+        (4 + Math.random()*4) + "s";
+
+    document.body.appendChild(
+        heart
+    );
+
+
+    setTimeout(
+        () => heart.remove(),
+        9000
+    );
+
+}
+
+
+setInterval(
+    createHeart,
+    650
+);
+
 
 </script>
 
+
 </body>
+
 </html>
