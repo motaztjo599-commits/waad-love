@@ -9,105 +9,101 @@
 
 <style>
 
-/* =====================================================
-   RESET
-===================================================== */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
 }
 
 body{
-    min-height:100vh;
-    background:#030407;
-    color:white;
     font-family:Arial, Helvetica, sans-serif;
-    overflow-x:hidden;
 }
 
 
 /* =====================================================
-   MAIN
-===================================================== */
-
-.page{
-    width:100%;
-    min-height:100vh;
-    background:
-        radial-gradient(
-            circle at 50% 25%,
-            rgba(255,170,80,.10),
-            transparent 30%
-        ),
-        linear-gradient(
-            180deg,
-            #020307 0%,
-            #05070b 55%,
-            #010204 100%
-        );
-}
-
-
-/* =====================================================
-   TOP SCENE
+   SCENE
 ===================================================== */
 
 .scene{
-
     position:relative;
-
-    width:94%;
-    max-width:700px;
-
-    height:520px;
-
-    margin:25px auto 0;
-
-    border-radius:30px;
-
+    width:100%;
+    height:100vh;
     overflow:hidden;
 
     background:
-
         radial-gradient(
-            circle at 50% 45%,
-            rgba(255,183,91,.18),
-            transparent 28%
-        ),
-
-        linear-gradient(
-            180deg,
-            #080b12,
-            #030407
+            circle at 50% 48%,
+            #17100b 0%,
+            #090807 25%,
+            #020304 65%,
+            #000 100%
         );
-
-    border:1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.7),
-        inset 0 0 80px rgba(0,0,0,.7);
 }
 
 
 /* =====================================================
-   LIGHT AURA
+   CINEMATIC GLOW
 ===================================================== */
 
-.aura{
-
+.light-glow{
     position:absolute;
 
     left:50%;
-    top:48%;
+    top:32%;
 
-    width:280px;
-    height:280px;
+    width:20px;
+    height:20px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:#ffd68c;
+
+    opacity:0;
+
+    filter:blur(3px);
+
+    box-shadow:
+        0 0 20px #ffd68c,
+        0 0 60px #ffb84d,
+        0 0 130px #ff9d2e,
+        0 0 240px rgba(255,140,30,.5);
+
+    transition:
+        width 3s ease,
+        height 3s ease,
+        opacity 3s ease;
+}
+
+.scene.lit .light-glow{
+
+    width:650px;
+    height:650px;
+
+    opacity:.42;
+}
+
+
+/* =====================================================
+   EXTRA WARM LIGHT
+===================================================== */
+
+.warm-light{
+    position:absolute;
+
+    left:50%;
+    top:34%;
+
+    width:500px;
+    height:500px;
 
     transform:translate(-50%,-50%);
 
@@ -116,8 +112,8 @@ body{
     background:
         radial-gradient(
             circle,
-            rgba(255,181,87,.35),
-            rgba(255,150,50,.08) 45%,
+            rgba(255,190,100,.23),
+            rgba(255,130,40,.08) 40%,
             transparent 70%
         );
 
@@ -125,10 +121,10 @@ body{
 
     opacity:0;
 
-    transition:2s;
+    transition:opacity 4s ease;
 }
 
-.scene.active .aura{
+.scene.lit .warm-light{
     opacity:1;
 }
 
@@ -138,246 +134,219 @@ body{
 ===================================================== */
 
 .cable{
-
     position:absolute;
 
     top:0;
 
     width:2px;
 
-    height:170px;
-
     background:
         linear-gradient(
             180deg,
-            #333842,
-            #151820
+            #32343a,
+            #111217
         );
 
     transform-origin:top;
 
-    opacity:.9;
+    z-index:4;
 }
 
 .cable.one{
     left:22%;
     height:180px;
-    transform:rotate(-4deg);
+    transform:rotate(-5deg);
 }
 
 .cable.two{
     left:50%;
-    height:125px;
+    height:145px;
 }
 
 .cable.three{
-    right:21%;
-    height:195px;
+    right:22%;
+    height:190px;
     transform:rotate(5deg);
 }
 
 
 /* =====================================================
-   LIGHT BULBS
+   BULBS
 ===================================================== */
 
 .bulb{
-
     position:absolute;
 
-    width:22px;
-    height:34px;
+    width:24px;
+    height:38px;
 
     border-radius:
         50% 50% 45% 45%;
 
-    background:#17191e;
+    background:#111216;
 
-    border:1px solid #343740;
+    border:1px solid #33363d;
 
-    box-shadow:
-        0 0 0 transparent;
+    z-index:8;
 
     transition:
-        background 1s,
-        box-shadow 1s,
-        transform 1s;
-
-    z-index:5;
+        background 1.8s ease,
+        box-shadow 1.8s ease,
+        transform 1.8s ease;
 }
 
 .bulb::before{
-
     content:"";
 
     position:absolute;
 
-    top:-9px;
     left:5px;
+    top:-9px;
 
-    width:10px;
+    width:12px;
     height:10px;
 
     border-radius:3px;
 
-    background:#24262c;
+    background:#25272d;
 }
-
-.bulb::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:8px;
-    height:8px;
-
-    transform:translate(-50%,-50%);
-
-    border-radius:50%;
-
-    background:#25272b;
-}
-
-
-/* positions */
 
 .bulb.one{
-    left:calc(22% - 10px);
-    top:158px;
+    left:calc(22% - 12px);
+    top:168px;
 }
 
 .bulb.two{
-    left:calc(50% - 10px);
-    top:103px;
+    left:calc(50% - 12px);
+    top:133px;
 }
 
 .bulb.three{
-    right:calc(21% - 10px);
-    top:173px;
-}
-
-
-/* ON */
-
-.scene.active .bulb{
-
-    background:#ffd18a;
-
-    border-color:#fff0c5;
-
-    box-shadow:
-
-        0 0 8px #ffd18a,
-        0 0 25px #ffb34d,
-        0 0 60px rgba(255,155,40,.65),
-        0 0 110px rgba(255,150,40,.25);
-
-    transform:scale(1.08);
+    right:calc(22% - 12px);
+    top:178px;
 }
 
 
 /* =====================================================
-   CENTER MESSAGE
+   BULBS ON
 ===================================================== */
 
-.message{
+.scene.lit .bulb{
+
+    background:#ffd78f;
+
+    border-color:#fff1ca;
+
+    transform:scale(1.1);
+
+    box-shadow:
+        0 0 10px #ffe0a3,
+        0 0 30px #ffbd57,
+        0 0 70px #ff9e2f,
+        0 0 130px rgba(255,150,40,.5);
+}
+
+
+/* =====================================================
+   FLOATING DUST
+===================================================== */
+
+.dust{
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#ffd99b;
+
+    opacity:0;
+
+    animation:
+        floatDust 5s infinite ease-in-out;
+}
+
+.scene.lit .dust{
+    opacity:.5;
+}
+
+@keyframes floatDust{
+
+    0%{
+        transform:translateY(30px);
+        opacity:0;
+    }
+
+    30%{
+        opacity:.5;
+    }
+
+    70%{
+        opacity:.35;
+    }
+
+    100%{
+        transform:translateY(-150px);
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   I LOVE YOU
+===================================================== */
+
+.love{
 
     position:absolute;
 
     left:50%;
-    top:47%;
-
-    width:100%;
+    top:48%;
 
     transform:
         translate(-50%,-50%)
-        scale(.85);
+        scale(.75);
 
-    text-align:center;
+    white-space:nowrap;
+
+    font-size:
+        clamp(38px,10vw,82px);
+
+    font-weight:800;
+
+    letter-spacing:4px;
+
+    color:#fff;
 
     opacity:0;
 
-    transition:
-        opacity 1.5s,
-        transform 1.5s;
+    filter:
+        blur(10px);
 
-    z-index:10;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 25px #ffd18a,
+        0 0 55px #ff9f38,
+        0 0 100px rgba(255,150,50,.7);
+
+    transition:
+        opacity 2s ease,
+        filter 2s ease,
+        transform 2s cubic-bezier(.2,.8,.2,1);
+
+    z-index:15;
 }
 
-.scene.active .message{
+.scene.love-show .love{
 
     opacity:1;
+
+    filter:blur(0);
 
     transform:
         translate(-50%,-50%)
         scale(1);
-}
-
-
-/* small line */
-
-.message .small{
-
-    font-size:12px;
-
-    letter-spacing:6px;
-
-    color:#d7d9df;
-
-    margin-bottom:15px;
-
-    opacity:.7;
-}
-
-
-/* main text */
-
-.message h1{
-
-    font-size:
-        clamp(38px,9vw,78px);
-
-    font-weight:800;
-
-    letter-spacing:3px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #fff,
-            #ffbd75,
-            #fff,
-            #ffd7a1,
-            #fff
-        );
-
-    background-size:300%;
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-
-    animation:
-        textMove 5s linear infinite;
-
-    filter:
-        drop-shadow(0 0 15px rgba(255,180,80,.5));
-}
-
-@keyframes textMove{
-
-    0%{
-        background-position:0%;
-    }
-
-    100%{
-        background-position:300%;
-    }
 }
 
 
@@ -390,35 +359,24 @@ body{
     position:absolute;
 
     left:50%;
-    top:56%;
+    top:48%;
 
-    width:80px;
-    height:80px;
+    width:90px;
+    height:90px;
 
     transform:
         translate(-50%,-50%)
-        scale(0);
+        scale(0)
+        rotate(-10deg);
 
     opacity:0;
 
     transition:
-        transform 1.5s cubic-bezier(.2,.8,.2,1),
-        opacity 1s;
+        transform 1.7s cubic-bezier(.15,.8,.2,1),
+        opacity 1.2s ease;
 
-    z-index:15;
+    z-index:18;
 }
-
-.scene.heart-mode .heart{
-
-    opacity:1;
-
-    transform:
-        translate(-50%,-50%)
-        scale(1);
-}
-
-
-/* heart shape */
 
 .heart::before,
 .heart::after{
@@ -427,25 +385,30 @@ body{
 
     position:absolute;
 
-    width:45px;
-    height:72px;
-
-    background:#ff5b8a;
-
-    border-radius:
-        50px 50px 0 0;
+    width:55px;
+    height:85px;
 
     top:0;
 
+    border-radius:
+        55px 55px 0 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff9ab8,
+            #ff3f78
+        );
+
     box-shadow:
-        0 0 15px #ff5b8a,
-        0 0 40px rgba(255,70,130,.8),
-        0 0 80px rgba(255,50,120,.35);
+        0 0 15px #ff6b98,
+        0 0 40px #ff3d77,
+        0 0 90px rgba(255,40,110,.7);
 }
 
 .heart::before{
 
-    left:38px;
+    left:45px;
 
     transform:
         rotate(45deg);
@@ -467,6 +430,21 @@ body{
 
 
 /* =====================================================
+   HEART SHOW
+===================================================== */
+
+.scene.heart-show .heart{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1)
+        rotate(0);
+}
+
+
+/* =====================================================
    WAAD
 ===================================================== */
 
@@ -475,38 +453,37 @@ body{
     position:absolute;
 
     left:50%;
-    top:72%;
+    top:65%;
 
     transform:
         translate(-50%,-50%)
-        translateY(30px);
+        translateY(25px);
 
     opacity:0;
 
+    color:#fff;
+
     font-size:
-        clamp(22px,6vw,42px);
+        clamp(30px,8vw,60px);
 
     font-weight:800;
 
-    letter-spacing:8px;
-
-    color:white;
+    letter-spacing:10px;
 
     text-shadow:
-
-        0 0 5px white,
-        0 0 15px #ff6390,
-        0 0 35px #ff4c83,
-        0 0 70px rgba(255,50,120,.7);
+        0 0 5px #fff,
+        0 0 15px #ff9ab8,
+        0 0 35px #ff4d83,
+        0 0 75px #ff316e;
 
     transition:
-        opacity 1.2s,
-        transform 1.2s;
+        opacity 1.5s ease,
+        transform 1.5s ease;
 
     z-index:20;
 }
 
-.scene.heart-mode .waad{
+.scene.heart-show .waad{
 
     opacity:1;
 
@@ -517,189 +494,77 @@ body{
 
 
 /* =====================================================
-   START BUTTON
+   SMALL PARTICLES
 ===================================================== */
 
-.start{
+.particle{
 
     position:absolute;
 
-    left:50%;
-    bottom:32px;
+    width:2px;
+    height:2px;
 
-    transform:translateX(-50%);
-
-    padding:12px 28px;
-
-    border-radius:50px;
-
-    border:1px solid rgba(255,255,255,.18);
-
-    background:
-        rgba(255,255,255,.06);
-
-    color:white;
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    cursor:pointer;
-
-    backdrop-filter:blur(15px);
-
-    transition:.3s;
-
-    z-index:30;
-}
-
-.start:hover{
-
-    background:
-        rgba(255,170,80,.15);
-
-    box-shadow:
-        0 0 30px rgba(255,170,80,.2);
-}
-
-
-/* =====================================================
-   CODE SECTION
-===================================================== */
-
-.code-section{
-
-    width:94%;
-    max-width:700px;
-
-    margin:25px auto 50px;
-
-    background:#090b10;
-
-    border-radius:22px;
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    overflow:hidden;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.5);
-}
-
-
-/* top bar */
-
-.code-top{
-
-    height:55px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:0 18px;
-
-    background:#111319;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.06);
-}
-
-.dot{
-
-    width:13px;
-    height:13px;
+    background:#fff;
 
     border-radius:50%;
+
+    opacity:0;
+
+    box-shadow:
+        0 0 8px #ffb0c5;
+
+    animation:
+        particleMove 4s infinite ease-in-out;
 }
 
-.red{
-    background:#ff5f57;
+.scene.heart-show .particle{
+    opacity:.7;
 }
 
-.yellow{
-    background:#febc2e;
-}
+@keyframes particleMove{
 
-.green{
-    background:#28c840;
-}
+    0%{
+        transform:
+            translateY(20px)
+            scale(.5);
 
-.code-title{
+        opacity:0;
+    }
 
-    margin-left:auto;
+    40%{
+        opacity:.8;
+    }
 
-    color:#777d89;
+    100%{
+        transform:
+            translateY(-120px)
+            scale(1.5);
 
-    font-size:12px;
-
-    font-family:monospace;
-}
-
-
-/* code */
-
-.code{
-
-    padding:25px 20px 30px;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:
-        clamp(10px,2.7vw,14px);
-
-    line-height:1.8;
-
-    color:#bfc5d2;
-
-    overflow:hidden;
-}
-
-.purple{
-    color:#c792ea;
-}
-
-.orange{
-    color:#f78c6c;
-}
-
-.blue{
-    color:#82aaff;
-}
-
-.green-text{
-    color:#c3e88d;
-}
-
-.pink{
-    color:#ff79c6;
-}
-
-.comment{
-    color:#546174;
+        opacity:0;
+    }
 }
 
 
 /* =====================================================
-   FOOTER
+   VIGNETTE
 ===================================================== */
 
-.footer{
+.vignette{
 
-    text-align:center;
+    position:absolute;
 
-    color:#545a66;
+    inset:0;
 
-    font-size:11px;
+    pointer-events:none;
 
-    padding-bottom:30px;
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 40%,
+            rgba(0,0,0,.55) 100%
+        );
 
-    letter-spacing:2px;
+    z-index:50;
 }
 
 
@@ -709,65 +574,33 @@ body{
 
 @media(max-width:600px){
 
-    .scene{
-
-        height:500px;
-
-        margin-top:15px;
-
-        border-radius:25px;
-    }
-
     .cable.one{
         left:18%;
     }
 
     .cable.three{
-        right:17%;
+        right:18%;
     }
 
     .bulb.one{
-        left:calc(18% - 10px);
+        left:calc(18% - 12px);
     }
 
     .bulb.three{
-        right:calc(17% - 10px);
+        right:calc(18% - 12px);
     }
 
-    .message .small{
-        font-size:9px;
-        letter-spacing:4px;
+    .scene.lit .light-glow{
+        width:500px;
+        height:500px;
     }
 
-    .message h1{
-        letter-spacing:1px;
-    }
-
-    .heart{
-        width:65px;
-        height:65px;
-    }
-
-    .heart::before,
-    .heart::after{
-        width:37px;
-        height:58px;
-    }
-
-    .heart::before{
-        left:31px;
+    .love{
+        letter-spacing:2px;
     }
 
     .waad{
-        letter-spacing:6px;
-    }
-
-    .code-section{
-        border-radius:18px;
-    }
-
-    .code{
-        padding:20px 14px;
+        letter-spacing:7px;
     }
 
 }
@@ -775,217 +608,115 @@ body{
 </style>
 </head>
 
-
 <body>
 
+<div class="scene" id="scene">
 
-<div class="page">
+    <!-- الإضاءة -->
 
+    <div class="light-glow"></div>
 
-    <!-- =================================================
-         ANIMATED SCENE
-    ================================================== -->
-
-    <div class="scene" id="scene">
-
-        <div class="aura"></div>
+    <div class="warm-light"></div>
 
 
-        <!-- cables -->
+    <!-- الأسلاك -->
 
-        <div class="cable one"></div>
-        <div class="cable two"></div>
-        <div class="cable three"></div>
-
-
-        <!-- bulbs -->
-
-        <div class="bulb one"></div>
-        <div class="bulb two"></div>
-        <div class="bulb three"></div>
+    <div class="cable one"></div>
+    <div class="cable two"></div>
+    <div class="cable three"></div>
 
 
-        <!-- message -->
+    <!-- اللمبات -->
 
-        <div class="message">
-
-            <div class="small">
-                THIS MESSAGE IS FOR
-            </div>
-
-            <h1>
-                I LOVE YOU
-            </h1>
-
-        </div>
+    <div class="bulb one"></div>
+    <div class="bulb two"></div>
+    <div class="bulb three"></div>
 
 
-        <!-- heart -->
+    <!-- الجملة -->
 
-        <div class="heart"></div>
-
-
-        <!-- name -->
-
-        <div class="waad">
-            WAAD
-        </div>
-
-
-        <!-- start -->
-
-        <button class="start" id="start">
-            TAP TO BEGIN
-        </button>
-
+    <div class="love">
+        I LOVE YOU
     </div>
 
 
+    <!-- القلب -->
 
-    <!-- =================================================
-         CODE PANEL
-    ================================================== -->
-
-    <div class="code-section">
-
-        <div class="code-top">
-
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-
-            <span class="code-title">
-                love.js
-            </span>
-
-        </div>
+    <div class="heart"></div>
 
 
-        <div class="code">
+    <!-- الاسم -->
 
-            <div>
-                <span class="purple">const</span>
-                <span class="blue">person</span>
-                =
-                <span class="orange">"WAAD"</span>;
-            </div>
-
-            <div>
-                <span class="purple">const</span>
-                <span class="blue">message</span>
-                =
-                <span class="orange">"I LOVE YOU"</span>;
-            </div>
-
-            <br>
-
-            <div>
-                <span class="purple">function</span>
-                <span class="green-text">createLove</span>() {
-            </div>
-
-            <div>
-                &nbsp;&nbsp;
-                <span class="blue">heart</span>.style.opacity
-                =
-                <span class="orange">"1"</span>;
-            </div>
-
-            <div>
-                &nbsp;&nbsp;
-                <span class="blue">name</span>.innerText
-                =
-                person;
-            </div>
-
-            <div>
-                &nbsp;&nbsp;
-                <span class="blue">message</span>.innerText
-                =
-                message;
-            </div>
-
-            <div>
-                }
-            </div>
-
-            <br>
-
-            <div>
-                <span class="comment">
-                    // Some feelings are written in code.
-                </span>
-            </div>
-
-        </div>
-
+    <div class="waad">
+        WAAD
     </div>
 
 
+    <!-- الغبار الضوئي -->
 
-    <div class="footer">
-        MADE WITH LOVE • WAAD
-    </div>
+    <div class="dust" style="left:20%;top:65%;animation-delay:.2s"></div>
+    <div class="dust" style="left:30%;top:70%;animation-delay:1s"></div>
+    <div class="dust" style="left:40%;top:60%;animation-delay:1.7s"></div>
+    <div class="dust" style="left:60%;top:65%;animation-delay:.5s"></div>
+    <div class="dust" style="left:70%;top:72%;animation-delay:2s"></div>
+    <div class="dust" style="left:80%;top:58%;animation-delay:1.3s"></div>
 
+
+    <!-- جزيئات -->
+
+    <div class="particle" style="left:25%;top:65%;animation-delay:.5s"></div>
+    <div class="particle" style="left:35%;top:70%;animation-delay:1.2s"></div>
+    <div class="particle" style="left:48%;top:75%;animation-delay:2s"></div>
+    <div class="particle" style="left:65%;top:68%;animation-delay:.8s"></div>
+    <div class="particle" style="left:75%;top:72%;animation-delay:1.8s"></div>
+
+
+    <div class="vignette"></div>
 
 </div>
 
 
-
 <script>
 
-/* =====================================================
-   ANIMATION
-===================================================== */
-
-const scene =
-    document.getElementById("scene");
-
-const start =
-    document.getElementById("start");
+const scene = document.getElementById("scene");
 
 
-start.addEventListener("click", () => {
-
-    /* turn lights on */
-
-    scene.classList.add("active");
-
-    start.style.opacity = "0";
-
-    start.style.pointerEvents = "none";
-
-
-    /* after text */
-
-    setTimeout(() => {
-
-        scene.classList.add("heart-mode");
-
-    }, 4200);
-
-});
-
-
-/* =====================================================
-   AUTO START
-===================================================== */
+/* تشغيل اللمبات */
 
 setTimeout(() => {
 
-    scene.classList.add("active");
+    scene.classList.add("lit");
 
-}, 700);
+}, 1200);
 
+
+/* ظهور I LOVE YOU */
 
 setTimeout(() => {
 
-    scene.classList.add("heart-mode");
+    scene.classList.add("love-show");
 
-}, 5200);
+}, 3000);
+
+
+/* اختفاء الجملة وظهور القلب */
+
+setTimeout(() => {
+
+    scene.classList.remove("love-show");
+
+}, 6200);
+
+
+/* ظهور WAAD والقلب */
+
+setTimeout(() => {
+
+    scene.classList.add("heart-show");
+
+}, 7000);
 
 </script>
 
-
 </body>
-    </html>
+</html>
