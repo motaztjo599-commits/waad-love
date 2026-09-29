@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>I LOVE YOU ROUA</title>
+<title>Love Heart ROUA</title>
 
 <style>
 
@@ -17,74 +17,49 @@
 body{
     background:#000;
     color:white;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     min-height:100vh;
     overflow:hidden;
 }
-
-/* العنوان */
 
 .title{
     text-align:center;
     margin-top:45px;
     margin-bottom:35px;
-
     font-size:42px;
     font-weight:400;
-
     color:#eee;
-
-    text-shadow:
-        0 0 10px rgba(234,128,176,.5);
+    text-shadow:0 0 10px rgba(234,128,176,.5);
 }
 
 .title span{
     color:#eaa0c4;
 }
 
-
-/* إطار القلب */
-
 .heart-box{
     width:92%;
     max-width:680px;
     height:480px;
-
     margin:auto;
-
     border:5px solid #e8b3ce;
-
     position:relative;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    box-shadow:
-        0 0 15px rgba(234,128,176,.2);
+    box-shadow:0 0 15px rgba(234,128,176,.2);
 }
-
-
-/* القلب */
 
 .heart{
     position:relative;
-
     width:460px;
     height:400px;
 }
 
-
-/* كلمات I LOVE YOU */
-
 .love{
     position:absolute;
-
     color:#ea80b0;
-
     font-size:17px;
     font-weight:500;
-
     white-space:nowrap;
 
     text-shadow:
@@ -92,53 +67,39 @@ body{
         0 0 10px #ea80b0,
         0 0 18px rgba(255,120,180,.8);
 
-    animation:
-        glow 2s infinite alternate;
-
+    animation:glow 2s infinite alternate;
 }
 
-
-/* توهج */
-
 @keyframes glow{
-
     from{
         opacity:.45;
-
-        text-shadow:
-            0 0 4px #ea80b0;
+        text-shadow:0 0 4px #ea80b0;
     }
 
     to{
         opacity:1;
-
         text-shadow:
             0 0 7px #ea80b0,
             0 0 15px #ea80b0,
             0 0 25px #ff9aca;
     }
-
 }
 
 
-/* اسم رؤى */
+/* اسم ROUA والعبارة */
 
 .roua{
-
     position:absolute;
-
     left:50%;
     top:50%;
 
-    transform:
-        translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+
+    text-align:center;
 
     color:white;
-
     font-size:55px;
-
     font-weight:800;
-
     letter-spacing:7px;
 
     text-shadow:
@@ -147,12 +108,31 @@ body{
         0 0 30px #ea80b0,
         0 0 60px #ea80b0;
 
-    animation:
-        pulse 2s infinite ease-in-out;
+    animation:pulse 2s infinite ease-in-out;
 
     z-index:20;
+
+    white-space:nowrap;
 }
 
+.roua span{
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    letter-spacing:1px;
+
+    color:#f5b6d2;
+
+    text-shadow:
+        0 0 6px #ea80b0,
+        0 0 12px #ea80b0;
+}
 
 @keyframes pulse{
 
@@ -167,32 +147,19 @@ body{
             translate(-50%,-50%)
             scale(1.08);
     }
-
 }
 
-
-/* النص أسفل القلب */
-
 .subtitle{
-
     text-align:center;
-
     margin-top:28px;
-
     font-size:28px;
-
     color:white;
 }
 
 .subtitle span{
     color:#eaa0c4;
-
-    text-shadow:
-        0 0 10px #ea80b0;
+    text-shadow:0 0 10px #ea80b0;
 }
-
-
-/* موبايل */
 
 @media(max-width:600px){
 
@@ -209,7 +176,6 @@ body{
     .heart{
         width:350px;
         height:350px;
-
         transform:scale(.82);
     }
 
@@ -222,68 +188,56 @@ body{
         letter-spacing:5px;
     }
 
+    .roua span{
+        font-size:13px;
+        margin-top:6px;
+    }
+
     .subtitle{
         font-size:22px;
     }
-
 }
 
 </style>
 </head>
 
-
 <body>
-
 
 <h1 class="title">
     Love Heart <span>ROUA</span>
 </h1>
 
-
 <div class="heart-box">
 
     <div class="heart" id="heart">
 
-        <!-- الاسم بالنص -->
-
         <div class="roua">
             ROUA
+            <span>أحلى بوو بتشبهي بوو 😂💕</span>
         </div>
 
     </div>
 
 </div>
 
-
 <div class="subtitle">
     I LOVE YOU <span>ROUA</span> ❤️
 </div>
 
-
 <script>
-
-/* عدد كلمات القلب */
 
 const heart =
     document.getElementById("heart");
 
 const total = 115;
 
-
-/* إنشاء القلب */
-
 for(let i = 0; i < total; i++){
 
     const t =
         (Math.PI * 2 * i) / total;
 
-
-    /* معادلة القلب */
-
     const x =
-        16 * Math.pow(
-            Math.sin(t),3
-        );
+        16 * Math.pow(Math.sin(t),3);
 
     const y =
         13 * Math.cos(t)
@@ -291,33 +245,21 @@ for(let i = 0; i < total; i++){
         - 2 * Math.cos(3*t)
         - Math.cos(4*t);
 
-
-    /* إنشاء الكلمة */
-
     const word =
         document.createElement("div");
 
     word.className = "love";
 
-    word.textContent =
-        "I LOVE YOU";
-
-
-    /* حجم القلب */
+    word.textContent = "I LOVE YOU";
 
     const scaleX = 13;
     const scaleY = 12;
 
-
     word.style.left =
         `calc(50% + ${x * scaleX}px)`;
 
-
     word.style.top =
         `calc(50% - ${y * scaleY}px)`;
-
-
-    /* دوران الكلمات */
 
     const angle =
         Math.atan2(
@@ -325,20 +267,13 @@ for(let i = 0; i < total; i++){
             Math.cos(t)
         ) * 180 / Math.PI;
 
-
     word.style.transform =
-        `translate(-50%,-50%)
-         rotate(${angle}deg)`;
-
-
-    /* حركة عشوائية بسيطة */
+        `translate(-50%,-50%) rotate(${angle}deg)`;
 
     word.style.animationDelay =
         Math.random() * 2 + "s";
 
-
     heart.appendChild(word);
-
 }
 
 </script>
