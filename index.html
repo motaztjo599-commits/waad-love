@@ -1,703 +1,377 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>وعد ❤️</title>
+<title>Love Heart - WAAD</title>
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-}
-
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
 }
 
 body{
-    background:#020108;
+    min-height:100vh;
+    background:#000;
     color:white;
-    font-family:'Cairo',sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow-x:hidden;
 }
 
 /* =========================
-   BACKGROUND
-========================= */
-
-.background{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            #35112e 0%,
-            #19091c 28%,
-            #08050d 62%,
-            #010107 100%
-        );
-}
-
-/* glowing clouds */
-
-.glow{
-    position:absolute;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    filter:blur(130px);
-    opacity:.18;
-    pointer-events:none;
-}
-
-.glow.one{
-    background:#ff3d9a;
-    top:-220px;
-    left:-170px;
-    animation:moveGlow1 12s ease-in-out infinite alternate;
-}
-
-.glow.two{
-    background:#8c35ff;
-    bottom:-250px;
-    right:-180px;
-    animation:moveGlow2 14s ease-in-out infinite alternate;
-}
-
-.glow.three{
-    background:#ff197d;
-    width:300px;
-    height:300px;
-    left:40%;
-    top:35%;
-    opacity:.08;
-    animation:pulseGlow 5s ease-in-out infinite;
-}
-
-@keyframes moveGlow1{
-    from{
-        transform:translate(0,0) scale(1);
-    }
-    to{
-        transform:translate(160px,100px) scale(1.35);
-    }
-}
-
-@keyframes moveGlow2{
-    from{
-        transform:translate(0,0) scale(1);
-    }
-    to{
-        transform:translate(-120px,-100px) scale(1.3);
-    }
-}
-
-@keyframes pulseGlow{
-    0%,100%{
-        transform:scale(.8);
-        opacity:.05;
-    }
-    50%{
-        transform:scale(1.4);
-        opacity:.15;
-    }
-}
-
-/* =========================
-   STARS
-========================= */
-
-#stars{
-    position:absolute;
-    inset:0;
-}
-
-.star{
-    position:absolute;
-    width:2px;
-    height:2px;
-    border-radius:50%;
-    background:white;
-    opacity:.3;
-    animation:twinkle 3s ease-in-out infinite;
-}
-
-@keyframes twinkle{
-    0%,100%{
-        opacity:.15;
-        transform:scale(.7);
-    }
-    50%{
-        opacity:1;
-        transform:scale(1.7);
-    }
-}
-
-/* =========================
-   TOP TITLE
+   العنوان
 ========================= */
 
 .title{
-    position:absolute;
-    top:7%;
-    left:50%;
-    transform:translateX(-50%);
-
+    margin-top:45px;
+    margin-bottom:35px;
+    font-size:42px;
+    font-weight:400;
+    letter-spacing:1px;
     text-align:center;
+
+    background:linear-gradient(
+        90deg,
+        #e7a5c8,
+        #ffffff,
+        #e7a5c8
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+        0 0 10px rgba(234,128,176,.3);
+}
+
+/* =========================
+   إطار القلب
+========================= */
+
+.heart-box{
+    width:92%;
+    max-width:680px;
+    height:480px;
+
+    border:5px solid #e7b3cd;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 0 8px rgba(255,180,220,.15);
+}
+
+/* =========================
+   القلب
+========================= */
+
+.heart{
+    position:relative;
+    width:460px;
+    height:400px;
+}
+
+/* كل كلمة */
+
+.love{
+    position:absolute;
+
+    color:#ea80b0;
+
+    font-size:18px;
+    font-weight:500;
 
     white-space:nowrap;
 
-    font-size:clamp(22px,5vw,42px);
-    font-weight:600;
-
-    letter-spacing:3px;
-
-    color:#ffe5f2;
-
     text-shadow:
-        0 0 10px rgba(255,120,190,.7),
-        0 0 30px rgba(255,60,160,.35);
+        0 0 5px #ea80b0,
+        0 0 10px #ea80b0,
+        0 0 18px rgba(255,120,180,.8);
 
-    z-index:20;
-
-    animation:titleAppear 2s ease forwards;
+    animation:glow 2.5s infinite alternate;
 }
 
-.title span{
-    color:#ff82bd;
-}
+/* إضاءة الكلمات */
 
-@keyframes titleAppear{
+@keyframes glow{
+
     from{
-        opacity:0;
-        transform:translateX(-50%) translateY(-20px);
+        opacity:.55;
+        text-shadow:
+            0 0 4px #ea80b0;
     }
 
     to{
         opacity:1;
-        transform:translateX(-50%) translateY(0);
+        text-shadow:
+            0 0 6px #ea80b0,
+            0 0 15px #ea80b0,
+            0 0 25px #ff9aca;
     }
+
 }
 
 /* =========================
-   HEART AREA
+   اسم WAAD بالنص
 ========================= */
 
-.scene{
-    position:absolute;
+.waad{
 
-    width:min(92vw,600px);
-    height:min(92vw,600px);
+    position:absolute;
 
     left:50%;
     top:50%;
 
     transform:translate(-50%,-50%);
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
+    font-size:55px;
+    font-weight:800;
 
-/* =========================
-   HEART WORDS
-========================= */
+    letter-spacing:8px;
 
-.heart-word{
-    position:absolute;
-
-    color:#ff91c9;
-
-    font-size:clamp(8px,1.7vw,14px);
-
-    font-weight:600;
-
-    white-space:nowrap;
+    color:white;
 
     text-shadow:
-        0 0 4px #ff69b4,
-        0 0 10px rgba(255,60,160,.9),
-        0 0 22px rgba(255,40,150,.45);
+        0 0 5px #fff,
+        0 0 15px #ea80b0,
+        0 0 30px #ea80b0,
+        0 0 55px #ea80b0;
 
-    opacity:.82;
+    animation:waadPulse 2s infinite ease-in-out;
 
-    pointer-events:none;
-
-    transition:
-        transform .25s ease,
-        opacity .25s ease,
-        color .25s ease;
+    z-index:20;
 }
 
-/* music active */
-
-.music-active .heart-word{
-    animation:heartWordBeat 1.4s ease-in-out infinite;
-}
-
-@keyframes heartWordBeat{
+@keyframes waadPulse{
 
     0%,100%{
-        opacity:.72;
-        filter:blur(.2px);
+        transform:translate(-50%,-50%) scale(1);
     }
 
     50%{
-        opacity:1;
-        filter:blur(0);
+        transform:translate(-50%,-50%) scale(1.08);
     }
+
 }
 
 /* =========================
-   CENTER NAME
+   النص تحت القلب
 ========================= */
 
-.center{
-    position:absolute;
+.subtitle{
 
-    width:175px;
-    height:175px;
+    margin-top:28px;
 
-    border-radius:50%;
+    font-size:28px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.14),
-            rgba(255,80,170,.08) 42%,
-            rgba(0,0,0,.5) 75%
-        );
-
-    border:1px solid rgba(255,180,220,.5);
-
-    box-shadow:
-        0 0 25px rgba(255,80,180,.35),
-        0 0 70px rgba(255,40,160,.18),
-        inset 0 0 45px rgba(255,80,180,.1);
-
-    z-index:30;
-
-    animation:centerBeat 2.4s ease-in-out infinite;
-}
-
-.center::before{
-    content:"";
-
-    position:absolute;
-    inset:-12px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(255,140,210,.25);
-
-    border-top-color:rgba(255,150,215,.8);
-
-    animation:rotateRing 7s linear infinite;
-}
-
-.center::after{
-    content:"";
-
-    position:absolute;
-    inset:-25px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(255,80,180,.08);
-
-    animation:rotateRingReverse 12s linear infinite;
-}
-
-.center h1{
-    font-size:52px;
-
-    font-weight:700;
-
-    color:#fff;
-
-    text-shadow:
-        0 0 8px #ffb3d9,
-        0 0 20px #ff5eaa,
-        0 0 45px #ff1f8d,
-        0 0 80px rgba(255,20,130,.6);
-
-    z-index:2;
-}
-
-@keyframes centerBeat{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.07);
-    }
-}
-
-@keyframes rotateRing{
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-@keyframes rotateRingReverse{
-    from{
-        transform:rotate(360deg);
-    }
-
-    to{
-        transform:rotate(0deg);
-    }
-}
-
-/* =========================
-   MUSIC BUTTON
-========================= */
-
-.music-button{
-
-    position:fixed;
-
-    top:25px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    z-index:100;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    padding:11px 23px;
-
-    border-radius:50px;
-
-    border:1px solid rgba(255,160,215,.45);
-
-    background:rgba(15,7,20,.55);
-
-    backdrop-filter:blur(15px);
-
-    color:#ffe4f2;
-
-    font-family:'Cairo',sans-serif;
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 0 15px rgba(255,70,170,.2),
-        inset 0 0 15px rgba(255,120,190,.05);
-
-    transition:.35s ease;
-}
-
-.music-button:hover{
-
-    transform:translateX(-50%) scale(1.07);
-
-    border-color:rgba(255,170,220,.9);
-
-    box-shadow:
-        0 0 30px rgba(255,70,170,.45),
-        0 0 70px rgba(255,70,170,.12);
-}
-
-#musicIcon{
-    color:#ff80bd;
-    font-size:19px;
-}
-
-/* =========================
-   MUSIC ACTIVE
-========================= */
-
-.music-active .center{
-
-    animation:
-        centerBeat 1.4s ease-in-out infinite,
-        centerGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes centerGlow{
-
-    from{
-        box-shadow:
-            0 0 20px rgba(255,70,170,.35),
-            0 0 60px rgba(255,40,160,.15),
-            inset 0 0 40px rgba(255,80,180,.08);
-    }
-
-    to{
-        box-shadow:
-            0 0 45px rgba(255,70,170,.75),
-            0 0 110px rgba(255,40,160,.4),
-            inset 0 0 65px rgba(255,80,180,.18);
-    }
-}
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
-.floating-heart{
-
-    position:absolute;
-
-    color:#ff75b8;
-
-    font-size:15px;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    animation:floatHeart 7s linear infinite;
-}
-
-@keyframes floatHeart{
-
-    0%{
-        transform:translateY(80px) scale(.5);
-        opacity:0;
-    }
-
-    20%{
-        opacity:.8;
-    }
-
-    80%{
-        opacity:.35;
-    }
-
-    100%{
-        transform:translateY(-350px) scale(1.2);
-        opacity:0;
-    }
-}
-
-/* =========================
-   BOTTOM TEXT
-========================= */
-
-.bottom{
-
-    position:fixed;
-
-    bottom:6%;
-
-    left:50%;
-
-    transform:translateX(-50%);
+    color:white;
 
     text-align:center;
 
-    color:rgba(255,220,235,.7);
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    z-index:20;
-
-    white-space:nowrap;
 }
 
-.bottom span{
-    color:#ff78b8;
+.subtitle span{
+    color:#e9a0c3;
+
+    text-shadow:
+        0 0 10px #ea80b0;
 }
 
 /* =========================
-   MOBILE
+   كود CSS تحت
+========================= */
+
+.code-box{
+
+    width:92%;
+    max-width:620px;
+
+    margin-top:22px;
+    margin-bottom:50px;
+
+    border:2px solid #e99bc2;
+
+    border-radius:15px;
+
+    background:#02050b;
+
+    box-shadow:
+        0 0 15px rgba(233,155,194,.25);
+
+    padding:25px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    color:#4dc9ff;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+.code-title{
+
+    color:#ea80b0;
+
+    margin-bottom:10px;
+
+    font-weight:bold;
+
+}
+
+/* =========================
+   موبايل
 ========================= */
 
 @media(max-width:600px){
 
     .title{
-        top:10%;
-        font-size:22px;
-        letter-spacing:1px;
+        font-size:36px;
+        margin-top:40px;
+        margin-bottom:30px;
     }
 
-    .scene{
-        width:100vw;
-        height:100vw;
+    .heart-box{
+        width:94%;
+        height:430px;
     }
 
-    .center{
-        width:145px;
-        height:145px;
+    .heart{
+        width:350px;
+        height:350px;
+        transform:scale(.82);
     }
 
-    .center h1{
-        font-size:40px;
+    .love{
+        font-size:15px;
     }
 
-    .heart-word{
-        font-size:8px;
+    .waad{
+        font-size:43px;
+        letter-spacing:6px;
     }
 
-    .bottom{
-        bottom:4%;
-        font-size:10px;
+    .subtitle{
+        font-size:23px;
     }
 
-    .music-button{
-        top:18px;
-        padding:9px 18px;
+    .code-box{
+        font-size:12px;
+        padding:18px;
     }
+
 }
 
 </style>
 </head>
 
-
 <body>
 
 
 <!-- =========================
-     BACKGROUND
+     العنوان
 ========================= -->
 
-<div class="background">
-
-    <div class="glow one"></div>
-    <div class="glow two"></div>
-    <div class="glow three"></div>
-
-    <div id="stars"></div>
-
-</div>
+<h1 class="title">
+    Love Heart Animation
+</h1>
 
 
 <!-- =========================
-     MUSIC
+     القلب
 ========================= -->
 
-<audio id="angelAudio" loop preload="metadata">
-    <source src="angel.mp3" type="audio/mpeg">
-</audio>
+<div class="heart-box">
 
+    <div class="heart" id="heart">
 
-<button class="music-button" onclick="toggleMusic()">
+        <div class="waad">
+            WAAD
+        </div>
 
-    <span id="musicIcon">♫</span>
-
-    <span id="musicText">PLAY</span>
-
-</button>
-
-
-<!-- =========================
-     TITLE
-========================= -->
-
-<div class="title">
-    A Heart Made For <span>وعد</span>
-</div>
-
-
-<!-- =========================
-     HEART
-========================= -->
-
-<div class="scene" id="scene">
-
-    <div class="center">
-        <h1>وعد</h1>
     </div>
 
 </div>
 
 
-<!-- floating hearts -->
+<!-- =========================
+     النص
+========================= -->
 
-<div class="floating-heart" style="left:12%;animation-delay:0s;">♥</div>
-<div class="floating-heart" style="left:25%;animation-delay:2s;">♡</div>
-<div class="floating-heart" style="left:70%;animation-delay:1s;">♥</div>
-<div class="floating-heart" style="left:85%;animation-delay:4s;">♡</div>
-<div class="floating-heart" style="left:50%;animation-delay:3s;">♥</div>
+<div class="subtitle">
+    Comment <span>"Love"</span> for Code
+</div>
 
 
-<div class="bottom">
-    <span>وعد</span> — اسمٌ يصنع قلباً كاملاً ♥
+<!-- =========================
+     صندوق الكود
+========================= -->
+
+<div class="code-box">
+
+    <div class="code-title">
+        CSS — WAAD LOVE
+    </div>
+
+    <div>
+        #heart .love {
+    </div>
+
+    <div style="color:#e6c36a;">
+        color: #ea80b0;
+    </div>
+
+    <div style="color:#e6c36a;">
+        text-shadow: 0 0 10px #fff;
+    </div>
+
+    <div>
+        letter-spacing: 2px;
+    </div>
+
+    <div>
+        animation: glow 2s infinite;
+    </div>
+
+    <div>
+        }
+    </div>
+
 </div>
 
 
 <script>
 
-/* =====================================
-   CREATE STARS
-===================================== */
+/* =========================================
+   إنشاء قلب من كلمات I LOVE YOU
+========================================= */
 
-const stars = document.getElementById("stars");
+const heart = document.getElementById("heart");
 
-for(let i = 0; i < 100; i++){
+const total = 115;
 
-    const star = document.createElement("div");
-
-    star.className = "star";
-
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
-
-    star.style.animationDelay =
-        (Math.random() * 4) + "s";
-
-    star.style.opacity =
-        0.2 + Math.random() * .7;
-
-    stars.appendChild(star);
-}
-
-
-/* =====================================
-   REAL MATHEMATICAL HEART
-===================================== */
-
-const scene = document.getElementById("scene");
-
-const totalWords = 260;
-
-
-/*
-   القلب الرياضي:
-
-   x = 16 sin³(t)
-
-   y =
-   13 cos(t)
-   - 5 cos(2t)
-   - 2 cos(3t)
-   - cos(4t)
-*/
-
-for(let i = 0; i < totalWords; i++){
+for(let i = 0; i < total; i++){
 
     const t =
-        (Math.PI * 2 * i) / totalWords;
+        (Math.PI * 2 * i) / total;
+
+    /*
+       معادلة القلب
+    */
 
     const x =
         16 * Math.pow(Math.sin(t),3);
@@ -708,114 +382,48 @@ for(let i = 0; i < totalWords; i++){
         - 2 * Math.cos(3*t)
         - Math.cos(4*t);
 
-    /*
-       نضع الكلمات على حدود القلب
-    */
-
     const word =
         document.createElement("div");
 
-    word.className = "heart-word";
+    word.className = "love";
 
-    word.textContent = "وعد";
+    word.textContent = "I LOVE YOU";
 
     /*
-       Scale
+       تكبير القلب
     */
 
-    const scale = 14;
+    const scaleX = 13;
+    const scaleY = 12;
 
     word.style.left =
-        `calc(50% + ${x * scale}px)`;
+        `calc(50% + ${x * scaleX}px)`;
 
     word.style.top =
-        `calc(50% - ${y * scale}px)`;
+        `calc(50% - ${y * scaleY}px)`;
 
     /*
-       تدوير الكلمة حسب اتجاه القلب
+       تدوير الكلمات
     */
-
-    const nextT =
-        t + 0.01;
-
-    const nextX =
-        16 * Math.pow(Math.sin(nextT),3);
-
-    const nextY =
-        13 * Math.cos(nextT)
-        - 5 * Math.cos(2*nextT)
-        - 2 * Math.cos(3*nextT)
-        - Math.cos(4*nextT);
 
     const angle =
         Math.atan2(
-            nextY - y,
-            nextX - x
+            -Math.sin(t),
+            Math.cos(t)
         ) * 180 / Math.PI;
 
     word.style.transform =
-        `translate(-50%,-50%) rotate(${angle}deg)`;
+        `translate(-50%,-50%)
+         rotate(${angle}deg)`;
 
     /*
-       اختلاف بسيط حتى ما تكون كل الكلمات
-       متطابقة بالحركة
+       حركة مختلفة لكل كلمة
     */
 
     word.style.animationDelay =
-        (Math.random() * 1.4) + "s";
+        (Math.random() * 2) + "s";
 
-    scene.appendChild(word);
-}
-
-
-/* =====================================
-   MUSIC
-===================================== */
-
-const audio =
-    document.getElementById("angelAudio");
-
-const musicText =
-    document.getElementById("musicText");
-
-const musicIcon =
-    document.getElementById("musicIcon");
-
-
-function toggleMusic(){
-
-    if(audio.paused){
-
-        audio.play().then(() => {
-
-            musicText.textContent = "PAUSE";
-
-            musicIcon.textContent = "♫";
-
-            document.body.classList.add(
-                "music-active"
-            );
-
-        }).catch(() => {
-
-            alert(
-                "تأكد أن ملف angel.mp3 موجود بجانب index.html"
-            );
-
-        });
-
-    }else{
-
-        audio.pause();
-
-        musicText.textContent = "PLAY";
-
-        musicIcon.textContent = "♫";
-
-        document.body.classList.remove(
-            "music-active"
-        );
-    }
+    heart.appendChild(word);
 }
 
 </script>
