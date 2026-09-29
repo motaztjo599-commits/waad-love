@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>وعد ❤️</title>
+<title>WAAD ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
 
 *{
     margin:0;
@@ -17,569 +18,421 @@
     box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-}
-
 body{
-    background:#020108;
+    width:100%;
+    min-height:100vh;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 45%, #5d124d 0%, #250c2c 28%, #090712 70%, #03030a 100%);
+    font-family:"Cairo",sans-serif;
     color:white;
-    font-family:'Cairo',sans-serif;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+/* الخلفية */
 
 .background{
     position:fixed;
     inset:0;
     overflow:hidden;
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            #35112e 0%,
-            #19091c 28%,
-            #08050d 62%,
-            #010107 100%
-        );
+    z-index:0;
 }
-
-/* glowing clouds */
 
 .glow{
     position:absolute;
-    width:500px;
-    height:500px;
+    width:450px;
+    height:450px;
     border-radius:50%;
-    filter:blur(130px);
-    opacity:.18;
-    pointer-events:none;
+    filter:blur(100px);
+    opacity:.35;
+    animation:moveGlow 8s infinite alternate ease-in-out;
 }
 
 .glow.one{
-    background:#ff3d9a;
-    top:-220px;
-    left:-170px;
-    animation:moveGlow1 12s ease-in-out infinite alternate;
+    background:#ff1493;
+    top:-150px;
+    left:-100px;
 }
 
 .glow.two{
-    background:#8c35ff;
-    bottom:-250px;
-    right:-180px;
-    animation:moveGlow2 14s ease-in-out infinite alternate;
+    background:#8a2be2;
+    bottom:-180px;
+    right:-100px;
+    animation-delay:2s;
 }
 
 .glow.three{
-    background:#ff197d;
+    background:#ff3cac;
     width:300px;
     height:300px;
-    left:40%;
-    top:35%;
-    opacity:.08;
-    animation:pulseGlow 5s ease-in-out infinite;
+    top:40%;
+    left:45%;
+    opacity:.18;
+    animation-delay:4s;
 }
 
-@keyframes moveGlow1{
+@keyframes moveGlow{
     from{
         transform:translate(0,0) scale(1);
     }
     to{
-        transform:translate(160px,100px) scale(1.35);
+        transform:translate(70px,40px) scale(1.25);
     }
 }
 
-@keyframes moveGlow2{
-    from{
-        transform:translate(0,0) scale(1);
-    }
-    to{
-        transform:translate(-120px,-100px) scale(1.3);
-    }
-}
-
-@keyframes pulseGlow{
-    0%,100%{
-        transform:scale(.8);
-        opacity:.05;
-    }
-    50%{
-        transform:scale(1.4);
-        opacity:.15;
-    }
-}
-
-/* =========================
-   STARS
-========================= */
-
-#stars{
-    position:absolute;
-    inset:0;
-}
+/* النجوم */
 
 .star{
     position:absolute;
-    width:2px;
-    height:2px;
-    border-radius:50%;
+    width:3px;
+    height:3px;
     background:white;
-    opacity:.3;
-    animation:twinkle 3s ease-in-out infinite;
+    border-radius:50%;
+    opacity:.7;
+    animation:twinkle 2s infinite alternate;
 }
 
 @keyframes twinkle{
-    0%,100%{
+    from{
         opacity:.15;
         transform:scale(.7);
     }
-    50%{
+    to{
         opacity:1;
-        transform:scale(1.7);
+        transform:scale(1.5);
     }
 }
 
-/* =========================
-   TOP TITLE
-========================= */
+/* المحتوى */
+
+.container{
+    position:relative;
+    z-index:5;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+/* العنوان */
 
 .title{
     position:absolute;
-    top:7%;
-    left:50%;
-    transform:translateX(-50%);
-
+    top:35px;
     text-align:center;
-
-    white-space:nowrap;
-
-    font-size:clamp(22px,5vw,42px);
-    font-weight:600;
-
-    letter-spacing:3px;
-
-    color:#ffe5f2;
-
-    text-shadow:
-        0 0 10px rgba(255,120,190,.7),
-        0 0 30px rgba(255,60,160,.35);
-
     z-index:20;
-
-    animation:titleAppear 2s ease forwards;
 }
 
-.title span{
-    color:#ff82bd;
+.title h1{
+    font-size:clamp(28px,7vw,58px);
+    font-weight:800;
+    letter-spacing:2px;
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #ff69b4,
+        #ffb6e5,
+        #fff
+    );
+    background-size:300%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:titleGradient 5s linear infinite;
+    filter:drop-shadow(0 0 15px rgba(255,20,147,.7));
 }
 
-@keyframes titleAppear{
-    from{
-        opacity:0;
-        transform:translateX(-50%) translateY(-20px);
+.title p{
+    margin-top:5px;
+    color:#e8b8da;
+    font-size:13px;
+    letter-spacing:3px;
+}
+
+@keyframes titleGradient{
+    0%{
+        background-position:0%;
     }
-
-    to{
-        opacity:1;
-        transform:translateX(-50%) translateY(0);
+    100%{
+        background-position:300%;
     }
 }
 
-/* =========================
-   HEART AREA
-========================= */
+/* القلب */
 
-.scene{
+.heart{
+    position:relative;
+    width:min(90vw,650px);
+    height:min(75vw,540px);
+    max-height:540px;
+    margin-top:30px;
+}
+
+/* كلمات وعد */
+
+.word{
     position:absolute;
-
-    width:min(92vw,600px);
-    height:min(92vw,600px);
-
     left:50%;
     top:50%;
-
-    transform:translate(-50%,-50%);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-/* =========================
-   HEART WORDS
-========================= */
-
-.heart-word{
-    position:absolute;
-
-    color:#ff91c9;
-
-    font-size:clamp(8px,1.7vw,14px);
-
-    font-weight:600;
-
+    transform:
+        translate(-50%,-50%)
+        scale(var(--scale));
+    
+    color:#ff69b4;
+    font-size:clamp(8px,1.8vw,15px);
+    font-weight:700;
     white-space:nowrap;
 
     text-shadow:
-        0 0 4px #ff69b4,
-        0 0 10px rgba(255,60,160,.9),
-        0 0 22px rgba(255,40,150,.45);
+        0 0 4px #ff1493,
+        0 0 10px #ff1493,
+        0 0 20px rgba(255,20,147,.7);
 
-    opacity:.82;
-
-    pointer-events:none;
-
-    transition:
-        transform .25s ease,
-        opacity .25s ease,
-        color .25s ease;
+    animation:
+        wordPulse 2.5s infinite ease-in-out;
+    
+    animation-delay:var(--delay);
 }
 
-/* music active */
-
-.music-active .heart-word{
-    animation:heartWordBeat 1.4s ease-in-out infinite;
-}
-
-@keyframes heartWordBeat{
-
+@keyframes wordPulse{
     0%,100%{
-        opacity:.72;
-        filter:blur(.2px);
+        opacity:.55;
+        filter:brightness(.8);
     }
 
     50%{
         opacity:1;
-        filter:blur(0);
+        filter:brightness(1.6);
     }
 }
 
-/* =========================
-   CENTER NAME
-========================= */
+/* الاسم بالنص */
 
 .center{
     position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
 
-    width:175px;
-    height:175px;
-
-    border-radius:50%;
+    width:150px;
+    height:150px;
 
     display:flex;
     align-items:center;
     justify-content:center;
+
+    border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.14),
-            rgba(255,80,170,.08) 42%,
-            rgba(0,0,0,.5) 75%
+            rgba(255,105,180,.35),
+            rgba(75,10,65,.85) 65%,
+            rgba(15,5,20,.95)
         );
 
-    border:1px solid rgba(255,180,220,.5);
+    border:2px solid rgba(255,105,180,.8);
 
     box-shadow:
-        0 0 25px rgba(255,80,180,.35),
-        0 0 70px rgba(255,40,160,.18),
-        inset 0 0 45px rgba(255,80,180,.1);
+        0 0 20px #ff1493,
+        0 0 50px rgba(255,20,147,.8),
+        0 0 100px rgba(255,20,147,.4);
 
-    z-index:30;
+    animation:centerPulse 2.2s infinite ease-in-out;
 
-    animation:centerBeat 2.4s ease-in-out infinite;
+    z-index:10;
 }
 
 .center::before{
     content:"";
-
     position:absolute;
     inset:-12px;
-
+    border:1px solid rgba(255,105,180,.45);
     border-radius:50%;
-
-    border:1px solid rgba(255,140,210,.25);
-
-    border-top-color:rgba(255,150,215,.8);
-
-    animation:rotateRing 7s linear infinite;
+    animation:ring 3s infinite linear;
 }
 
 .center::after{
     content:"";
-
     position:absolute;
     inset:-25px;
-
+    border:1px solid rgba(255,105,180,.15);
     border-radius:50%;
-
-    border:1px solid rgba(255,80,180,.08);
-
-    animation:rotateRingReverse 12s linear infinite;
+    animation:ring 4s infinite linear reverse;
 }
 
-.center h1{
-    font-size:52px;
-
-    font-weight:700;
-
-    color:#fff;
-
+.center span{
+    font-size:42px;
+    font-weight:800;
+    color:white;
     text-shadow:
-        0 0 8px #ffb3d9,
-        0 0 20px #ff5eaa,
-        0 0 45px #ff1f8d,
-        0 0 80px rgba(255,20,130,.6);
-
-    z-index:2;
+        0 0 10px #ff1493,
+        0 0 30px #ff1493,
+        0 0 60px #ff1493;
 }
 
-@keyframes centerBeat{
-
+@keyframes centerPulse{
     0%,100%{
-        transform:scale(1);
+        transform:translate(-50%,-50%) scale(1);
     }
 
     50%{
-        transform:scale(1.07);
+        transform:translate(-50%,-50%) scale(1.08);
     }
 }
 
-@keyframes rotateRing{
+@keyframes ring{
     from{
-        transform:rotate(0deg);
+        transform:rotate(0deg) scale(.95);
+        opacity:.3;
     }
 
     to{
-        transform:rotate(360deg);
+        transform:rotate(360deg) scale(1.1);
+        opacity:.8;
     }
 }
 
-@keyframes rotateRingReverse{
-    from{
-        transform:rotate(360deg);
-    }
-
-    to{
-        transform:rotate(0deg);
-    }
-}
-
-/* =========================
-   MUSIC BUTTON
-========================= */
-
-.music-button{
-
-    position:fixed;
-
-    top:25px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    z-index:100;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    padding:11px 23px;
-
-    border-radius:50px;
-
-    border:1px solid rgba(255,160,215,.45);
-
-    background:rgba(15,7,20,.55);
-
-    backdrop-filter:blur(15px);
-
-    color:#ffe4f2;
-
-    font-family:'Cairo',sans-serif;
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 0 15px rgba(255,70,170,.2),
-        inset 0 0 15px rgba(255,120,190,.05);
-
-    transition:.35s ease;
-}
-
-.music-button:hover{
-
-    transform:translateX(-50%) scale(1.07);
-
-    border-color:rgba(255,170,220,.9);
-
-    box-shadow:
-        0 0 30px rgba(255,70,170,.45),
-        0 0 70px rgba(255,70,170,.12);
-}
-
-#musicIcon{
-    color:#ff80bd;
-    font-size:19px;
-}
-
-/* =========================
-   MUSIC ACTIVE
-========================= */
-
-.music-active .center{
-
-    animation:
-        centerBeat 1.4s ease-in-out infinite,
-        centerGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes centerGlow{
-
-    from{
-        box-shadow:
-            0 0 20px rgba(255,70,170,.35),
-            0 0 60px rgba(255,40,160,.15),
-            inset 0 0 40px rgba(255,80,180,.08);
-    }
-
-    to{
-        box-shadow:
-            0 0 45px rgba(255,70,170,.75),
-            0 0 110px rgba(255,40,160,.4),
-            inset 0 0 65px rgba(255,80,180,.18);
-    }
-}
-
-/* =========================
-   FLOATING HEARTS
-========================= */
+/* القلوب الطائرة */
 
 .floating-heart{
-
-    position:absolute;
-
-    color:#ff75b8;
-
-    font-size:15px;
-
+    position:fixed;
+    bottom:-40px;
+    color:#ff69b4;
+    font-size:18px;
     opacity:0;
-
+    z-index:3;
+    animation:floatHeart linear forwards;
     pointer-events:none;
-
-    animation:floatHeart 7s linear infinite;
 }
 
 @keyframes floatHeart{
-
     0%{
-        transform:translateY(80px) scale(.5);
+        transform:translateY(0) scale(.6) rotate(0deg);
         opacity:0;
     }
 
-    20%{
+    15%{
         opacity:.8;
     }
 
     80%{
-        opacity:.35;
+        opacity:.7;
     }
 
     100%{
-        transform:translateY(-350px) scale(1.2);
+        transform:
+            translateY(-110vh)
+            scale(1.5)
+            rotate(35deg);
         opacity:0;
     }
 }
 
-/* =========================
-   BOTTOM TEXT
-========================= */
+/* زر الموسيقى */
 
-.bottom{
-
+.music-button{
     position:fixed;
-
-    bottom:6%;
-
+    bottom:30px;
     left:50%;
-
     transform:translateX(-50%);
 
-    text-align:center;
+    z-index:30;
 
-    color:rgba(255,220,235,.7);
+    border:1px solid rgba(255,255,255,.25);
 
-    font-size:13px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,20,147,.35),
+            rgba(90,20,100,.6)
+        );
 
-    letter-spacing:2px;
+    color:white;
 
-    z-index:20;
+    padding:12px 25px;
 
-    white-space:nowrap;
+    border-radius:50px;
+
+    font-family:"Cairo",sans-serif;
+    font-weight:700;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 0 20px rgba(255,20,147,.35);
+
+    transition:.3s;
 }
 
-.bottom span{
-    color:#ff78b8;
+.music-button:hover{
+    transform:translateX(-50%) scale(1.06);
+    box-shadow:
+        0 0 30px rgba(255,20,147,.7);
 }
 
-/* =========================
-   MOBILE
-========================= */
+.music-button.playing{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,20,147,.75),
+            rgba(130,30,150,.8)
+        );
+
+    box-shadow:
+        0 0 30px #ff1493,
+        0 0 60px rgba(255,20,147,.5);
+}
+
+/* موبايل */
 
 @media(max-width:600px){
 
     .title{
-        top:10%;
-        font-size:22px;
-        letter-spacing:1px;
+        top:25px;
     }
 
-    .scene{
-        width:100vw;
-        height:100vw;
+    .title h1{
+        font-size:30px;
     }
 
-    .center{
-        width:145px;
-        height:145px;
-    }
-
-    .center h1{
-        font-size:40px;
-    }
-
-    .heart-word{
-        font-size:8px;
-    }
-
-    .bottom{
-        bottom:4%;
+    .title p{
         font-size:10px;
     }
 
+    .heart{
+        width:100vw;
+        height:85vw;
+        margin-top:40px;
+    }
+
+    .word{
+        font-size:8px;
+    }
+
+    .center{
+        width:120px;
+        height:120px;
+    }
+
+    .center span{
+        font-size:32px;
+    }
+
     .music-button{
-        top:18px;
-        padding:9px 18px;
+        bottom:20px;
+        font-size:13px;
     }
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     BACKGROUND
-========================= -->
+<!-- الخلفية -->
 
 <div class="background">
 
@@ -587,72 +440,54 @@ body{
     <div class="glow two"></div>
     <div class="glow three"></div>
 
-    <div id="stars"></div>
+</div>
+
+<!-- العنوان -->
+
+<div class="container">
+
+    <div class="title">
+
+        <h1>WAAD ❤️</h1>
+
+        <p>A HEART MADE FOR YOU</p>
+
+    </div>
+
+    <!-- القلب -->
+
+    <div class="heart" id="heart">
+
+        <div class="center">
+
+            <span>وعد</span>
+
+        </div>
+
+    </div>
 
 </div>
 
+<!-- زر الموسيقى -->
 
-<!-- =========================
-     MUSIC
-========================= -->
+<button class="music-button" id="musicButton">
+    ♫ تشغيل الموسيقى
+</button>
+
+<!--
+ضع ملف الأغنية الذي تملكه بشكل قانوني
+بجانب index.html باسم angel.mp3
+-->
 
 <audio id="angelAudio" loop preload="metadata">
     <source src="angel.mp3" type="audio/mpeg">
 </audio>
 
-
-<button class="music-button" onclick="toggleMusic()">
-
-    <span id="musicIcon">♫</span>
-
-    <span id="musicText">PLAY</span>
-
-</button>
-
-
-<!-- =========================
-     TITLE
-========================= -->
-
-<div class="title">
-    A Heart Made For <span>وعد</span>
-</div>
-
-
-<!-- =========================
-     HEART
-========================= -->
-
-<div class="scene" id="scene">
-
-    <div class="center">
-        <h1>وعد</h1>
-    </div>
-
-</div>
-
-
-<!-- floating hearts -->
-
-<div class="floating-heart" style="left:12%;animation-delay:0s;">♥</div>
-<div class="floating-heart" style="left:25%;animation-delay:2s;">♡</div>
-<div class="floating-heart" style="left:70%;animation-delay:1s;">♥</div>
-<div class="floating-heart" style="left:85%;animation-delay:4s;">♡</div>
-<div class="floating-heart" style="left:50%;animation-delay:3s;">♥</div>
-
-
-<div class="bottom">
-    <span>وعد</span> — اسمٌ يصنع قلباً كاملاً ♥
-</div>
-
-
 <script>
 
-/* =====================================
-   CREATE STARS
-===================================== */
-
-const stars = document.getElementById("stars");
+/* =========================
+   إنشاء النجوم
+========================= */
 
 for(let i = 0; i < 100; i++){
 
@@ -664,40 +499,33 @@ for(let i = 0; i < 100; i++){
     star.style.top = Math.random() * 100 + "%";
 
     star.style.animationDelay =
-        (Math.random() * 4) + "s";
+        Math.random() * 3 + "s";
 
-    star.style.opacity =
-        0.2 + Math.random() * .7;
+    star.style.animationDuration =
+        (1.5 + Math.random() * 3) + "s";
 
-    stars.appendChild(star);
+    document.querySelector(".background")
+        .appendChild(star);
 }
 
 
-/* =====================================
-   REAL MATHEMATICAL HEART
-===================================== */
+/* =========================
+   إنشاء القلب
+========================= */
 
-const scene = document.getElementById("scene");
+const heart = document.getElementById("heart");
 
 const totalWords = 260;
-
-
-/*
-   القلب الرياضي:
-
-   x = 16 sin³(t)
-
-   y =
-   13 cos(t)
-   - 5 cos(2t)
-   - 2 cos(3t)
-   - cos(4t)
-*/
 
 for(let i = 0; i < totalWords; i++){
 
     const t =
-        (Math.PI * 2 * i) / totalWords;
+        (Math.PI * 2 * i) /
+        totalWords;
+
+    /*
+       معادلة القلب
+    */
 
     const x =
         16 * Math.pow(Math.sin(t),3);
@@ -709,114 +537,140 @@ for(let i = 0; i < totalWords; i++){
         - Math.cos(4*t);
 
     /*
-       نضع الكلمات على حدود القلب
+       نحول الإحداثيات
+       لمكان داخل الصفحة
     */
 
     const word =
         document.createElement("div");
 
-    word.className = "heart-word";
+    word.className = "word";
 
     word.textContent = "وعد";
 
-    /*
-       Scale
-    */
-
-    const scale = 14;
+    const scaleX = 3.8;
+    const scaleY = 3.2;
 
     word.style.left =
-        `calc(50% + ${x * scale}px)`;
+        `calc(50% + ${x * scaleX}px)`;
 
     word.style.top =
-        `calc(50% - ${y * scale}px)`;
+        `calc(50% - ${y * scaleY}px)`;
 
-    /*
-       تدوير الكلمة حسب اتجاه القلب
-    */
+    word.style.setProperty(
+        "--scale",
+        0.75 + Math.random() * .5
+    );
 
-    const nextT =
-        t + 0.01;
+    word.style.setProperty(
+        "--delay",
+        Math.random() * 2.5 + "s"
+    );
 
-    const nextX =
-        16 * Math.pow(Math.sin(nextT),3);
-
-    const nextY =
-        13 * Math.cos(nextT)
-        - 5 * Math.cos(2*nextT)
-        - 2 * Math.cos(3*nextT)
-        - Math.cos(4*nextT);
-
-    const angle =
-        Math.atan2(
-            nextY - y,
-            nextX - x
-        ) * 180 / Math.PI;
-
-    word.style.transform =
-        `translate(-50%,-50%) rotate(${angle}deg)`;
-
-    /*
-       اختلاف بسيط حتى ما تكون كل الكلمات
-       متطابقة بالحركة
-    */
-
-    word.style.animationDelay =
-        (Math.random() * 1.4) + "s";
-
-    scene.appendChild(word);
+    heart.appendChild(word);
 }
 
 
-/* =====================================
-   MUSIC
-===================================== */
+/* =========================
+   قلوب طائرة
+========================= */
+
+function createFloatingHeart(){
+
+    const h =
+        document.createElement("div");
+
+    h.className = "floating-heart";
+
+    const hearts = [
+        "♥",
+        "♡",
+        "❤",
+        "💗",
+        "💖"
+    ];
+
+    h.textContent =
+        hearts[
+            Math.floor(
+                Math.random() * hearts.length
+            )
+        ];
+
+    h.style.left =
+        Math.random() * 100 + "vw";
+
+    h.style.fontSize =
+        (10 + Math.random() * 25) + "px";
+
+    const duration =
+        5 + Math.random() * 7;
+
+    h.style.animationDuration =
+        duration + "s";
+
+    document.body.appendChild(h);
+
+    setTimeout(() => {
+        h.remove();
+    }, duration * 1000);
+}
+
+setInterval(
+    createFloatingHeart,
+    500
+);
+
+
+/* =========================
+   الموسيقى
+========================= */
 
 const audio =
     document.getElementById("angelAudio");
 
-const musicText =
-    document.getElementById("musicText");
+const musicButton =
+    document.getElementById("musicButton");
 
-const musicIcon =
-    document.getElementById("musicIcon");
+musicButton.addEventListener(
+    "click",
+    async () => {
 
+        if(audio.paused){
 
-function toggleMusic(){
+            try{
 
-    if(audio.paused){
+                await audio.play();
 
-        audio.play().then(() => {
+                musicButton.textContent =
+                    "Ⅱ إيقاف الموسيقى";
 
-            musicText.textContent = "PAUSE";
+                musicButton.classList.add(
+                    "playing"
+                );
 
-            musicIcon.textContent = "♫";
+            }catch(error){
 
-            document.body.classList.add(
-                "music-active"
+                alert(
+                    "تأكد أن ملف angel.mp3 موجود بجانب index.html"
+                );
+
+            }
+
+        }else{
+
+            audio.pause();
+
+            musicButton.textContent =
+                "♫ تشغيل الموسيقى";
+
+            musicButton.classList.remove(
+                "playing"
             );
+        }
 
-        }).catch(() => {
-
-            alert(
-                "تأكد أن ملف angel.mp3 موجود بجانب index.html"
-            );
-
-        });
-
-    }else{
-
-        audio.pause();
-
-        musicText.textContent = "PLAY";
-
-        musicIcon.textContent = "♫";
-
-        document.body.classList.remove(
-            "music-active"
-        );
     }
-}
+);
 
 </script>
 
