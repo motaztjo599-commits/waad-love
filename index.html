@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>يوسف 😂💩</title>
+<title>هبة 😂💩 | الموقع الرسمي</title>
 
 <style>
 *{
@@ -13,19 +13,27 @@
     box-sizing:border-box;
 }
 
-body{
-    min-height:100vh;
-    overflow:hidden;
-    font-family:Tahoma,Arial,sans-serif;
-    background:
-        radial-gradient(circle at 50% 45%,#3b1858 0%,#180d2c 35%,#07050d 75%,#000 100%);
-    color:white;
+html,body{
+    width:100%;
+    min-height:100%;
 }
 
-/* النجوم */
+body{
+    overflow-x:hidden;
+    font-family:Tahoma,Arial,sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(circle at 50% 20%,#4b0c55 0%,#1c0928 28%,#09040e 65%,#000 100%);
+}
+
+/* =========================
+   الخلفية
+========================= */
+
 #stars{
     position:fixed;
     inset:0;
+    z-index:0;
     pointer-events:none;
 }
 
@@ -33,148 +41,292 @@ body{
     position:absolute;
     width:3px;
     height:3px;
-    background:white;
     border-radius:50%;
-    box-shadow:0 0 10px white;
+    background:#fff;
+    box-shadow:
+        0 0 6px #fff,
+        0 0 15px #ff66cc;
     animation:twinkle 2s infinite ease-in-out;
 }
 
 @keyframes twinkle{
     0%,100%{
         opacity:.15;
-        transform:scale(.5);
+        transform:scale(.4);
     }
     50%{
         opacity:1;
-        transform:scale(1.6);
+        transform:scale(1.8);
     }
 }
 
-/* المحتوى */
+/* دوائر الإضاءة */
+
+.glow{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.25;
+    pointer-events:none;
+    z-index:0;
+}
+
+.glow.one{
+    width:300px;
+    height:300px;
+    background:#ff008c;
+    top:10%;
+    left:-100px;
+    animation:move1 8s infinite alternate;
+}
+
+.glow.two{
+    width:350px;
+    height:350px;
+    background:#7b00ff;
+    bottom:-100px;
+    right:-100px;
+    animation:move2 9s infinite alternate;
+}
+
+@keyframes move1{
+    to{
+        transform:translate(180px,120px);
+    }
+}
+
+@keyframes move2{
+    to{
+        transform:translate(-150px,-120px);
+    }
+}
+
+/* =========================
+   المحتوى
+========================= */
+
 .container{
     position:relative;
     z-index:2;
 
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+
     min-height:100vh;
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    padding:35px 18px 70px;
 
-    padding:25px;
     text-align:center;
 }
 
-/* الاسم */
-.small{
-    font-size:22px;
-    color:#d8b8ff;
-    margin-bottom:10px;
-    text-shadow:0 0 15px #9d4edd;
+/* التحذير */
+
+.warning{
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border:1px solid rgba(255,120,200,.5);
+    border-radius:50px;
+
+    background:rgba(255,255,255,.07);
+
+    color:#ffd3ee;
+
+    font-size:16px;
+
+    box-shadow:
+        0 0 20px rgba(255,0,150,.2);
+
+    backdrop-filter:blur(10px);
+
+    animation:warning 2s infinite alternate;
 }
+
+@keyframes warning{
+    to{
+        box-shadow:
+            0 0 30px rgba(255,0,150,.6);
+    }
+}
+
+/* الاسم */
 
 .name{
-    font-size:clamp(55px,15vw,110px);
-    font-weight:900;
+    margin-top:18px;
 
-    color:white;
+    font-size:clamp(65px,17vw,140px);
+
+    font-weight:1000;
+
+    letter-spacing:-5px;
+
+    color:#fff;
 
     text-shadow:
-        0 0 8px white,
-        0 0 20px #c77dff,
-        0 0 45px #9d4edd,
-        0 0 90px #7b2cbf;
+        0 0 5px #fff,
+        0 0 15px #ff8bd8,
+        0 0 35px #ff20a8,
+        0 0 70px #d000ff,
+        0 0 120px #8a00ff;
 
-    animation:pulse 2s infinite ease-in-out;
+    animation:namePulse 2.5s infinite ease-in-out;
 }
 
-@keyframes pulse{
+@keyframes namePulse{
     0%,100%{
         transform:scale(1);
     }
     50%{
-        transform:scale(1.05);
+        transform:scale(1.04);
     }
 }
 
-/* البطاقة */
-.card{
-    margin-top:35px;
+.subtitle{
+    margin-top:-5px;
 
-    width:min(850px,94vw);
+    font-size:clamp(18px,4vw,28px);
 
-    padding:45px 20px;
+    color:#ffd5ee;
 
-    border-radius:35px;
+    text-shadow:
+        0 0 10px #ff45b5,
+        0 0 25px #9d00ff;
+}
+
+/* =========================
+   البطاقة الرئيسية
+========================= */
+
+.main-card{
+    position:relative;
+
+    margin:45px auto 0;
+
+    width:min(900px,96vw);
+
+    padding:45px 20px 50px;
+
+    border-radius:45px;
 
     background:
         linear-gradient(
-            135deg,
-            rgba(255,255,255,.13),
-            rgba(255,255,255,.035)
+            145deg,
+            rgba(255,255,255,.14),
+            rgba(255,0,150,.045),
+            rgba(100,0,255,.08)
         );
 
-    border:1px solid rgba(210,160,255,.45);
+    border:1px solid rgba(255,170,230,.4);
 
     box-shadow:
-        0 0 25px rgba(157,78,221,.3),
-        0 0 70px rgba(123,44,191,.15),
-        inset 0 0 35px rgba(255,255,255,.04);
+        0 0 25px rgba(255,0,170,.25),
+        0 0 80px rgba(130,0,255,.15),
+        inset 0 0 40px rgba(255,255,255,.04);
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(18px);
 
-    animation:float 4s infinite ease-in-out;
+    overflow:hidden;
 }
 
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-10px);
+/* لمعان متحرك */
+
+.main-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    top:-180px;
+    left:-150px;
+
+    border-radius:50%;
+
+    background:#ff00a8;
+
+    filter:blur(90px);
+
+    opacity:.18;
+
+    animation:lightMove 6s infinite alternate;
+}
+
+@keyframes lightMove{
+    to{
+        left:80%;
+        top:80%;
     }
 }
 
-/* الإيموجي */
-.poop{
-    font-size:clamp(65px,18vw,130px);
+/* =========================
+   الإيموجي
+========================= */
+
+.big-poop{
+    position:relative;
+    z-index:3;
+
+    font-size:clamp(90px,22vw,180px);
 
     filter:
-        drop-shadow(0 0 10px #ff9f1c)
-        drop-shadow(0 0 30px #ff6d00);
+        drop-shadow(0 0 8px #fff)
+        drop-shadow(0 0 25px #ff9d00)
+        drop-shadow(0 0 55px #ff5c00);
 
-    animation:poop 1.5s infinite ease-in-out;
+    animation:
+        poopBounce 1.8s infinite ease-in-out,
+        poopRotate 4s infinite ease-in-out;
 }
 
-@keyframes poop{
+@keyframes poopBounce{
     0%,100%{
-        transform:rotate(-5deg) scale(1);
+        transform:translateY(0) scale(1);
     }
     50%{
-        transform:rotate(5deg) scale(1.1);
+        transform:translateY(-18px) scale(1.08);
     }
 }
 
-/* النص الأساسي */
-.main{
-    margin-top:15px;
-
-    font-size:clamp(38px,10vw,80px);
-    font-weight:900;
-
-    color:#ffb3ff;
-
-    text-shadow:
-        0 0 8px white,
-        0 0 18px #ff4dff,
-        0 0 40px #c026ff,
-        0 0 80px #8a2be2;
-
-    animation:textGlow 2s infinite alternate;
+@keyframes poopRotate{
+    0%,100%{
+        rotate:-3deg;
+    }
+    50%{
+        rotate:3deg;
+    }
 }
 
-@keyframes textGlow{
+/* =========================
+   النص الضخم
+========================= */
+
+.main-title{
+    position:relative;
+    z-index:3;
+
+    margin-top:5px;
+
+    font-size:clamp(38px,10vw,88px);
+
+    font-weight:1000;
+
+    line-height:1.25;
+
+    color:#fff;
+
+    text-shadow:
+        0 0 7px #fff,
+        0 0 18px #ff8be0,
+        0 0 40px #ff00aa,
+        0 0 80px #9d00ff;
+
+    animation:titleGlow 1.8s infinite alternate;
+}
+
+@keyframes titleGlow{
     from{
         filter:brightness(1);
     }
@@ -183,70 +335,148 @@ body{
     }
 }
 
-/* السطر الثاني */
-.sub{
-    margin-top:20px;
-
-    font-size:clamp(20px,5vw,32px);
-    font-weight:bold;
-
-    color:#eee;
+.highlight{
+    color:#ff9ee5;
 
     text-shadow:
-        0 0 10px #fff,
-        0 0 25px #a855f7;
+        0 0 8px #fff,
+        0 0 25px #ff00aa,
+        0 0 55px #9d00ff;
 }
 
-/* زر */
-.button{
+/* =========================
+   الرسالة
+========================= */
+
+.message{
+    position:relative;
+    z-index:3;
+
+    margin:25px auto 0;
+
+    max-width:720px;
+
+    padding:20px;
+
+    border-radius:25px;
+
+    background:rgba(0,0,0,.2);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    color:#ffe9f7;
+
+    font-size:clamp(18px,4vw,28px);
+
+    line-height:1.7;
+
+    box-shadow:
+        inset 0 0 25px rgba(255,255,255,.025);
+}
+
+/* =========================
+   أزرار
+========================= */
+
+.buttons{
+    position:relative;
+    z-index:5;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:15px;
+
     margin-top:30px;
+}
 
-    padding:14px 30px;
+.btn{
+    border:none;
+    outline:none;
 
-    border:0;
+    padding:15px 28px;
+
     border-radius:50px;
 
-    font-size:21px;
-    font-weight:bold;
-
     color:white;
+
+    font-family:inherit;
+
+    font-size:19px;
+    font-weight:900;
+
+    cursor:pointer;
 
     background:
         linear-gradient(
             90deg,
-            #7b2cbf,
-            #c026ff,
-            #ff4dff
+            #7b00ff,
+            #ff00a8,
+            #ff4fc3
         );
 
     box-shadow:
-        0 0 15px #c026ff,
-        0 0 35px rgba(192,38,255,.5);
+        0 0 15px rgba(255,0,180,.5),
+        0 0 35px rgba(150,0,255,.3);
 
-    animation:buttonGlow 1.8s infinite alternate;
+    transition:.25s;
 }
 
-@keyframes buttonGlow{
-    from{
-        transform:scale(1);
-    }
-    to{
-        transform:scale(1.06);
-    }
+.btn:hover{
+    transform:scale(1.08);
 }
 
-/* إيموجيات طائرة */
+.btn:active{
+    transform:scale(.94);
+}
+
+/* =========================
+   العداد
+========================= */
+
+.counter{
+    position:relative;
+    z-index:3;
+
+    margin:30px auto 0;
+
+    font-size:20px;
+
+    color:#ffc7e9;
+}
+
+#count{
+    display:inline-block;
+
+    min-width:60px;
+
+    color:#fff;
+
+    font-size:30px;
+    font-weight:900;
+
+    text-shadow:
+        0 0 10px #ff00aa,
+        0 0 25px #9d00ff;
+}
+
+/* =========================
+   الإيموجيات الطائرة
+========================= */
+
 .floating{
     position:fixed;
-    bottom:-60px;
 
-    font-size:25px;
+    bottom:-70px;
 
     z-index:1;
 
     pointer-events:none;
 
-    animation:rise 6s linear forwards;
+    font-size:28px;
+
+    animation:rise linear forwards;
 }
 
 @keyframes rise{
@@ -255,6 +485,7 @@ body{
             translateY(0)
             rotate(0deg)
             scale(.5);
+
         opacity:0;
     }
 
@@ -264,26 +495,87 @@ body{
 
     100%{
         transform:
-            translateY(-110vh)
-            rotate(360deg)
-            scale(1.5);
+            translateY(-115vh)
+            rotate(420deg)
+            scale(1.7);
+
         opacity:0;
     }
 }
 
-/* موبايل */
+/* =========================
+   انفجار عند الضغط
+========================= */
+
+.explosion{
+    position:fixed;
+
+    z-index:20;
+
+    pointer-events:none;
+
+    font-size:30px;
+
+    animation:explode 900ms ease-out forwards;
+}
+
+@keyframes explode{
+    0%{
+        transform:translate(-50%,-50%) scale(.3);
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(500deg)
+            scale(1.8);
+
+        opacity:0;
+    }
+}
+
+/* =========================
+   الفوتر
+========================= */
+
+.footer{
+    position:relative;
+    z-index:3;
+
+    margin-top:35px;
+
+    color:#bda5c8;
+
+    font-size:14px;
+}
+
+/* =========================
+   الموبايل
+========================= */
+
 @media(max-width:600px){
 
-    .card{
-        padding:35px 14px;
+    .container{
+        padding-top:25px;
     }
 
-    .small{
-        font-size:18px;
+    .main-card{
+        margin-top:35px;
+        padding:35px 14px 40px;
+        border-radius:35px;
     }
 
-    .sub{
-        line-height:1.5;
+    .message{
+        padding:16px;
+    }
+
+    .btn{
+        width:90%;
+        max-width:330px;
     }
 }
 </style>
@@ -293,45 +585,83 @@ body{
 
 <div id="stars"></div>
 
+<div class="glow one"></div>
+<div class="glow two"></div>
+
 <div class="container">
 
-    <div class="small">
-        🚨 تحذير: يوسف دخل الموقع 🚨
+    <div class="warning">
+        🚨 الموقع الرسمي لهبة — الدخول على مسؤوليتك 😂
     </div>
 
     <div class="name">
-        يوسف 😂
+        هبة 😂
     </div>
 
-    <div class="card">
+    <div class="subtitle">
+        🌌 أكبر تحذير رقمي بالتاريخ 🌌
+    </div>
 
-        <div class="poop">
+    <div class="main-card">
+
+        <div class="big-poop">
             💩
         </div>
 
-        <div class="main">
-            جول خرا 😂💩
+        <div class="main-title">
+            كلي خرا يا
+            <span class="highlight">
+                هبة
+            </span>
+            😂💩
         </div>
 
-        <div class="sub">
-            يوسف الأسطورة 😂🔥
+        <div class="message">
+            😂😂😂<br>
+            هبة، تم إصدار الحكم النهائي رسميًا:
+            <br>
+            <strong>
+                💩 كلي خرا 💩
+            </strong>
+            <br>
+            مع كامل الاحترام طبعًا 🤣🔥
         </div>
 
-        <div class="button">
-            💩 جول خرا يا يوسف 😂
+        <div class="buttons">
+
+            <button class="btn" onclick="laugh()">
+                😂 اضغطي هون
+            </button>
+
+            <button class="btn" onclick="poopRain()">
+                💩 تفعيل الهجوم
+            </button>
+
         </div>
 
+        <div class="counter">
+            عدد مرات قول الجملة:
+            <span id="count">0</span>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        صنع خصيصًا لهبة 😂💩✨
     </div>
 
 </div>
 
 <script>
 
-/* النجوم */
+/* =========================
+   النجوم
+========================= */
+
 const stars =
 document.getElementById("stars");
 
-for(let i=0;i<120;i++){
+for(let i=0;i<150;i++){
 
     const star =
     document.createElement("div");
@@ -345,24 +675,34 @@ for(let i=0;i<120;i++){
     Math.random()*100+"%";
 
     star.style.animationDelay =
-    Math.random()*3+"s";
+    Math.random()*4+"s";
 
     star.style.animationDuration =
-    (1.5+Math.random()*3)+"s";
+    (1.3 + Math.random()*3)+"s";
 
     stars.appendChild(star);
 }
 
 
-/* الإيموجيات الطائرة */
+/* =========================
+   الإيموجيات
+========================= */
+
 const emojis=[
     "💩",
     "😂",
-    "🔥",
     "🤣",
+    "🔥",
     "💜",
-    "✨"
+    "💗",
+    "✨",
+    "😭"
 ];
+
+
+/* =========================
+   المطر المستمر
+========================= */
 
 function createFloating(){
 
@@ -382,18 +722,145 @@ function createFloating(){
     Math.random()*100+"%";
 
     item.style.animationDuration =
-    (4+Math.random()*4)+"s";
+    (4+Math.random()*5)+"s";
+
+    item.style.fontSize =
+    (18+Math.random()*25)+"px";
 
     document.body.appendChild(item);
 
     setTimeout(()=>{
         item.remove();
-    },9000);
+    },10000);
 }
 
 setInterval(
     createFloating,
-    550
+    500
+);
+
+
+/* =========================
+   العداد
+========================= */
+
+let count=0;
+
+function laugh(){
+
+    count++;
+
+    document.getElementById("count")
+    .textContent=count;
+
+    explosion(
+        window.innerWidth/2,
+        window.innerHeight/2
+    );
+}
+
+
+/* =========================
+   انفجار
+========================= */
+
+function explosion(x,y){
+
+    const amount=25;
+
+    for(let i=0;i<amount;i++){
+
+        const item=
+        document.createElement("div");
+
+        item.className="explosion";
+
+        item.textContent=
+        emojis[
+            Math.floor(
+                Math.random()*emojis.length
+            )
+        ];
+
+        item.style.left=x+"px";
+        item.style.top=y+"px";
+
+        item.style.setProperty(
+            "--x",
+            ((Math.random()-.5)*500)+"px"
+        );
+
+        item.style.setProperty(
+            "--y",
+            ((Math.random()-.5)*500)+"px"
+        );
+
+        document.body.appendChild(item);
+
+        setTimeout(()=>{
+            item.remove();
+        },1000);
+    }
+}
+
+
+/* =========================
+   زر الهجوم
+========================= */
+
+function poopRain(){
+
+    for(let i=0;i<60;i++){
+
+        setTimeout(()=>{
+
+            const item=
+            document.createElement("div");
+
+            item.className="floating";
+
+            item.textContent =
+            ["💩","😂","🤣"][Math.floor(Math.random()*3)];
+
+            item.style.left =
+            Math.random()*100+"%";
+
+            item.style.bottom =
+            Math.random()*40+"px";
+
+            item.style.animationDuration =
+            (2+Math.random()*3)+"s";
+
+            document.body.appendChild(item);
+
+            setTimeout(()=>{
+                item.remove();
+            },6000);
+
+        },i*35);
+    }
+
+    count+=10;
+
+    document.getElementById("count")
+    .textContent=count;
+}
+
+
+/* =========================
+   ضغط الشاشة
+========================= */
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        if(
+            e.target.tagName==="BUTTON"
+        ) return;
+
+        explosion(e.clientX,e.clientY);
+    }
 );
 
 </script>
